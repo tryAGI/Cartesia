@@ -191,7 +191,6 @@ namespace Cartesia
                 }
             }
         }
-
         /// <summary>
         /// Generate a New Access Token<br/>
         /// Generates a new Access Token for the client. These tokens are short-lived and should be used to make requests to the API from authenticated clients.

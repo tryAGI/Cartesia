@@ -20,7 +20,6 @@ namespace Cartesia
 
             global::Cartesia.UpdateDatasetRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update an existing dataset
         /// </summary>

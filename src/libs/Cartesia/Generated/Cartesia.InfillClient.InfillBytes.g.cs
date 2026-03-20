@@ -251,7 +251,6 @@ namespace Cartesia
                 }
             }
         }
-
         /// <summary>
         /// Infill (Bytes)<br/>
         /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>

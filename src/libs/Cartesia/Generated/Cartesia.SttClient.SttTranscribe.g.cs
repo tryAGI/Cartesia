@@ -263,7 +263,6 @@ namespace Cartesia
                 }
             }
         }
-
         /// <summary>
         /// Speech-to-Text (Batch)<br/>
         /// Transcribes audio files into text using Cartesia's Speech-to-Text API.<br/>

@@ -18,7 +18,6 @@ namespace Cartesia
 
             global::Cartesia.CreatePronunciationDictRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a new pronunciation dictionary
         /// </summary>

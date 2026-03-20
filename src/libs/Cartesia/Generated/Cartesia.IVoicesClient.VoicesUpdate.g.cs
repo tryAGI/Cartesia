@@ -23,7 +23,6 @@ namespace Cartesia
 
             global::Cartesia.UpdateVoiceRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update Voice<br/>
         /// Update the name, description, and gender of a voice. To set the gender back to the default, set the gender to `null`. If gender is not specified, the gender will not be updated.

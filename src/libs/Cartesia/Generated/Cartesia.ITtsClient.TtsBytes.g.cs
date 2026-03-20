@@ -18,7 +18,6 @@ namespace Cartesia
 
             global::Cartesia.TTSRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Text to Speech (Bytes)
         /// </summary>

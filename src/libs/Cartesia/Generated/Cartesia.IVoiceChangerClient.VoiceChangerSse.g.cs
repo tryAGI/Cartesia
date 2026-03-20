@@ -18,7 +18,6 @@ namespace Cartesia
 
             global::Cartesia.VoiceChangerSseRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Voice Changer (SSE)
         /// </summary>

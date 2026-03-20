@@ -20,7 +20,6 @@ namespace Cartesia
 
             global::Cartesia.UpdatePronunciationDictRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update a pronunciation dictionary
         /// </summary>

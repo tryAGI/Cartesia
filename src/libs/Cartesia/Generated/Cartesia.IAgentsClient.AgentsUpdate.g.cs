@@ -20,7 +20,6 @@ namespace Cartesia
 
             global::Cartesia.UpdateAgentRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update Agent
         /// </summary>
