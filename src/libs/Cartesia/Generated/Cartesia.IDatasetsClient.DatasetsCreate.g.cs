@@ -18,7 +18,6 @@ namespace Cartesia
 
             global::Cartesia.CreateDatasetRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a new dataset
         /// </summary>

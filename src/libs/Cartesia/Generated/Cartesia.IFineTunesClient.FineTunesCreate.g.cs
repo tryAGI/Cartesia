@@ -18,7 +18,6 @@ namespace Cartesia
 
             global::Cartesia.CreateFineTuneRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a new fine-tune
         /// </summary>

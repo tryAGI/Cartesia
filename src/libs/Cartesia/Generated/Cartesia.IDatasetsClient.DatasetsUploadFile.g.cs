@@ -20,7 +20,6 @@ namespace Cartesia
 
             global::Cartesia.DatasetsUploadFileRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Upload a new file to a dataset
         /// </summary>

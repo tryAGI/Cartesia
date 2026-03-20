@@ -19,7 +19,6 @@ namespace Cartesia
 
             global::Cartesia.LocalizeVoiceRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Localize Voice<br/>
         /// Create a new voice from an existing voice localized to a new language and dialect.

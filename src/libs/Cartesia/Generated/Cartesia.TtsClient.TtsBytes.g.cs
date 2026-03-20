@@ -181,7 +181,6 @@ namespace Cartesia
                 }
             }
         }
-
         /// <summary>
         /// Text to Speech (Bytes)
         /// </summary>

@@ -19,7 +19,6 @@ namespace Cartesia
 
             global::Cartesia.CreateMetricRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create Metric<br/>
         /// Create a new metric.

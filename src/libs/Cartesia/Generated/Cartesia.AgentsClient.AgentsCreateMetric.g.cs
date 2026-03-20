@@ -191,7 +191,6 @@ namespace Cartesia
                 }
             }
         }
-
         /// <summary>
         /// Create Metric<br/>
         /// Create a new metric.
