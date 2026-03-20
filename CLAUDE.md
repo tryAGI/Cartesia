@@ -28,8 +28,11 @@ var client = new CartesiaClient(apiKey); // CARTESIA_API_KEY env var
 
 ## Spec Notes
 
-- OpenAPI spec hosted on Stainless GCS with hash-based URLs (not stable)
-- To update spec: check `cartesia-ai/cartesia-python/.stats.yml` for latest URL
+- OpenAPI spec hosted on Stainless GCS with hash-based URLs
+- `generate.sh` dynamically resolves latest URL from `cartesia-ai/cartesia-python/.stats.yml`
 - Auth is standard `http/bearer` — no jq/yq fix needed
 - Every endpoint requires `Cartesia-Version` header (e.g., `2025-04-16`)
-- MEAI candidate: `ISpeechToTextClient` interface (has STT endpoint)
+- MEAI: `ISpeechToTextClient` implemented in `Extensions/CartesiaClient.SpeechToTextClient.cs`
+  - Synchronous transcription via `POST /stt` — no polling needed
+  - Maps `SpeechLanguage` to `SttTranscribeRequestLanguage` enum
+  - Supports `RawRepresentationFactory` for pre-built `SttTranscribeRequest`

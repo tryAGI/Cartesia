@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <NoWarn>$(NoWarn);MEAI001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
     <Description>Generated C# SDK for Cartesia — low-latency TTS, STT, voice cloning, agents, fine-tuning, and pronunciation dictionaries.</Description>
-    <PackageTags>cartesia;tts;stt;text-to-speech;speech-to-text;voice;cloning;agents;api;sdk;dotnet;openapi;generated</PackageTags>
+    <PackageTags>cartesia;tts;stt;text-to-speech;speech-to-text;voice;cloning;agents;meai;api;sdk;dotnet;openapi;generated</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="10.4.0" />
+  </ItemGroup>
 
 </Project>

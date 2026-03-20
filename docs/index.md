@@ -30,6 +30,50 @@ using var client = new CartesiaClient(apiKey);
 var response = await client.ApiStatus.ApiStatusGetAsync(
     cartesiaVersion: ApiStatusGetCartesiaVersion.x20250416);
 ```
+
+### Speech To Text Client Get Text Async
+
+
+```csharp
+using var api = new CartesiaClient(apiKey);
+ISpeechToTextClient speechClient = api;
+
+// Transcribe audio using the MEAI ISpeechToTextClient interface.
+// Cartesia processes the audio synchronously — no polling required.
+using var httpClient = new HttpClient();
+await using var audioStream = await httpClient.GetStreamAsync(
+    "https://cdn.openai.com/API/docs/audio/alloy.wav");
+
+var ms = new MemoryStream();
+await audioStream.CopyToAsync(ms);
+ms.Position = 0;
+
+var response = await speechClient.GetTextAsync(ms);
+
+Console.WriteLine($"Text: {response.Text}");
+```
+
+### Speech To Text Client Get Service Metadata
+
+
+```csharp
+using var api = new CartesiaClient("dummy-key");
+ISpeechToTextClient speechClient = api;
+
+// Retrieve metadata about the speech-to-text provider.
+var metadata = speechClient.GetService<SpeechToTextClientMetadata>();
+```
+
+### Speech To Text Client Get Service Self
+
+
+```csharp
+using var api = new CartesiaClient("dummy-key");
+ISpeechToTextClient speechClient = api;
+
+// Access the underlying CartesiaClient from the MEAI interface.
+var self = speechClient.GetService<CartesiaClient>();
+```
 <!-- EXAMPLES:END -->
 
 ## Support
