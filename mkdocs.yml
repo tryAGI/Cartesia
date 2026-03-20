@@ -1,6 +1,8 @@
 site_name: Cartesia .NET Documentation
 nav:
 - Overview: index.md
+- Guides:
+  - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
 - Examples:
   - Check API Status: examples/check-api-status.md
