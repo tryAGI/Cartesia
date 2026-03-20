@@ -1,0 +1,21 @@
+#nullable enable
+
+namespace Cartesia
+{
+    public partial interface IAgentsClient
+    {
+        /// <summary>
+        /// Delete Agent
+        /// </summary>
+        /// <param name="cartesiaVersion">
+        /// Example: 2025-04-16
+        /// </param>
+        /// <param name="agentId"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Threading.Tasks.Task AgentsDeleteAsync(
+            global::Cartesia.AgentsDeleteCartesiaVersion cartesiaVersion,
+            string agentId,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

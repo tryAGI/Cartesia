@@ -1,0 +1,650 @@
+
+#nullable enable
+
+#pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
+
+namespace Cartesia
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+        Converters = new global::System.Type[]
+        {
+            typeof(global::Cartesia.JsonConverters.AgentCallStatusJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentCallStatusNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentMetricResultStatusJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentMetricResultStatusNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTuneStatusJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTuneStatusNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TimestampGranularityJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TimestampGranularityNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant1TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant1TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant2TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant2TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant3TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant3TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant4TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseVariant4TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTEncodingJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTEncodingNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.ModelSpeedJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.ModelSpeedNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant1TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant1TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant2TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant2TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant3TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant3TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant4TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant4TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant5TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant5TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant6TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseVariant6TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.EmotionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.EmotionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SupportedLanguageJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SupportedLanguageNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatRAWOutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatRAWOutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatWAVOutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatWAVOutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SSEOutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SSEOutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.RawEncodingJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.RawEncodingNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierModeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierModeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant1TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant1TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant2TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant2TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant3TypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseVariant3TypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeTargetLanguageJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeTargetLanguageNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeEnglishDialectJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeEnglishDialectNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeFrenchDialectJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeFrenchDialectNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeSpanishDialectJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeSpanishDialectNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizePortugueseDialectJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizePortugueseDialectNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.GenderPresentationJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.GenderPresentationNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.GenderJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.GenderNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceExpandOptionsJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceExpandOptionsNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SttTranscribeRequestLanguageJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SttTranscribeRequestLanguageNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsUpdateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsUpdateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsDeleteCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsDeleteCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsTemplatesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsTemplatesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListCallsCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListCallsCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetCallCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetCallCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsDownloadCallAudioCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsDownloadCallAudioCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsPhoneNumbersCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsPhoneNumbersCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListMetricsCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListMetricsCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsCreateMetricCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsCreateMetricCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetMetricCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetMetricCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListMetricResultsCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListMetricResultsCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsExportMetricResultsCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsExportMetricResultsCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsAddMetricToAgentCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsAddMetricToAgentCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsRemoveMetricFromAgentCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsRemoveMetricFromAgentCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListDeploymentsCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsListDeploymentsCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetDeploymentCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AgentsGetDeploymentCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.ApiStatusGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.ApiStatusGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AuthAccessTokenCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AuthAccessTokenCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsListCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsListCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsCreateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsCreateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsUpdateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsUpdateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsDeleteCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsDeleteCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsListFilesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsListFilesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsUploadFileCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsUploadFileCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsDeleteFileCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.DatasetsDeleteFileCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesListCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesListCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesCreateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesCreateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesDeleteCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesDeleteCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesListVoicesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTunesListVoicesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.InfillBytesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.InfillBytesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsListCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsListCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsCreateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsCreateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsUpdateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsUpdateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsDeleteCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.PronunciationDictsDeleteCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SttTranscribeCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.SttTranscribeCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TtsBytesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TtsBytesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TtsSseCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TtsSseCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceChangerBytesCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceChangerBytesCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceChangerSseCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoiceChangerSseCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesListCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesListCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesCloneCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesCloneCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesDeleteCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesDeleteCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesUpdateCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesUpdateCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesGetCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesGetCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesLocalizeCartesiaVersionJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.VoicesLocalizeCartesiaVersionNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingTranscriptionResponseJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketResponseJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WebSocketRequestJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.OutputFormatJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.WAVOutputFormatJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.StreamingResponseJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.LocalizeDialectJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>),
+
+            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>),
+
+            typeof(global::Cartesia.JsonConverters.UnixTimestampJsonConverter),
+        })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TextChunk))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TelephonyParams))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LogEvent))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LogMetric))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ToolCall))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentCallStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentMetricResultStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GetCallsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AgentCall>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentCall))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumberSummary))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GitRepository))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentSummary))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.PhoneNumberSummary>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentTemplate))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentTranscript))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.TextChunk>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.ToolCall>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AgentTranscript>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Metric))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateMetricRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ListMetricsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Metric>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MetricResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ListMetricResultsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.MetricResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumber))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GetTemplatesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AgentTemplate>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GetAgentsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AgentSummary>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateAgentRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Deployment))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.APIInfo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TokenGrant))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TokenRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TokenResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Dataset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateDatasetRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateDatasetRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetFile))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedDatasets))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Dataset>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedDatasetFiles))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.DatasetFile>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.S3UploadParamsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTune))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedFineTunes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.FineTune>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedVoices))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Voice>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Voice))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDict))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.PronunciationDictItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedPronunciationDicts))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.PronunciationDict>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TimestampGranularity))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TranscriptionWord))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TranscriptionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.TranscriptionWord>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant12))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant1Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TranscriptMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant22))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant2Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FlushDoneMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant32))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant3Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DoneMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant42))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant4Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ErrorMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTEncoding))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelSpeed))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant1Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant2Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant3Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant4Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WordTimestamps))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant5Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant6))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseVariant6Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhonemeTimestamps))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketTTSOutput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketStreamOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CancelContextRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifier))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SupportedLanguage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketRawOutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketRawOutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawEncoding))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketTTSRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Emotion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSSSERequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SSEOutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormat2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawOutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormat2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WAVOutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormat2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MP3OutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SSEOutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifierMode))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatContainer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant1Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant2Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingResponseVariant3Type))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenderPresentation))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceMetadata))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GetVoicesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeTargetLanguage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeEnglishDialect))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeFrenchDialect))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeSpanishDialect))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizePortugueseDialect))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeDialect))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Gender))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceExpandOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.IdSpecifier))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsUploadFileRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.InfillBytesRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeRequestLanguage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerBytesRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSseRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsListCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsUpdateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsDeleteCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsTemplatesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsListCallsCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsGetCallCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsDownloadCallAudioCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsPhoneNumbersCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsListMetricsCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsCreateMetricCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsGetMetricCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsListMetricResultsCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsExportMetricResultsCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsAddMetricToAgentCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsListDeploymentsCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsGetDeploymentCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ApiStatusGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AuthAccessTokenCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsListCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsCreateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsUpdateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsDeleteCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsListFilesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsUploadFileCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsDeleteFileCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesListCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesCreateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesDeleteCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesListVoicesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.InfillBytesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsListCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsCreateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsUpdateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsDeleteCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsBytesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsSseCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerBytesCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSseCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesListCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesDeleteCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesUpdateCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesGetCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesLocalizeCartesiaVersion))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.PhoneNumber>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Deployment>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCall>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumberSummary>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TextChunk>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ToolCall>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentTranscript>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Metric>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.MetricResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentTemplate>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentSummary>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Dataset>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.DatasetFile>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.FineTune>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Voice>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PronunciationDictItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PronunciationDict>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TranscriptionWord>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TimestampGranularity>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.VoiceExpandOptions>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumber>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Deployment>))]
+    public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+}
