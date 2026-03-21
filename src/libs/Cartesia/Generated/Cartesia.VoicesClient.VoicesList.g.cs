@@ -82,7 +82,7 @@ namespace Cartesia
                 .AddOptionalParameter("starting_after", startingAfter)
                 .AddOptionalParameter("ending_before", endingBefore)
                 .AddOptionalParameter("q", q)
-                .AddOptionalParameter("is_owner", isOwner?.ToString())
+                .AddOptionalParameter("is_owner", isOwner?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("gender", gender?.ToValueString())
                 .AddOptionalParameter("expand[]", expand, selector: static x => x.ToValueString(), delimiter: ",", explode: true) 
                 ; 
