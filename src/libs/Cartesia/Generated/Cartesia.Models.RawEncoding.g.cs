@@ -11,11 +11,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        PcmF32le,
+        PcmAlaw,
         /// <summary>
         /// 
         /// </summary>
-        PcmS16le,
+        PcmF32le,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +23,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        PcmAlaw,
+        PcmS16le,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Cartesia
         {
             return value switch
             {
-                RawEncoding.PcmF32le => "pcm_f32le",
-                RawEncoding.PcmS16le => "pcm_s16le",
-                RawEncoding.PcmMulaw => "pcm_mulaw",
                 RawEncoding.PcmAlaw => "pcm_alaw",
+                RawEncoding.PcmF32le => "pcm_f32le",
+                RawEncoding.PcmMulaw => "pcm_mulaw",
+                RawEncoding.PcmS16le => "pcm_s16le",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Cartesia
         {
             return value switch
             {
-                "pcm_f32le" => RawEncoding.PcmF32le,
-                "pcm_s16le" => RawEncoding.PcmS16le,
-                "pcm_mulaw" => RawEncoding.PcmMulaw,
                 "pcm_alaw" => RawEncoding.PcmAlaw,
+                "pcm_f32le" => RawEncoding.PcmF32le,
+                "pcm_mulaw" => RawEncoding.PcmMulaw,
+                "pcm_s16le" => RawEncoding.PcmS16le,
                 _ => null,
             };
         }

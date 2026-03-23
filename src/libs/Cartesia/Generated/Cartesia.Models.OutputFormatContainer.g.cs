@@ -11,15 +11,15 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Mp3,
+        /// <summary>
+        /// 
+        /// </summary>
         Raw,
         /// <summary>
         /// 
         /// </summary>
         Wav,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mp3,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Cartesia
         {
             return value switch
             {
+                OutputFormatContainer.Mp3 => "mp3",
                 OutputFormatContainer.Raw => "raw",
                 OutputFormatContainer.Wav => "wav",
-                OutputFormatContainer.Mp3 => "mp3",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Cartesia
         {
             return value switch
             {
+                "mp3" => OutputFormatContainer.Mp3,
                 "raw" => OutputFormatContainer.Raw,
                 "wav" => OutputFormatContainer.Wav,
-                "mp3" => OutputFormatContainer.Mp3,
                 _ => null,
             };
         }

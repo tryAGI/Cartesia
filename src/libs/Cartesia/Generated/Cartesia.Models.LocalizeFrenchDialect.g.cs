@@ -11,11 +11,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Eu,
+        Ca,
         /// <summary>
         /// 
         /// </summary>
-        Ca,
+        Eu,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Cartesia
         {
             return value switch
             {
-                LocalizeFrenchDialect.Eu => "eu",
                 LocalizeFrenchDialect.Ca => "ca",
+                LocalizeFrenchDialect.Eu => "eu",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Cartesia
         {
             return value switch
             {
-                "eu" => LocalizeFrenchDialect.Eu,
                 "ca" => LocalizeFrenchDialect.Ca,
+                "eu" => LocalizeFrenchDialect.Eu,
                 _ => null,
             };
         }

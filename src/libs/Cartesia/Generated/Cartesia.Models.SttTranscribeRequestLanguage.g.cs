@@ -11,303 +11,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        En,
-        /// <summary>
-        /// 
-        /// </summary>
-        Zh,
-        /// <summary>
-        /// 
-        /// </summary>
-        De,
-        /// <summary>
-        /// 
-        /// </summary>
-        Es,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ru,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ko,
-        /// <summary>
-        /// 
-        /// </summary>
-        Fr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ja,
-        /// <summary>
-        /// 
-        /// </summary>
-        Pt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Pl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ca,
-        /// <summary>
-        /// 
-        /// </summary>
-        Nl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ar,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sv,
-        /// <summary>
-        /// 
-        /// </summary>
-        It,
-        /// <summary>
-        /// 
-        /// </summary>
-        Id,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hi,
-        /// <summary>
-        /// 
-        /// </summary>
-        Fi,
-        /// <summary>
-        /// 
-        /// </summary>
-        Vi,
-        /// <summary>
-        /// 
-        /// </summary>
-        He,
-        /// <summary>
-        /// 
-        /// </summary>
-        Uk,
-        /// <summary>
-        /// 
-        /// </summary>
-        El,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ms,
-        /// <summary>
-        /// 
-        /// </summary>
-        Cs,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ro,
-        /// <summary>
-        /// 
-        /// </summary>
-        Da,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hu,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ta,
-        /// <summary>
-        /// 
-        /// </summary>
-        No,
-        /// <summary>
-        /// 
-        /// </summary>
-        Th,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ur,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bg,
-        /// <summary>
-        /// 
-        /// </summary>
-        Lt,
-        /// <summary>
-        /// 
-        /// </summary>
-        La,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mi,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ml,
-        /// <summary>
-        /// 
-        /// </summary>
-        Cy,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Te,
-        /// <summary>
-        /// 
-        /// </summary>
-        Fa,
-        /// <summary>
-        /// 
-        /// </summary>
-        Lv,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Az,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Kn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Et,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Br,
-        /// <summary>
-        /// 
-        /// </summary>
-        Eu,
-        /// <summary>
-        /// 
-        /// </summary>
-        Is,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hy,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ne,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bs,
-        /// <summary>
-        /// 
-        /// </summary>
-        Kk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sq,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sw,
-        /// <summary>
-        /// 
-        /// </summary>
-        Gl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Pa,
-        /// <summary>
-        /// 
-        /// </summary>
-        Si,
-        /// <summary>
-        /// 
-        /// </summary>
-        Km,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Yo,
-        /// <summary>
-        /// 
-        /// </summary>
-        So,
-        /// <summary>
-        /// 
-        /// </summary>
         Af,
-        /// <summary>
-        /// 
-        /// </summary>
-        Oc,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ka,
-        /// <summary>
-        /// 
-        /// </summary>
-        Be,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tg,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sd,
-        /// <summary>
-        /// 
-        /// </summary>
-        Gu,
         /// <summary>
         /// 
         /// </summary>
@@ -315,63 +19,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Yi,
-        /// <summary>
-        /// 
-        /// </summary>
-        Lo,
-        /// <summary>
-        /// 
-        /// </summary>
-        Uz,
-        /// <summary>
-        /// 
-        /// </summary>
-        Fo,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ht,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ps,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Nn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sa,
-        /// <summary>
-        /// 
-        /// </summary>
-        Lb,
-        /// <summary>
-        /// 
-        /// </summary>
-        My,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bo,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mg,
+        Ar,
         /// <summary>
         /// 
         /// </summary>
@@ -379,19 +27,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Tt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Haw,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ln,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ha,
+        Az,
         /// <summary>
         /// 
         /// </summary>
@@ -399,7 +35,303 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Be,
+        /// <summary>
+        /// 
+        /// </summary>
+        Bg,
+        /// <summary>
+        /// 
+        /// </summary>
+        Bn,
+        /// <summary>
+        /// 
+        /// </summary>
+        Bo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Br,
+        /// <summary>
+        /// 
+        /// </summary>
+        Bs,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ca,
+        /// <summary>
+        /// 
+        /// </summary>
+        Cs,
+        /// <summary>
+        /// 
+        /// </summary>
+        Cy,
+        /// <summary>
+        /// 
+        /// </summary>
+        Da,
+        /// <summary>
+        /// 
+        /// </summary>
+        De,
+        /// <summary>
+        /// 
+        /// </summary>
+        El,
+        /// <summary>
+        /// 
+        /// </summary>
+        En,
+        /// <summary>
+        /// 
+        /// </summary>
+        Es,
+        /// <summary>
+        /// 
+        /// </summary>
+        Et,
+        /// <summary>
+        /// 
+        /// </summary>
+        Eu,
+        /// <summary>
+        /// 
+        /// </summary>
+        Fa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Fi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Fo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Fr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gu,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ha,
+        /// <summary>
+        /// 
+        /// </summary>
+        Haw,
+        /// <summary>
+        /// 
+        /// </summary>
+        He,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ht,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hu,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hy,
+        /// <summary>
+        /// 
+        /// </summary>
+        Id,
+        /// <summary>
+        /// 
+        /// </summary>
+        Is,
+        /// <summary>
+        /// 
+        /// </summary>
+        It,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ja,
+        /// <summary>
+        /// 
+        /// </summary>
         Jw,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ka,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Km,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kn,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ko,
+        /// <summary>
+        /// 
+        /// </summary>
+        La,
+        /// <summary>
+        /// 
+        /// </summary>
+        Lb,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ln,
+        /// <summary>
+        /// 
+        /// </summary>
+        Lo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Lt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Lv,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mg,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ml,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mn,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ms,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mt,
+        /// <summary>
+        /// 
+        /// </summary>
+        My,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ne,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nn,
+        /// <summary>
+        /// 
+        /// </summary>
+        No,
+        /// <summary>
+        /// 
+        /// </summary>
+        Oc,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ps,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ro,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ru,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sd,
+        /// <summary>
+        /// 
+        /// </summary>
+        Si,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sn,
+        /// <summary>
+        /// 
+        /// </summary>
+        So,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sq,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sr,
         /// <summary>
         /// 
         /// </summary>
@@ -407,7 +339,75 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Sv,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sw,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ta,
+        /// <summary>
+        /// 
+        /// </summary>
+        Te,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tg,
+        /// <summary>
+        /// 
+        /// </summary>
+        Th,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Uk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ur,
+        /// <summary>
+        /// 
+        /// </summary>
+        Uz,
+        /// <summary>
+        /// 
+        /// </summary>
+        Vi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Yi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Yo,
+        /// <summary>
+        /// 
+        /// </summary>
         Yue,
+        /// <summary>
+        /// 
+        /// </summary>
+        Zh,
     }
 
     /// <summary>
@@ -422,106 +422,106 @@ namespace Cartesia
         {
             return value switch
             {
-                SttTranscribeRequestLanguage.En => "en",
-                SttTranscribeRequestLanguage.Zh => "zh",
-                SttTranscribeRequestLanguage.De => "de",
-                SttTranscribeRequestLanguage.Es => "es",
-                SttTranscribeRequestLanguage.Ru => "ru",
-                SttTranscribeRequestLanguage.Ko => "ko",
-                SttTranscribeRequestLanguage.Fr => "fr",
-                SttTranscribeRequestLanguage.Ja => "ja",
-                SttTranscribeRequestLanguage.Pt => "pt",
-                SttTranscribeRequestLanguage.Tr => "tr",
-                SttTranscribeRequestLanguage.Pl => "pl",
-                SttTranscribeRequestLanguage.Ca => "ca",
-                SttTranscribeRequestLanguage.Nl => "nl",
-                SttTranscribeRequestLanguage.Ar => "ar",
-                SttTranscribeRequestLanguage.Sv => "sv",
-                SttTranscribeRequestLanguage.It => "it",
-                SttTranscribeRequestLanguage.Id => "id",
-                SttTranscribeRequestLanguage.Hi => "hi",
-                SttTranscribeRequestLanguage.Fi => "fi",
-                SttTranscribeRequestLanguage.Vi => "vi",
-                SttTranscribeRequestLanguage.He => "he",
-                SttTranscribeRequestLanguage.Uk => "uk",
-                SttTranscribeRequestLanguage.El => "el",
-                SttTranscribeRequestLanguage.Ms => "ms",
-                SttTranscribeRequestLanguage.Cs => "cs",
-                SttTranscribeRequestLanguage.Ro => "ro",
-                SttTranscribeRequestLanguage.Da => "da",
-                SttTranscribeRequestLanguage.Hu => "hu",
-                SttTranscribeRequestLanguage.Ta => "ta",
-                SttTranscribeRequestLanguage.No => "no",
-                SttTranscribeRequestLanguage.Th => "th",
-                SttTranscribeRequestLanguage.Ur => "ur",
-                SttTranscribeRequestLanguage.Hr => "hr",
-                SttTranscribeRequestLanguage.Bg => "bg",
-                SttTranscribeRequestLanguage.Lt => "lt",
-                SttTranscribeRequestLanguage.La => "la",
-                SttTranscribeRequestLanguage.Mi => "mi",
-                SttTranscribeRequestLanguage.Ml => "ml",
-                SttTranscribeRequestLanguage.Cy => "cy",
-                SttTranscribeRequestLanguage.Sk => "sk",
-                SttTranscribeRequestLanguage.Te => "te",
-                SttTranscribeRequestLanguage.Fa => "fa",
-                SttTranscribeRequestLanguage.Lv => "lv",
-                SttTranscribeRequestLanguage.Bn => "bn",
-                SttTranscribeRequestLanguage.Sr => "sr",
-                SttTranscribeRequestLanguage.Az => "az",
-                SttTranscribeRequestLanguage.Sl => "sl",
-                SttTranscribeRequestLanguage.Kn => "kn",
-                SttTranscribeRequestLanguage.Et => "et",
-                SttTranscribeRequestLanguage.Mk => "mk",
-                SttTranscribeRequestLanguage.Br => "br",
-                SttTranscribeRequestLanguage.Eu => "eu",
-                SttTranscribeRequestLanguage.Is => "is",
-                SttTranscribeRequestLanguage.Hy => "hy",
-                SttTranscribeRequestLanguage.Ne => "ne",
-                SttTranscribeRequestLanguage.Mn => "mn",
-                SttTranscribeRequestLanguage.Bs => "bs",
-                SttTranscribeRequestLanguage.Kk => "kk",
-                SttTranscribeRequestLanguage.Sq => "sq",
-                SttTranscribeRequestLanguage.Sw => "sw",
-                SttTranscribeRequestLanguage.Gl => "gl",
-                SttTranscribeRequestLanguage.Mr => "mr",
-                SttTranscribeRequestLanguage.Pa => "pa",
-                SttTranscribeRequestLanguage.Si => "si",
-                SttTranscribeRequestLanguage.Km => "km",
-                SttTranscribeRequestLanguage.Sn => "sn",
-                SttTranscribeRequestLanguage.Yo => "yo",
-                SttTranscribeRequestLanguage.So => "so",
                 SttTranscribeRequestLanguage.Af => "af",
-                SttTranscribeRequestLanguage.Oc => "oc",
-                SttTranscribeRequestLanguage.Ka => "ka",
-                SttTranscribeRequestLanguage.Be => "be",
-                SttTranscribeRequestLanguage.Tg => "tg",
-                SttTranscribeRequestLanguage.Sd => "sd",
-                SttTranscribeRequestLanguage.Gu => "gu",
                 SttTranscribeRequestLanguage.Am => "am",
-                SttTranscribeRequestLanguage.Yi => "yi",
-                SttTranscribeRequestLanguage.Lo => "lo",
-                SttTranscribeRequestLanguage.Uz => "uz",
-                SttTranscribeRequestLanguage.Fo => "fo",
-                SttTranscribeRequestLanguage.Ht => "ht",
-                SttTranscribeRequestLanguage.Ps => "ps",
-                SttTranscribeRequestLanguage.Tk => "tk",
-                SttTranscribeRequestLanguage.Nn => "nn",
-                SttTranscribeRequestLanguage.Mt => "mt",
-                SttTranscribeRequestLanguage.Sa => "sa",
-                SttTranscribeRequestLanguage.Lb => "lb",
-                SttTranscribeRequestLanguage.My => "my",
-                SttTranscribeRequestLanguage.Bo => "bo",
-                SttTranscribeRequestLanguage.Tl => "tl",
-                SttTranscribeRequestLanguage.Mg => "mg",
+                SttTranscribeRequestLanguage.Ar => "ar",
                 SttTranscribeRequestLanguage.As => "as",
-                SttTranscribeRequestLanguage.Tt => "tt",
-                SttTranscribeRequestLanguage.Haw => "haw",
-                SttTranscribeRequestLanguage.Ln => "ln",
-                SttTranscribeRequestLanguage.Ha => "ha",
+                SttTranscribeRequestLanguage.Az => "az",
                 SttTranscribeRequestLanguage.Ba => "ba",
+                SttTranscribeRequestLanguage.Be => "be",
+                SttTranscribeRequestLanguage.Bg => "bg",
+                SttTranscribeRequestLanguage.Bn => "bn",
+                SttTranscribeRequestLanguage.Bo => "bo",
+                SttTranscribeRequestLanguage.Br => "br",
+                SttTranscribeRequestLanguage.Bs => "bs",
+                SttTranscribeRequestLanguage.Ca => "ca",
+                SttTranscribeRequestLanguage.Cs => "cs",
+                SttTranscribeRequestLanguage.Cy => "cy",
+                SttTranscribeRequestLanguage.Da => "da",
+                SttTranscribeRequestLanguage.De => "de",
+                SttTranscribeRequestLanguage.El => "el",
+                SttTranscribeRequestLanguage.En => "en",
+                SttTranscribeRequestLanguage.Es => "es",
+                SttTranscribeRequestLanguage.Et => "et",
+                SttTranscribeRequestLanguage.Eu => "eu",
+                SttTranscribeRequestLanguage.Fa => "fa",
+                SttTranscribeRequestLanguage.Fi => "fi",
+                SttTranscribeRequestLanguage.Fo => "fo",
+                SttTranscribeRequestLanguage.Fr => "fr",
+                SttTranscribeRequestLanguage.Gl => "gl",
+                SttTranscribeRequestLanguage.Gu => "gu",
+                SttTranscribeRequestLanguage.Ha => "ha",
+                SttTranscribeRequestLanguage.Haw => "haw",
+                SttTranscribeRequestLanguage.He => "he",
+                SttTranscribeRequestLanguage.Hi => "hi",
+                SttTranscribeRequestLanguage.Hr => "hr",
+                SttTranscribeRequestLanguage.Ht => "ht",
+                SttTranscribeRequestLanguage.Hu => "hu",
+                SttTranscribeRequestLanguage.Hy => "hy",
+                SttTranscribeRequestLanguage.Id => "id",
+                SttTranscribeRequestLanguage.Is => "is",
+                SttTranscribeRequestLanguage.It => "it",
+                SttTranscribeRequestLanguage.Ja => "ja",
                 SttTranscribeRequestLanguage.Jw => "jw",
+                SttTranscribeRequestLanguage.Ka => "ka",
+                SttTranscribeRequestLanguage.Kk => "kk",
+                SttTranscribeRequestLanguage.Km => "km",
+                SttTranscribeRequestLanguage.Kn => "kn",
+                SttTranscribeRequestLanguage.Ko => "ko",
+                SttTranscribeRequestLanguage.La => "la",
+                SttTranscribeRequestLanguage.Lb => "lb",
+                SttTranscribeRequestLanguage.Ln => "ln",
+                SttTranscribeRequestLanguage.Lo => "lo",
+                SttTranscribeRequestLanguage.Lt => "lt",
+                SttTranscribeRequestLanguage.Lv => "lv",
+                SttTranscribeRequestLanguage.Mg => "mg",
+                SttTranscribeRequestLanguage.Mi => "mi",
+                SttTranscribeRequestLanguage.Mk => "mk",
+                SttTranscribeRequestLanguage.Ml => "ml",
+                SttTranscribeRequestLanguage.Mn => "mn",
+                SttTranscribeRequestLanguage.Mr => "mr",
+                SttTranscribeRequestLanguage.Ms => "ms",
+                SttTranscribeRequestLanguage.Mt => "mt",
+                SttTranscribeRequestLanguage.My => "my",
+                SttTranscribeRequestLanguage.Ne => "ne",
+                SttTranscribeRequestLanguage.Nl => "nl",
+                SttTranscribeRequestLanguage.Nn => "nn",
+                SttTranscribeRequestLanguage.No => "no",
+                SttTranscribeRequestLanguage.Oc => "oc",
+                SttTranscribeRequestLanguage.Pa => "pa",
+                SttTranscribeRequestLanguage.Pl => "pl",
+                SttTranscribeRequestLanguage.Ps => "ps",
+                SttTranscribeRequestLanguage.Pt => "pt",
+                SttTranscribeRequestLanguage.Ro => "ro",
+                SttTranscribeRequestLanguage.Ru => "ru",
+                SttTranscribeRequestLanguage.Sa => "sa",
+                SttTranscribeRequestLanguage.Sd => "sd",
+                SttTranscribeRequestLanguage.Si => "si",
+                SttTranscribeRequestLanguage.Sk => "sk",
+                SttTranscribeRequestLanguage.Sl => "sl",
+                SttTranscribeRequestLanguage.Sn => "sn",
+                SttTranscribeRequestLanguage.So => "so",
+                SttTranscribeRequestLanguage.Sq => "sq",
+                SttTranscribeRequestLanguage.Sr => "sr",
                 SttTranscribeRequestLanguage.Su => "su",
+                SttTranscribeRequestLanguage.Sv => "sv",
+                SttTranscribeRequestLanguage.Sw => "sw",
+                SttTranscribeRequestLanguage.Ta => "ta",
+                SttTranscribeRequestLanguage.Te => "te",
+                SttTranscribeRequestLanguage.Tg => "tg",
+                SttTranscribeRequestLanguage.Th => "th",
+                SttTranscribeRequestLanguage.Tk => "tk",
+                SttTranscribeRequestLanguage.Tl => "tl",
+                SttTranscribeRequestLanguage.Tr => "tr",
+                SttTranscribeRequestLanguage.Tt => "tt",
+                SttTranscribeRequestLanguage.Uk => "uk",
+                SttTranscribeRequestLanguage.Ur => "ur",
+                SttTranscribeRequestLanguage.Uz => "uz",
+                SttTranscribeRequestLanguage.Vi => "vi",
+                SttTranscribeRequestLanguage.Yi => "yi",
+                SttTranscribeRequestLanguage.Yo => "yo",
                 SttTranscribeRequestLanguage.Yue => "yue",
+                SttTranscribeRequestLanguage.Zh => "zh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -532,106 +532,106 @@ namespace Cartesia
         {
             return value switch
             {
-                "en" => SttTranscribeRequestLanguage.En,
-                "zh" => SttTranscribeRequestLanguage.Zh,
-                "de" => SttTranscribeRequestLanguage.De,
-                "es" => SttTranscribeRequestLanguage.Es,
-                "ru" => SttTranscribeRequestLanguage.Ru,
-                "ko" => SttTranscribeRequestLanguage.Ko,
-                "fr" => SttTranscribeRequestLanguage.Fr,
-                "ja" => SttTranscribeRequestLanguage.Ja,
-                "pt" => SttTranscribeRequestLanguage.Pt,
-                "tr" => SttTranscribeRequestLanguage.Tr,
-                "pl" => SttTranscribeRequestLanguage.Pl,
-                "ca" => SttTranscribeRequestLanguage.Ca,
-                "nl" => SttTranscribeRequestLanguage.Nl,
-                "ar" => SttTranscribeRequestLanguage.Ar,
-                "sv" => SttTranscribeRequestLanguage.Sv,
-                "it" => SttTranscribeRequestLanguage.It,
-                "id" => SttTranscribeRequestLanguage.Id,
-                "hi" => SttTranscribeRequestLanguage.Hi,
-                "fi" => SttTranscribeRequestLanguage.Fi,
-                "vi" => SttTranscribeRequestLanguage.Vi,
-                "he" => SttTranscribeRequestLanguage.He,
-                "uk" => SttTranscribeRequestLanguage.Uk,
-                "el" => SttTranscribeRequestLanguage.El,
-                "ms" => SttTranscribeRequestLanguage.Ms,
-                "cs" => SttTranscribeRequestLanguage.Cs,
-                "ro" => SttTranscribeRequestLanguage.Ro,
-                "da" => SttTranscribeRequestLanguage.Da,
-                "hu" => SttTranscribeRequestLanguage.Hu,
-                "ta" => SttTranscribeRequestLanguage.Ta,
-                "no" => SttTranscribeRequestLanguage.No,
-                "th" => SttTranscribeRequestLanguage.Th,
-                "ur" => SttTranscribeRequestLanguage.Ur,
-                "hr" => SttTranscribeRequestLanguage.Hr,
-                "bg" => SttTranscribeRequestLanguage.Bg,
-                "lt" => SttTranscribeRequestLanguage.Lt,
-                "la" => SttTranscribeRequestLanguage.La,
-                "mi" => SttTranscribeRequestLanguage.Mi,
-                "ml" => SttTranscribeRequestLanguage.Ml,
-                "cy" => SttTranscribeRequestLanguage.Cy,
-                "sk" => SttTranscribeRequestLanguage.Sk,
-                "te" => SttTranscribeRequestLanguage.Te,
-                "fa" => SttTranscribeRequestLanguage.Fa,
-                "lv" => SttTranscribeRequestLanguage.Lv,
-                "bn" => SttTranscribeRequestLanguage.Bn,
-                "sr" => SttTranscribeRequestLanguage.Sr,
-                "az" => SttTranscribeRequestLanguage.Az,
-                "sl" => SttTranscribeRequestLanguage.Sl,
-                "kn" => SttTranscribeRequestLanguage.Kn,
-                "et" => SttTranscribeRequestLanguage.Et,
-                "mk" => SttTranscribeRequestLanguage.Mk,
-                "br" => SttTranscribeRequestLanguage.Br,
-                "eu" => SttTranscribeRequestLanguage.Eu,
-                "is" => SttTranscribeRequestLanguage.Is,
-                "hy" => SttTranscribeRequestLanguage.Hy,
-                "ne" => SttTranscribeRequestLanguage.Ne,
-                "mn" => SttTranscribeRequestLanguage.Mn,
-                "bs" => SttTranscribeRequestLanguage.Bs,
-                "kk" => SttTranscribeRequestLanguage.Kk,
-                "sq" => SttTranscribeRequestLanguage.Sq,
-                "sw" => SttTranscribeRequestLanguage.Sw,
-                "gl" => SttTranscribeRequestLanguage.Gl,
-                "mr" => SttTranscribeRequestLanguage.Mr,
-                "pa" => SttTranscribeRequestLanguage.Pa,
-                "si" => SttTranscribeRequestLanguage.Si,
-                "km" => SttTranscribeRequestLanguage.Km,
-                "sn" => SttTranscribeRequestLanguage.Sn,
-                "yo" => SttTranscribeRequestLanguage.Yo,
-                "so" => SttTranscribeRequestLanguage.So,
                 "af" => SttTranscribeRequestLanguage.Af,
-                "oc" => SttTranscribeRequestLanguage.Oc,
-                "ka" => SttTranscribeRequestLanguage.Ka,
-                "be" => SttTranscribeRequestLanguage.Be,
-                "tg" => SttTranscribeRequestLanguage.Tg,
-                "sd" => SttTranscribeRequestLanguage.Sd,
-                "gu" => SttTranscribeRequestLanguage.Gu,
                 "am" => SttTranscribeRequestLanguage.Am,
-                "yi" => SttTranscribeRequestLanguage.Yi,
-                "lo" => SttTranscribeRequestLanguage.Lo,
-                "uz" => SttTranscribeRequestLanguage.Uz,
-                "fo" => SttTranscribeRequestLanguage.Fo,
-                "ht" => SttTranscribeRequestLanguage.Ht,
-                "ps" => SttTranscribeRequestLanguage.Ps,
-                "tk" => SttTranscribeRequestLanguage.Tk,
-                "nn" => SttTranscribeRequestLanguage.Nn,
-                "mt" => SttTranscribeRequestLanguage.Mt,
-                "sa" => SttTranscribeRequestLanguage.Sa,
-                "lb" => SttTranscribeRequestLanguage.Lb,
-                "my" => SttTranscribeRequestLanguage.My,
-                "bo" => SttTranscribeRequestLanguage.Bo,
-                "tl" => SttTranscribeRequestLanguage.Tl,
-                "mg" => SttTranscribeRequestLanguage.Mg,
+                "ar" => SttTranscribeRequestLanguage.Ar,
                 "as" => SttTranscribeRequestLanguage.As,
-                "tt" => SttTranscribeRequestLanguage.Tt,
-                "haw" => SttTranscribeRequestLanguage.Haw,
-                "ln" => SttTranscribeRequestLanguage.Ln,
-                "ha" => SttTranscribeRequestLanguage.Ha,
+                "az" => SttTranscribeRequestLanguage.Az,
                 "ba" => SttTranscribeRequestLanguage.Ba,
+                "be" => SttTranscribeRequestLanguage.Be,
+                "bg" => SttTranscribeRequestLanguage.Bg,
+                "bn" => SttTranscribeRequestLanguage.Bn,
+                "bo" => SttTranscribeRequestLanguage.Bo,
+                "br" => SttTranscribeRequestLanguage.Br,
+                "bs" => SttTranscribeRequestLanguage.Bs,
+                "ca" => SttTranscribeRequestLanguage.Ca,
+                "cs" => SttTranscribeRequestLanguage.Cs,
+                "cy" => SttTranscribeRequestLanguage.Cy,
+                "da" => SttTranscribeRequestLanguage.Da,
+                "de" => SttTranscribeRequestLanguage.De,
+                "el" => SttTranscribeRequestLanguage.El,
+                "en" => SttTranscribeRequestLanguage.En,
+                "es" => SttTranscribeRequestLanguage.Es,
+                "et" => SttTranscribeRequestLanguage.Et,
+                "eu" => SttTranscribeRequestLanguage.Eu,
+                "fa" => SttTranscribeRequestLanguage.Fa,
+                "fi" => SttTranscribeRequestLanguage.Fi,
+                "fo" => SttTranscribeRequestLanguage.Fo,
+                "fr" => SttTranscribeRequestLanguage.Fr,
+                "gl" => SttTranscribeRequestLanguage.Gl,
+                "gu" => SttTranscribeRequestLanguage.Gu,
+                "ha" => SttTranscribeRequestLanguage.Ha,
+                "haw" => SttTranscribeRequestLanguage.Haw,
+                "he" => SttTranscribeRequestLanguage.He,
+                "hi" => SttTranscribeRequestLanguage.Hi,
+                "hr" => SttTranscribeRequestLanguage.Hr,
+                "ht" => SttTranscribeRequestLanguage.Ht,
+                "hu" => SttTranscribeRequestLanguage.Hu,
+                "hy" => SttTranscribeRequestLanguage.Hy,
+                "id" => SttTranscribeRequestLanguage.Id,
+                "is" => SttTranscribeRequestLanguage.Is,
+                "it" => SttTranscribeRequestLanguage.It,
+                "ja" => SttTranscribeRequestLanguage.Ja,
                 "jw" => SttTranscribeRequestLanguage.Jw,
+                "ka" => SttTranscribeRequestLanguage.Ka,
+                "kk" => SttTranscribeRequestLanguage.Kk,
+                "km" => SttTranscribeRequestLanguage.Km,
+                "kn" => SttTranscribeRequestLanguage.Kn,
+                "ko" => SttTranscribeRequestLanguage.Ko,
+                "la" => SttTranscribeRequestLanguage.La,
+                "lb" => SttTranscribeRequestLanguage.Lb,
+                "ln" => SttTranscribeRequestLanguage.Ln,
+                "lo" => SttTranscribeRequestLanguage.Lo,
+                "lt" => SttTranscribeRequestLanguage.Lt,
+                "lv" => SttTranscribeRequestLanguage.Lv,
+                "mg" => SttTranscribeRequestLanguage.Mg,
+                "mi" => SttTranscribeRequestLanguage.Mi,
+                "mk" => SttTranscribeRequestLanguage.Mk,
+                "ml" => SttTranscribeRequestLanguage.Ml,
+                "mn" => SttTranscribeRequestLanguage.Mn,
+                "mr" => SttTranscribeRequestLanguage.Mr,
+                "ms" => SttTranscribeRequestLanguage.Ms,
+                "mt" => SttTranscribeRequestLanguage.Mt,
+                "my" => SttTranscribeRequestLanguage.My,
+                "ne" => SttTranscribeRequestLanguage.Ne,
+                "nl" => SttTranscribeRequestLanguage.Nl,
+                "nn" => SttTranscribeRequestLanguage.Nn,
+                "no" => SttTranscribeRequestLanguage.No,
+                "oc" => SttTranscribeRequestLanguage.Oc,
+                "pa" => SttTranscribeRequestLanguage.Pa,
+                "pl" => SttTranscribeRequestLanguage.Pl,
+                "ps" => SttTranscribeRequestLanguage.Ps,
+                "pt" => SttTranscribeRequestLanguage.Pt,
+                "ro" => SttTranscribeRequestLanguage.Ro,
+                "ru" => SttTranscribeRequestLanguage.Ru,
+                "sa" => SttTranscribeRequestLanguage.Sa,
+                "sd" => SttTranscribeRequestLanguage.Sd,
+                "si" => SttTranscribeRequestLanguage.Si,
+                "sk" => SttTranscribeRequestLanguage.Sk,
+                "sl" => SttTranscribeRequestLanguage.Sl,
+                "sn" => SttTranscribeRequestLanguage.Sn,
+                "so" => SttTranscribeRequestLanguage.So,
+                "sq" => SttTranscribeRequestLanguage.Sq,
+                "sr" => SttTranscribeRequestLanguage.Sr,
                 "su" => SttTranscribeRequestLanguage.Su,
+                "sv" => SttTranscribeRequestLanguage.Sv,
+                "sw" => SttTranscribeRequestLanguage.Sw,
+                "ta" => SttTranscribeRequestLanguage.Ta,
+                "te" => SttTranscribeRequestLanguage.Te,
+                "tg" => SttTranscribeRequestLanguage.Tg,
+                "th" => SttTranscribeRequestLanguage.Th,
+                "tk" => SttTranscribeRequestLanguage.Tk,
+                "tl" => SttTranscribeRequestLanguage.Tl,
+                "tr" => SttTranscribeRequestLanguage.Tr,
+                "tt" => SttTranscribeRequestLanguage.Tt,
+                "uk" => SttTranscribeRequestLanguage.Uk,
+                "ur" => SttTranscribeRequestLanguage.Ur,
+                "uz" => SttTranscribeRequestLanguage.Uz,
+                "vi" => SttTranscribeRequestLanguage.Vi,
+                "yi" => SttTranscribeRequestLanguage.Yi,
+                "yo" => SttTranscribeRequestLanguage.Yo,
                 "yue" => SttTranscribeRequestLanguage.Yue,
+                "zh" => SttTranscribeRequestLanguage.Zh,
                 _ => null,
             };
         }

@@ -27,24 +27,24 @@ namespace Cartesia.JsonConverters
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("model_id")) __score0++;
-            if (__jsonProps.Contains("transcript")) __score0++;
-            if (__jsonProps.Contains("voice")) __score0++;
-            if (__jsonProps.Contains("generation_config")) __score0++;
-            if (__jsonProps.Contains("language")) __score0++;
-            if (__jsonProps.Contains("output_format")) __score0++;
+            if (__jsonProps.Contains("add_phoneme_timestamps")) __score0++;
+            if (__jsonProps.Contains("add_timestamps")) __score0++;
             if (__jsonProps.Contains("context_id")) __score0++;
             if (__jsonProps.Contains("continue")) __score0++;
-            if (__jsonProps.Contains("max_buffer_delay_ms")) __score0++;
-            if (__jsonProps.Contains("speed")) __score0++;
             if (__jsonProps.Contains("flush")) __score0++;
-            if (__jsonProps.Contains("add_timestamps")) __score0++;
-            if (__jsonProps.Contains("add_phoneme_timestamps")) __score0++;
-            if (__jsonProps.Contains("use_normalized_timestamps")) __score0++;
+            if (__jsonProps.Contains("generation_config")) __score0++;
+            if (__jsonProps.Contains("language")) __score0++;
+            if (__jsonProps.Contains("max_buffer_delay_ms")) __score0++;
+            if (__jsonProps.Contains("model_id")) __score0++;
+            if (__jsonProps.Contains("output_format")) __score0++;
             if (__jsonProps.Contains("pronunciation_dict_id")) __score0++;
+            if (__jsonProps.Contains("speed")) __score0++;
+            if (__jsonProps.Contains("transcript")) __score0++;
+            if (__jsonProps.Contains("use_normalized_timestamps")) __score0++;
+            if (__jsonProps.Contains("voice")) __score0++;
             var __score1 = 0;
-            if (__jsonProps.Contains("context_id")) __score1++;
             if (__jsonProps.Contains("cancel")) __score1++;
+            if (__jsonProps.Contains("context_id")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

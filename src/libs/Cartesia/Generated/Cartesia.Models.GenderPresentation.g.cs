@@ -11,15 +11,15 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Masculine,
-        /// <summary>
-        /// 
-        /// </summary>
         Feminine,
         /// <summary>
         /// 
         /// </summary>
         GenderNeutral,
+        /// <summary>
+        /// 
+        /// </summary>
+        Masculine,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Cartesia
         {
             return value switch
             {
-                GenderPresentation.Masculine => "masculine",
                 GenderPresentation.Feminine => "feminine",
                 GenderPresentation.GenderNeutral => "gender_neutral",
+                GenderPresentation.Masculine => "masculine",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Cartesia
         {
             return value switch
             {
-                "masculine" => GenderPresentation.Masculine,
                 "feminine" => GenderPresentation.Feminine,
                 "gender_neutral" => GenderPresentation.GenderNeutral,
+                "masculine" => GenderPresentation.Masculine,
                 _ => null,
             };
         }

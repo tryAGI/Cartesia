@@ -11,11 +11,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Male,
+        Female,
         /// <summary>
         /// 
         /// </summary>
-        Female,
+        Male,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Cartesia
         {
             return value switch
             {
-                Gender.Male => "male",
                 Gender.Female => "female",
+                Gender.Male => "male",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Cartesia
         {
             return value switch
             {
-                "male" => Gender.Male,
                 "female" => Gender.Female,
+                "male" => Gender.Male,
                 _ => null,
             };
         }

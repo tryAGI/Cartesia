@@ -11,19 +11,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Created,
-        /// <summary>
-        /// 
-        /// </summary>
-        Training,
-        /// <summary>
-        /// 
-        /// </summary>
         Completed,
         /// <summary>
         /// 
         /// </summary>
+        Created,
+        /// <summary>
+        /// 
+        /// </summary>
         Failed,
+        /// <summary>
+        /// 
+        /// </summary>
+        Training,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Cartesia
         {
             return value switch
             {
-                FineTuneStatus.Created => "created",
-                FineTuneStatus.Training => "training",
                 FineTuneStatus.Completed => "completed",
+                FineTuneStatus.Created => "created",
                 FineTuneStatus.Failed => "failed",
+                FineTuneStatus.Training => "training",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Cartesia
         {
             return value switch
             {
-                "created" => FineTuneStatus.Created,
-                "training" => FineTuneStatus.Training,
                 "completed" => FineTuneStatus.Completed,
+                "created" => FineTuneStatus.Created,
                 "failed" => FineTuneStatus.Failed,
+                "training" => FineTuneStatus.Training,
                 _ => null,
             };
         }

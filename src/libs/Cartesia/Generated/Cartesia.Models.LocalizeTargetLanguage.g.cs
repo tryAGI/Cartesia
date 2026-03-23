@@ -12,11 +12,11 @@ namespace Cartesia
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
-        En,
+        De,
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
-        De,
+        En,
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
@@ -28,23 +28,15 @@ namespace Cartesia
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
-        Ja,
-        /// <summary>
-        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
-        /// </summary>
-        Pt,
-        /// <summary>
-        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
-        /// </summary>
-        Zh,
-        /// <summary>
-        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
-        /// </summary>
         Hi,
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
         It,
+        /// <summary>
+        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// </summary>
+        Ja,
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
@@ -60,6 +52,10 @@ namespace Cartesia
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
+        Pt,
+        /// <summary>
+        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// </summary>
         Ru,
         /// <summary>
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
@@ -69,6 +65,10 @@ namespace Cartesia
         /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
         /// </summary>
         Tr,
+        /// <summary>
+        /// English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// </summary>
+        Zh,
     }
 
     /// <summary>
@@ -83,21 +83,21 @@ namespace Cartesia
         {
             return value switch
             {
-                LocalizeTargetLanguage.En => "en",
                 LocalizeTargetLanguage.De => "de",
+                LocalizeTargetLanguage.En => "en",
                 LocalizeTargetLanguage.Es => "es",
                 LocalizeTargetLanguage.Fr => "fr",
-                LocalizeTargetLanguage.Ja => "ja",
-                LocalizeTargetLanguage.Pt => "pt",
-                LocalizeTargetLanguage.Zh => "zh",
                 LocalizeTargetLanguage.Hi => "hi",
                 LocalizeTargetLanguage.It => "it",
+                LocalizeTargetLanguage.Ja => "ja",
                 LocalizeTargetLanguage.Ko => "ko",
                 LocalizeTargetLanguage.Nl => "nl",
                 LocalizeTargetLanguage.Pl => "pl",
+                LocalizeTargetLanguage.Pt => "pt",
                 LocalizeTargetLanguage.Ru => "ru",
                 LocalizeTargetLanguage.Sv => "sv",
                 LocalizeTargetLanguage.Tr => "tr",
+                LocalizeTargetLanguage.Zh => "zh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -108,21 +108,21 @@ namespace Cartesia
         {
             return value switch
             {
-                "en" => LocalizeTargetLanguage.En,
                 "de" => LocalizeTargetLanguage.De,
+                "en" => LocalizeTargetLanguage.En,
                 "es" => LocalizeTargetLanguage.Es,
                 "fr" => LocalizeTargetLanguage.Fr,
-                "ja" => LocalizeTargetLanguage.Ja,
-                "pt" => LocalizeTargetLanguage.Pt,
-                "zh" => LocalizeTargetLanguage.Zh,
                 "hi" => LocalizeTargetLanguage.Hi,
                 "it" => LocalizeTargetLanguage.It,
+                "ja" => LocalizeTargetLanguage.Ja,
                 "ko" => LocalizeTargetLanguage.Ko,
                 "nl" => LocalizeTargetLanguage.Nl,
                 "pl" => LocalizeTargetLanguage.Pl,
+                "pt" => LocalizeTargetLanguage.Pt,
                 "ru" => LocalizeTargetLanguage.Ru,
                 "sv" => LocalizeTargetLanguage.Sv,
                 "tr" => LocalizeTargetLanguage.Tr,
+                "zh" => LocalizeTargetLanguage.Zh,
                 _ => null,
             };
         }
