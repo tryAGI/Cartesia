@@ -11,67 +11,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        En,
-        /// <summary>
-        /// 
-        /// </summary>
-        Fr,
-        /// <summary>
-        /// 
-        /// </summary>
-        De,
-        /// <summary>
-        /// 
-        /// </summary>
-        Es,
-        /// <summary>
-        /// 
-        /// </summary>
-        Pt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Zh,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ja,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hi,
-        /// <summary>
-        /// 
-        /// </summary>
-        It,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ko,
-        /// <summary>
-        /// 
-        /// </summary>
-        Nl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Pl,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ru,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sv,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tl,
+        Ar,
         /// <summary>
         /// 
         /// </summary>
@@ -79,11 +19,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Ro,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ar,
+        Bn,
         /// <summary>
         /// 
         /// </summary>
@@ -91,7 +27,23 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Da,
+        /// <summary>
+        /// 
+        /// </summary>
+        De,
+        /// <summary>
+        /// 
+        /// </summary>
         El,
+        /// <summary>
+        /// 
+        /// </summary>
+        En,
+        /// <summary>
+        /// 
+        /// </summary>
+        Es,
         /// <summary>
         /// 
         /// </summary>
@@ -99,63 +51,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Hr,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ms,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Da,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ta,
-        /// <summary>
-        /// 
-        /// </summary>
-        Uk,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hu,
-        /// <summary>
-        /// 
-        /// </summary>
-        No,
-        /// <summary>
-        /// 
-        /// </summary>
-        Vi,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bn,
-        /// <summary>
-        /// 
-        /// </summary>
-        Th,
-        /// <summary>
-        /// 
-        /// </summary>
-        He,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ka,
-        /// <summary>
-        /// 
-        /// </summary>
-        Id,
-        /// <summary>
-        /// 
-        /// </summary>
-        Te,
+        Fr,
         /// <summary>
         /// 
         /// </summary>
@@ -163,7 +59,43 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        He,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hu,
+        /// <summary>
+        /// 
+        /// </summary>
+        Id,
+        /// <summary>
+        /// 
+        /// </summary>
+        It,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ja,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ka,
+        /// <summary>
+        /// 
+        /// </summary>
         Kn,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ko,
         /// <summary>
         /// 
         /// </summary>
@@ -175,7 +107,75 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Ms,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nl,
+        /// <summary>
+        /// 
+        /// </summary>
+        No,
+        /// <summary>
+        /// 
+        /// </summary>
         Pa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ro,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ru,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sv,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ta,
+        /// <summary>
+        /// 
+        /// </summary>
+        Te,
+        /// <summary>
+        /// 
+        /// </summary>
+        Th,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tl,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tr,
+        /// <summary>
+        /// 
+        /// </summary>
+        Uk,
+        /// <summary>
+        /// 
+        /// </summary>
+        Vi,
+        /// <summary>
+        /// 
+        /// </summary>
+        Zh,
     }
 
     /// <summary>
@@ -190,48 +190,48 @@ namespace Cartesia
         {
             return value switch
             {
-                SupportedLanguage.En => "en",
-                SupportedLanguage.Fr => "fr",
-                SupportedLanguage.De => "de",
-                SupportedLanguage.Es => "es",
-                SupportedLanguage.Pt => "pt",
-                SupportedLanguage.Zh => "zh",
-                SupportedLanguage.Ja => "ja",
-                SupportedLanguage.Hi => "hi",
-                SupportedLanguage.It => "it",
-                SupportedLanguage.Ko => "ko",
-                SupportedLanguage.Nl => "nl",
-                SupportedLanguage.Pl => "pl",
-                SupportedLanguage.Ru => "ru",
-                SupportedLanguage.Sv => "sv",
-                SupportedLanguage.Tr => "tr",
-                SupportedLanguage.Tl => "tl",
-                SupportedLanguage.Bg => "bg",
-                SupportedLanguage.Ro => "ro",
                 SupportedLanguage.Ar => "ar",
-                SupportedLanguage.Cs => "cs",
-                SupportedLanguage.El => "el",
-                SupportedLanguage.Fi => "fi",
-                SupportedLanguage.Hr => "hr",
-                SupportedLanguage.Ms => "ms",
-                SupportedLanguage.Sk => "sk",
-                SupportedLanguage.Da => "da",
-                SupportedLanguage.Ta => "ta",
-                SupportedLanguage.Uk => "uk",
-                SupportedLanguage.Hu => "hu",
-                SupportedLanguage.No => "no",
-                SupportedLanguage.Vi => "vi",
+                SupportedLanguage.Bg => "bg",
                 SupportedLanguage.Bn => "bn",
-                SupportedLanguage.Th => "th",
-                SupportedLanguage.He => "he",
-                SupportedLanguage.Ka => "ka",
-                SupportedLanguage.Id => "id",
-                SupportedLanguage.Te => "te",
+                SupportedLanguage.Cs => "cs",
+                SupportedLanguage.Da => "da",
+                SupportedLanguage.De => "de",
+                SupportedLanguage.El => "el",
+                SupportedLanguage.En => "en",
+                SupportedLanguage.Es => "es",
+                SupportedLanguage.Fi => "fi",
+                SupportedLanguage.Fr => "fr",
                 SupportedLanguage.Gu => "gu",
+                SupportedLanguage.He => "he",
+                SupportedLanguage.Hi => "hi",
+                SupportedLanguage.Hr => "hr",
+                SupportedLanguage.Hu => "hu",
+                SupportedLanguage.Id => "id",
+                SupportedLanguage.It => "it",
+                SupportedLanguage.Ja => "ja",
+                SupportedLanguage.Ka => "ka",
                 SupportedLanguage.Kn => "kn",
+                SupportedLanguage.Ko => "ko",
                 SupportedLanguage.Ml => "ml",
                 SupportedLanguage.Mr => "mr",
+                SupportedLanguage.Ms => "ms",
+                SupportedLanguage.Nl => "nl",
+                SupportedLanguage.No => "no",
                 SupportedLanguage.Pa => "pa",
+                SupportedLanguage.Pl => "pl",
+                SupportedLanguage.Pt => "pt",
+                SupportedLanguage.Ro => "ro",
+                SupportedLanguage.Ru => "ru",
+                SupportedLanguage.Sk => "sk",
+                SupportedLanguage.Sv => "sv",
+                SupportedLanguage.Ta => "ta",
+                SupportedLanguage.Te => "te",
+                SupportedLanguage.Th => "th",
+                SupportedLanguage.Tl => "tl",
+                SupportedLanguage.Tr => "tr",
+                SupportedLanguage.Uk => "uk",
+                SupportedLanguage.Vi => "vi",
+                SupportedLanguage.Zh => "zh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -242,48 +242,48 @@ namespace Cartesia
         {
             return value switch
             {
-                "en" => SupportedLanguage.En,
-                "fr" => SupportedLanguage.Fr,
-                "de" => SupportedLanguage.De,
-                "es" => SupportedLanguage.Es,
-                "pt" => SupportedLanguage.Pt,
-                "zh" => SupportedLanguage.Zh,
-                "ja" => SupportedLanguage.Ja,
-                "hi" => SupportedLanguage.Hi,
-                "it" => SupportedLanguage.It,
-                "ko" => SupportedLanguage.Ko,
-                "nl" => SupportedLanguage.Nl,
-                "pl" => SupportedLanguage.Pl,
-                "ru" => SupportedLanguage.Ru,
-                "sv" => SupportedLanguage.Sv,
-                "tr" => SupportedLanguage.Tr,
-                "tl" => SupportedLanguage.Tl,
-                "bg" => SupportedLanguage.Bg,
-                "ro" => SupportedLanguage.Ro,
                 "ar" => SupportedLanguage.Ar,
-                "cs" => SupportedLanguage.Cs,
-                "el" => SupportedLanguage.El,
-                "fi" => SupportedLanguage.Fi,
-                "hr" => SupportedLanguage.Hr,
-                "ms" => SupportedLanguage.Ms,
-                "sk" => SupportedLanguage.Sk,
-                "da" => SupportedLanguage.Da,
-                "ta" => SupportedLanguage.Ta,
-                "uk" => SupportedLanguage.Uk,
-                "hu" => SupportedLanguage.Hu,
-                "no" => SupportedLanguage.No,
-                "vi" => SupportedLanguage.Vi,
+                "bg" => SupportedLanguage.Bg,
                 "bn" => SupportedLanguage.Bn,
-                "th" => SupportedLanguage.Th,
-                "he" => SupportedLanguage.He,
-                "ka" => SupportedLanguage.Ka,
-                "id" => SupportedLanguage.Id,
-                "te" => SupportedLanguage.Te,
+                "cs" => SupportedLanguage.Cs,
+                "da" => SupportedLanguage.Da,
+                "de" => SupportedLanguage.De,
+                "el" => SupportedLanguage.El,
+                "en" => SupportedLanguage.En,
+                "es" => SupportedLanguage.Es,
+                "fi" => SupportedLanguage.Fi,
+                "fr" => SupportedLanguage.Fr,
                 "gu" => SupportedLanguage.Gu,
+                "he" => SupportedLanguage.He,
+                "hi" => SupportedLanguage.Hi,
+                "hr" => SupportedLanguage.Hr,
+                "hu" => SupportedLanguage.Hu,
+                "id" => SupportedLanguage.Id,
+                "it" => SupportedLanguage.It,
+                "ja" => SupportedLanguage.Ja,
+                "ka" => SupportedLanguage.Ka,
                 "kn" => SupportedLanguage.Kn,
+                "ko" => SupportedLanguage.Ko,
                 "ml" => SupportedLanguage.Ml,
                 "mr" => SupportedLanguage.Mr,
+                "ms" => SupportedLanguage.Ms,
+                "nl" => SupportedLanguage.Nl,
+                "no" => SupportedLanguage.No,
                 "pa" => SupportedLanguage.Pa,
+                "pl" => SupportedLanguage.Pl,
+                "pt" => SupportedLanguage.Pt,
+                "ro" => SupportedLanguage.Ro,
+                "ru" => SupportedLanguage.Ru,
+                "sk" => SupportedLanguage.Sk,
+                "sv" => SupportedLanguage.Sv,
+                "ta" => SupportedLanguage.Ta,
+                "te" => SupportedLanguage.Te,
+                "th" => SupportedLanguage.Th,
+                "tl" => SupportedLanguage.Tl,
+                "tr" => SupportedLanguage.Tr,
+                "uk" => SupportedLanguage.Uk,
+                "vi" => SupportedLanguage.Vi,
+                "zh" => SupportedLanguage.Zh,
                 _ => null,
             };
         }

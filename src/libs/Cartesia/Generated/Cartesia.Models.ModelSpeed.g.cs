@@ -15,7 +15,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Slow,
+        Fast,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +23,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Fast,
+        Slow,
     }
 
     /// <summary>
@@ -38,9 +38,9 @@ namespace Cartesia
         {
             return value switch
             {
-                ModelSpeed.Slow => "slow",
-                ModelSpeed.Normal => "normal",
                 ModelSpeed.Fast => "fast",
+                ModelSpeed.Normal => "normal",
+                ModelSpeed.Slow => "slow",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -51,9 +51,9 @@ namespace Cartesia
         {
             return value switch
             {
-                "slow" => ModelSpeed.Slow,
-                "normal" => ModelSpeed.Normal,
                 "fast" => ModelSpeed.Fast,
+                "normal" => ModelSpeed.Normal,
+                "slow" => ModelSpeed.Slow,
                 _ => null,
             };
         }

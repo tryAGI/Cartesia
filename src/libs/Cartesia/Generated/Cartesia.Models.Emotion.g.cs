@@ -11,103 +11,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Neutral,
-        /// <summary>
-        /// 
-        /// </summary>
-        Happy,
-        /// <summary>
-        /// 
-        /// </summary>
-        Excited,
-        /// <summary>
-        /// 
-        /// </summary>
-        Enthusiastic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Elated,
-        /// <summary>
-        /// 
-        /// </summary>
-        Euphoric,
-        /// <summary>
-        /// 
-        /// </summary>
-        Triumphant,
-        /// <summary>
-        /// 
-        /// </summary>
-        Amazed,
-        /// <summary>
-        /// 
-        /// </summary>
-        Surprised,
-        /// <summary>
-        /// 
-        /// </summary>
-        Flirtatious,
-        /// <summary>
-        /// 
-        /// </summary>
-        Curious,
-        /// <summary>
-        /// 
-        /// </summary>
-        Content,
-        /// <summary>
-        /// 
-        /// </summary>
-        Peaceful,
-        /// <summary>
-        /// 
-        /// </summary>
-        Serene,
-        /// <summary>
-        /// 
-        /// </summary>
-        Calm,
-        /// <summary>
-        /// 
-        /// </summary>
-        Grateful,
-        /// <summary>
-        /// 
-        /// </summary>
         Affectionate,
-        /// <summary>
-        /// 
-        /// </summary>
-        Trust,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sympathetic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Anticipation,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mysterious,
-        /// <summary>
-        /// 
-        /// </summary>
-        Angry,
-        /// <summary>
-        /// 
-        /// </summary>
-        Mad,
-        /// <summary>
-        /// 
-        /// </summary>
-        Outraged,
-        /// <summary>
-        /// 
-        /// </summary>
-        Frustrated,
         /// <summary>
         /// 
         /// </summary>
@@ -115,91 +19,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Threatened,
+        Alarmed,
         /// <summary>
         /// 
         /// </summary>
-        Disgusted,
+        Amazed,
         /// <summary>
         /// 
         /// </summary>
-        Contempt,
+        Angry,
         /// <summary>
         /// 
         /// </summary>
-        Envious,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sarcastic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ironic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Sad,
-        /// <summary>
-        /// 
-        /// </summary>
-        Dejected,
-        /// <summary>
-        /// 
-        /// </summary>
-        Melancholic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Disappointed,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hurt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Guilty,
-        /// <summary>
-        /// 
-        /// </summary>
-        Bored,
-        /// <summary>
-        /// 
-        /// </summary>
-        Tired,
-        /// <summary>
-        /// 
-        /// </summary>
-        Rejected,
-        /// <summary>
-        /// 
-        /// </summary>
-        Nostalgic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Wistful,
-        /// <summary>
-        /// 
-        /// </summary>
-        Apologetic,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hesitant,
-        /// <summary>
-        /// 
-        /// </summary>
-        Insecure,
-        /// <summary>
-        /// 
-        /// </summary>
-        Confused,
-        /// <summary>
-        /// 
-        /// </summary>
-        Resigned,
+        Anticipation,
         /// <summary>
         /// 
         /// </summary>
@@ -207,19 +39,15 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Panicked,
+        Apologetic,
         /// <summary>
         /// 
         /// </summary>
-        Alarmed,
+        Bored,
         /// <summary>
         /// 
         /// </summary>
-        Scared,
-        /// <summary>
-        /// 
-        /// </summary>
-        Proud,
+        Calm,
         /// <summary>
         /// 
         /// </summary>
@@ -227,11 +55,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        Distant,
-        /// <summary>
-        /// 
-        /// </summary>
-        Skeptical,
+        Confused,
         /// <summary>
         /// 
         /// </summary>
@@ -239,7 +63,183 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Contempt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Content,
+        /// <summary>
+        /// 
+        /// </summary>
+        Curious,
+        /// <summary>
+        /// 
+        /// </summary>
+        Dejected,
+        /// <summary>
+        /// 
+        /// </summary>
         Determined,
+        /// <summary>
+        /// 
+        /// </summary>
+        Disappointed,
+        /// <summary>
+        /// 
+        /// </summary>
+        Disgusted,
+        /// <summary>
+        /// 
+        /// </summary>
+        Distant,
+        /// <summary>
+        /// 
+        /// </summary>
+        Elated,
+        /// <summary>
+        /// 
+        /// </summary>
+        Enthusiastic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Envious,
+        /// <summary>
+        /// 
+        /// </summary>
+        Euphoric,
+        /// <summary>
+        /// 
+        /// </summary>
+        Excited,
+        /// <summary>
+        /// 
+        /// </summary>
+        Flirtatious,
+        /// <summary>
+        /// 
+        /// </summary>
+        Frustrated,
+        /// <summary>
+        /// 
+        /// </summary>
+        Grateful,
+        /// <summary>
+        /// 
+        /// </summary>
+        Guilty,
+        /// <summary>
+        /// 
+        /// </summary>
+        Happy,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hesitant,
+        /// <summary>
+        /// 
+        /// </summary>
+        Hurt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Insecure,
+        /// <summary>
+        /// 
+        /// </summary>
+        Ironic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mad,
+        /// <summary>
+        /// 
+        /// </summary>
+        Melancholic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mysterious,
+        /// <summary>
+        /// 
+        /// </summary>
+        Neutral,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nostalgic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Outraged,
+        /// <summary>
+        /// 
+        /// </summary>
+        Panicked,
+        /// <summary>
+        /// 
+        /// </summary>
+        Peaceful,
+        /// <summary>
+        /// 
+        /// </summary>
+        Proud,
+        /// <summary>
+        /// 
+        /// </summary>
+        Rejected,
+        /// <summary>
+        /// 
+        /// </summary>
+        Resigned,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sad,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sarcastic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Scared,
+        /// <summary>
+        /// 
+        /// </summary>
+        Serene,
+        /// <summary>
+        /// 
+        /// </summary>
+        Skeptical,
+        /// <summary>
+        /// 
+        /// </summary>
+        Surprised,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sympathetic,
+        /// <summary>
+        /// 
+        /// </summary>
+        Threatened,
+        /// <summary>
+        /// 
+        /// </summary>
+        Tired,
+        /// <summary>
+        /// 
+        /// </summary>
+        Triumphant,
+        /// <summary>
+        /// 
+        /// </summary>
+        Trust,
+        /// <summary>
+        /// 
+        /// </summary>
+        Wistful,
     }
 
     /// <summary>
@@ -254,64 +254,64 @@ namespace Cartesia
         {
             return value switch
             {
-                Emotion.Neutral => "neutral",
-                Emotion.Happy => "happy",
-                Emotion.Excited => "excited",
-                Emotion.Enthusiastic => "enthusiastic",
-                Emotion.Elated => "elated",
-                Emotion.Euphoric => "euphoric",
-                Emotion.Triumphant => "triumphant",
-                Emotion.Amazed => "amazed",
-                Emotion.Surprised => "surprised",
-                Emotion.Flirtatious => "flirtatious",
-                Emotion.Curious => "curious",
-                Emotion.Content => "content",
-                Emotion.Peaceful => "peaceful",
-                Emotion.Serene => "serene",
-                Emotion.Calm => "calm",
-                Emotion.Grateful => "grateful",
                 Emotion.Affectionate => "affectionate",
-                Emotion.Trust => "trust",
-                Emotion.Sympathetic => "sympathetic",
-                Emotion.Anticipation => "anticipation",
-                Emotion.Mysterious => "mysterious",
-                Emotion.Angry => "angry",
-                Emotion.Mad => "mad",
-                Emotion.Outraged => "outraged",
-                Emotion.Frustrated => "frustrated",
                 Emotion.Agitated => "agitated",
-                Emotion.Threatened => "threatened",
-                Emotion.Disgusted => "disgusted",
-                Emotion.Contempt => "contempt",
-                Emotion.Envious => "envious",
-                Emotion.Sarcastic => "sarcastic",
-                Emotion.Ironic => "ironic",
-                Emotion.Sad => "sad",
-                Emotion.Dejected => "dejected",
-                Emotion.Melancholic => "melancholic",
-                Emotion.Disappointed => "disappointed",
-                Emotion.Hurt => "hurt",
-                Emotion.Guilty => "guilty",
-                Emotion.Bored => "bored",
-                Emotion.Tired => "tired",
-                Emotion.Rejected => "rejected",
-                Emotion.Nostalgic => "nostalgic",
-                Emotion.Wistful => "wistful",
-                Emotion.Apologetic => "apologetic",
-                Emotion.Hesitant => "hesitant",
-                Emotion.Insecure => "insecure",
-                Emotion.Confused => "confused",
-                Emotion.Resigned => "resigned",
-                Emotion.Anxious => "anxious",
-                Emotion.Panicked => "panicked",
                 Emotion.Alarmed => "alarmed",
-                Emotion.Scared => "scared",
-                Emotion.Proud => "proud",
+                Emotion.Amazed => "amazed",
+                Emotion.Angry => "angry",
+                Emotion.Anticipation => "anticipation",
+                Emotion.Anxious => "anxious",
+                Emotion.Apologetic => "apologetic",
+                Emotion.Bored => "bored",
+                Emotion.Calm => "calm",
                 Emotion.Confident => "confident",
-                Emotion.Distant => "distant",
-                Emotion.Skeptical => "skeptical",
+                Emotion.Confused => "confused",
                 Emotion.Contemplative => "contemplative",
+                Emotion.Contempt => "contempt",
+                Emotion.Content => "content",
+                Emotion.Curious => "curious",
+                Emotion.Dejected => "dejected",
                 Emotion.Determined => "determined",
+                Emotion.Disappointed => "disappointed",
+                Emotion.Disgusted => "disgusted",
+                Emotion.Distant => "distant",
+                Emotion.Elated => "elated",
+                Emotion.Enthusiastic => "enthusiastic",
+                Emotion.Envious => "envious",
+                Emotion.Euphoric => "euphoric",
+                Emotion.Excited => "excited",
+                Emotion.Flirtatious => "flirtatious",
+                Emotion.Frustrated => "frustrated",
+                Emotion.Grateful => "grateful",
+                Emotion.Guilty => "guilty",
+                Emotion.Happy => "happy",
+                Emotion.Hesitant => "hesitant",
+                Emotion.Hurt => "hurt",
+                Emotion.Insecure => "insecure",
+                Emotion.Ironic => "ironic",
+                Emotion.Mad => "mad",
+                Emotion.Melancholic => "melancholic",
+                Emotion.Mysterious => "mysterious",
+                Emotion.Neutral => "neutral",
+                Emotion.Nostalgic => "nostalgic",
+                Emotion.Outraged => "outraged",
+                Emotion.Panicked => "panicked",
+                Emotion.Peaceful => "peaceful",
+                Emotion.Proud => "proud",
+                Emotion.Rejected => "rejected",
+                Emotion.Resigned => "resigned",
+                Emotion.Sad => "sad",
+                Emotion.Sarcastic => "sarcastic",
+                Emotion.Scared => "scared",
+                Emotion.Serene => "serene",
+                Emotion.Skeptical => "skeptical",
+                Emotion.Surprised => "surprised",
+                Emotion.Sympathetic => "sympathetic",
+                Emotion.Threatened => "threatened",
+                Emotion.Tired => "tired",
+                Emotion.Triumphant => "triumphant",
+                Emotion.Trust => "trust",
+                Emotion.Wistful => "wistful",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -322,64 +322,64 @@ namespace Cartesia
         {
             return value switch
             {
-                "neutral" => Emotion.Neutral,
-                "happy" => Emotion.Happy,
-                "excited" => Emotion.Excited,
-                "enthusiastic" => Emotion.Enthusiastic,
-                "elated" => Emotion.Elated,
-                "euphoric" => Emotion.Euphoric,
-                "triumphant" => Emotion.Triumphant,
-                "amazed" => Emotion.Amazed,
-                "surprised" => Emotion.Surprised,
-                "flirtatious" => Emotion.Flirtatious,
-                "curious" => Emotion.Curious,
-                "content" => Emotion.Content,
-                "peaceful" => Emotion.Peaceful,
-                "serene" => Emotion.Serene,
-                "calm" => Emotion.Calm,
-                "grateful" => Emotion.Grateful,
                 "affectionate" => Emotion.Affectionate,
-                "trust" => Emotion.Trust,
-                "sympathetic" => Emotion.Sympathetic,
-                "anticipation" => Emotion.Anticipation,
-                "mysterious" => Emotion.Mysterious,
-                "angry" => Emotion.Angry,
-                "mad" => Emotion.Mad,
-                "outraged" => Emotion.Outraged,
-                "frustrated" => Emotion.Frustrated,
                 "agitated" => Emotion.Agitated,
-                "threatened" => Emotion.Threatened,
-                "disgusted" => Emotion.Disgusted,
-                "contempt" => Emotion.Contempt,
-                "envious" => Emotion.Envious,
-                "sarcastic" => Emotion.Sarcastic,
-                "ironic" => Emotion.Ironic,
-                "sad" => Emotion.Sad,
-                "dejected" => Emotion.Dejected,
-                "melancholic" => Emotion.Melancholic,
-                "disappointed" => Emotion.Disappointed,
-                "hurt" => Emotion.Hurt,
-                "guilty" => Emotion.Guilty,
-                "bored" => Emotion.Bored,
-                "tired" => Emotion.Tired,
-                "rejected" => Emotion.Rejected,
-                "nostalgic" => Emotion.Nostalgic,
-                "wistful" => Emotion.Wistful,
-                "apologetic" => Emotion.Apologetic,
-                "hesitant" => Emotion.Hesitant,
-                "insecure" => Emotion.Insecure,
-                "confused" => Emotion.Confused,
-                "resigned" => Emotion.Resigned,
-                "anxious" => Emotion.Anxious,
-                "panicked" => Emotion.Panicked,
                 "alarmed" => Emotion.Alarmed,
-                "scared" => Emotion.Scared,
-                "proud" => Emotion.Proud,
+                "amazed" => Emotion.Amazed,
+                "angry" => Emotion.Angry,
+                "anticipation" => Emotion.Anticipation,
+                "anxious" => Emotion.Anxious,
+                "apologetic" => Emotion.Apologetic,
+                "bored" => Emotion.Bored,
+                "calm" => Emotion.Calm,
                 "confident" => Emotion.Confident,
-                "distant" => Emotion.Distant,
-                "skeptical" => Emotion.Skeptical,
+                "confused" => Emotion.Confused,
                 "contemplative" => Emotion.Contemplative,
+                "contempt" => Emotion.Contempt,
+                "content" => Emotion.Content,
+                "curious" => Emotion.Curious,
+                "dejected" => Emotion.Dejected,
                 "determined" => Emotion.Determined,
+                "disappointed" => Emotion.Disappointed,
+                "disgusted" => Emotion.Disgusted,
+                "distant" => Emotion.Distant,
+                "elated" => Emotion.Elated,
+                "enthusiastic" => Emotion.Enthusiastic,
+                "envious" => Emotion.Envious,
+                "euphoric" => Emotion.Euphoric,
+                "excited" => Emotion.Excited,
+                "flirtatious" => Emotion.Flirtatious,
+                "frustrated" => Emotion.Frustrated,
+                "grateful" => Emotion.Grateful,
+                "guilty" => Emotion.Guilty,
+                "happy" => Emotion.Happy,
+                "hesitant" => Emotion.Hesitant,
+                "hurt" => Emotion.Hurt,
+                "insecure" => Emotion.Insecure,
+                "ironic" => Emotion.Ironic,
+                "mad" => Emotion.Mad,
+                "melancholic" => Emotion.Melancholic,
+                "mysterious" => Emotion.Mysterious,
+                "neutral" => Emotion.Neutral,
+                "nostalgic" => Emotion.Nostalgic,
+                "outraged" => Emotion.Outraged,
+                "panicked" => Emotion.Panicked,
+                "peaceful" => Emotion.Peaceful,
+                "proud" => Emotion.Proud,
+                "rejected" => Emotion.Rejected,
+                "resigned" => Emotion.Resigned,
+                "sad" => Emotion.Sad,
+                "sarcastic" => Emotion.Sarcastic,
+                "scared" => Emotion.Scared,
+                "serene" => Emotion.Serene,
+                "skeptical" => Emotion.Skeptical,
+                "surprised" => Emotion.Surprised,
+                "sympathetic" => Emotion.Sympathetic,
+                "threatened" => Emotion.Threatened,
+                "tired" => Emotion.Tired,
+                "triumphant" => Emotion.Triumphant,
+                "trust" => Emotion.Trust,
+                "wistful" => Emotion.Wistful,
                 _ => null,
             };
         }

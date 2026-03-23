@@ -27,24 +27,24 @@ namespace Cartesia.JsonConverters
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("type")) __score0++;
             if (__jsonProps.Contains("context_id")) __score0++;
-            if (__jsonProps.Contains("status_code")) __score0++;
-            if (__jsonProps.Contains("done")) __score0++;
             if (__jsonProps.Contains("data")) __score0++;
-            if (__jsonProps.Contains("step_time")) __score0++;
+            if (__jsonProps.Contains("done")) __score0++;
             if (__jsonProps.Contains("flush_id")) __score0++;
+            if (__jsonProps.Contains("status_code")) __score0++;
+            if (__jsonProps.Contains("step_time")) __score0++;
+            if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
-            if (__jsonProps.Contains("type")) __score1++;
             if (__jsonProps.Contains("context_id")) __score1++;
-            if (__jsonProps.Contains("status_code")) __score1++;
             if (__jsonProps.Contains("done")) __score1++;
+            if (__jsonProps.Contains("status_code")) __score1++;
+            if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("type")) __score2++;
             if (__jsonProps.Contains("context_id")) __score2++;
-            if (__jsonProps.Contains("status_code")) __score2++;
             if (__jsonProps.Contains("done")) __score2++;
             if (__jsonProps.Contains("error")) __score2++;
+            if (__jsonProps.Contains("status_code")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

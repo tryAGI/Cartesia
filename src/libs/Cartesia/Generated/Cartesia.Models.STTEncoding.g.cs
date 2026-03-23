@@ -11,11 +11,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        PcmS16le,
-        /// <summary>
-        /// 
-        /// </summary>
-        PcmS32le,
+        PcmAlaw,
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +27,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        PcmAlaw,
+        PcmS16le,
+        /// <summary>
+        /// 
+        /// </summary>
+        PcmS32le,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Cartesia
         {
             return value switch
             {
-                STTEncoding.PcmS16le => "pcm_s16le",
-                STTEncoding.PcmS32le => "pcm_s32le",
+                STTEncoding.PcmAlaw => "pcm_alaw",
                 STTEncoding.PcmF16le => "pcm_f16le",
                 STTEncoding.PcmF32le => "pcm_f32le",
                 STTEncoding.PcmMulaw => "pcm_mulaw",
-                STTEncoding.PcmAlaw => "pcm_alaw",
+                STTEncoding.PcmS16le => "pcm_s16le",
+                STTEncoding.PcmS32le => "pcm_s32le",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Cartesia
         {
             return value switch
             {
-                "pcm_s16le" => STTEncoding.PcmS16le,
-                "pcm_s32le" => STTEncoding.PcmS32le,
+                "pcm_alaw" => STTEncoding.PcmAlaw,
                 "pcm_f16le" => STTEncoding.PcmF16le,
                 "pcm_f32le" => STTEncoding.PcmF32le,
                 "pcm_mulaw" => STTEncoding.PcmMulaw,
-                "pcm_alaw" => STTEncoding.PcmAlaw,
+                "pcm_s16le" => STTEncoding.PcmS16le,
+                "pcm_s32le" => STTEncoding.PcmS32le,
                 _ => null,
             };
         }
