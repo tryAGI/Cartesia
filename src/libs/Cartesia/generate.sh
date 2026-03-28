@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# OpenAPI spec: resolved from cartesia-ai/cartesia-python/.stats.yml (Stainless-hosted)
+
 # Cartesia spec is hosted on Stainless GCS with hash-based URLs that change each update.
 # We dynamically resolve the latest URL from cartesia-ai/cartesia-python/.stats.yml.
 readonly stats_url="https://raw.githubusercontent.com/cartesia-ai/cartesia-python/main/.stats.yml"
