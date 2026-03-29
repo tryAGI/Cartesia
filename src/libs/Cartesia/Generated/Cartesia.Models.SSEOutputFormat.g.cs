@@ -39,9 +39,9 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="SSEOutputFormat" /> class.
         /// </summary>
-        /// <param name="container"></param>
         /// <param name="encoding"></param>
         /// <param name="sampleRate"></param>
+        /// <param name="container"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -50,9 +50,9 @@ namespace Cartesia
             int sampleRate,
             global::Cartesia.SSEOutputFormatContainer container)
         {
+            this.Container = container;
             this.Encoding = encoding;
             this.SampleRate = sampleRate;
-            this.Container = container;
         }
 
         /// <summary>

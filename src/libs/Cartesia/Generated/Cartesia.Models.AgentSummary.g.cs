@@ -115,9 +115,6 @@ namespace Cartesia
         /// <param name="name">
         /// The unique name of the agent, which can be used to identify the agent in the CLI.
         /// </param>
-        /// <param name="description">
-        /// A brief description of the agent.
-        /// </param>
         /// <param name="createdAt">
         /// The date and time when the agent was created.
         /// </param>
@@ -129,6 +126,15 @@ namespace Cartesia
         /// </param>
         /// <param name="ttsLanguage">
         /// The language used for text-to-speech by the agent.
+        /// </param>
+        /// <param name="hasTextToAgentRun">
+        /// Whether the agent has a text-to-agent run.
+        /// </param>
+        /// <param name="deploymentCount">
+        /// The number of deployments associated with the agent.
+        /// </param>
+        /// <param name="description">
+        /// A brief description of the agent.
         /// </param>
         /// <param name="webhookId">
         /// The identifier for the webhook associated with the agent. Add or customize a webhook to your agent to receive events when calls are made to your agent via the Playground.
@@ -142,12 +148,6 @@ namespace Cartesia
         /// </param>
         /// <param name="phoneNumbers">
         /// The phone numbers associated with the agent. Currently, you can only have one phone number per agent.
-        /// </param>
-        /// <param name="hasTextToAgentRun">
-        /// Whether the agent has a text-to-agent run.
-        /// </param>
-        /// <param name="deploymentCount">
-        /// The number of deployments associated with the agent.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -170,18 +170,18 @@ namespace Cartesia
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Description = description;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.TtsVoice = ttsVoice ?? throw new global::System.ArgumentNullException(nameof(ttsVoice));
             this.TtsLanguage = ttsLanguage ?? throw new global::System.ArgumentNullException(nameof(ttsLanguage));
-            this.HasTextToAgentRun = hasTextToAgentRun;
-            this.DeploymentCount = deploymentCount;
-            this.Description = description;
             this.WebhookId = webhookId;
             this.DeletedAt = deletedAt;
             this.GitRepository = gitRepository;
             this.GitDeployBranch = gitDeployBranch;
             this.PhoneNumbers = phoneNumbers;
+            this.HasTextToAgentRun = hasTextToAgentRun;
+            this.DeploymentCount = deploymentCount;
         }
 
         /// <summary>

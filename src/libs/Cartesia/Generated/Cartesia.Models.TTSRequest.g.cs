@@ -92,6 +92,7 @@ namespace Cartesia
         /// </param>
         /// <param name="transcript"></param>
         /// <param name="voice"></param>
+        /// <param name="outputFormat"></param>
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
         /// </param>
@@ -99,7 +100,6 @@ namespace Cartesia
         /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
         /// See [Volume, Speed, and Emotion in Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
         /// </param>
-        /// <param name="outputFormat"></param>
         /// <param name="save">
         /// Whether to save the generated audio file. When true, the response will include a `Cartesia-File-ID` header.<br/>
         /// Default Value: false
@@ -123,9 +123,9 @@ namespace Cartesia
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.Transcript = transcript ?? throw new global::System.ArgumentNullException(nameof(transcript));
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
-            this.OutputFormat = outputFormat;
             this.Language = language;
             this.GenerationConfig = generationConfig;
+            this.OutputFormat = outputFormat;
             this.Save = save;
             this.PronunciationDictId = pronunciationDictId;
         }

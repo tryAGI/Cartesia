@@ -52,14 +52,14 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamingResponseVariant3" /> class.
         /// </summary>
+        /// <param name="statusCode"></param>
+        /// <param name="done"></param>
+        /// <param name="error"></param>
         /// <param name="type"></param>
         /// <param name="contextId">
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
         /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
         /// </param>
-        /// <param name="statusCode"></param>
-        /// <param name="done"></param>
-        /// <param name="error"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -70,11 +70,11 @@ namespace Cartesia
             global::Cartesia.StreamingResponseVariant3Type type,
             string? contextId)
         {
+            this.Type = type;
+            this.ContextId = contextId;
             this.StatusCode = statusCode;
             this.Done = done;
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
-            this.Type = type;
-            this.ContextId = contextId;
         }
 
         /// <summary>

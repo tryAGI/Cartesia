@@ -57,14 +57,14 @@ namespace Cartesia
         /// <param name="name">
         /// The name of the metric. This is a unique name that you can use to identify the metric in the CLI.
         /// </param>
-        /// <param name="displayName">
-        /// The display name of the metric, if available. This is the name that is displayed in the Playground.
-        /// </param>
         /// <param name="prompt">
         /// The prompt associated with the metric, detailing the task and evaluation criteria.
         /// </param>
         /// <param name="createdAt">
         /// The timestamp when the metric was created.
+        /// </param>
+        /// <param name="displayName">
+        /// The display name of the metric, if available. This is the name that is displayed in the Playground.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,9 +78,9 @@ namespace Cartesia
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.DisplayName = displayName;
             this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.CreatedAt = createdAt;
-            this.DisplayName = displayName;
         }
 
         /// <summary>

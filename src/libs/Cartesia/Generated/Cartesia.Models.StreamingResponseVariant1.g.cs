@@ -66,15 +66,15 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamingResponseVariant1" /> class.
         /// </summary>
+        /// <param name="statusCode"></param>
+        /// <param name="done"></param>
+        /// <param name="data"></param>
+        /// <param name="stepTime"></param>
         /// <param name="type"></param>
         /// <param name="contextId">
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
         /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
         /// </param>
-        /// <param name="statusCode"></param>
-        /// <param name="done"></param>
-        /// <param name="data"></param>
-        /// <param name="stepTime"></param>
         /// <param name="flushId">
         /// An identifier corresponding to the number of flush commands that have been sent for this context. Starts at 1.<br/>
         /// This can be used to map chunks of audio to certain transcript submissions.
@@ -91,12 +91,12 @@ namespace Cartesia
             string? contextId,
             int? flushId)
         {
+            this.Type = type;
+            this.ContextId = contextId;
             this.StatusCode = statusCode;
             this.Done = done;
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
             this.StepTime = stepTime;
-            this.Type = type;
-            this.ContextId = contextId;
             this.FlushId = flushId;
         }
 

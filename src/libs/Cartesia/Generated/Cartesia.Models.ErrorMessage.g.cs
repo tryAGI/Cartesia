@@ -30,11 +30,11 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorMessage" /> class.
         /// </summary>
-        /// <param name="requestId">
-        /// The request ID associated with the error, if applicable.
-        /// </param>
         /// <param name="message">
         /// Human-readable error message describing what went wrong.
+        /// </param>
+        /// <param name="requestId">
+        /// The request ID associated with the error, if applicable.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -43,8 +43,8 @@ namespace Cartesia
             string message,
             string? requestId)
         {
-            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.RequestId = requestId;
+            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
         }
 
         /// <summary>

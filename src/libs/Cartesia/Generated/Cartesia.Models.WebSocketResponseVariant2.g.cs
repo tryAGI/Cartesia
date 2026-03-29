@@ -60,11 +60,6 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="WebSocketResponseVariant2" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
-        /// </param>
         /// <param name="statusCode"></param>
         /// <param name="done"></param>
         /// <param name="flushId">
@@ -72,6 +67,11 @@ namespace Cartesia
         /// This can be used to map chunks of audio to certain transcript submissions.
         /// </param>
         /// <param name="flushDone"></param>
+        /// <param name="type"></param>
+        /// <param name="contextId">
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
+        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -83,12 +83,12 @@ namespace Cartesia
             global::Cartesia.WebSocketResponseVariant2Type type,
             string? contextId)
         {
+            this.Type = type;
+            this.ContextId = contextId;
             this.StatusCode = statusCode;
             this.Done = done;
             this.FlushId = flushId;
             this.FlushDone = flushDone;
-            this.Type = type;
-            this.ContextId = contextId;
         }
 
         /// <summary>
