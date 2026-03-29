@@ -89,17 +89,17 @@ namespace Cartesia
         /// <param name="role">
         /// The role of the participant in the conversation. Roles are `user`, `assistant`, or `system`. `assistant` is the agent. `system` is used to indicate logs during the conversation such as `log_event` or `log_metric`.
         /// </param>
-        /// <param name="text">
-        /// The text content of the transcript. This is the text that was spoken by the user or the agent.
-        /// </param>
-        /// <param name="textChunks">
-        /// The chunks of text at a more granular level in the transcript with timestamps relative to the start of the call.
-        /// </param>
         /// <param name="startTimestamp">
         /// The start timestamp in seconds relative to the start of the call.
         /// </param>
         /// <param name="endTimestamp">
         /// The end timestamp in seconds relative to the start of the call.
+        /// </param>
+        /// <param name="text">
+        /// The text content of the transcript. This is the text that was spoken by the user or the agent.
+        /// </param>
+        /// <param name="textChunks">
+        /// The chunks of text at a more granular level in the transcript with timestamps relative to the start of the call.
         /// </param>
         /// <param name="endReason">
         /// The reason for why the assistant turn ended. This could be `call_ended`, `interrupted`, or `tts_completed`.
@@ -132,10 +132,10 @@ namespace Cartesia
             global::Cartesia.LogMetric? logMetric)
         {
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
-            this.StartTimestamp = startTimestamp;
-            this.EndTimestamp = endTimestamp;
             this.Text = text;
             this.TextChunks = textChunks;
+            this.StartTimestamp = startTimestamp;
+            this.EndTimestamp = endTimestamp;
             this.EndReason = endReason;
             this.ToolCalls = toolCalls;
             this.VadBufferMs = vadBufferMs;

@@ -167,9 +167,6 @@ namespace Cartesia
         /// <param name="buildCompletedAt">
         /// The UTC timestamp when the build was completed.
         /// </param>
-        /// <param name="buildError">
-        /// Any error that occurred during the build process.
-        /// </param>
         /// <param name="buildLogs">
         /// Logs generated during the build process of the deployment.
         /// </param>
@@ -181,6 +178,9 @@ namespace Cartesia
         /// </param>
         /// <param name="deploymentCompletedAt">
         /// The UTC timestamp when the deployment process was completed.
+        /// </param>
+        /// <param name="buildError">
+        /// Any error that occurred during the build process.
         /// </param>
         /// <param name="deploymentError">
         /// Any error that occurred during the deployment process.
@@ -218,11 +218,11 @@ namespace Cartesia
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.BuildCompletedAt = buildCompletedAt;
+            this.BuildError = buildError;
             this.BuildLogs = buildLogs ?? throw new global::System.ArgumentNullException(nameof(buildLogs));
             this.BuildStartedAt = buildStartedAt;
             this.DeploymentStartedAt = deploymentStartedAt;
             this.DeploymentCompletedAt = deploymentCompletedAt;
-            this.BuildError = buildError;
             this.DeploymentError = deploymentError;
         }
 

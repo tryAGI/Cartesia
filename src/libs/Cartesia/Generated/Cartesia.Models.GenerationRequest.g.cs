@@ -136,6 +136,7 @@ namespace Cartesia
         /// The transcript to generate speech for.
         /// </param>
         /// <param name="voice"></param>
+        /// <param name="outputFormat"></param>
         /// <param name="generationConfig">
         /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
         /// See [Volume, Speed, and Emotion in Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
@@ -143,7 +144,6 @@ namespace Cartesia
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
         /// </param>
-        /// <param name="outputFormat"></param>
         /// <param name="contextId">
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
         /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
@@ -198,9 +198,9 @@ namespace Cartesia
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.Transcript = transcript ?? throw new global::System.ArgumentNullException(nameof(transcript));
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
-            this.OutputFormat = outputFormat ?? throw new global::System.ArgumentNullException(nameof(outputFormat));
             this.GenerationConfig = generationConfig;
             this.Language = language;
+            this.OutputFormat = outputFormat ?? throw new global::System.ArgumentNullException(nameof(outputFormat));
             this.ContextId = contextId;
             this.Continue = @continue;
             this.MaxBufferDelayMs = maxBufferDelayMs;

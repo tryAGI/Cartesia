@@ -118,9 +118,9 @@ namespace Cartesia
         /// <param name="modelId">
         /// The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for available models.
         /// </param>
+        /// <param name="voice"></param>
         /// <param name="outputFormat"></param>
         /// <param name="transcript"></param>
-        /// <param name="voice"></param>
         /// <param name="language"></param>
         /// <param name="generationConfig">
         /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
@@ -162,9 +162,9 @@ namespace Cartesia
             int? maxBufferDelayMs)
         {
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
-            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
             this.OutputFormat = outputFormat;
             this.Transcript = transcript;
+            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
             this.Language = language;
             this.GenerationConfig = generationConfig;
             this.AddTimestamps = addTimestamps;

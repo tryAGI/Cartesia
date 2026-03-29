@@ -90,20 +90,11 @@ namespace Cartesia
         /// <param name="name">
         /// The name of the agent template.
         /// </param>
-        /// <param name="description">
-        /// The description of the agent template.
-        /// </param>
         /// <param name="repoUrl">
         /// The URL of the Git repository associated with the agent template.
         /// </param>
         /// <param name="rootDir">
         /// The root directory of the agent template.
-        /// </param>
-        /// <param name="requiredEnvVars">
-        /// The required environment variables for the agent template.
-        /// </param>
-        /// <param name="dependencies">
-        /// The dependencies of the agent template.
         /// </param>
         /// <param name="ownerId">
         /// The ID of the owner of the agent template.
@@ -113,6 +104,15 @@ namespace Cartesia
         /// </param>
         /// <param name="updatedAt">
         /// The UTC timestamp when the agent template was last updated.
+        /// </param>
+        /// <param name="description">
+        /// The description of the agent template.
+        /// </param>
+        /// <param name="requiredEnvVars">
+        /// The required environment variables for the agent template.
+        /// </param>
+        /// <param name="dependencies">
+        /// The dependencies of the agent template.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -131,14 +131,14 @@ namespace Cartesia
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Description = description;
             this.RepoUrl = repoUrl ?? throw new global::System.ArgumentNullException(nameof(repoUrl));
             this.RootDir = rootDir ?? throw new global::System.ArgumentNullException(nameof(rootDir));
+            this.RequiredEnvVars = requiredEnvVars;
+            this.Dependencies = dependencies;
             this.OwnerId = ownerId ?? throw new global::System.ArgumentNullException(nameof(ownerId));
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            this.Description = description;
-            this.RequiredEnvVars = requiredEnvVars;
-            this.Dependencies = dependencies;
         }
 
         /// <summary>

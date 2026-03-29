@@ -95,15 +95,15 @@ namespace Cartesia
         /// <param name="description">
         /// The description of the voice.
         /// </param>
-        /// <param name="gender"></param>
         /// <param name="createdAt">
         /// The date and time the voice was created.
         /// </param>
-        /// <param name="previewFileUrl">
-        /// A URL to download a preview audio file for this voice. Useful to avoid consuming credits when looking for the right voice. The URL requires the same Authorization header. Voice previews may be changed, moved, or deleted so you should avoid storing the URL permanently. This property will be null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
-        /// </param>
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// </param>
+        /// <param name="gender"></param>
+        /// <param name="previewFileUrl">
+        /// A URL to download a preview audio file for this voice. Useful to avoid consuming credits when looking for the right voice. The URL requires the same Authorization header. Voice previews may be changed, moved, or deleted so you should avoid storing the URL permanently. This property will be null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -124,10 +124,10 @@ namespace Cartesia
             this.IsPublic = isPublic;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
-            this.CreatedAt = createdAt;
-            this.Language = language;
             this.Gender = gender;
+            this.CreatedAt = createdAt;
             this.PreviewFileUrl = previewFileUrl;
+            this.Language = language;
         }
 
         /// <summary>

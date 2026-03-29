@@ -124,9 +124,6 @@ namespace Cartesia
         /// <param name="summary">
         /// A summary of the transcript of the call.
         /// </param>
-        /// <param name="transcript">
-        /// The transcript of the call.
-        /// </param>
         /// <param name="agentId">
         /// The identifier of the agent associated with the metric result.
         /// </param>
@@ -139,20 +136,23 @@ namespace Cartesia
         /// <param name="result">
         /// The raw result of the metric in a string format.
         /// </param>
+        /// <param name="status">
+        /// The status of an agent metric result. `failed` indicates that the metric result was not computed or parsed properly.
+        /// </param>
+        /// <param name="createdAt">
+        /// The UTC timestamp when the metric result was created.
+        /// </param>
+        /// <param name="transcript">
+        /// The transcript of the call.
+        /// </param>
         /// <param name="jsonResult">
         /// The structured JSON result of the metric.
         /// </param>
         /// <param name="value">
         /// The value of the metric result.
         /// </param>
-        /// <param name="status">
-        /// The status of an agent metric result. `failed` indicates that the metric result was not computed or parsed properly.
-        /// </param>
         /// <param name="runId">
         /// The identifier of the run associated with the metric result, if applicable.
-        /// </param>
-        /// <param name="createdAt">
-        /// The UTC timestamp when the metric result was created.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -177,16 +177,16 @@ namespace Cartesia
             this.MetricId = metricId ?? throw new global::System.ArgumentNullException(nameof(metricId));
             this.MetricName = metricName ?? throw new global::System.ArgumentNullException(nameof(metricName));
             this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
+            this.Transcript = transcript;
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
-            this.Status = status;
-            this.CreatedAt = createdAt;
-            this.Transcript = transcript;
             this.JsonResult = jsonResult;
             this.Value = value;
+            this.Status = status;
             this.RunId = runId;
+            this.CreatedAt = createdAt;
         }
 
         /// <summary>

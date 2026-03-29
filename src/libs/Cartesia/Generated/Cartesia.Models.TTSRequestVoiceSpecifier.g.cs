@@ -31,10 +31,10 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="TTSRequestVoiceSpecifier" /> class.
         /// </summary>
-        /// <param name="mode"></param>
         /// <param name="id">
         /// The ID of the voice.
         /// </param>
+        /// <param name="mode"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace Cartesia
             string id,
             global::Cartesia.TTSRequestVoiceSpecifierMode mode)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Mode = mode;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
         }
 
         /// <summary>

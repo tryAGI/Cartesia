@@ -40,11 +40,11 @@ namespace Cartesia
         /// <param name="name">
         /// The name of the metric. This must be a unique name that only allows lower case letters, numbers, and the characters _, -, and .
         /// </param>
-        /// <param name="displayName">
-        /// The display name of the metric.
-        /// </param>
         /// <param name="prompt">
         /// The prompt associated with the metric, detailing the task and evaluation criteria.
+        /// </param>
+        /// <param name="displayName">
+        /// The display name of the metric.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,8 +55,8 @@ namespace Cartesia
             string? displayName)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.DisplayName = displayName;
+            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
         }
 
         /// <summary>

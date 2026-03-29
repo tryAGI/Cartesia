@@ -58,13 +58,13 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="WebSocketResponseVariant6" /> class.
         /// </summary>
+        /// <param name="statusCode"></param>
+        /// <param name="done"></param>
         /// <param name="type"></param>
         /// <param name="contextId">
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
         /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
         /// </param>
-        /// <param name="statusCode"></param>
-        /// <param name="done"></param>
         /// <param name="phonemeTimestamps"></param>
         /// <param name="flushId">
         /// An identifier corresponding to the number of flush commands that have been sent for this context. Starts at 1.<br/>
@@ -81,10 +81,10 @@ namespace Cartesia
             global::Cartesia.PhonemeTimestamps? phonemeTimestamps,
             int? flushId)
         {
-            this.StatusCode = statusCode;
-            this.Done = done;
             this.Type = type;
             this.ContextId = contextId;
+            this.StatusCode = statusCode;
+            this.Done = done;
             this.PhonemeTimestamps = phonemeTimestamps;
             this.FlushId = flushId;
         }
