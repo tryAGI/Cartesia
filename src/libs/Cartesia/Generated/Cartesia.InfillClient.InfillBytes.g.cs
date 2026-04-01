@@ -299,7 +299,6 @@ namespace Cartesia
             global::Cartesia.OutputFormat? outputFormat = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Cartesia.InfillBytesRequest
             {
                 LeftAudio = leftAudio,

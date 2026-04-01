@@ -227,7 +227,6 @@ namespace Cartesia
             global::Cartesia.LocalizeDialect? dialect = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Cartesia.LocalizeVoiceRequest
             {
                 VoiceId = voiceId,
