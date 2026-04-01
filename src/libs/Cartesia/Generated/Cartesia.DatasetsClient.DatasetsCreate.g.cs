@@ -210,7 +210,6 @@ namespace Cartesia
             string description,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Cartesia.CreateDatasetRequest
             {
                 Name = name,
