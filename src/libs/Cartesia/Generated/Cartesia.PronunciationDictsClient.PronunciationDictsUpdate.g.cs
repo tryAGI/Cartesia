@@ -218,6 +218,7 @@ namespace Cartesia
             global::System.Collections.Generic.IList<global::Cartesia.PronunciationDictItem>? items = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Cartesia.UpdatePronunciationDictRequest
             {
                 Name = name,

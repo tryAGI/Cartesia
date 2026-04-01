@@ -286,37 +286,37 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Chunk, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Chunk!, typeInfo);
             }
             else if (value.IsFlushDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlushDone, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlushDone!, typeInfo);
             }
             else if (value.IsDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done!, typeInfo);
             }
             else if (value.IsTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant4?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant4).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Timestamps, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Timestamps!, typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant5?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant5).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
             }
             else if (value.IsPhonemeTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebSocketResponseVariant6), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebSocketResponseVariant6?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebSocketResponseVariant6).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PhonemeTimestamps, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PhonemeTimestamps!, typeInfo);
             }
         }
     }
