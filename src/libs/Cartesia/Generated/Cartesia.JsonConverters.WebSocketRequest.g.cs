@@ -137,13 +137,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.GenerationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.GenerationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.GenerationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GenerationRequest, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GenerationRequest!, typeInfo);
             }
             else if (value.IsCancelContextRequest)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.CancelContextRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.CancelContextRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.CancelContextRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelContextRequest, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelContextRequest!, typeInfo);
             }
         }
     }

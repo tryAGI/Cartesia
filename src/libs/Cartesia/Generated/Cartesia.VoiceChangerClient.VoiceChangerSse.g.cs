@@ -250,6 +250,7 @@ namespace Cartesia
             int? outputFormatBitRate = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Cartesia.VoiceChangerSseRequest
             {
                 Clip = clip,
