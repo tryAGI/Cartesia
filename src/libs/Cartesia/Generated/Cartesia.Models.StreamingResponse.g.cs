@@ -13,52 +13,52 @@ namespace Cartesia
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.StreamingResponseVariant1? Value1 { get; init; }
+        public global::Cartesia.StreamingResponseVariant1? StreamingResponseVariant1 { get; init; }
 #else
-        public global::Cartesia.StreamingResponseVariant1? Value1 { get; }
+        public global::Cartesia.StreamingResponseVariant1? StreamingResponseVariant1 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StreamingResponseVariant1))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsStreamingResponseVariant1 => StreamingResponseVariant1 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.StreamingResponseVariant2? Value2 { get; init; }
+        public global::Cartesia.StreamingResponseVariant2? StreamingResponseVariant2 { get; init; }
 #else
-        public global::Cartesia.StreamingResponseVariant2? Value2 { get; }
+        public global::Cartesia.StreamingResponseVariant2? StreamingResponseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StreamingResponseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsStreamingResponseVariant2 => StreamingResponseVariant2 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.StreamingResponseVariant3? Value3 { get; init; }
+        public global::Cartesia.StreamingResponseVariant3? StreamingResponseVariant3 { get; init; }
 #else
-        public global::Cartesia.StreamingResponseVariant3? Value3 { get; }
+        public global::Cartesia.StreamingResponseVariant3? StreamingResponseVariant3 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StreamingResponseVariant3))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsStreamingResponseVariant3 => StreamingResponseVariant3 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -67,14 +67,14 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Cartesia.StreamingResponseVariant1?(StreamingResponse @this) => @this.Value1;
+        public static implicit operator global::Cartesia.StreamingResponseVariant1?(StreamingResponse @this) => @this.StreamingResponseVariant1;
 
         /// <summary>
         /// 
         /// </summary>
         public StreamingResponse(global::Cartesia.StreamingResponseVariant1? value)
         {
-            Value1 = value;
+            StreamingResponseVariant1 = value;
         }
 
         /// <summary>
@@ -85,14 +85,14 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Cartesia.StreamingResponseVariant2?(StreamingResponse @this) => @this.Value2;
+        public static implicit operator global::Cartesia.StreamingResponseVariant2?(StreamingResponse @this) => @this.StreamingResponseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public StreamingResponse(global::Cartesia.StreamingResponseVariant2? value)
         {
-            Value2 = value;
+            StreamingResponseVariant2 = value;
         }
 
         /// <summary>
@@ -103,46 +103,46 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Cartesia.StreamingResponseVariant3?(StreamingResponse @this) => @this.Value3;
+        public static implicit operator global::Cartesia.StreamingResponseVariant3?(StreamingResponse @this) => @this.StreamingResponseVariant3;
 
         /// <summary>
         /// 
         /// </summary>
         public StreamingResponse(global::Cartesia.StreamingResponseVariant3? value)
         {
-            Value3 = value;
+            StreamingResponseVariant3 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public StreamingResponse(
-            global::Cartesia.StreamingResponseVariant1? value1,
-            global::Cartesia.StreamingResponseVariant2? value2,
-            global::Cartesia.StreamingResponseVariant3? value3
+            global::Cartesia.StreamingResponseVariant1? streamingResponseVariant1,
+            global::Cartesia.StreamingResponseVariant2? streamingResponseVariant2,
+            global::Cartesia.StreamingResponseVariant3? streamingResponseVariant3
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
+            StreamingResponseVariant1 = streamingResponseVariant1;
+            StreamingResponseVariant2 = streamingResponseVariant2;
+            StreamingResponseVariant3 = streamingResponseVariant3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            StreamingResponseVariant3 as object ??
+            StreamingResponseVariant2 as object ??
+            StreamingResponseVariant1 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() 
+            StreamingResponseVariant1?.ToString() ??
+            StreamingResponseVariant2?.ToString() ??
+            StreamingResponseVariant3?.ToString() 
             ;
 
         /// <summary>
@@ -150,16 +150,16 @@ namespace Cartesia
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 || !IsValue1 && IsValue2 && !IsValue3 || !IsValue1 && !IsValue2 && IsValue3;
+            return IsStreamingResponseVariant1 && !IsStreamingResponseVariant2 && !IsStreamingResponseVariant3 || !IsStreamingResponseVariant1 && IsStreamingResponseVariant2 && !IsStreamingResponseVariant3 || !IsStreamingResponseVariant1 && !IsStreamingResponseVariant2 && IsStreamingResponseVariant3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.StreamingResponseVariant1?, TResult>? value1 = null,
-            global::System.Func<global::Cartesia.StreamingResponseVariant2?, TResult>? value2 = null,
-            global::System.Func<global::Cartesia.StreamingResponseVariant3?, TResult>? value3 = null,
+            global::System.Func<global::Cartesia.StreamingResponseVariant1?, TResult>? streamingResponseVariant1 = null,
+            global::System.Func<global::Cartesia.StreamingResponseVariant2?, TResult>? streamingResponseVariant2 = null,
+            global::System.Func<global::Cartesia.StreamingResponseVariant3?, TResult>? streamingResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -167,17 +167,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsStreamingResponseVariant1 && streamingResponseVariant1 != null)
             {
-                return value1(Value1!);
+                return streamingResponseVariant1(StreamingResponseVariant1!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsStreamingResponseVariant2 && streamingResponseVariant2 != null)
             {
-                return value2(Value2!);
+                return streamingResponseVariant2(StreamingResponseVariant2!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsStreamingResponseVariant3 && streamingResponseVariant3 != null)
             {
-                return value3(Value3!);
+                return streamingResponseVariant3(StreamingResponseVariant3!);
             }
 
             return default(TResult);
@@ -187,9 +187,9 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.StreamingResponseVariant1?>? value1 = null,
-            global::System.Action<global::Cartesia.StreamingResponseVariant2?>? value2 = null,
-            global::System.Action<global::Cartesia.StreamingResponseVariant3?>? value3 = null,
+            global::System.Action<global::Cartesia.StreamingResponseVariant1?>? streamingResponseVariant1 = null,
+            global::System.Action<global::Cartesia.StreamingResponseVariant2?>? streamingResponseVariant2 = null,
+            global::System.Action<global::Cartesia.StreamingResponseVariant3?>? streamingResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -197,17 +197,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsStreamingResponseVariant1)
             {
-                value1?.Invoke(Value1!);
+                streamingResponseVariant1?.Invoke(StreamingResponseVariant1!);
             }
-            else if (IsValue2)
+            else if (IsStreamingResponseVariant2)
             {
-                value2?.Invoke(Value2!);
+                streamingResponseVariant2?.Invoke(StreamingResponseVariant2!);
             }
-            else if (IsValue3)
+            else if (IsStreamingResponseVariant3)
             {
-                value3?.Invoke(Value3!);
+                streamingResponseVariant3?.Invoke(StreamingResponseVariant3!);
             }
         }
 
@@ -218,11 +218,11 @@ namespace Cartesia
         {
             var fields = new object?[]
             {
-                Value1,
+                StreamingResponseVariant1,
                 typeof(global::Cartesia.StreamingResponseVariant1),
-                Value2,
+                StreamingResponseVariant2,
                 typeof(global::Cartesia.StreamingResponseVariant2),
-                Value3,
+                StreamingResponseVariant3,
                 typeof(global::Cartesia.StreamingResponseVariant3),
             };
             const int offset = unchecked((int)2166136261);
@@ -240,9 +240,9 @@ namespace Cartesia
         public bool Equals(StreamingResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant2?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant3?>.Default.Equals(Value3, other.Value3) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant1?>.Default.Equals(StreamingResponseVariant1, other.StreamingResponseVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant2?>.Default.Equals(StreamingResponseVariant2, other.StreamingResponseVariant2) &&
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.StreamingResponseVariant3?>.Default.Equals(StreamingResponseVariant3, other.StreamingResponseVariant3) 
                 ;
         }
 
