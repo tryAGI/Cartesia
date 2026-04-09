@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class PronunciationDictsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_PronunciationDictsDeleteSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_PronunciationDictsDeleteSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_PronunciationDictsDeleteSecurityRequirement0,
+            };
         partial void PreparePronunciationDictsDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.PronunciationDictsDeleteCartesiaVersion cartesiaVersion,
@@ -39,9 +58,15 @@ namespace Cartesia
                 cartesiaVersion: ref cartesiaVersion,
                 id: ref id);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_PronunciationDictsDeleteSecurityRequirements,
+                operationName: "PronunciationDictsDeleteAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: $"/pronunciation-dicts/{id}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -51,7 +76,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

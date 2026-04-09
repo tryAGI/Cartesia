@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class AgentsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_AgentsExportMetricResultsSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_AgentsExportMetricResultsSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_AgentsExportMetricResultsSecurityRequirement0,
+            };
         partial void PrepareAgentsExportMetricResultsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.AgentsExportMetricResultsCartesiaVersion cartesiaVersion,
@@ -70,6 +89,12 @@ namespace Cartesia
                 startDate: ref startDate,
                 endDate: ref endDate);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AgentsExportMetricResultsSecurityRequirements,
+                operationName: "AgentsExportMetricResultsAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: "/agents/metrics/results/export",
                 baseUri: HttpClient.BaseAddress); 
@@ -80,7 +105,7 @@ namespace Cartesia
                 .AddOptionalParameter("call_id", callId)
                 .AddOptionalParameter("start_date", startDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("end_date", endDate?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -90,7 +115,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

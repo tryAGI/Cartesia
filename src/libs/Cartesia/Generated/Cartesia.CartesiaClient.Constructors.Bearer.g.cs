@@ -6,6 +6,7 @@ namespace Cartesia
     public sealed partial class CartesiaClient
     {
         /// <inheritdoc cref="CartesiaClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Cartesia.EndPointAuthorization}?, bool)"/>
+
         public CartesiaClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

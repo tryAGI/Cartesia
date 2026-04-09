@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class PronunciationDictsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_PronunciationDictsListSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_PronunciationDictsListSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_PronunciationDictsListSecurityRequirement0,
+            };
         partial void PreparePronunciationDictsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.PronunciationDictsListCartesiaVersion cartesiaVersion,
@@ -54,6 +73,12 @@ namespace Cartesia
                 startingAfter: ref startingAfter,
                 endingBefore: ref endingBefore);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_PronunciationDictsListSecurityRequirements,
+                operationName: "PronunciationDictsListAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: "/pronunciation-dicts/",
                 baseUri: HttpClient.BaseAddress); 
@@ -61,7 +86,7 @@ namespace Cartesia
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("starting_after", startingAfter)
                 .AddOptionalParameter("ending_before", endingBefore) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -71,7 +96,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
