@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class VoiceChangerClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_VoiceChangerSseSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_VoiceChangerSseSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_VoiceChangerSseSecurityRequirement0,
+            };
         partial void PrepareVoiceChangerSseArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.VoiceChangerSseCartesiaVersion cartesiaVersion,
@@ -42,9 +61,15 @@ namespace Cartesia
                 cartesiaVersion: ref cartesiaVersion,
                 request: request);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_VoiceChangerSseSecurityRequirements,
+                operationName: "VoiceChangerSseAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: "/voice-changer/sse",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -54,7 +79,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class DatasetsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_DatasetsListSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_DatasetsListSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_DatasetsListSecurityRequirement0,
+            };
         partial void PrepareDatasetsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.DatasetsListCartesiaVersion cartesiaVersion,
@@ -54,6 +73,12 @@ namespace Cartesia
                 startingAfter: ref startingAfter,
                 endingBefore: ref endingBefore);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DatasetsListSecurityRequirements,
+                operationName: "DatasetsListAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: "/datasets/",
                 baseUri: HttpClient.BaseAddress); 
@@ -61,7 +86,7 @@ namespace Cartesia
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("starting_after", startingAfter)
                 .AddOptionalParameter("ending_before", endingBefore) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -71,7 +96,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

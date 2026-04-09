@@ -5,6 +5,25 @@ namespace Cartesia
 {
     public partial class AgentsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_AgentsGetDeploymentSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_AgentsGetDeploymentSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_AgentsGetDeploymentSecurityRequirement0,
+            };
         partial void PrepareAgentsGetDeploymentArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.AgentsGetDeploymentCartesiaVersion cartesiaVersion,
@@ -45,9 +64,15 @@ namespace Cartesia
                 cartesiaVersion: ref cartesiaVersion,
                 deploymentId: ref deploymentId);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AgentsGetDeploymentSecurityRequirements,
+                operationName: "AgentsGetDeploymentAsync");
+
             var __pathBuilder = new global::Cartesia.PathBuilder(
                 path: $"/agents/deployments/{deploymentId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -57,7 +82,7 @@ namespace Cartesia
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
