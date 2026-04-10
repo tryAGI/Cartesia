@@ -21,12 +21,14 @@ namespace Cartesia
         /// Example: 2025-04-16
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<byte[]> InfillBytesAsync(
             global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.InfillBytesRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Infill (Bytes)<br/>
@@ -61,6 +63,7 @@ namespace Cartesia
         /// The ID of the voice to use for generating audio
         /// </param>
         /// <param name="outputFormat"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<byte[]> InfillBytesAsync(
@@ -74,6 +77,7 @@ namespace Cartesia
             string? transcript = default,
             string? voiceId = default,
             global::Cartesia.OutputFormat? outputFormat = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

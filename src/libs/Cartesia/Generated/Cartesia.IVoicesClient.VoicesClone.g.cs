@@ -12,12 +12,14 @@ namespace Cartesia
         /// Example: 2025-04-16
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesCloneAsync(
             global::Cartesia.VoicesCloneCartesiaVersion cartesiaVersion,
 
             global::Cartesia.VoicesCloneRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Clone Voice<br/>
@@ -40,6 +42,7 @@ namespace Cartesia
         /// <param name="baseVoiceId">
         /// The ID of the voice.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesCloneAsync(
@@ -50,6 +53,7 @@ namespace Cartesia
             string? description = default,
             global::Cartesia.SupportedLanguage? language = default,
             string? baseVoiceId = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
