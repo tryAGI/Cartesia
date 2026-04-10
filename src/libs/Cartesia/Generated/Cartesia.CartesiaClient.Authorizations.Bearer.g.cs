@@ -25,6 +25,7 @@ namespace Cartesia
             Authorizations.Add(new global::Cartesia.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "TokenAuth",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

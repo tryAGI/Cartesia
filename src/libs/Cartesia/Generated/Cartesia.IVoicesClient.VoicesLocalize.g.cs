@@ -12,12 +12,14 @@ namespace Cartesia
         /// Example: 2025-04-16
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesLocalizeAsync(
             global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.LocalizeVoiceRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Localize Voice<br/>
@@ -43,6 +45,7 @@ namespace Cartesia
         /// <param name="dialect">
         /// The dialect to localize to. Only supported for English (`en`), Spanish (`es`), Portuguese (`pt`), and French (`fr`).
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesLocalizeAsync(
@@ -53,6 +56,7 @@ namespace Cartesia
             global::Cartesia.LocalizeTargetLanguage language,
             global::Cartesia.Gender originalSpeakerGender,
             global::Cartesia.LocalizeDialect? dialect = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

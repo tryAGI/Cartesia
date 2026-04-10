@@ -11,12 +11,14 @@ namespace Cartesia
         /// Example: 2025-04-16
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task VoiceChangerSseAsync(
             global::Cartesia.VoiceChangerSseCartesiaVersion cartesiaVersion,
 
             global::Cartesia.VoiceChangerSseRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Voice Changer (SSE)
@@ -33,6 +35,7 @@ namespace Cartesia
         /// <param name="outputFormatBitRate">
         /// Required for `mp3` containers.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task VoiceChangerSseAsync(
@@ -44,6 +47,7 @@ namespace Cartesia
             int? outputFormatSampleRate = default,
             global::Cartesia.RawEncoding? outputFormatEncoding = default,
             int? outputFormatBitRate = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -23,6 +23,7 @@ namespace Cartesia
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
@@ -31,6 +32,7 @@ namespace Cartesia
             global::Cartesia.SttTranscribeRequest request,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Speech-to-Text (Batch)<br/>
@@ -61,6 +63,7 @@ namespace Cartesia
         /// <param name="timestampGranularities">
         /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
@@ -72,6 +75,7 @@ namespace Cartesia
             string? model = default,
             global::Cartesia.SttTranscribeRequestLanguage? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

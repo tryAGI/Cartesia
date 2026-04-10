@@ -13,12 +13,14 @@ namespace Cartesia
         /// Example: 2025-04-16
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<byte[]> TtsBytesAsync(
             global::Cartesia.TtsBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TTSRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Text to Speech (Bytes)
@@ -46,6 +48,7 @@ namespace Cartesia
         /// <param name="pronunciationDictId">
         /// The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are supported by `sonic-3` models and newer.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<byte[]> TtsBytesAsync(
@@ -58,6 +61,7 @@ namespace Cartesia
             global::Cartesia.GenerationConfig? generationConfig = default,
             bool? save = default,
             string? pronunciationDictId = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
