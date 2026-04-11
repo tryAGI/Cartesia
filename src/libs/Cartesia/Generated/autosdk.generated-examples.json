@@ -1,0 +1,26 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Get Voice",
+      "Slug": "voices-get",
+      "Description": "Generated from OpenAPI examples.",
+      "Language": "http",
+      "Code": "### Get Voice\n# @name voices_get\nGET {{host}}/voices/{{id}}?expand[]={{expand[]}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2024-06-10\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "voices_get",
+      "Setup": null
+    },
+    {
+      "Order": 2,
+      "Title": "Update Voice",
+      "Slug": "voices-update",
+      "Description": "Update the name, description, and gender of a voice. To set the gender back to the default, set the gender to \u0060null\u0060. If gender is not specified, the gender will not be updated.",
+      "Language": "http",
+      "Code": "### Update Voice\n# @name voices_update\nPATCH {{host}}/voices/{{id}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2024-06-10\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022string\u0022,\n  \u0022description\u0022: \u0022string\u0022,\n  \u0022gender\u0022: \u0022masculine\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "voices_update",
+      "Setup": null
+    }
+  ]
+}
