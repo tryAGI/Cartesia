@@ -23,6 +23,14 @@ namespace Cartesia.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
+
                 }
             }
 
@@ -53,6 +61,9 @@ namespace Cartesia.JsonConverters
             if (__jsonProps.Contains("status_code")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;
             if (__jsonProps.Contains("word_timestamps")) __score3++;
+            if (__jsonProps.Contains("word_timestamps.end")) __score3++;
+            if (__jsonProps.Contains("word_timestamps.start")) __score3++;
+            if (__jsonProps.Contains("word_timestamps.words")) __score3++;
             var __score4 = 0;
             if (__jsonProps.Contains("context_id")) __score4++;
             if (__jsonProps.Contains("done")) __score4++;
@@ -64,6 +75,9 @@ namespace Cartesia.JsonConverters
             if (__jsonProps.Contains("done")) __score5++;
             if (__jsonProps.Contains("flush_id")) __score5++;
             if (__jsonProps.Contains("phoneme_timestamps")) __score5++;
+            if (__jsonProps.Contains("phoneme_timestamps.end")) __score5++;
+            if (__jsonProps.Contains("phoneme_timestamps.phonemes")) __score5++;
+            if (__jsonProps.Contains("phoneme_timestamps.start")) __score5++;
             if (__jsonProps.Contains("status_code")) __score5++;
             if (__jsonProps.Contains("type")) __score5++;
             var __bestScore = 0;
