@@ -145,7 +145,7 @@ namespace Cartesia
                 PrepareApiStatusGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion);
+                    cartesiaVersion: cartesiaVersion!);
 
                 return __httpRequest;
             }

@@ -135,9 +135,9 @@ namespace Cartesia
                 PrepareAgentsRemoveMetricFromAgentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    agentId: agentId,
-                    metricId: metricId);
+                    cartesiaVersion: cartesiaVersion!,
+                    agentId: agentId!,
+                    metricId: metricId!);
 
                 return __httpRequest;
             }

@@ -144,8 +144,8 @@ namespace Cartesia
                 PrepareVoicesGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    id: id,
+                    cartesiaVersion: cartesiaVersion!,
+                    id: id!,
                     expand: expand);
 
                 return __httpRequest;

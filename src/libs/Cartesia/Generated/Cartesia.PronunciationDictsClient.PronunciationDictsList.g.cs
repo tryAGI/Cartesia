@@ -149,7 +149,7 @@ namespace Cartesia
                 PreparePronunciationDictsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
+                    cartesiaVersion: cartesiaVersion!,
                     limit: limit,
                     startingAfter: startingAfter,
                     endingBefore: endingBefore);

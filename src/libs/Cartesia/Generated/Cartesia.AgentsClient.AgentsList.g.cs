@@ -130,7 +130,7 @@ namespace Cartesia
                 PrepareAgentsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion);
+                    cartesiaVersion: cartesiaVersion!);
 
                 return __httpRequest;
             }

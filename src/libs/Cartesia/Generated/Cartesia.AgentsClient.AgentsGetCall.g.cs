@@ -134,8 +134,8 @@ namespace Cartesia
                 PrepareAgentsGetCallRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    callId: callId);
+                    cartesiaVersion: cartesiaVersion!,
+                    callId: callId!);
 
                 return __httpRequest;
             }

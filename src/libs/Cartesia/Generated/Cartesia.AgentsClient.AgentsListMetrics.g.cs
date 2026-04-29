@@ -144,7 +144,7 @@ namespace Cartesia
                 PrepareAgentsListMetricsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
+                    cartesiaVersion: cartesiaVersion!,
                     startingAfter: startingAfter,
                     limit: limit);
 

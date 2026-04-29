@@ -143,8 +143,8 @@ namespace Cartesia
                 PrepareDatasetsUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    id: id,
+                    cartesiaVersion: cartesiaVersion!,
+                    id: id!,
                     request: request);
 
                 return __httpRequest;
