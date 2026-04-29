@@ -134,9 +134,9 @@ namespace Cartesia
                 PrepareDatasetsDeleteFileRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    id: id,
-                    fileID: fileID);
+                    cartesiaVersion: cartesiaVersion!,
+                    id: id!,
+                    fileID: fileID!);
 
                 return __httpRequest;
             }

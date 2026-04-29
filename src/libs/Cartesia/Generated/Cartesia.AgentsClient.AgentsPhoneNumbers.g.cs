@@ -135,8 +135,8 @@ namespace Cartesia
                 PrepareAgentsPhoneNumbersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    agentId: agentId);
+                    cartesiaVersion: cartesiaVersion!,
+                    agentId: agentId!);
 
                 return __httpRequest;
             }

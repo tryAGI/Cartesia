@@ -135,8 +135,8 @@ namespace Cartesia
                 PrepareAgentsGetDeploymentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    deploymentId: deploymentId);
+                    cartesiaVersion: cartesiaVersion!,
+                    deploymentId: deploymentId!);
 
                 return __httpRequest;
             }

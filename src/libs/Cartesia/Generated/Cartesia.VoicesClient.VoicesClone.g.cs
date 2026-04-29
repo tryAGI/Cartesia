@@ -129,12 +129,40 @@ namespace Cartesia
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"{cartesiaVersion.ToValueString()}"),
+                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
                                 name: "\"Cartesia-Version\"");
                             if (request.Clip != default)
                             {
 
                                 var __contentClip = new global::System.Net.Http.ByteArrayContent(request.Clip ?? global::System.Array.Empty<byte>());
+                                __contentClip.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Clipname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Clipname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentClip,
                                     name: "\"clip\"",
@@ -148,28 +176,28 @@ namespace Cartesia
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Name}"),
+                                    content: new global::System.Net.Http.StringContent(request.Name ?? string.Empty),
                                     name: "\"name\"");
                             } 
                             if (request.Description != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Description}"),
+                                    content: new global::System.Net.Http.StringContent(request.Description ?? string.Empty),
                                     name: "\"description\"");
                             } 
                             if (request.Language != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Language?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.Language).HasValue ? (request.Language).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"language\"");
                             } 
                             if (request.BaseVoiceId != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.BaseVoiceId}"),
+                                    content: new global::System.Net.Http.StringContent(request.BaseVoiceId ?? string.Empty),
                                     name: "\"base_voice_id\"");
                             }
                             __httpRequest.Content = __httpRequestContent;
@@ -184,7 +212,7 @@ namespace Cartesia
                 PrepareVoicesCloneRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
+                    cartesiaVersion: cartesiaVersion!,
                     request: request);
 
                 return __httpRequest;

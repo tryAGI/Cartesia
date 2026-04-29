@@ -162,8 +162,8 @@ namespace Cartesia
                 PrepareAgentsListCallsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    agentId: agentId,
+                    cartesiaVersion: cartesiaVersion!,
+                    agentId: agentId!,
                     expand: expand,
                     startingAfter: startingAfter,
                     endingBefore: endingBefore,

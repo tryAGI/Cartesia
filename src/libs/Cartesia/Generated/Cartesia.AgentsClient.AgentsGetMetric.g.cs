@@ -135,8 +135,8 @@ namespace Cartesia
                 PrepareAgentsGetMetricRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    metricId: metricId);
+                    cartesiaVersion: cartesiaVersion!,
+                    metricId: metricId!);
 
                 return __httpRequest;
             }

@@ -148,8 +148,8 @@ namespace Cartesia
                 PrepareAgentsUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
-                    agentId: agentId,
+                    cartesiaVersion: cartesiaVersion!,
+                    agentId: agentId!,
                     request: request);
 
                 return __httpRequest;

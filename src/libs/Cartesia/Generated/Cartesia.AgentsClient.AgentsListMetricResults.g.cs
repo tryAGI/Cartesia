@@ -186,7 +186,7 @@ namespace Cartesia
                 PrepareAgentsListMetricResultsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion,
+                    cartesiaVersion: cartesiaVersion!,
                     agentId: agentId,
                     deploymentId: deploymentId,
                     metricId: metricId,
