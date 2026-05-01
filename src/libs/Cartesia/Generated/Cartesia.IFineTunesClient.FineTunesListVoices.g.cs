@@ -7,9 +7,7 @@ namespace Cartesia
         /// <summary>
         /// List all voices created from a fine-tune
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id"></param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>

@@ -7,9 +7,7 @@ namespace Cartesia
         /// <summary>
         /// Remove a file from a dataset
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id"></param>
         /// <param name="fileID"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

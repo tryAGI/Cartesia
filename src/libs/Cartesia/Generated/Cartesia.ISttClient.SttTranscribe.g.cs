@@ -15,9 +15,7 @@ namespace Cartesia
         /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
         /// The encoding format for audio data sent to the STT WebSocket.
         /// </param>
@@ -45,9 +43,7 @@ namespace Cartesia
         /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
         /// The encoding format for audio data sent to the STT WebSocket.
         /// </param>

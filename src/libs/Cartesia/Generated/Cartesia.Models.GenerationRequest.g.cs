@@ -53,11 +53,11 @@ namespace Cartesia
         public required global::Cartesia.WebSocketRawOutputFormat OutputFormat { get; set; }
 
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
-        public string? ContextId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ContextId { get; set; }
 
         /// <summary>
         /// Whether this input may be followed by more inputs.<br/>
@@ -77,7 +77,6 @@ namespace Cartesia
         public int? MaxBufferDelayMs { get; set; }
 
         /// <summary>
-        /// Use `generation_config.speed` for sonic-3.<br/>
         /// Speed setting for the model. Defaults to `normal`.<br/>
         /// This feature is experimental and may not work for all voices.<br/>
         /// Influences the speed of the generated speech. Faster speeds may reduce hallucination rate.<br/>
@@ -137,16 +136,15 @@ namespace Cartesia
         /// </param>
         /// <param name="voice"></param>
         /// <param name="outputFormat"></param>
+        /// <param name="contextId">
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
+        /// </param>
         /// <param name="generationConfig">
         /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
         /// See [Volume, Speed, and Emotion in Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
         /// </param>
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
-        /// </param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
         /// </param>
         /// <param name="continue">
         /// Whether this input may be followed by more inputs.<br/>
@@ -184,9 +182,9 @@ namespace Cartesia
             string transcript,
             global::Cartesia.TTSRequestVoiceSpecifier voice,
             global::Cartesia.WebSocketRawOutputFormat outputFormat,
+            string contextId,
             global::Cartesia.GenerationConfig? generationConfig,
             global::Cartesia.SupportedLanguage? language,
-            string? contextId,
             bool? @continue,
             int? maxBufferDelayMs,
             bool? flush,
@@ -201,7 +199,7 @@ namespace Cartesia
             this.GenerationConfig = generationConfig;
             this.Language = language;
             this.OutputFormat = outputFormat ?? throw new global::System.ArgumentNullException(nameof(outputFormat));
-            this.ContextId = contextId;
+            this.ContextId = contextId ?? throw new global::System.ArgumentNullException(nameof(contextId));
             this.Continue = @continue;
             this.MaxBufferDelayMs = maxBufferDelayMs;
             this.Flush = flush;

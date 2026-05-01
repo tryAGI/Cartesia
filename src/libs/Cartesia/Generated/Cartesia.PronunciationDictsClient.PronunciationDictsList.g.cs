@@ -50,9 +50,7 @@ namespace Cartesia
         /// <summary>
         /// List all pronunciation dictionaries for the authenticated user
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>

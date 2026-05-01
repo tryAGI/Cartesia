@@ -1003,6 +1003,9 @@ paths:
   /infill/bytes:
     post:
       description: >-
+        Infill (Bytes).
+
+
         Generate audio that smoothly connects two existing audio segments. This is useful for inserting new
         speech between existing speech segments while maintaining natural transitions.
 
@@ -1030,7 +1033,7 @@ paths:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
       responses:
         '200':
-          description: OK
+          description: Audio bytes
           content:
             audio/wav:
               schema:
@@ -1408,13 +1411,19 @@ paths:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
       responses:
         '200':
-          description: OK
+          description: Audio bytes
           content:
             audio/wav:
               schema:
                 type: string
                 format: binary
-      summary: Text to Speech (Bytes)
+      summary: Text-to-Speech (Bytes)
+      description: |-
+        Text-to-Speech (Bytes).
+
+        The simplest way to stream generated audio.
+
+        See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
       security: *ref_1
       requestBody:
         required: true
@@ -1430,9 +1439,25 @@ paths:
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
       responses:
-        '204':
-          description: ''
-      summary: Text to Speech (SSE)
+        '200':
+          description: >-
+            Server-sent events stream. Each frame is `data: <json>\n\n` where the JSON payload matches
+            `TTSSSEEvent`.
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/TTSSSEEvent'
+      summary: Text-to-Speech (SSE)
+      description: |-
+        Text-to-Speech (SSE).
+
+        Supports:
+          - Streaming
+          - Timestamps
+          - context_id without transcript buffering
+
+
+        See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
       security: *ref_1
       requestBody:
         required: true
@@ -1443,6 +1468,9 @@ paths:
   /voice-changer/bytes:
     post:
       description: >-
+        Voice Changer (Bytes).
+
+
         Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation,
         but with a different voice.
 
@@ -1502,8 +1530,14 @@ paths:
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
       responses:
-        '204':
-          description: ''
+        '200':
+          description: >-
+            Server-sent events stream. Each frame is `data: <json>\n\n` where the JSON payload matches
+            `VoiceChangerSSEEvent`.
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/VoiceChangerSSEEvent'
       summary: Voice Changer (SSE)
       security: *ref_0
       requestBody:
@@ -1761,16 +1795,12 @@ components:
     CartesiaVersionHeader:
       name: Cartesia-Version
       in: header
-      description: API version header. Must be set to the API version, e.g. '2024-06-10'.
+      description: API version header.
       required: true
       schema:
         type: string
-        example: '2025-04-16'
         enum:
-          - '2024-06-10'
-          - '2024-11-13'
-          - '2025-04-16'
-          - '2025-11-04'
+          - '2026-03-01'
   securitySchemes:
     TokenAuth:
       type: http
@@ -3049,15 +3079,14 @@ components:
         - pcm_mulaw
         - pcm_alaw
       description: The encoding format for audio data sent to the STT WebSocket.
+    RequestID:
+      title: RequestID
+      type: string
+      description: A unique identifier for the network connection.
     ContextID:
       title: ContextID
       type: string
-      description: >-
-        A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
-
-
-        Some customers use unique identifiers from their own systems (such as conversation IDs) as context
-        IDs.
+      description: A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
     FlushID:
       title: FlushID
       type: integer
@@ -3077,12 +3106,12 @@ components:
         - normal
         - fast
       description: |-
-        Use `generation_config.speed` for sonic-3.
         Speed setting for the model. Defaults to `normal`.
         This feature is experimental and may not work for all voices.
         Influences the speed of the generated speech. Faster speeds may reduce hallucination rate.
-    WebSocketResponse:
-      title: WebSocketResponse
+      x-stainless-deprecation-message: Use `generation_config.speed` for sonic-3.
+    TTSWebSocketResponse:
+      title: TTSWebSocketResponse
       oneOf:
         - type: object
           properties:
@@ -3092,22 +3121,25 @@ components:
                 - chunk
             context_id:
               $ref: '#/components/schemas/ContextID'
-              nullable: true
             status_code:
               type: integer
+              description: HTTP-style status code
             done:
               type: boolean
+              description: Whether this is the final chunk for this context
             data:
               type: string
-              format: byte
+              description: Base64-encoded audio data
             step_time:
               type: number
               format: double
+              description: Server-side processing time for this chunk in milliseconds
             flush_id:
               $ref: '#/components/schemas/FlushID'
               nullable: true
           required:
             - type
+            - context_id
             - status_code
             - done
             - data
@@ -3120,17 +3152,20 @@ components:
                 - flush_done
             context_id:
               $ref: '#/components/schemas/ContextID'
-              nullable: true
             status_code:
               type: integer
+              description: HTTP-style status code
             done:
               type: boolean
+              description: Whether generation is complete
             flush_id:
               $ref: '#/components/schemas/FlushID'
             flush_done:
               type: boolean
+              description: Whether the flush is complete
           required:
             - type
+            - context_id
             - status_code
             - done
             - flush_id
@@ -3143,13 +3178,17 @@ components:
                 - done
             context_id:
               $ref: '#/components/schemas/ContextID'
-              nullable: true
             status_code:
               type: integer
+              description: HTTP-style status code
             done:
               type: boolean
+              enum:
+                - true
+              description: Whether generation is complete. Always `true` for done events.
           required:
             - type
+            - context_id
             - status_code
             - done
         - type: object
@@ -3160,11 +3199,12 @@ components:
                 - timestamps
             context_id:
               $ref: '#/components/schemas/ContextID'
-              nullable: true
             status_code:
               type: integer
+              description: HTTP-style status code
             done:
               type: boolean
+              description: Whether generation is complete
             word_timestamps:
               $ref: '#/components/schemas/WordTimestamps'
               nullable: true
@@ -3173,6 +3213,7 @@ components:
               nullable: true
           required:
             - type
+            - context_id
             - status_code
             - done
         - type: object
@@ -3181,20 +3222,31 @@ components:
               type: string
               enum:
                 - error
-            context_id:
-              $ref: '#/components/schemas/ContextID'
-              nullable: true
-            status_code:
-              type: integer
             done:
               type: boolean
-            error:
+              description: Whether generation is complete
+            title:
               type: string
+              description: Human-readable error title.
+            message:
+              type: string
+              description: Human-readable error message.
+            error_code:
+              type: string
+              description: Machine-readable error code.
+            status_code:
+              type: integer
+              description: An HTTP response status code.
+            doc_url:
+              type: string
+              description: URL to relevant documentation
+            request_id:
+              $ref: '#/components/schemas/RequestID'
+            context_id:
+              $ref: '#/components/schemas/ContextID'
           required:
             - type
-            - status_code
             - done
-            - error
         - type: object
           properties:
             type:
@@ -3203,11 +3255,12 @@ components:
                 - phoneme_timestamps
             context_id:
               $ref: '#/components/schemas/ContextID'
-              nullable: true
             status_code:
               type: integer
+              description: HTTP-style status code
             done:
               type: boolean
+              description: Whether generation is complete
             phoneme_timestamps:
               $ref: '#/components/schemas/PhonemeTimestamps'
               nullable: true
@@ -3216,83 +3269,85 @@ components:
               nullable: true
           required:
             - type
+            - context_id
             - status_code
             - done
       discriminator:
         propertyName: type
-    WebSocketTTSOutput:
-      title: WebSocketTTSOutput
-      type: object
-      properties:
-        word_timestamps:
-          $ref: '#/components/schemas/WordTimestamps'
-          nullable: true
-        phoneme_timestamps:
-          $ref: '#/components/schemas/PhonemeTimestamps'
-          nullable: true
-        audio:
-          nullable: true
-        context_id:
-          $ref: '#/components/schemas/ContextID'
-          nullable: true
-        flush_id:
-          $ref: '#/components/schemas/FlushID'
-          nullable: true
-        flush_done:
-          type: boolean
-          nullable: true
-    WebSocketStreamOptions:
-      title: WebSocketStreamOptions
-      type: object
-      properties:
-        timeout:
-          type: number
-          format: double
-          nullable: true
     WordTimestamps:
       title: WordTimestamps
       type: object
+      description: Word-level timing information.
       properties:
         words:
           type: array
           items:
             type: string
+          description: List of words in order.
         start:
           type: array
           items:
             type: number
-            format: double
+          description: Start times in seconds for each word.
         end:
           type: array
           items:
             type: number
-            format: double
+          description: End times in seconds for each word.
       required:
         - words
         - start
         - end
+      word_timestamps:
+        words:
+          - Hello
+          - world
+        start:
+          - 0
+          - 0.5
+        end:
+          - 0.4
+          - 0.9
     PhonemeTimestamps:
       title: PhonemeTimestamps
       type: object
+      description: Phoneme-level timing information.
       properties:
         phonemes:
           type: array
           items:
             type: string
+          description: List of phonemes in order.
         start:
           type: array
           items:
             type: number
-            format: double
+          description: Start times in seconds for each phoneme.
         end:
           type: array
           items:
             type: number
-            format: double
+          description: End times in seconds for each phoneme.
       required:
         - phonemes
         - start
         - end
+      example:
+        phonemes:
+          - h
+          - ə
+          - l
+          - oʊ
+        start:
+          - 0.093
+          - 0.174
+          - 0.255
+          - 0.337
+        end:
+          - 0.174
+          - 0.255
+          - 0.337
+          - 0.418
     CancelContextRequest:
       title: CancelContextRequest
       type: object
@@ -3333,7 +3388,6 @@ components:
           $ref: '#/components/schemas/WebSocketRawOutputFormat'
         context_id:
           $ref: '#/components/schemas/ContextID'
-          nullable: true
         continue:
           type: boolean
           nullable: true
@@ -3396,6 +3450,7 @@ components:
         - transcript
         - voice
         - output_format
+        - context_id
     WebSocketRawOutputFormat:
       title: WebSocketRawOutputFormat
       type: object
@@ -3419,78 +3474,13 @@ components:
         - container
         - encoding
         - sample_rate
-    WebSocketRequest:
-      title: WebSocketRequest
+    TTSWebSocketRequest:
+      title: TTSWebSocketRequest
       oneOf:
         - description: Use this to generate speech for a transcript.
           $ref: '#/components/schemas/GenerationRequest'
         - description: Use this to cancel a context, so that no more messages are generated for that context.
           $ref: '#/components/schemas/CancelContextRequest'
-    WebSocketTTSRequest:
-      title: WebSocketTTSRequest
-      type: object
-      properties:
-        model_id:
-          type: string
-          description: >-
-            The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for
-            available models.
-          x-stainless-naming:
-            python:
-              property_name: llm_model_id
-        output_format:
-          $ref: '#/components/schemas/OutputFormat'
-          nullable: true
-        transcript:
-          type: string
-          nullable: true
-        voice:
-          $ref: '#/components/schemas/TTSRequestVoiceSpecifier'
-        language:
-          type: string
-          nullable: true
-        generation_config:
-          $ref: '#/components/schemas/GenerationConfig'
-        add_timestamps:
-          type: boolean
-          nullable: true
-          default: false
-          description: >-
-            Whether to return word-level timestamps. If `false` (default), no word timestamps will be produced
-            at all. If `true`, the server will return timestamp events containing word-level timing
-            information.
-        add_phoneme_timestamps:
-          type: boolean
-          nullable: true
-          default: false
-          description: >-
-            Whether to return phoneme-level timestamps. If `false` (default), no phoneme timestamps will be
-            produced. If `true`, the server will return timestamp events containing phoneme-level timing
-            information.
-        use_normalized_timestamps:
-          type: boolean
-          nullable: true
-        pronunciation_dict_id:
-          type: string
-          nullable: true
-          description: >-
-            The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are
-            supported by `sonic-3` models and newer.
-        continue:
-          type: boolean
-          nullable: true
-          default: false
-        context_id:
-          type: string
-          nullable: true
-        max_buffer_delay_ms:
-          type: integer
-          nullable: true
-        speed:
-          $ref: '#/components/schemas/ModelSpeed'
-      required:
-        - model_id
-        - voice
     TTSRequest:
       title: TTSRequest
       type: object
@@ -3687,6 +3677,355 @@ components:
         - transcript
         - voice
         - output_format
+    TTSSSEEvent:
+      title: TTSSSEEvent
+      description: An event emitted by the TTS SSE stream.
+      oneOf:
+        - $ref: '#/components/schemas/TTSSSEChunkEvent'
+        - $ref: '#/components/schemas/TTSSSETimestampsEvent'
+        - $ref: '#/components/schemas/TTSSSEPhonemeTimestampsEvent'
+        - $ref: '#/components/schemas/TTSSSEDoneEvent'
+        - $ref: '#/components/schemas/TTSSSEErrorEvent'
+      discriminator:
+        propertyName: type
+        mapping:
+          chunk: '#/components/schemas/TTSSSEChunkEvent'
+          timestamps: '#/components/schemas/TTSSSETimestampsEvent'
+          phoneme_timestamps: '#/components/schemas/TTSSSEPhonemeTimestampsEvent'
+          done: '#/components/schemas/TTSSSEDoneEvent'
+          error: '#/components/schemas/TTSSSEErrorEvent'
+    TTSSSEChunkEvent:
+      title: TTSSSEChunkEvent
+      description: Audio data chunk.
+      type: object
+      example:
+        type: chunk
+        done: false
+        status_code: 206
+        step_time: 123
+        context_id: 50dc3b5e-5841-4aa1-9f94-60cfb9aead79
+        data: aSDinaTvuI8gbWludGxpZnk=
+      properties:
+        type:
+          type: string
+          enum:
+            - chunk
+          description: Event type identifier.
+        done:
+          type: boolean
+          enum:
+            - false
+          description: Whether this is the final event for the request. Always `false` for chunk events.
+        context_id:
+          $ref: '#/components/schemas/ContextID'
+          nullable: true
+          description: The context ID echoed back from the request, if one was provided.
+        data:
+          type: string
+          description: Base64-encoded audio data.
+        step_time:
+          type: number
+          description: Server-side processing time for this chunk in milliseconds.
+        status_code:
+          type: integer
+          description: HTTP-style status code.
+      required:
+        - type
+        - done
+        - data
+        - step_time
+        - status_code
+    TTSSSETimestampsEvent:
+      title: TTSSSETimestampsEvent
+      description: Word-level timing information.
+      type: object
+      example:
+        type: timestamps
+        done: false
+        status_code: 206
+        context_id: 872ec12d-bc63-4e1e-a241-4f58c879d105
+        word_timestamps:
+          words:
+            - Hello
+            - world
+          start:
+            - 0
+            - 0.5
+          end:
+            - 0.4
+            - 0.9
+      properties:
+        type:
+          type: string
+          enum:
+            - timestamps
+          description: Event type identifier.
+        done:
+          type: boolean
+          enum:
+            - false
+          description: Whether this is the final event for the request. Always `false` for timestamps events.
+        context_id:
+          $ref: '#/components/schemas/ContextID'
+          nullable: true
+          description: The context ID echoed back from the request, if one was provided.
+        word_timestamps:
+          $ref: '#/components/schemas/WordTimestamps'
+          description: Word-level timing information.
+        status_code:
+          type: integer
+          description: HTTP-style status code.
+      required:
+        - type
+        - done
+        - word_timestamps
+        - status_code
+    TTSSSEPhonemeTimestampsEvent:
+      title: TTSSSEPhonemeTimestampsEvent
+      description: Phoneme-level timing information.
+      type: object
+      example:
+        type: phoneme_timestamps
+        done: false
+        status_code: 206
+        context_id: 872ec12d-bc63-4e1e-a241-4f58c879d105
+        phoneme_timestamps:
+          phonemes:
+            - h
+            - ə
+            - l
+            - oʊ
+          start:
+            - 0.093
+            - 0.174
+            - 0.255
+            - 0.337
+          end:
+            - 0.174
+            - 0.255
+            - 0.337
+            - 0.418
+      properties:
+        type:
+          type: string
+          enum:
+            - phoneme_timestamps
+          description: Event type identifier.
+        done:
+          type: boolean
+          enum:
+            - false
+          description: Whether this is the final event for the request. Always `false` for phoneme_timestamps events.
+        context_id:
+          $ref: '#/components/schemas/ContextID'
+          nullable: true
+          description: The context ID echoed back from the request, if one was provided.
+        phoneme_timestamps:
+          $ref: '#/components/schemas/PhonemeTimestamps'
+          description: Phoneme-level timing information.
+        status_code:
+          type: integer
+          description: HTTP-style status code.
+      required:
+        - type
+        - done
+        - phoneme_timestamps
+        - status_code
+    TTSSSEDoneEvent:
+      title: TTSSSEDoneEvent
+      description: Generation completion signal. Final event in the stream.
+      type: object
+      example:
+        type: done
+        done: true
+        status_code: 206
+        context_id: 50dc3b5e-5841-4aa1-9f94-60cfb9aead79
+      properties:
+        type:
+          type: string
+          enum:
+            - done
+          description: Event type identifier.
+        done:
+          type: boolean
+          enum:
+            - true
+          description: Whether generation is complete. Always `true` for done events.
+        context_id:
+          $ref: '#/components/schemas/ContextID'
+          nullable: true
+          description: The context ID echoed back from the request, if one was provided.
+        status_code:
+          type: integer
+          description: HTTP-style status code.
+      required:
+        - type
+        - done
+        - status_code
+    TTSSSEErrorEvent:
+      title: TTSSSEErrorEvent
+      description: Error information for the TTS SSE request.
+      type: object
+      example:
+        type: error
+        done: true
+        title: Invalid model
+        message: The model is not valid, make sure it is a valid model ID.
+        error_code: model_not_found
+        status_code: 400
+        doc_url: https://docs.cartesia.ai/build-with-cartesia/tts-models/latest
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+        context_id: 50dc3b5e-5841-4aa1-9f94-60cfb9aead79
+      properties:
+        type:
+          type: string
+          enum:
+            - error
+          description: Event type identifier.
+        done:
+          type: boolean
+          description: Whether generation is complete.
+        status_code:
+          type: integer
+          description: An HTTP response status code.
+        title:
+          type: string
+          description: Human-readable error title.
+        message:
+          type: string
+          description: Human-readable error message.
+        error_code:
+          type: string
+          nullable: true
+          description: Machine-readable error code.
+        request_id:
+          type: string
+          description: Unique identifier for this request.
+        doc_url:
+          type: string
+          nullable: true
+          description: URL to relevant documentation.
+      required:
+        - type
+        - done
+        - status_code
+        - title
+        - message
+        - request_id
+    VoiceChangerSSEEvent:
+      title: VoiceChangerSSEEvent
+      description: An event emitted by the Voice Changer SSE stream.
+      oneOf:
+        - $ref: '#/components/schemas/VoiceChangerSSEChunk'
+        - $ref: '#/components/schemas/VoiceChangerSSEDone'
+        - $ref: '#/components/schemas/VoiceChangerSSEError'
+    VoiceChangerSSEChunk:
+      title: VoiceChangerSSEChunk
+      description: Audio data chunk.
+      type: object
+      example:
+        done: false
+        status_code: 206
+        step_time: 123
+        data: aSDinaTvuI8gbWludGxpZnk=
+        sample_rate: 44100
+      properties:
+        status_code:
+          type: integer
+          enum:
+            - 206
+          description: HTTP-style status code. Always `206` for chunk events.
+        done:
+          type: boolean
+          enum:
+            - false
+          description: Whether this is the final event for the request. Always `false` for chunk events.
+        data:
+          type: string
+          description: Base64-encoded audio data.
+        sample_rate:
+          type: integer
+          description: The sample rate of the audio in Hz.
+        step_time:
+          type: number
+          description: Server-side processing time for this chunk in milliseconds.
+      required:
+        - status_code
+        - done
+        - data
+        - sample_rate
+        - step_time
+    VoiceChangerSSEDone:
+      title: VoiceChangerSSEDone
+      description: Generation completion signal. Final event in the stream.
+      type: object
+      example:
+        done: true
+        status_code: 200
+      properties:
+        status_code:
+          type: integer
+          enum:
+            - 200
+          description: HTTP-style status code. Always `200` for done events.
+        done:
+          type: boolean
+          enum:
+            - true
+          description: Whether generation is complete. Always `true` for done events.
+      required:
+        - status_code
+        - done
+    VoiceChangerSSEError:
+      title: VoiceChangerSSEError
+      description: Error information for the Voice Changer SSE request.
+      type: object
+      example:
+        type: error
+        done: true
+        title: Invalid voice
+        message: The voice is not valid, make sure it is a valid voice ID.
+        error_code: voice_not_found
+        status_code: 400
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+      properties:
+        type:
+          type: string
+          enum:
+            - error
+          description: Event type identifier.
+        done:
+          type: boolean
+          enum:
+            - true
+          description: Whether generation is complete. Always `true` for error events.
+        status_code:
+          type: integer
+          description: An HTTP response status code.
+        title:
+          type: string
+          description: Human-readable error title.
+        message:
+          type: string
+          description: Human-readable error message.
+        error_code:
+          type: string
+          nullable: true
+          description: Machine-readable error code.
+        request_id:
+          type: string
+          description: Unique identifier for this request.
+        doc_url:
+          type: string
+          nullable: true
+          description: URL to relevant documentation.
+      required:
+        - type
+        - done
+        - status_code
+        - title
+        - message
+        - request_id
     SupportedLanguage:
       title: SupportedLanguage
       type: string
@@ -3874,74 +4213,6 @@ components:
         - raw
         - wav
         - mp3
-    StreamingResponse:
-      title: StreamingResponse
-      oneOf:
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - chunk
-            context_id:
-              $ref: '#/components/schemas/ContextID'
-              nullable: true
-            status_code:
-              type: integer
-            done:
-              type: boolean
-            data:
-              type: string
-              format: byte
-            step_time:
-              type: number
-              format: double
-            flush_id:
-              $ref: '#/components/schemas/FlushID'
-              nullable: true
-          required:
-            - type
-            - status_code
-            - done
-            - data
-            - step_time
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - done
-            context_id:
-              $ref: '#/components/schemas/ContextID'
-              nullable: true
-            status_code:
-              type: integer
-            done:
-              type: boolean
-          required:
-            - type
-            - status_code
-            - done
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - error
-            context_id:
-              $ref: '#/components/schemas/ContextID'
-              nullable: true
-            status_code:
-              type: integer
-            done:
-              type: boolean
-            error:
-              type: string
-          required:
-            - type
-            - status_code
-            - done
-            - error
     VoiceId:
       title: VoiceId
       type: string
@@ -4192,22 +4463,6 @@ components:
         - description
         - language
         - original_speaker_gender
-    Weight:
-      title: Weight
-      type: number
-      format: double
-      description: The weight of the voice or embedding in the mix. If weights do not sum to 1, they will be normalized.
-    IdSpecifier:
-      title: IdSpecifier
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/VoiceId'
-        weight:
-          $ref: '#/components/schemas/Weight'
-      required:
-        - id
-        - weight
 servers:
   - url: https://api.cartesia.ai
     description: Production

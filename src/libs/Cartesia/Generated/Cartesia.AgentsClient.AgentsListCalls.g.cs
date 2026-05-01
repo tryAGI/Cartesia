@@ -55,9 +55,7 @@ namespace Cartesia
         /// List Calls<br/>
         /// Lists calls sorted by start time in descending order for a specific agent. `agent_id` is required and if you want to include `transcript` in the response, add `expand=transcript` to the request. This endpoint is paginated.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="expand"></param>
         /// <param name="startingAfter"></param>

@@ -52,9 +52,7 @@ namespace Cartesia
         /// <summary>
         /// Paginated list of files in a dataset
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id"></param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>

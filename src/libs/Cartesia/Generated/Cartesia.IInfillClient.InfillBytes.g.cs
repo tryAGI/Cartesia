@@ -6,6 +6,7 @@ namespace Cartesia
     {
         /// <summary>
         /// Infill (Bytes)<br/>
+        /// Infill (Bytes).<br/>
         /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
         /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
         /// At least one of `left_audio` or `right_audio` must be provided.<br/>
@@ -17,9 +18,7 @@ namespace Cartesia
         /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
         ///   - This helps the model generate more natural transitions
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -32,6 +31,7 @@ namespace Cartesia
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Infill (Bytes)<br/>
+        /// Infill (Bytes).<br/>
         /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
         /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
         /// At least one of `left_audio` or `right_audio` must be provided.<br/>
@@ -43,9 +43,7 @@ namespace Cartesia
         /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
         ///   - This helps the model generate more natural transitions
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="leftAudio"></param>
         /// <param name="leftAudioname"></param>
         /// <param name="rightAudio"></param>
