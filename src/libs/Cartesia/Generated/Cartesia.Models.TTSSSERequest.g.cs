@@ -53,7 +53,6 @@ namespace Cartesia
         public global::Cartesia.SupportedLanguage? Language { get; set; }
 
         /// <summary>
-        /// Use `generation_config.speed` for sonic-3.<br/>
         /// Speed setting for the model. Defaults to `normal`.<br/>
         /// This feature is experimental and may not work for all voices.<br/>
         /// Influences the speed of the generated speech. Faster speeds may reduce hallucination rate.<br/>
@@ -91,8 +90,7 @@ namespace Cartesia
         public string? PronunciationDictId { get; set; }
 
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
         public string? ContextId { get; set; }
@@ -134,8 +132,7 @@ namespace Cartesia
         /// The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are supported by `sonic-3` models and newer.
         /// </param>
         /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -43,9 +43,7 @@ namespace Cartesia
         /// <summary>
         /// Upload a new file to a dataset
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -435,9 +433,7 @@ namespace Cartesia
         /// <summary>
         /// Upload a new file to a dataset
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id"></param>
         /// <param name="file"></param>
         /// <param name="filename"></param>

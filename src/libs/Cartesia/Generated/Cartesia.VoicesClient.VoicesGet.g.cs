@@ -48,9 +48,7 @@ namespace Cartesia
         /// <summary>
         /// Get Voice
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id">
         /// The ID of the voice.
         /// </param>

@@ -9,8 +9,7 @@ namespace Cartesia
     public sealed partial class CancelContextRequest
     {
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -33,8 +32,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="CancelContextRequest" /> class.
         /// </summary>
         /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </param>
         /// <param name="cancel">
         /// Whether to cancel the context, so that no more messages are generated for that context.

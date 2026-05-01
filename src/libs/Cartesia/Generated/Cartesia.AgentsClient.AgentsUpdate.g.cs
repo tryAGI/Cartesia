@@ -48,9 +48,7 @@ namespace Cartesia
         /// <summary>
         /// Update Agent
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -406,9 +404,7 @@ namespace Cartesia
         /// <summary>
         /// Update Agent
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="name">
         /// The name of the agent.

@@ -8,9 +8,7 @@ namespace Cartesia
         /// Add Metric to Agent<br/>
         /// Add a metric to an agent. Once the metric is added, it will be run on all calls made to the agent automatically from that point onwards.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="metricId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

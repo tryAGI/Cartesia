@@ -8,9 +8,7 @@ namespace Cartesia
         /// Download Call Audio<br/>
         /// The downloaded audio file is in .wav format. This endpoint streams the audio file content (WAV format) to the client.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="callId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

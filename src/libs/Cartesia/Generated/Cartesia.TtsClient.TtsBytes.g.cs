@@ -62,11 +62,12 @@ namespace Cartesia
             ref byte[] content);
 
         /// <summary>
-        /// Text to Speech (Bytes)
+        /// Text-to-Speech (Bytes)<br/>
+        /// Text-to-Speech (Bytes).<br/>
+        /// The simplest way to stream generated audio.<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -407,11 +408,12 @@ namespace Cartesia
             }
         }
         /// <summary>
-        /// Text to Speech (Bytes)
+        /// Text-to-Speech (Bytes)<br/>
+        /// Text-to-Speech (Bytes).<br/>
+        /// The simplest way to stream generated audio.<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="modelId">
         /// The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for available models.
         /// </param>

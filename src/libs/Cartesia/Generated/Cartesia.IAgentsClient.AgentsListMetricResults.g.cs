@@ -8,9 +8,7 @@ namespace Cartesia
         /// List Metric Results<br/>
         /// Paginated list of metric results. Filter results using the query parameters,
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="metricId"></param>

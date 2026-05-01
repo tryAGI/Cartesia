@@ -57,9 +57,7 @@ namespace Cartesia
         /// Export Metric Results<br/>
         /// Export metric results to a CSV file. This endpoint streams at most 100k results as the CSV file directly to the client. Use the optional filters to narrow down the results to export.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="metricId"></param>

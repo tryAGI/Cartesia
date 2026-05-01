@@ -8,9 +8,7 @@ namespace Cartesia
         /// Update Voice<br/>
         /// Update the name, description, and gender of a voice. To set the gender back to the default, set the gender to `null`. If gender is not specified, the gender will not be updated.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id">
         /// The ID of the voice.
         /// </param>
@@ -29,9 +27,7 @@ namespace Cartesia
         /// Update Voice<br/>
         /// Update the name, description, and gender of a voice. To set the gender back to the default, set the gender to `null`. If gender is not specified, the gender will not be updated.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="id">
         /// The ID of the voice.
         /// </param>

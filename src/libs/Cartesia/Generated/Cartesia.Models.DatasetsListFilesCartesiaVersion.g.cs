@@ -4,26 +4,14 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Example: 2025-04-16
+    /// 
     /// </summary>
     public enum DatasetsListFilesCartesiaVersion
     {
         /// <summary>
         /// 
         /// </summary>
-        x20240610,
-        /// <summary>
-        /// 
-        /// </summary>
-        x20241113,
-        /// <summary>
-        /// 
-        /// </summary>
-        x20250416,
-        /// <summary>
-        /// 
-        /// </summary>
-        x20251104,
+        x20260301,
     }
 
     /// <summary>
@@ -38,10 +26,7 @@ namespace Cartesia
         {
             return value switch
             {
-                DatasetsListFilesCartesiaVersion.x20240610 => "2024-06-10",
-                DatasetsListFilesCartesiaVersion.x20241113 => "2024-11-13",
-                DatasetsListFilesCartesiaVersion.x20250416 => "2025-04-16",
-                DatasetsListFilesCartesiaVersion.x20251104 => "2025-11-04",
+                DatasetsListFilesCartesiaVersion.x20260301 => "2026-03-01",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +37,7 @@ namespace Cartesia
         {
             return value switch
             {
-                "2024-06-10" => DatasetsListFilesCartesiaVersion.x20240610,
-                "2024-11-13" => DatasetsListFilesCartesiaVersion.x20241113,
-                "2025-04-16" => DatasetsListFilesCartesiaVersion.x20250416,
-                "2025-11-04" => DatasetsListFilesCartesiaVersion.x20251104,
+                "2026-03-01" => DatasetsListFilesCartesiaVersion.x20260301,
                 _ => null,
             };
         }
