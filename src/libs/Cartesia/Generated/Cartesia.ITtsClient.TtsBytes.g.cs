@@ -30,6 +30,40 @@ namespace Cartesia
         /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
         /// <param name="cartesiaVersion"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::System.IO.Stream> TtsBytesAsStreamAsync(
+            global::Cartesia.TtsBytesCartesiaVersion cartesiaVersion,
+
+            global::Cartesia.TTSRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Text-to-Speech (Bytes)<br/>
+        /// Text-to-Speech (Bytes).<br/>
+        /// The simplest way to stream generated audio.<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<byte[]>> TtsBytesAsResponseAsync(
+            global::Cartesia.TtsBytesCartesiaVersion cartesiaVersion,
+
+            global::Cartesia.TTSRequest request,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Text-to-Speech (Bytes)<br/>
+        /// Text-to-Speech (Bytes).<br/>
+        /// The simplest way to stream generated audio.<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="modelId">
         /// The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for available models.
         /// </param>
