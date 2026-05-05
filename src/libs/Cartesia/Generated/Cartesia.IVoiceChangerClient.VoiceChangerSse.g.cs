@@ -45,5 +45,35 @@ namespace Cartesia
             int? outputFormatBitRate = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Voice Changer (SSE)
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
+        /// <param name="clip">
+        /// The stream to send as the multipart 'clip' file part.
+        /// </param>
+        /// <param name="clipname"></param>
+        /// <param name="voiceId"></param>
+        /// <param name="outputFormatContainer"></param>
+        /// <param name="outputFormatSampleRate"></param>
+        /// <param name="outputFormatEncoding"></param>
+        /// <param name="outputFormatBitRate">
+        /// Required for `mp3` containers.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.VoiceChangerSSEEvent> VoiceChangerSseAsync(
+            global::Cartesia.VoiceChangerSseCartesiaVersion cartesiaVersion,
+            global::System.IO.Stream? clip = default,
+            string? clipname = default,
+            string? voiceId = default,
+            global::Cartesia.OutputFormatContainer? outputFormatContainer = default,
+            int? outputFormatSampleRate = default,
+            global::Cartesia.RawEncoding? outputFormatEncoding = default,
+            int? outputFormatBitRate = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
