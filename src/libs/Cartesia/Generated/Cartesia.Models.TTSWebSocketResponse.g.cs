@@ -29,6 +29,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickChunk(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant1? value)
+        {
+            value = Chunk;
+            return IsChunk;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant2? FlushDone { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FlushDone))]
 #endif
         public bool IsFlushDone => FlushDone != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFlushDone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant2? value)
+        {
+            value = FlushDone;
+            return IsFlushDone;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickDone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant3? value)
+        {
+            value = Done;
+            return IsDone;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant4? Timestamps { get; init; }
 #else
@@ -76,6 +115,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Timestamps))]
 #endif
         public bool IsTimestamps => Timestamps != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTimestamps(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant4? value)
+        {
+            value = Timestamps;
+            return IsTimestamps;
+        }
 
         /// <summary>
         /// 
@@ -97,6 +149,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickError(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant5? value)
+        {
+            value = Error;
+            return IsError;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant6? PhonemeTimestamps { get; init; }
 #else
@@ -110,6 +175,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PhonemeTimestamps))]
 #endif
         public bool IsPhonemeTimestamps => PhonemeTimestamps != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPhonemeTimestamps(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.TTSWebSocketResponseVariant6? value)
+        {
+            value = PhonemeTimestamps;
+            return IsPhonemeTimestamps;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -274,12 +352,12 @@ namespace Cartesia
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant1?, TResult>? chunk = null,
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant2?, TResult>? flushDone = null,
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant3?, TResult>? done = null,
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant4?, TResult>? timestamps = null,
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant5?, TResult>? error = null,
-            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant6?, TResult>? phonemeTimestamps = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant1, TResult>? chunk = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant2, TResult>? flushDone = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant3, TResult>? done = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant4, TResult>? timestamps = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant5, TResult>? error = null,
+            global::System.Func<global::Cartesia.TTSWebSocketResponseVariant6, TResult>? phonemeTimestamps = null,
             bool validate = true)
         {
             if (validate)
@@ -319,12 +397,60 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant1?>? chunk = null,
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant2?>? flushDone = null,
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant3?>? done = null,
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant4?>? timestamps = null,
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant5?>? error = null,
-            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant6?>? phonemeTimestamps = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant1>? chunk = null,
+
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant2>? flushDone = null,
+
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant3>? done = null,
+
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant4>? timestamps = null,
+
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant5>? error = null,
+
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant6>? phonemeTimestamps = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsChunk)
+            {
+                chunk?.Invoke(Chunk!);
+            }
+            else if (IsFlushDone)
+            {
+                flushDone?.Invoke(FlushDone!);
+            }
+            else if (IsDone)
+            {
+                done?.Invoke(Done!);
+            }
+            else if (IsTimestamps)
+            {
+                timestamps?.Invoke(Timestamps!);
+            }
+            else if (IsError)
+            {
+                error?.Invoke(Error!);
+            }
+            else if (IsPhonemeTimestamps)
+            {
+                phonemeTimestamps?.Invoke(PhonemeTimestamps!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant1>? chunk = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant2>? flushDone = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant3>? done = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant4>? timestamps = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant5>? error = null,
+            global::System.Action<global::Cartesia.TTSWebSocketResponseVariant6>? phonemeTimestamps = null,
             bool validate = true)
         {
             if (validate)

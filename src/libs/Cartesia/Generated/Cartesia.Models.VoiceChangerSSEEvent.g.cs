@@ -28,6 +28,19 @@ namespace Cartesia
         public bool IsVoiceChangerSSEChunk => VoiceChangerSSEChunk != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVoiceChangerSSEChunk(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.VoiceChangerSSEChunk? value)
+        {
+            value = VoiceChangerSSEChunk;
+            return IsVoiceChangerSSEChunk;
+        }
+
+        /// <summary>
         /// Generation completion signal. Final event in the stream.<br/>
         /// Example: {"done":true,"status_code":200}
         /// </summary>
@@ -46,6 +59,19 @@ namespace Cartesia
         public bool IsVoiceChangerSSEDone => VoiceChangerSSEDone != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVoiceChangerSSEDone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.VoiceChangerSSEDone? value)
+        {
+            value = VoiceChangerSSEDone;
+            return IsVoiceChangerSSEDone;
+        }
+
+        /// <summary>
         /// Error information for the Voice Changer SSE request.<br/>
         /// Example: {"type":"error","done":true,"title":"Invalid voice","message":"The voice is not valid, make sure it is a valid voice ID.","error_code":"voice_not_found","status_code":400,"request_id":"2ff8af53-4d38-479d-8287-58940f01c701"}
         /// </summary>
@@ -62,6 +88,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(VoiceChangerSSEError))]
 #endif
         public bool IsVoiceChangerSSEError => VoiceChangerSSEError != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVoiceChangerSSEError(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.VoiceChangerSSEError? value)
+        {
+            value = VoiceChangerSSEError;
+            return IsVoiceChangerSSEError;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -160,9 +199,9 @@ namespace Cartesia
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.VoiceChangerSSEChunk?, TResult>? voiceChangerSSEChunk = null,
-            global::System.Func<global::Cartesia.VoiceChangerSSEDone?, TResult>? voiceChangerSSEDone = null,
-            global::System.Func<global::Cartesia.VoiceChangerSSEError?, TResult>? voiceChangerSSEError = null,
+            global::System.Func<global::Cartesia.VoiceChangerSSEChunk, TResult>? voiceChangerSSEChunk = null,
+            global::System.Func<global::Cartesia.VoiceChangerSSEDone, TResult>? voiceChangerSSEDone = null,
+            global::System.Func<global::Cartesia.VoiceChangerSSEError, TResult>? voiceChangerSSEError = null,
             bool validate = true)
         {
             if (validate)
@@ -190,9 +229,39 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.VoiceChangerSSEChunk?>? voiceChangerSSEChunk = null,
-            global::System.Action<global::Cartesia.VoiceChangerSSEDone?>? voiceChangerSSEDone = null,
-            global::System.Action<global::Cartesia.VoiceChangerSSEError?>? voiceChangerSSEError = null,
+            global::System.Action<global::Cartesia.VoiceChangerSSEChunk>? voiceChangerSSEChunk = null,
+
+            global::System.Action<global::Cartesia.VoiceChangerSSEDone>? voiceChangerSSEDone = null,
+
+            global::System.Action<global::Cartesia.VoiceChangerSSEError>? voiceChangerSSEError = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsVoiceChangerSSEChunk)
+            {
+                voiceChangerSSEChunk?.Invoke(VoiceChangerSSEChunk!);
+            }
+            else if (IsVoiceChangerSSEDone)
+            {
+                voiceChangerSSEDone?.Invoke(VoiceChangerSSEDone!);
+            }
+            else if (IsVoiceChangerSSEError)
+            {
+                voiceChangerSSEError?.Invoke(VoiceChangerSSEError!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Cartesia.VoiceChangerSSEChunk>? voiceChangerSSEChunk = null,
+            global::System.Action<global::Cartesia.VoiceChangerSSEDone>? voiceChangerSSEDone = null,
+            global::System.Action<global::Cartesia.VoiceChangerSSEError>? voiceChangerSSEError = null,
             bool validate = true)
         {
             if (validate)
