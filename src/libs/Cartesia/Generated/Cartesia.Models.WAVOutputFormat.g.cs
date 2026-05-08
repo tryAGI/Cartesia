@@ -25,6 +25,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RawOutputFormat))]
 #endif
         public bool IsRawOutputFormat => RawOutputFormat != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRawOutputFormat(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.RawOutputFormat? value)
+        {
+            value = RawOutputFormat;
+            return IsRawOutputFormat;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Cartesia
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.RawOutputFormat?, TResult>? rawOutputFormat = null,
+            global::System.Func<global::Cartesia.RawOutputFormat, TResult>? rawOutputFormat = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.RawOutputFormat?>? rawOutputFormat = null,
+            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRawOutputFormat)
+            {
+                rawOutputFormat?.Invoke(RawOutputFormat!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
             bool validate = true)
         {
             if (validate)

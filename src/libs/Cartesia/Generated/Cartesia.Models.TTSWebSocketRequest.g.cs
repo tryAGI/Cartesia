@@ -29,6 +29,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickGenerationRequest(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.GenerationRequest? value)
+        {
+            value = GenerationRequest;
+            return IsGenerationRequest;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.CancelContextRequest? CancelContextRequest { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelContextRequest))]
 #endif
         public bool IsCancelContextRequest => CancelContextRequest != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCancelContextRequest(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.CancelContextRequest? value)
+        {
+            value = CancelContextRequest;
+            return IsCancelContextRequest;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Cartesia
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.GenerationRequest?, TResult>? generationRequest = null,
-            global::System.Func<global::Cartesia.CancelContextRequest?, TResult>? cancelContextRequest = null,
+            global::System.Func<global::Cartesia.GenerationRequest, TResult>? generationRequest = null,
+            global::System.Func<global::Cartesia.CancelContextRequest, TResult>? cancelContextRequest = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.GenerationRequest?>? generationRequest = null,
-            global::System.Action<global::Cartesia.CancelContextRequest?>? cancelContextRequest = null,
+            global::System.Action<global::Cartesia.GenerationRequest>? generationRequest = null,
+
+            global::System.Action<global::Cartesia.CancelContextRequest>? cancelContextRequest = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsGenerationRequest)
+            {
+                generationRequest?.Invoke(GenerationRequest!);
+            }
+            else if (IsCancelContextRequest)
+            {
+                cancelContextRequest?.Invoke(CancelContextRequest!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Cartesia.GenerationRequest>? generationRequest = null,
+            global::System.Action<global::Cartesia.CancelContextRequest>? cancelContextRequest = null,
             bool validate = true)
         {
             if (validate)

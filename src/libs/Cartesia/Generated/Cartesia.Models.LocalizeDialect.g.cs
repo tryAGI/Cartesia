@@ -29,6 +29,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLocalizeEnglishDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeEnglishDialect? value)
+        {
+            value = LocalizeEnglishDialect;
+            return IsLocalizeEnglishDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.LocalizeSpanishDialect? LocalizeSpanishDialect { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LocalizeSpanishDialect))]
 #endif
         public bool IsLocalizeSpanishDialect => LocalizeSpanishDialect != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLocalizeSpanishDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeSpanishDialect? value)
+        {
+            value = LocalizeSpanishDialect;
+            return IsLocalizeSpanishDialect;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLocalizePortugueseDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizePortugueseDialect? value)
+        {
+            value = LocalizePortugueseDialect;
+            return IsLocalizePortugueseDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.LocalizeFrenchDialect? LocalizeFrenchDialect { get; init; }
 #else
@@ -76,6 +115,19 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LocalizeFrenchDialect))]
 #endif
         public bool IsLocalizeFrenchDialect => LocalizeFrenchDialect != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLocalizeFrenchDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeFrenchDialect? value)
+        {
+            value = LocalizeFrenchDialect;
+            return IsLocalizeFrenchDialect;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -231,6 +283,42 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Cartesia.LocalizeEnglishDialect?>? localizeEnglishDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizeSpanishDialect?>? localizeSpanishDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizePortugueseDialect?>? localizePortugueseDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizeFrenchDialect?>? localizeFrenchDialect = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLocalizeEnglishDialect)
+            {
+                localizeEnglishDialect?.Invoke(LocalizeEnglishDialect!);
+            }
+            else if (IsLocalizeSpanishDialect)
+            {
+                localizeSpanishDialect?.Invoke(LocalizeSpanishDialect!);
+            }
+            else if (IsLocalizePortugueseDialect)
+            {
+                localizePortugueseDialect?.Invoke(LocalizePortugueseDialect!);
+            }
+            else if (IsLocalizeFrenchDialect)
+            {
+                localizeFrenchDialect?.Invoke(LocalizeFrenchDialect!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::Cartesia.LocalizeEnglishDialect?>? localizeEnglishDialect = null,
             global::System.Action<global::Cartesia.LocalizeSpanishDialect?>? localizeSpanishDialect = null,
             global::System.Action<global::Cartesia.LocalizePortugueseDialect?>? localizePortugueseDialect = null,
