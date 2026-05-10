@@ -41,6 +41,13 @@ namespace Cartesia
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoiceChangerSSEChunk PickVoiceChangerSSEChunk() => IsVoiceChangerSSEChunk
+            ? VoiceChangerSSEChunk!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEChunk' but the value was {ToString()}.");
+
+        /// <summary>
         /// Generation completion signal. Final event in the stream.<br/>
         /// Example: {"done":true,"status_code":200}
         /// </summary>
@@ -72,6 +79,13 @@ namespace Cartesia
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoiceChangerSSEDone PickVoiceChangerSSEDone() => IsVoiceChangerSSEDone
+            ? VoiceChangerSSEDone!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEDone' but the value was {ToString()}.");
+
+        /// <summary>
         /// Error information for the Voice Changer SSE request.<br/>
         /// Example: {"type":"error","done":true,"title":"Invalid voice","message":"The voice is not valid, make sure it is a valid voice ID.","error_code":"voice_not_found","status_code":400,"request_id":"2ff8af53-4d38-479d-8287-58940f01c701"}
         /// </summary>
@@ -101,6 +115,13 @@ namespace Cartesia
             value = VoiceChangerSSEError;
             return IsVoiceChangerSSEError;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoiceChangerSSEError PickVoiceChangerSSEError() => IsVoiceChangerSSEError
+            ? VoiceChangerSSEError!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEError' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

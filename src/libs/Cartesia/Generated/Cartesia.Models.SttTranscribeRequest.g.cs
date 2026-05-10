@@ -82,5 +82,6 @@ namespace Cartesia
         public SttTranscribeRequest()
         {
         }
+
     }
 }

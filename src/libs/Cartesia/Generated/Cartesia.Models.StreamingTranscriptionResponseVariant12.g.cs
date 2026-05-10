@@ -40,5 +40,6 @@ namespace Cartesia
         public StreamingTranscriptionResponseVariant12()
         {
         }
+
     }
 }

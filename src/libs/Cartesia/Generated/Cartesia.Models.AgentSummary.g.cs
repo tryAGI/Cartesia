@@ -190,5 +190,6 @@ namespace Cartesia
         public AgentSummary()
         {
         }
+
     }
 }

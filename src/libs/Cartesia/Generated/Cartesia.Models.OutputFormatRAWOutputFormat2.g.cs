@@ -40,5 +40,6 @@ namespace Cartesia
         public OutputFormatRAWOutputFormat2()
         {
         }
+
     }
 }

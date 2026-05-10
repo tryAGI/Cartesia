@@ -50,5 +50,6 @@ namespace Cartesia
         public MP3OutputFormat()
         {
         }
+
     }
 }

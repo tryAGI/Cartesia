@@ -46,6 +46,13 @@ namespace Cartesia
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSSSEChunkEvent PickChunk() => IsChunk
+            ? Chunk!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Chunk' but the value was {ToString()}.");
+
+        /// <summary>
         /// Word-level timing information.<br/>
         /// Example: {"type":"timestamps","done":false,"status_code":206,"context_id":"872ec12d-bc63-4e1e-a241-4f58c879d105","word_timestamps":{"words":["Hello","world"],"start":[0,0.5],"end":[0.4,0.9]}}
         /// </summary>
@@ -75,6 +82,13 @@ namespace Cartesia
             value = Timestamps;
             return IsTimestamps;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSSSETimestampsEvent PickTimestamps() => IsTimestamps
+            ? Timestamps!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Timestamps' but the value was {ToString()}.");
 
         /// <summary>
         /// Phoneme-level timing information.<br/>
@@ -108,6 +122,13 @@ namespace Cartesia
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSSSEPhonemeTimestampsEvent PickPhonemeTimestamps() => IsPhonemeTimestamps
+            ? PhonemeTimestamps!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PhonemeTimestamps' but the value was {ToString()}.");
+
+        /// <summary>
         /// Generation completion signal. Final event in the stream.<br/>
         /// Example: {"type":"done","done":true,"status_code":206,"context_id":"50dc3b5e-5841-4aa1-9f94-60cfb9aead79"}
         /// </summary>
@@ -139,6 +160,13 @@ namespace Cartesia
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSSSEDoneEvent PickDone() => IsDone
+            ? Done!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
+
+        /// <summary>
         /// Error information for the TTS SSE request.<br/>
         /// Example: {"type":"error","done":true,"title":"Invalid model","message":"The model is not valid, make sure it is a valid model ID.","error_code":"model_not_found","status_code":400,"doc_url":"https://docs.cartesia.ai/build-with-cartesia/tts-models/latest","request_id":"2ff8af53-4d38-479d-8287-58940f01c701","context_id":"50dc3b5e-5841-4aa1-9f94-60cfb9aead79"}
         /// </summary>
@@ -168,6 +196,13 @@ namespace Cartesia
             value = Error;
             return IsError;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSSSEErrorEvent PickError() => IsError
+            ? Error!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -38,6 +38,13 @@ namespace Cartesia
             value = RawOutputFormat;
             return IsRawOutputFormat;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.RawOutputFormat PickRawOutputFormat() => IsRawOutputFormat
+            ? RawOutputFormat!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RawOutputFormat' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

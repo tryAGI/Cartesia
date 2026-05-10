@@ -42,6 +42,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage> PickStreamingTranscriptionResponseVariant1() => IsStreamingTranscriptionResponseVariant1
+            ? StreamingTranscriptionResponseVariant1!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? StreamingTranscriptionResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Cartesia
             value = StreamingTranscriptionResponseVariant2;
             return IsStreamingTranscriptionResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage> PickStreamingTranscriptionResponseVariant2() => IsStreamingTranscriptionResponseVariant2
+            ? StreamingTranscriptionResponseVariant2!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant2' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -102,6 +116,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage> PickStreamingTranscriptionResponseVariant3() => IsStreamingTranscriptionResponseVariant3
+            ? StreamingTranscriptionResponseVariant3!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant3' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? StreamingTranscriptionResponseVariant4 { get; init; }
 #else
@@ -128,6 +149,13 @@ namespace Cartesia
             value = StreamingTranscriptionResponseVariant4;
             return IsStreamingTranscriptionResponseVariant4;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage> PickStreamingTranscriptionResponseVariant4() => IsStreamingTranscriptionResponseVariant4
+            ? StreamingTranscriptionResponseVariant4!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant4' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

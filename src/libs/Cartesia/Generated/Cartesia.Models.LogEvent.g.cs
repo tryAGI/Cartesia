@@ -66,5 +66,6 @@ namespace Cartesia
         public LogEvent()
         {
         }
+
     }
 }
