@@ -77,6 +77,10 @@ namespace Cartesia
 
             typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseVariant6TypeNullableJsonConverter),
 
+            typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerNullableJsonConverter),
@@ -524,6 +528,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseVariant6Type), TypeInfoPropertyName = "TTSWebSocketResponseVariant6Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhonemeTimestamps))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "TTSWebSocketResponseDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CancelContextRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationRequest))]

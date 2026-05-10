@@ -107,6 +107,7 @@ namespace Cartesia.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEChunk), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEChunk> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEChunk).Name}");
                     voiceChangerSSEChunk = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -117,9 +118,13 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (voiceChangerSSEChunk == null && voiceChangerSSEDone == null && voiceChangerSSEError == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEDone), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEDone> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEDone).Name}");
                     voiceChangerSSEDone = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -130,9 +135,13 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (voiceChangerSSEChunk == null && voiceChangerSSEDone == null && voiceChangerSSEError == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEError), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEError> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEError).Name}");
                     voiceChangerSSEError = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

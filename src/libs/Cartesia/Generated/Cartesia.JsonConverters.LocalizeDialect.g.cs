@@ -168,7 +168,10 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (localizeEnglishDialect == null && localizeSpanishDialect == null && localizePortugueseDialect == null && localizeFrenchDialect == null)
+            {
                 try
                 {
 
@@ -182,7 +185,10 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (localizeEnglishDialect == null && localizeSpanishDialect == null && localizePortugueseDialect == null && localizeFrenchDialect == null)
+            {
                 try
                 {
 
@@ -196,7 +202,10 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (localizeEnglishDialect == null && localizeSpanishDialect == null && localizePortugueseDialect == null && localizeFrenchDialect == null)
+            {
                 try
                 {
 
