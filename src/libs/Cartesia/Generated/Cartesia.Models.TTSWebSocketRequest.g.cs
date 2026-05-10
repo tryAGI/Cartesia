@@ -42,6 +42,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.GenerationRequest PickGenerationRequest() => IsGenerationRequest
+            ? GenerationRequest!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GenerationRequest' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.CancelContextRequest? CancelContextRequest { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Cartesia
             value = CancelContextRequest;
             return IsCancelContextRequest;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.CancelContextRequest PickCancelContextRequest() => IsCancelContextRequest
+            ? CancelContextRequest!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CancelContextRequest' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

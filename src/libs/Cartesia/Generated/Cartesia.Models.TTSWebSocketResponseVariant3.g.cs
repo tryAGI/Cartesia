@@ -76,5 +76,6 @@ namespace Cartesia
         public TTSWebSocketResponseVariant3()
         {
         }
+
     }
 }

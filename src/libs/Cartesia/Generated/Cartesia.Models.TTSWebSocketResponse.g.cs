@@ -47,6 +47,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant1 PickChunk() => IsChunk
+            ? Chunk!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Chunk' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant2? FlushDone { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Cartesia
             value = FlushDone;
             return IsFlushDone;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant2 PickFlushDone() => IsFlushDone
+            ? FlushDone!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FlushDone' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant3 PickDone() => IsDone
+            ? Done!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant4? Timestamps { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Cartesia
             value = Timestamps;
             return IsTimestamps;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant4 PickTimestamps() => IsTimestamps
+            ? Timestamps!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Timestamps' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -167,6 +195,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant5 PickError() => IsError
+            ? Error!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant6? PhonemeTimestamps { get; init; }
 #else
@@ -193,6 +228,13 @@ namespace Cartesia
             value = PhonemeTimestamps;
             return IsPhonemeTimestamps;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TTSWebSocketResponseVariant6 PickPhonemeTimestamps() => IsPhonemeTimestamps
+            ? PhonemeTimestamps!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PhonemeTimestamps' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

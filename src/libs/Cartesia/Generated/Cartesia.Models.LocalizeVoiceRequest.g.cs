@@ -104,5 +104,6 @@ namespace Cartesia
         public LocalizeVoiceRequest()
         {
         }
+
     }
 }

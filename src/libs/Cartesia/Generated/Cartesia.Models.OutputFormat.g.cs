@@ -42,6 +42,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat> PickRAWOutputFormat() => IsRAWOutputFormat
+            ? RAWOutputFormat!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RAWOutputFormat' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>? WAVOutputFormat { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?> PickWAVOutputFormat() => IsWAVOutputFormat
+            ? WAVOutputFormat!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'WAVOutputFormat' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>? MP3OutputFormat { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace Cartesia
             value = MP3OutputFormat;
             return IsMP3OutputFormat;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat> PickMP3OutputFormat() => IsMP3OutputFormat
+            ? MP3OutputFormat!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MP3OutputFormat' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

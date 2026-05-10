@@ -102,5 +102,6 @@ namespace Cartesia
         public TTSWebSocketResponseVariant2()
         {
         }
+
     }
 }
