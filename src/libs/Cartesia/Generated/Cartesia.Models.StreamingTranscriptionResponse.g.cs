@@ -149,6 +149,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant1(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>? value) => new StreamingTranscriptionResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StreamingTranscriptionResponse(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage> value) => new StreamingTranscriptionResponse((global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>?)value);
 
         /// <summary>
@@ -163,6 +168,11 @@ namespace Cartesia
         {
             StreamingTranscriptionResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant2(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? value) => new StreamingTranscriptionResponse(value);
 
         /// <summary>
         /// 
@@ -185,6 +195,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant3(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>? value) => new StreamingTranscriptionResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StreamingTranscriptionResponse(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage> value) => new StreamingTranscriptionResponse((global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>?)value);
 
         /// <summary>
@@ -199,6 +214,11 @@ namespace Cartesia
         {
             StreamingTranscriptionResponseVariant4 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant4(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? value) => new StreamingTranscriptionResponse(value);
 
         /// <summary>
         /// 

@@ -214,6 +214,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSWebSocketResponse FromChunk(global::Cartesia.TTSWebSocketResponseVariant1? value) => new TTSWebSocketResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant2 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant2?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Cartesia
         {
             FlushDone = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSWebSocketResponse FromFlushDone(global::Cartesia.TTSWebSocketResponseVariant2? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSWebSocketResponse FromDone(global::Cartesia.TTSWebSocketResponseVariant3? value) => new TTSWebSocketResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant4 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant4?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Cartesia
         {
             Timestamps = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSWebSocketResponse FromTimestamps(global::Cartesia.TTSWebSocketResponseVariant4? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSWebSocketResponse FromError(global::Cartesia.TTSWebSocketResponseVariant5? value) => new TTSWebSocketResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant6 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant6?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Cartesia
         {
             PhonemeTimestamps = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSWebSocketResponse FromPhonemeTimestamps(global::Cartesia.TTSWebSocketResponseVariant6? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
         /// 

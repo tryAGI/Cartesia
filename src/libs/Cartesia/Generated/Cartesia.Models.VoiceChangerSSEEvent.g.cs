@@ -122,6 +122,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static VoiceChangerSSEEvent FromVoiceChangerSSEChunk(global::Cartesia.VoiceChangerSSEChunk? value) => new VoiceChangerSSEEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEDone value) => new VoiceChangerSSEEvent((global::Cartesia.VoiceChangerSSEDone?)value);
 
         /// <summary>
@@ -140,6 +145,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static VoiceChangerSSEEvent FromVoiceChangerSSEDone(global::Cartesia.VoiceChangerSSEDone? value) => new VoiceChangerSSEEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEError value) => new VoiceChangerSSEEvent((global::Cartesia.VoiceChangerSSEError?)value);
 
         /// <summary>
@@ -154,6 +164,11 @@ namespace Cartesia
         {
             VoiceChangerSSEError = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static VoiceChangerSSEEvent FromVoiceChangerSSEError(global::Cartesia.VoiceChangerSSEError? value) => new VoiceChangerSSEEvent(value);
 
         /// <summary>
         /// 

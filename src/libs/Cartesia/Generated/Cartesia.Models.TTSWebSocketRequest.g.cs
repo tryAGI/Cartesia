@@ -89,6 +89,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSWebSocketRequest FromGenerationRequest(global::Cartesia.GenerationRequest? value) => new TTSWebSocketRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSWebSocketRequest(global::Cartesia.CancelContextRequest value) => new TTSWebSocketRequest((global::Cartesia.CancelContextRequest?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Cartesia
         {
             CancelContextRequest = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSWebSocketRequest FromCancelContextRequest(global::Cartesia.CancelContextRequest? value) => new TTSWebSocketRequest(value);
 
         /// <summary>
         /// 

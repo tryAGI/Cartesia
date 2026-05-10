@@ -189,6 +189,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSSSEEvent FromChunk(global::Cartesia.TTSSSEChunkEvent? value) => new TTSSSEEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSETimestampsEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSETimestampsEvent?)value);
 
         /// <summary>
@@ -203,6 +208,11 @@ namespace Cartesia
         {
             Timestamps = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSSSEEvent FromTimestamps(global::Cartesia.TTSSSETimestampsEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
         /// 
@@ -225,6 +235,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSSSEEvent FromPhonemeTimestamps(global::Cartesia.TTSSSEPhonemeTimestampsEvent? value) => new TTSSSEEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEDoneEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEDoneEvent?)value);
 
         /// <summary>
@@ -243,6 +258,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static TTSSSEEvent FromDone(global::Cartesia.TTSSSEDoneEvent? value) => new TTSSSEEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEErrorEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEErrorEvent?)value);
 
         /// <summary>
@@ -257,6 +277,11 @@ namespace Cartesia
         {
             Error = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TTSSSEEvent FromError(global::Cartesia.TTSSSEErrorEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
         /// 
