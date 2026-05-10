@@ -149,6 +149,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static LocalizeDialect FromLocalizeEnglishDialect(global::Cartesia.LocalizeEnglishDialect? value) => new LocalizeDialect(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LocalizeDialect(global::Cartesia.LocalizeSpanishDialect value) => new LocalizeDialect((global::Cartesia.LocalizeSpanishDialect?)value);
 
         /// <summary>
@@ -163,6 +168,11 @@ namespace Cartesia
         {
             LocalizeSpanishDialect = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LocalizeDialect FromLocalizeSpanishDialect(global::Cartesia.LocalizeSpanishDialect? value) => new LocalizeDialect(value);
 
         /// <summary>
         /// 
@@ -185,6 +195,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static LocalizeDialect FromLocalizePortugueseDialect(global::Cartesia.LocalizePortugueseDialect? value) => new LocalizeDialect(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LocalizeDialect(global::Cartesia.LocalizeFrenchDialect value) => new LocalizeDialect((global::Cartesia.LocalizeFrenchDialect?)value);
 
         /// <summary>
@@ -199,6 +214,11 @@ namespace Cartesia
         {
             LocalizeFrenchDialect = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LocalizeDialect FromLocalizeFrenchDialect(global::Cartesia.LocalizeFrenchDialect? value) => new LocalizeDialect(value);
 
         /// <summary>
         /// 

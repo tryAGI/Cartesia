@@ -119,6 +119,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static OutputFormat FromRAWOutputFormat(global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>? value) => new OutputFormat(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator OutputFormat(global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?> value) => new OutputFormat((global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static OutputFormat FromWAVOutputFormat(global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>? value) => new OutputFormat(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator OutputFormat(global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat> value) => new OutputFormat((global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace Cartesia
         {
             MP3OutputFormat = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static OutputFormat FromMP3OutputFormat(global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>? value) => new OutputFormat(value);
 
         /// <summary>
         /// 

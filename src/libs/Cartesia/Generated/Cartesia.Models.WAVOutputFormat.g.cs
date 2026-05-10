@@ -59,6 +59,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static WAVOutputFormat FromRawOutputFormat(global::Cartesia.RawOutputFormat? value) => new WAVOutputFormat(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             RawOutputFormat as object 
             ;
