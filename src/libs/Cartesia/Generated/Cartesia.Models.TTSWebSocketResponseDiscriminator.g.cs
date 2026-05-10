@@ -12,7 +12,8 @@ namespace Cartesia
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeJsonConverter))]
+        public global::Cartesia.TTSWebSocketResponseDiscriminatorType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TTSWebSocketResponseDiscriminator(
-            string? type)
+            global::Cartesia.TTSWebSocketResponseDiscriminatorType? type)
         {
             this.Type = type;
         }

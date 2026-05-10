@@ -12,6 +12,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public global::Cartesia.TTSWebSocketResponseDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant1? Chunk { get; init; }
 #else
@@ -300,6 +305,7 @@ namespace Cartesia
         /// 
         /// </summary>
         public TTSWebSocketResponse(
+            global::Cartesia.TTSWebSocketResponseDiscriminatorType? type,
             global::Cartesia.TTSWebSocketResponseVariant1? chunk,
             global::Cartesia.TTSWebSocketResponseVariant2? flushDone,
             global::Cartesia.TTSWebSocketResponseVariant3? done,
@@ -308,6 +314,8 @@ namespace Cartesia
             global::Cartesia.TTSWebSocketResponseVariant6? phonemeTimestamps
             )
         {
+            Type = type;
+
             Chunk = chunk;
             FlushDone = flushDone;
             Done = done;

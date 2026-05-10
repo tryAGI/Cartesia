@@ -138,7 +138,10 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (rAWOutputFormat == null && wAVOutputFormat == null && mP3OutputFormat == null)
+            {
                 try
                 {
 
@@ -152,7 +155,10 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (rAWOutputFormat == null && wAVOutputFormat == null && mP3OutputFormat == null)
+            {
                 try
                 {
 

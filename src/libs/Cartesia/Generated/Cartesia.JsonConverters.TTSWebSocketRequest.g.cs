@@ -106,6 +106,7 @@ namespace Cartesia.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.GenerationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.GenerationRequest> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.GenerationRequest).Name}");
                     generationRequest = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -116,9 +117,13 @@ namespace Cartesia.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (generationRequest == null && cancelContextRequest == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.CancelContextRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.CancelContextRequest> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.CancelContextRequest).Name}");
                     cancelContextRequest = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
