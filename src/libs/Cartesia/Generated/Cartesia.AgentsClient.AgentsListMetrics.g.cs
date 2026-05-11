@@ -174,6 +174,8 @@ namespace Cartesia
                     startingAfter: startingAfter,
                     limit: limit);
 
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
+
                 return __httpRequest;
             }
 

@@ -152,6 +152,8 @@ namespace Cartesia
                     httpRequestMessage: __httpRequest,
                     cartesiaVersion: cartesiaVersion!);
 
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
+
                 return __httpRequest;
             }
 

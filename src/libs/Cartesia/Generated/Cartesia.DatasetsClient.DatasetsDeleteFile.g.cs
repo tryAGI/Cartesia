@@ -161,6 +161,8 @@ namespace Cartesia
                     id: id!,
                     fileID: fileID!);
 
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
+
                 return __httpRequest;
             }
 
