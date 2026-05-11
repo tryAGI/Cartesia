@@ -214,6 +214,8 @@ namespace Cartesia
                     startDate: startDate,
                     endDate: endDate);
 
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
+
                 return __httpRequest;
             }
 
@@ -631,6 +633,8 @@ namespace Cartesia
                     callId: callId,
                     startDate: startDate,
                     endDate: endDate);
+
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
 
                 return __httpRequest;
             }
