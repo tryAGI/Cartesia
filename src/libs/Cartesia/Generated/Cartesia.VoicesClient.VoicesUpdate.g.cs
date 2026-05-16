@@ -485,8 +485,8 @@ namespace Cartesia
         public async global::System.Threading.Tasks.Task<global::Cartesia.Voice> VoicesUpdateAsync(
             global::Cartesia.VoicesUpdateCartesiaVersion cartesiaVersion,
             string id,
-            string name,
-            string description,
+            string? name = default,
+            string? description = default,
             global::Cartesia.GenderPresentation? gender = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)

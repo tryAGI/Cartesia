@@ -1689,6 +1689,10 @@ paths:
                   description: Optional base voice ID that the cloned voice is derived from.
                   $ref: '#/components/schemas/VoiceId'
                   nullable: true
+              required:
+                - clip
+                - name
+                - language
   /voices/{id}:
     delete:
       operationId: voices_delete
@@ -1800,7 +1804,7 @@ components:
       schema:
         type: string
         enum:
-          - '2026-03-01'
+          - '2025-11-04'
   securitySchemes:
     TokenAuth:
       type: http
@@ -3385,7 +3389,7 @@ components:
         language:
           $ref: '#/components/schemas/SupportedLanguage'
         output_format:
-          $ref: '#/components/schemas/WebSocketRawOutputFormat'
+          $ref: '#/components/schemas/RawOutputFormat'
         context_id:
           $ref: '#/components/schemas/ContextID'
         continue:
@@ -3451,29 +3455,6 @@ components:
         - voice
         - output_format
         - context_id
-    WebSocketRawOutputFormat:
-      title: WebSocketRawOutputFormat
-      type: object
-      properties:
-        container:
-          type: string
-          enum:
-            - raw
-        encoding:
-          $ref: '#/components/schemas/RawEncoding'
-        sample_rate:
-          type: integer
-          enum:
-            - 8000
-            - 16000
-            - 22050
-            - 24000
-            - 44100
-            - 48000
-      required:
-        - container
-        - encoding
-        - sample_rate
     TTSWebSocketRequest:
       title: TTSWebSocketRequest
       oneOf:
@@ -4118,6 +4099,10 @@ components:
       title: RawOutputFormat
       type: object
       properties:
+        container:
+          type: string
+          enum:
+            - raw
         encoding:
           $ref: '#/components/schemas/RawEncoding'
         sample_rate:
@@ -4130,6 +4115,7 @@ components:
             - 44100
             - 48000
       required:
+        - container
         - encoding
         - sample_rate
     SSEOutputFormat:
@@ -4341,9 +4327,6 @@ components:
         gender:
           $ref: '#/components/schemas/GenderPresentation'
           nullable: true
-      required:
-        - name
-        - description
     LocalizeTargetLanguage:
       title: LocalizeTargetLanguage
       type: string

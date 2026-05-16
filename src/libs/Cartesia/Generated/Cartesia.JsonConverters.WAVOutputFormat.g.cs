@@ -28,6 +28,7 @@ namespace Cartesia.JsonConverters
             }
 
             var __score0 = 0;
+            if (__jsonProps.Contains("container")) __score0++;
             if (__jsonProps.Contains("encoding")) __score0++;
             if (__jsonProps.Contains("sample_rate")) __score0++;
             var __bestScore = 0;
