@@ -81,10 +81,6 @@ namespace Cartesia
 
             typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeNullableJsonConverter),
 
-            typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.WebSocketRawOutputFormatContainerNullableJsonConverter),
-
             typeof(global::Cartesia.JsonConverters.EmotionJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.EmotionNullableJsonConverter),
@@ -132,6 +128,10 @@ namespace Cartesia
             typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerNullableJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.SSEOutputFormatContainerJsonConverter),
 
@@ -535,9 +535,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifier))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SupportedLanguage), TypeInfoPropertyName = "SupportedLanguage2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketRawOutputFormat))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WebSocketRawOutputFormatContainer), TypeInfoPropertyName = "WebSocketRawOutputFormatContainer2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawEncoding), TypeInfoPropertyName = "RawEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawOutputFormat))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketRequest), TypeInfoPropertyName = "TTSWebSocketRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormat), TypeInfoPropertyName = "OutputFormat2")]
@@ -565,7 +563,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>), TypeInfoPropertyName = "AllOfOutputFormatRAWOutputFormat2RawOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormat2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormatContainer), TypeInfoPropertyName = "OutputFormatRAWOutputFormatContainer2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawOutputFormat))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat?>), TypeInfoPropertyName = "AllOfOutputFormatWAVOutputFormat2WAVOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormat2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormatContainer), TypeInfoPropertyName = "OutputFormatWAVOutputFormatContainer2")]
@@ -574,6 +571,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormat2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormatContainer), TypeInfoPropertyName = "OutputFormatMP3OutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MP3OutputFormat))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawOutputFormatContainer), TypeInfoPropertyName = "RawOutputFormatContainer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawEncoding), TypeInfoPropertyName = "RawEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SSEOutputFormatContainer), TypeInfoPropertyName = "SSEOutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifierMode), TypeInfoPropertyName = "TTSRequestVoiceSpecifierMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatContainer), TypeInfoPropertyName = "OutputFormatContainer2")]

@@ -11,7 +11,7 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        x20260301,
+        x20251104,
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace Cartesia
         {
             return value switch
             {
-                AgentsListMetricResultsCartesiaVersion.x20260301 => "2026-03-01",
+                AgentsListMetricResultsCartesiaVersion.x20251104 => "2025-11-04",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -37,7 +37,7 @@ namespace Cartesia
         {
             return value switch
             {
-                "2026-03-01" => AgentsListMetricResultsCartesiaVersion.x20260301,
+                "2025-11-04" => AgentsListMetricResultsCartesiaVersion.x20251104,
                 _ => null,
             };
         }

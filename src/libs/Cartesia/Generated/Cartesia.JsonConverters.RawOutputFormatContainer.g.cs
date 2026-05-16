@@ -3,10 +3,10 @@
 namespace Cartesia.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class WebSocketRawOutputFormatContainerJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.WebSocketRawOutputFormatContainer>
+    public sealed class RawOutputFormatContainerJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.RawOutputFormatContainer>
     {
         /// <inheritdoc />
-        public override global::Cartesia.WebSocketRawOutputFormatContainer Read(
+        public override global::Cartesia.RawOutputFormatContainer Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Cartesia.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.WebSocketRawOutputFormatContainerExtensions.ToEnum(stringValue) ?? default;
+                        return global::Cartesia.RawOutputFormatContainerExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Cartesia.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Cartesia.WebSocketRawOutputFormatContainer)numValue;
+                    return (global::Cartesia.RawOutputFormatContainer)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Cartesia.WebSocketRawOutputFormatContainer);
+                    return default(global::Cartesia.RawOutputFormatContainer);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,12 @@ namespace Cartesia.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Cartesia.WebSocketRawOutputFormatContainer value,
+            global::Cartesia.RawOutputFormatContainer value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Cartesia.WebSocketRawOutputFormatContainerExtensions.ToValueString(value));
+            writer.WriteStringValue(global::Cartesia.RawOutputFormatContainerExtensions.ToValueString(value));
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_format")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.WebSocketRawOutputFormat OutputFormat { get; set; }
+        public required global::Cartesia.RawOutputFormat OutputFormat { get; set; }
 
         /// <summary>
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
@@ -181,7 +181,7 @@ namespace Cartesia
             string modelId,
             string transcript,
             global::Cartesia.TTSRequestVoiceSpecifier voice,
-            global::Cartesia.WebSocketRawOutputFormat outputFormat,
+            global::Cartesia.RawOutputFormat outputFormat,
             string contextId,
             global::Cartesia.GenerationConfig? generationConfig,
             global::Cartesia.SupportedLanguage? language,
