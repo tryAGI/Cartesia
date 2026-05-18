@@ -1935,7 +1935,7 @@ components:
         next_page:
           type: string
           nullable: true
-          description: The cursor for the next page of results.
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of calls.
       required:
         - data
     PhoneNumberSummary:
@@ -2260,13 +2260,11 @@ components:
           description: List of metrics.
         has_more:
           type: boolean
-          description: >-
-            Whether there are more metrics to fetch (using `starting_after=id`, where id is the ID of the last
-            Metric in the current response).
+          description: Whether there are more pages of metrics.
         next_page:
           type: string
           nullable: true
-          description: The ID of the last Metric in the current response as a cursor for the next page of results.
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of metrics.
       required:
         - data
         - has_more
@@ -2345,13 +2343,13 @@ components:
           description: List of metric results.
         has_more:
           type: boolean
-          description: >-
-            Whether there are more metric results to fetch (using `starting_after=id`, where id is the ID of
-            the last MetricResult in the current response).
+          description: Whether there are more pages of metric results.
         next_page:
           type: string
           nullable: true
-          description: The cursor for the next page of results.
+          description: >-
+            An ID that can be passed as `starting_after` or `ending_before` to get the next page of metric
+            results.
       required:
         - data
         - has_more
@@ -2651,14 +2649,18 @@ components:
           description: List of dataset objects
         has_more:
           type: boolean
-          description: Whether there are more datasets available
+          description: Whether there are more pages of datasets.
+        next_page:
+          type: string
+          nullable: true
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of datasets.
       required:
         - data
         - has_more
     PaginatedDatasetFiles:
       title: PaginatedDatasetFiles
       type: object
-      description: Paginated list of files in a dataset
+      description: Paginated list of files in a dataset.
       properties:
         data:
           type: array
@@ -2667,7 +2669,11 @@ components:
           description: List of file objects
         has_more:
           type: boolean
-          description: Whether there are more files available
+          description: Whether there are more pages of files.
+        next_page:
+          type: string
+          nullable: true
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of files.
       required:
         - data
         - has_more
@@ -2769,7 +2775,7 @@ components:
     PaginatedFineTunes:
       title: PaginatedFineTunes
       type: object
-      description: Paginated list of fine-tunes
+      description: Paginated list of fine-tunes.
       properties:
         data:
           type: array
@@ -2778,14 +2784,20 @@ components:
           description: List of fine-tune objects
         has_more:
           type: boolean
-          description: Whether there are more fine-tunes available
+          description: Whether there are more pages of fine-tunes.
+        next_page:
+          type: string
+          nullable: true
+          description: >-
+            An ID that can be passed as `starting_after` or `ending_before` to get the next page of
+            fine-tunes.
       required:
         - data
         - has_more
     PaginatedVoices:
       title: PaginatedVoices
       type: object
-      description: Paginated list of voices created from a fine-tune
+      description: Paginated list of voices created from a fine-tune.
       properties:
         data:
           type: array
@@ -2794,7 +2806,11 @@ components:
           description: List of voice objects
         has_more:
           type: boolean
-          description: Whether there are more voices available
+          description: Whether there are more pages of voices.
+        next_page:
+          $ref: '#/components/schemas/VoiceId'
+          nullable: true
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of voices.
       required:
         - data
         - has_more
@@ -2878,7 +2894,7 @@ components:
     PaginatedPronunciationDicts:
       title: PaginatedPronunciationDicts
       type: object
-      description: Paginated list of pronunciation dictionaries
+      description: Paginated list of pronunciation dictionaries.
       properties:
         data:
           type: array
@@ -2887,7 +2903,13 @@ components:
           description: List of pronunciation dictionary objects
         has_more:
           type: boolean
-          description: Whether there are more dictionaries available
+          description: Whether there are more pages of dictionaries.
+        next_page:
+          type: string
+          nullable: true
+          description: >-
+            An ID that can be passed as `starting_after` or `ending_before` to get the next page of
+            dictionaries.
       required:
         - data
         - has_more
@@ -4152,9 +4174,26 @@ components:
     WAVOutputFormat:
       title: WAVOutputFormat
       type: object
-      properties: {}
-      allOf:
-        - $ref: '#/components/schemas/RawOutputFormat'
+      properties:
+        container:
+          type: string
+          enum:
+            - wav
+        encoding:
+          $ref: '#/components/schemas/RawEncoding'
+        sample_rate:
+          type: integer
+          enum:
+            - 8000
+            - 16000
+            - 22050
+            - 24000
+            - 44100
+            - 48000
+      required:
+        - container
+        - encoding
+        - sample_rate
     MP3OutputFormat:
       title: MP3OutputFormat
       type: object
@@ -4243,6 +4282,14 @@ components:
             null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
         language:
           $ref: '#/components/schemas/SupportedLanguage'
+        country:
+          title: VoiceCountry
+          type: string
+          nullable: true
+          example: US
+          description: >-
+            The country associated with the voice, as an ISO 3166-1 alpha-2 code when available (e.g. `US`,
+            `GB`, `FR`).
       required:
         - id
         - is_owner
@@ -4302,15 +4349,11 @@ components:
           description: The paginated list of Voices.
         has_more:
           type: boolean
-          description: >-
-            Whether there are more Voices to fetch (using `starting_after=id`, where id is the ID of the last
-            Voice in the current response).
+          description: Whether there are more pages of voices.
         next_page:
           $ref: '#/components/schemas/VoiceId'
           nullable: true
-          description: >-
-            (Deprecated - use the id of the last Voice in the current response instead.) An ID that can be
-            passed as `starting_after` to get the next page of Voices.
+          description: An ID that can be passed as `starting_after` or `ending_before` to get the next page of voices.
       required:
         - data
         - has_more

@@ -16,7 +16,7 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.Voice> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more Voices to fetch (using `starting_after=id`, where id is the ID of the last Voice in the current response).
+        /// Whether there are more pages of voices.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -41,7 +41,7 @@ namespace Cartesia
         /// The paginated list of Voices.
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more Voices to fetch (using `starting_after=id`, where id is the ID of the last Voice in the current response).
+        /// Whether there are more pages of voices.
         /// </param>
         /// <param name="nextPage">
         /// The ID of the voice.
