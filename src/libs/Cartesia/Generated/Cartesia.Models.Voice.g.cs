@@ -72,6 +72,14 @@ namespace Cartesia
         public required global::Cartesia.SupportedLanguage Language { get; set; }
 
         /// <summary>
+        /// The country associated with the voice, as an ISO 3166-1 alpha-2 code when available (e.g. `US`, `GB`, `FR`).<br/>
+        /// Example: US
+        /// </summary>
+        /// <example>US</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("country")]
+        public string? Country { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -105,6 +113,10 @@ namespace Cartesia
         /// <param name="previewFileUrl">
         /// A URL to download a preview audio file for this voice. Useful to avoid consuming credits when looking for the right voice. The URL requires the same Authorization header. Voice previews may be changed, moved, or deleted so you should avoid storing the URL permanently. This property will be null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
         /// </param>
+        /// <param name="country">
+        /// The country associated with the voice, as an ISO 3166-1 alpha-2 code when available (e.g. `US`, `GB`, `FR`).<br/>
+        /// Example: US
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -117,7 +129,8 @@ namespace Cartesia
             global::System.DateTime createdAt,
             global::Cartesia.SupportedLanguage language,
             global::Cartesia.GenderPresentation? gender,
-            string? previewFileUrl)
+            string? previewFileUrl,
+            string? country)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.IsOwner = isOwner;
@@ -128,6 +141,7 @@ namespace Cartesia
             this.CreatedAt = createdAt;
             this.PreviewFileUrl = previewFileUrl;
             this.Language = language;
+            this.Country = country;
         }
 
         /// <summary>

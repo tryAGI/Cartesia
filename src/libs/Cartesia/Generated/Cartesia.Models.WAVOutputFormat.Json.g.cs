@@ -2,7 +2,7 @@
 
 namespace Cartesia
 {
-    public readonly partial struct WAVOutputFormat
+    public sealed partial class WAVOutputFormat
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace Cartesia
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Cartesia.WAVOutputFormat),
-                jsonSerializerContext) as global::Cartesia.WAVOutputFormat?;
+                jsonSerializerContext) as global::Cartesia.WAVOutputFormat;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Cartesia
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Cartesia.WAVOutputFormat),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Cartesia.WAVOutputFormat?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Cartesia.WAVOutputFormat;
         }
 
         /// <summary>

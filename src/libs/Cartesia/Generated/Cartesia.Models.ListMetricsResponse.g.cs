@@ -16,14 +16,14 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.Metric> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more metrics to fetch (using `starting_after=id`, where id is the ID of the last Metric in the current response).
+        /// Whether there are more pages of metrics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
 
         /// <summary>
-        /// The ID of the last Metric in the current response as a cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of metrics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -41,10 +41,10 @@ namespace Cartesia
         /// List of metrics.
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more metrics to fetch (using `starting_after=id`, where id is the ID of the last Metric in the current response).
+        /// Whether there are more pages of metrics.
         /// </param>
         /// <param name="nextPage">
-        /// The ID of the last Metric in the current response as a cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of metrics.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
