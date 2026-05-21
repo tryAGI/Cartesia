@@ -7,7 +7,7 @@ namespace Cartesia;
 
 public sealed partial class CartesiaClient : ISpeechToTextClient
 {
-    private const SttTranscribeCartesiaVersion DefaultSttVersion = SttTranscribeCartesiaVersion.x20250416;
+    private const SttTranscribeCartesiaVersion DefaultSttVersion = SttTranscribeCartesiaVersion.x20251104;
 
     private SpeechToTextClientMetadata? _speechMetadata;
 
