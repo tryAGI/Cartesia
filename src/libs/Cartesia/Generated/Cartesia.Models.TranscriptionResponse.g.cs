@@ -75,5 +75,6 @@ namespace Cartesia
         public TranscriptionResponse()
         {
         }
+
     }
 }

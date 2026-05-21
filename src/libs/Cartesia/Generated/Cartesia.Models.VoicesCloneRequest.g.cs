@@ -12,19 +12,22 @@ namespace Cartesia
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("clip")]
-        public byte[]? Clip { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required byte[] Clip { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("clipname")]
-        public string? Clipname { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Clipname { get; set; }
 
         /// <summary>
         /// The name of the voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Name { get; set; }
 
         /// <summary>
         /// A description for the voice.
@@ -37,7 +40,8 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.SupportedLanguageJsonConverter))]
-        public global::Cartesia.SupportedLanguage? Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.SupportedLanguage Language { get; set; }
 
         /// <summary>
         /// The ID of the voice.
@@ -59,11 +63,11 @@ namespace Cartesia
         /// <param name="name">
         /// The name of the voice.
         /// </param>
-        /// <param name="description">
-        /// A description for the voice.
-        /// </param>
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// </param>
+        /// <param name="description">
+        /// A description for the voice.
         /// </param>
         /// <param name="baseVoiceId">
         /// The ID of the voice.
@@ -72,16 +76,16 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public VoicesCloneRequest(
-            byte[]? clip,
-            string? clipname,
-            string? name,
+            byte[] clip,
+            string clipname,
+            string name,
+            global::Cartesia.SupportedLanguage language,
             string? description,
-            global::Cartesia.SupportedLanguage? language,
             string? baseVoiceId)
         {
-            this.Clip = clip;
-            this.Clipname = clipname;
-            this.Name = name;
+            this.Clip = clip ?? throw new global::System.ArgumentNullException(nameof(clip));
+            this.Clipname = clipname ?? throw new global::System.ArgumentNullException(nameof(clipname));
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.Language = language;
             this.BaseVoiceId = baseVoiceId;
@@ -93,5 +97,6 @@ namespace Cartesia
         public VoicesCloneRequest()
         {
         }
+
     }
 }

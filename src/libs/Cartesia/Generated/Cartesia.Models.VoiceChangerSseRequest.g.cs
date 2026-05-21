@@ -97,5 +97,6 @@ namespace Cartesia
         public VoiceChangerSseRequest()
         {
         }
+
     }
 }

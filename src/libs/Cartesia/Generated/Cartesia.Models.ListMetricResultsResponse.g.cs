@@ -16,14 +16,14 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.MetricResult> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more metric results to fetch (using `starting_after=id`, where id is the ID of the last MetricResult in the current response).
+        /// Whether there are more pages of metric results.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
 
         /// <summary>
-        /// The cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of metric results.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -41,10 +41,10 @@ namespace Cartesia
         /// List of metric results.
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more metric results to fetch (using `starting_after=id`, where id is the ID of the last MetricResult in the current response).
+        /// Whether there are more pages of metric results.
         /// </param>
         /// <param name="nextPage">
-        /// The cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of metric results.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -65,5 +65,6 @@ namespace Cartesia
         public ListMetricResultsResponse()
         {
         }
+
     }
 }

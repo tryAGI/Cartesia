@@ -69,5 +69,6 @@ namespace Cartesia
         public GenerationConfig()
         {
         }
+
     }
 }

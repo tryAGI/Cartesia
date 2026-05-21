@@ -16,7 +16,7 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.AgentCall> Data { get; set; }
 
         /// <summary>
-        /// The cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -34,7 +34,7 @@ namespace Cartesia
         /// The list of agent calls.
         /// </param>
         /// <param name="nextPage">
-        /// The cursor for the next page of results.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of calls.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -53,5 +53,6 @@ namespace Cartesia
         public GetCallsResponse()
         {
         }
+
     }
 }

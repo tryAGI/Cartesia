@@ -11,6 +11,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("container")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerJsonConverter))]
+        public global::Cartesia.RawOutputFormatContainer Container { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawEncodingJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -34,13 +41,16 @@ namespace Cartesia
         /// </summary>
         /// <param name="encoding"></param>
         /// <param name="sampleRate"></param>
+        /// <param name="container"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RawOutputFormat(
             global::Cartesia.RawEncoding encoding,
-            int sampleRate)
+            int sampleRate,
+            global::Cartesia.RawOutputFormatContainer container)
         {
+            this.Container = container;
             this.Encoding = encoding;
             this.SampleRate = sampleRate;
         }
@@ -51,5 +61,6 @@ namespace Cartesia
         public RawOutputFormat()
         {
         }
+
     }
 }

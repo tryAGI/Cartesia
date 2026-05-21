@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Paginated list of voices created from a fine-tune
+    /// Paginated list of voices created from a fine-tune.
     /// </summary>
     public sealed partial class PaginatedVoices
     {
@@ -16,11 +16,17 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.Voice> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more voices available
+        /// Whether there are more pages of voices.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
+
+        /// <summary>
+        /// The ID of the voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
+        public string? NextPage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,17 +41,22 @@ namespace Cartesia
         /// List of voice objects
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more voices available
+        /// Whether there are more pages of voices.
+        /// </param>
+        /// <param name="nextPage">
+        /// The ID of the voice.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PaginatedVoices(
             global::System.Collections.Generic.IList<global::Cartesia.Voice> data,
-            bool hasMore)
+            bool hasMore,
+            string? nextPage)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
             this.HasMore = hasMore;
+            this.NextPage = nextPage;
         }
 
         /// <summary>
@@ -54,5 +65,6 @@ namespace Cartesia
         public PaginatedVoices()
         {
         }
+
     }
 }

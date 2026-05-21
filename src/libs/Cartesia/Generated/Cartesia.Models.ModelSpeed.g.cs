@@ -4,7 +4,6 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Use `generation_config.speed` for sonic-3.<br/>
     /// Speed setting for the model. Defaults to `normal`.<br/>
     /// This feature is experimental and may not work for all voices.<br/>
     /// Influences the speed of the generated speech. Faster speeds may reduce hallucination rate.<br/>

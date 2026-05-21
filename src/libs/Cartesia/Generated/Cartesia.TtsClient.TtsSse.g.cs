@@ -57,21 +57,25 @@ namespace Cartesia
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Text to Speech (SSE)
+        /// Text-to-Speech (SSE)<br/>
+        /// Text-to-Speech (SSE).<br/>
+        /// Supports:<br/>
+        ///   - Streaming<br/>
+        ///   - Timestamps<br/>
+        ///   - context_id without transcript buffering<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task TtsSseAsync(
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
             global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TTSSSERequest request,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
+            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
@@ -104,6 +108,7 @@ namespace Cartesia
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Cartesia.PathBuilder(
                                 path: "/tts/sse",
                                 baseUri: HttpClient.BaseAddress);
@@ -187,16 +192,23 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
                         __response = await HttpClient.SendAsync(
                 request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
                 cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -214,6 +226,8 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -223,8 +237,7 @@ namespace Cartesia
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -233,6 +246,11 @@ namespace Cartesia
                         __attempt < __maxAttempts &&
                         global::Cartesia.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Cartesia.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -249,14 +267,15 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -296,6 +315,8 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -316,75 +337,71 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
-                            if (__effectiveReadResponseAsString)
+                            try
                             {
-                                var __content = await __response.Content.ReadAsStringAsync(
-                #if NET5_0_OR_GREATER
-                                    __effectiveCancellationToken
-                #endif
-                                ).ConfigureAwait(false);
-
-                                ProcessResponseContent(
-                                    client: HttpClient,
-                                    response: __response,
-                                    content: ref __content);
-
-                                try
-                                {
-                                    __response.EnsureSuccessStatusCode();
-
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    throw new global::Cartesia.ApiException(
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                                        innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                            __response.Headers,
-                                            h => h.Key,
-                                            h => h.Value),
-                                    };
-                                }
+                                __response.EnsureSuccessStatusCode();
                             }
-                            else
+                            catch (global::System.Net.Http.HttpRequestException __ex)
                             {
+                                string? __content = null;
                                 try
                                 {
-                                    __response.EnsureSuccessStatusCode();
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    string? __content = null;
-                                    try
-                                    {
-                                        __content = await __response.Content.ReadAsStringAsync(
+                                    __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
-                                            __effectiveCancellationToken
+                                        __effectiveCancellationToken
                 #endif
-                                        ).ConfigureAwait(false);
-                                    }
-                                    catch (global::System.Exception)
-                                    {
-                                    }
-
-                                    throw new global::Cartesia.ApiException(
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                                        innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                            __response.Headers,
-                                            h => h.Key,
-                                            h => h.Value),
-                                    };
+                                    ).ConfigureAwait(false);
                                 }
+                                catch (global::System.Exception)
+                                {
+                                }
+
+                                throw new global::Cartesia.ApiException(
+                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __ex,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+
+                            using var __stream = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                __effectiveCancellationToken
+                #endif
+                            ).ConfigureAwait(false);
+
+                            await foreach (var __sseEvent in global::System.Net.ServerSentEvents.SseParser
+                                .Create(__stream).EnumerateAsync(__effectiveCancellationToken))
+                            {
+                                var __content = __sseEvent.Data;
+                                if (__content == "[DONE]")
+                                {
+                                    yield break;
+                                }
+
+                                var __streamedResponse = global::Cartesia.TTSSSEEvent.FromJson(__content, JsonSerializerContext) ??
+                                                       throw new global::Cartesia.ApiException(
+                                                           message: $"Response deserialization failed for \"{__content}\" ",
+                                                           statusCode: __response.StatusCode)
+                                                       {
+                                                           ResponseBody = __content,
+                                                           ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                                               __response.Headers,
+                                                               h => h.Key,
+                                                               h => h.Value),
+                                                       };
+
+                                yield return __streamedResponse;
                             }
 
                 }
@@ -395,11 +412,15 @@ namespace Cartesia
             }
         }
         /// <summary>
-        /// Text to Speech (SSE)
+        /// Text-to-Speech (SSE)<br/>
+        /// Text-to-Speech (SSE).<br/>
+        /// Supports:<br/>
+        ///   - Streaming<br/>
+        ///   - Timestamps<br/>
+        ///   - context_id without transcript buffering<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="modelId">
         /// The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for available models.
         /// </param>
@@ -428,13 +449,12 @@ namespace Cartesia
         /// The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are supported by `sonic-3` models and newer.
         /// </param>
         /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task TtsSseAsync(
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
             global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
             string modelId,
             string transcript,
@@ -448,7 +468,7 @@ namespace Cartesia
             string? pronunciationDictId = default,
             string? contextId = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
+            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Cartesia.TTSSSERequest
             {
@@ -465,11 +485,16 @@ namespace Cartesia
                 ContextId = contextId,
             };
 
-            await TtsSseAsync(
+            var __enumerable = TtsSseAsync(
                 cartesiaVersion: cartesiaVersion,
                 request: __request,
                 requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
+                cancellationToken: cancellationToken);
+
+            await foreach (var __response in __enumerable)
+            {
+                yield return __response;
+            }
         }
     }
 }

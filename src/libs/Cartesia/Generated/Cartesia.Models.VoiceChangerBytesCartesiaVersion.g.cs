@@ -4,22 +4,10 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Example: 2025-04-16
+    /// 
     /// </summary>
     public enum VoiceChangerBytesCartesiaVersion
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        x20240610,
-        /// <summary>
-        /// 
-        /// </summary>
-        x20241113,
-        /// <summary>
-        /// 
-        /// </summary>
-        x20250416,
         /// <summary>
         /// 
         /// </summary>
@@ -38,9 +26,6 @@ namespace Cartesia
         {
             return value switch
             {
-                VoiceChangerBytesCartesiaVersion.x20240610 => "2024-06-10",
-                VoiceChangerBytesCartesiaVersion.x20241113 => "2024-11-13",
-                VoiceChangerBytesCartesiaVersion.x20250416 => "2025-04-16",
                 VoiceChangerBytesCartesiaVersion.x20251104 => "2025-11-04",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -52,9 +37,6 @@ namespace Cartesia
         {
             return value switch
             {
-                "2024-06-10" => VoiceChangerBytesCartesiaVersion.x20240610,
-                "2024-11-13" => VoiceChangerBytesCartesiaVersion.x20241113,
-                "2025-04-16" => VoiceChangerBytesCartesiaVersion.x20250416,
                 "2025-11-04" => VoiceChangerBytesCartesiaVersion.x20251104,
                 _ => null,
             };

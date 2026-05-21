@@ -12,15 +12,13 @@ namespace Cartesia
         /// The name of the voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The description of the voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// 
@@ -49,12 +47,12 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateVoiceRequest(
-            string name,
-            string description,
+            string? name,
+            string? description,
             global::Cartesia.GenderPresentation? gender)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.Name = name;
+            this.Description = description;
             this.Gender = gender;
         }
 
@@ -64,5 +62,6 @@ namespace Cartesia
         public UpdateVoiceRequest()
         {
         }
+
     }
 }

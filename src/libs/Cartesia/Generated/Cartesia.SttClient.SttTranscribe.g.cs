@@ -74,9 +74,7 @@ namespace Cartesia
         /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
         /// The encoding format for audio data sent to the STT WebSocket.
         /// </param>
@@ -86,6 +84,47 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
+
+            global::Cartesia.SttTranscribeRequest request,
+            global::Cartesia.STTEncoding? encoding = default,
+            int? sampleRate = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await SttTranscribeAsResponseAsync(
+                cartesiaVersion: cartesiaVersion,
+
+                request: request,
+                encoding: encoding,
+                sampleRate: sampleRate,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Speech-to-Text (Batch)<br/>
+        /// Transcribes audio files into text using Cartesia's Speech-to-Text API.<br/>
+        /// Upload an audio file and receive a complete transcription response. Supports arbitrarily long audio files with automatic intelligent chunking for longer audio.<br/>
+        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
+        /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
+        /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
+        /// &lt;Note&gt;<br/>
+        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
+        /// &lt;/Note&gt;
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
+        /// <param name="encoding">
+        /// The encoding format for audio data sent to the STT WebSocket.
+        /// </param>
+        /// <param name="sampleRate"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TranscriptionResponse>> SttTranscribeAsResponseAsync(
             global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.SttTranscribeRequest request,
@@ -123,16 +162,17 @@ namespace Cartesia
             var __maxAttempts = global::Cartesia.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Cartesia.PathBuilder(
                                 path: "/stt",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("encoding", encoding?.ToValueString())
-                                .AddOptionalParameter("sample_rate", sampleRate?.ToString()) 
+                                .AddOptionalParameter("sample_rate", sampleRate?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Cartesia.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -166,24 +206,28 @@ namespace Cartesia
 
                 __httpRequest.Headers.TryAddWithoutValidation("Cartesia-Version", cartesiaVersion.ToValueString());
 
+
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             __httpRequestContent.Add(
                                 content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
                                 name: "\"Cartesia-Version\"");
+
                             if (encoding != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((encoding).HasValue ? (encoding).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"encoding\"");
-                            } 
+
+                            }
                             if (sampleRate != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(sampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"sample_rate\"");
-                            } 
+
+                            }
                             if (request.File != default)
                             {
 
@@ -224,29 +268,35 @@ namespace Cartesia
                                 {
                                     __contentFile.Headers.ContentDisposition.FileNameStar = null;
                                 }
-                            } 
+
+                            }
                             if (request.Model != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(request.Model ?? string.Empty),
                                     name: "\"model\"");
-                            } 
+
+                            }
                             if (request.Language != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.Language).HasValue ? (request.Language).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"language\"");
-                            } 
+
+                            }
                             if (request.TimestampGranularities != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.TimestampGranularities, x => x.ToValueString()))}]"),
                                     name: "\"timestamp_granularities[]\"");
+
                             }
+
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Cartesia.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -291,6 +341,8 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -301,6 +353,11 @@ namespace Cartesia
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -318,6 +375,8 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -327,8 +386,7 @@ namespace Cartesia
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -337,6 +395,11 @@ namespace Cartesia
                         __attempt < __maxAttempts &&
                         global::Cartesia.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Cartesia.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -353,14 +416,15 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -400,6 +464,8 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -420,6 +486,8 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -444,9 +512,13 @@ namespace Cartesia
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Cartesia.TranscriptionResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Cartesia.TranscriptionResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TranscriptionResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Cartesia.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -474,9 +546,13 @@ namespace Cartesia
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Cartesia.TranscriptionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Cartesia.TranscriptionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TranscriptionResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Cartesia.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -525,9 +601,7 @@ namespace Cartesia
         /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
         /// The encoding format for audio data sent to the STT WebSocket.
         /// </param>

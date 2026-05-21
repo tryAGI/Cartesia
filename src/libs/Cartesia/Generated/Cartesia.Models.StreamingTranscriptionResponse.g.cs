@@ -29,6 +29,26 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickStreamingTranscriptionResponseVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>? value)
+        {
+            value = StreamingTranscriptionResponseVariant1;
+            return IsStreamingTranscriptionResponseVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage> PickStreamingTranscriptionResponseVariant1() => IsStreamingTranscriptionResponseVariant1
+            ? StreamingTranscriptionResponseVariant1!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? StreamingTranscriptionResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StreamingTranscriptionResponseVariant2))]
 #endif
         public bool IsStreamingTranscriptionResponseVariant2 => StreamingTranscriptionResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStreamingTranscriptionResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? value)
+        {
+            value = StreamingTranscriptionResponseVariant2;
+            return IsStreamingTranscriptionResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage> PickStreamingTranscriptionResponseVariant2() => IsStreamingTranscriptionResponseVariant2
+            ? StreamingTranscriptionResponseVariant2!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant2' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickStreamingTranscriptionResponseVariant3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>? value)
+        {
+            value = StreamingTranscriptionResponseVariant3;
+            return IsStreamingTranscriptionResponseVariant3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage> PickStreamingTranscriptionResponseVariant3() => IsStreamingTranscriptionResponseVariant3
+            ? StreamingTranscriptionResponseVariant3!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant3' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? StreamingTranscriptionResponseVariant4 { get; init; }
 #else
@@ -76,6 +136,26 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StreamingTranscriptionResponseVariant4))]
 #endif
         public bool IsStreamingTranscriptionResponseVariant4 => StreamingTranscriptionResponseVariant4 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStreamingTranscriptionResponseVariant4(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? value)
+        {
+            value = StreamingTranscriptionResponseVariant4;
+            return IsStreamingTranscriptionResponseVariant4;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage> PickStreamingTranscriptionResponseVariant4() => IsStreamingTranscriptionResponseVariant4
+            ? StreamingTranscriptionResponseVariant4!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StreamingTranscriptionResponseVariant4' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -93,6 +173,11 @@ namespace Cartesia
         {
             StreamingTranscriptionResponseVariant1 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant1(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>? value) => new StreamingTranscriptionResponse(value);
 
         /// <summary>
         /// 
@@ -115,6 +200,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant2(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? value) => new StreamingTranscriptionResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StreamingTranscriptionResponse(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage> value) => new StreamingTranscriptionResponse((global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>?)value);
 
         /// <summary>
@@ -133,6 +223,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant3(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>? value) => new StreamingTranscriptionResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StreamingTranscriptionResponse(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage> value) => new StreamingTranscriptionResponse((global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>?)value);
 
         /// <summary>
@@ -147,6 +242,11 @@ namespace Cartesia
         {
             StreamingTranscriptionResponseVariant4 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StreamingTranscriptionResponse FromStreamingTranscriptionResponseVariant4(global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? value) => new StreamingTranscriptionResponse(value);
 
         /// <summary>
         /// 
@@ -231,6 +331,42 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>?>? streamingTranscriptionResponseVariant1 = null,
+
+            global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>?>? streamingTranscriptionResponseVariant2 = null,
+
+            global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>?>? streamingTranscriptionResponseVariant3 = null,
+
+            global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>?>? streamingTranscriptionResponseVariant4 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsStreamingTranscriptionResponseVariant1)
+            {
+                streamingTranscriptionResponseVariant1?.Invoke(StreamingTranscriptionResponseVariant1!);
+            }
+            else if (IsStreamingTranscriptionResponseVariant2)
+            {
+                streamingTranscriptionResponseVariant2?.Invoke(StreamingTranscriptionResponseVariant2!);
+            }
+            else if (IsStreamingTranscriptionResponseVariant3)
+            {
+                streamingTranscriptionResponseVariant3?.Invoke(StreamingTranscriptionResponseVariant3!);
+            }
+            else if (IsStreamingTranscriptionResponseVariant4)
+            {
+                streamingTranscriptionResponseVariant4?.Invoke(StreamingTranscriptionResponseVariant4!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>?>? streamingTranscriptionResponseVariant1 = null,
             global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>?>? streamingTranscriptionResponseVariant2 = null,
             global::System.Action<global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>?>? streamingTranscriptionResponseVariant3 = null,

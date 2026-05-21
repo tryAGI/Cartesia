@@ -49,15 +49,40 @@ namespace Cartesia
         /// List Metrics<br/>
         /// List of all LLM-as-a-Judge metrics owned by your account.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="startingAfter"></param>
         /// <param name="limit"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.ListMetricsResponse> AgentsListMetricsAsync(
+            global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion,
+            string? startingAfter = default,
+            int? limit = default,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await AgentsListMetricsAsResponseAsync(
+                cartesiaVersion: cartesiaVersion,
+                startingAfter: startingAfter,
+                limit: limit,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// List Metrics<br/>
+        /// List of all LLM-as-a-Judge metrics owned by your account.
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
+        /// <param name="startingAfter"></param>
+        /// <param name="limit"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.ListMetricsResponse>> AgentsListMetricsAsResponseAsync(
             global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion,
             string? startingAfter = default,
             int? limit = default,
@@ -94,12 +119,13 @@ namespace Cartesia
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Cartesia.PathBuilder(
                                 path: "/agents/metrics",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("starting_after", startingAfter)
-                                .AddOptionalParameter("limit", limit?.ToString()) 
+                                .AddOptionalParameter("limit", limit?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Cartesia.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -148,6 +174,8 @@ namespace Cartesia
                     startingAfter: startingAfter,
                     limit: limit);
 
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
+
                 return __httpRequest;
             }
 
@@ -176,6 +204,8 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -186,6 +216,11 @@ namespace Cartesia
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -203,6 +238,8 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -212,8 +249,7 @@ namespace Cartesia
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -222,6 +258,11 @@ namespace Cartesia
                         __attempt < __maxAttempts &&
                         global::Cartesia.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Cartesia.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Cartesia.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Cartesia.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -238,14 +279,15 @@ namespace Cartesia
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Cartesia.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -285,6 +327,8 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -305,6 +349,8 @@ namespace Cartesia
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -329,9 +375,13 @@ namespace Cartesia
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Cartesia.ListMetricsResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Cartesia.ListMetricsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Cartesia.AutoSDKHttpResponse<global::Cartesia.ListMetricsResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Cartesia.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -359,9 +409,13 @@ namespace Cartesia
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Cartesia.ListMetricsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Cartesia.ListMetricsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Cartesia.AutoSDKHttpResponse<global::Cartesia.ListMetricsResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Cartesia.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

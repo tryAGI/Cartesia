@@ -1,4 +1,3 @@
-#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -7,153 +6,61 @@ namespace Cartesia
     /// <summary>
     /// 
     /// </summary>
-    public readonly partial struct WAVOutputFormat : global::System.IEquatable<WAVOutputFormat>
+    public sealed partial class WAVOutputFormat
     {
         /// <summary>
         /// 
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; init; }
-#else
-        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("container")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.WAVOutputFormatContainerJsonConverter))]
+        public global::Cartesia.WAVOutputFormatContainer Container { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawEncodingJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.RawEncoding Encoding { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sample_rate")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int SampleRate { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WAVOutputFormat" /> class.
+        /// </summary>
+        /// <param name="encoding"></param>
+        /// <param name="sampleRate"></param>
+        /// <param name="container"></param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RawOutputFormat))]
-#endif
-        public bool IsRawOutputFormat => RawOutputFormat != null;
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator WAVOutputFormat(global::Cartesia.RawOutputFormat value) => new WAVOutputFormat((global::Cartesia.RawOutputFormat?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Cartesia.RawOutputFormat?(WAVOutputFormat @this) => @this.RawOutputFormat;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public WAVOutputFormat(global::Cartesia.RawOutputFormat? value)
+        public WAVOutputFormat(
+            global::Cartesia.RawEncoding encoding,
+            int sampleRate,
+            global::Cartesia.WAVOutputFormatContainer container)
         {
-            RawOutputFormat = value;
+            this.Container = container;
+            this.Encoding = encoding;
+            this.SampleRate = sampleRate;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="WAVOutputFormat" /> class.
         /// </summary>
-        public object? Object =>
-            RawOutputFormat as object 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override string? ToString() =>
-            RawOutputFormat?.ToString() 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Validate()
+        public WAVOutputFormat()
         {
-            return IsRawOutputFormat;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.RawOutputFormat?, TResult>? rawOutputFormat = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsRawOutputFormat && rawOutputFormat != null)
-            {
-                return rawOutputFormat(RawOutputFormat!);
-            }
-
-            return default(TResult);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Match(
-            global::System.Action<global::Cartesia.RawOutputFormat?>? rawOutputFormat = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsRawOutputFormat)
-            {
-                rawOutputFormat?.Invoke(RawOutputFormat!);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override int GetHashCode()
-        {
-            var fields = new object?[]
-            {
-                RawOutputFormat,
-                typeof(global::Cartesia.RawOutputFormat),
-            };
-            const int offset = unchecked((int)2166136261);
-            const int prime = 16777619;
-            static int HashCodeAggregator(int hashCode, object? value) => value == null
-                ? (hashCode ^ 0) * prime
-                : (hashCode ^ value.GetHashCode()) * prime;
-
-            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Equals(WAVOutputFormat other)
-        {
-            return
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.RawOutputFormat?>.Default.Equals(RawOutputFormat, other.RawOutputFormat) 
-                ;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator ==(WAVOutputFormat obj1, WAVOutputFormat obj2)
-        {
-            return global::System.Collections.Generic.EqualityComparer<WAVOutputFormat>.Default.Equals(obj1, obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator !=(WAVOutputFormat obj1, WAVOutputFormat obj2)
-        {
-            return !(obj1 == obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool Equals(object? obj)
-        {
-            return obj is WAVOutputFormat o && Equals(o);
-        }
     }
 }

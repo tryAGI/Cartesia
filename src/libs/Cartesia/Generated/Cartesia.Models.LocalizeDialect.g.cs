@@ -29,6 +29,26 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLocalizeEnglishDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeEnglishDialect? value)
+        {
+            value = LocalizeEnglishDialect;
+            return IsLocalizeEnglishDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.LocalizeEnglishDialect PickLocalizeEnglishDialect() => IsLocalizeEnglishDialect
+            ? LocalizeEnglishDialect!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LocalizeEnglishDialect' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.LocalizeSpanishDialect? LocalizeSpanishDialect { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LocalizeSpanishDialect))]
 #endif
         public bool IsLocalizeSpanishDialect => LocalizeSpanishDialect != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLocalizeSpanishDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeSpanishDialect? value)
+        {
+            value = LocalizeSpanishDialect;
+            return IsLocalizeSpanishDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.LocalizeSpanishDialect PickLocalizeSpanishDialect() => IsLocalizeSpanishDialect
+            ? LocalizeSpanishDialect!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LocalizeSpanishDialect' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLocalizePortugueseDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizePortugueseDialect? value)
+        {
+            value = LocalizePortugueseDialect;
+            return IsLocalizePortugueseDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.LocalizePortugueseDialect PickLocalizePortugueseDialect() => IsLocalizePortugueseDialect
+            ? LocalizePortugueseDialect!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LocalizePortugueseDialect' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.LocalizeFrenchDialect? LocalizeFrenchDialect { get; init; }
 #else
@@ -76,6 +136,26 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LocalizeFrenchDialect))]
 #endif
         public bool IsLocalizeFrenchDialect => LocalizeFrenchDialect != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLocalizeFrenchDialect(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.LocalizeFrenchDialect? value)
+        {
+            value = LocalizeFrenchDialect;
+            return IsLocalizeFrenchDialect;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.LocalizeFrenchDialect PickLocalizeFrenchDialect() => IsLocalizeFrenchDialect
+            ? LocalizeFrenchDialect!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LocalizeFrenchDialect' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -93,6 +173,11 @@ namespace Cartesia
         {
             LocalizeEnglishDialect = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LocalizeDialect FromLocalizeEnglishDialect(global::Cartesia.LocalizeEnglishDialect? value) => new LocalizeDialect(value);
 
         /// <summary>
         /// 
@@ -115,6 +200,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static LocalizeDialect FromLocalizeSpanishDialect(global::Cartesia.LocalizeSpanishDialect? value) => new LocalizeDialect(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LocalizeDialect(global::Cartesia.LocalizePortugueseDialect value) => new LocalizeDialect((global::Cartesia.LocalizePortugueseDialect?)value);
 
         /// <summary>
@@ -133,6 +223,11 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        public static LocalizeDialect FromLocalizePortugueseDialect(global::Cartesia.LocalizePortugueseDialect? value) => new LocalizeDialect(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LocalizeDialect(global::Cartesia.LocalizeFrenchDialect value) => new LocalizeDialect((global::Cartesia.LocalizeFrenchDialect?)value);
 
         /// <summary>
@@ -147,6 +242,11 @@ namespace Cartesia
         {
             LocalizeFrenchDialect = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LocalizeDialect FromLocalizeFrenchDialect(global::Cartesia.LocalizeFrenchDialect? value) => new LocalizeDialect(value);
 
         /// <summary>
         /// 
@@ -231,6 +331,42 @@ namespace Cartesia
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Cartesia.LocalizeEnglishDialect?>? localizeEnglishDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizeSpanishDialect?>? localizeSpanishDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizePortugueseDialect?>? localizePortugueseDialect = null,
+
+            global::System.Action<global::Cartesia.LocalizeFrenchDialect?>? localizeFrenchDialect = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLocalizeEnglishDialect)
+            {
+                localizeEnglishDialect?.Invoke(LocalizeEnglishDialect!);
+            }
+            else if (IsLocalizeSpanishDialect)
+            {
+                localizeSpanishDialect?.Invoke(LocalizeSpanishDialect!);
+            }
+            else if (IsLocalizePortugueseDialect)
+            {
+                localizePortugueseDialect?.Invoke(LocalizePortugueseDialect!);
+            }
+            else if (IsLocalizeFrenchDialect)
+            {
+                localizeFrenchDialect?.Invoke(LocalizeFrenchDialect!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::Cartesia.LocalizeEnglishDialect?>? localizeEnglishDialect = null,
             global::System.Action<global::Cartesia.LocalizeSpanishDialect?>? localizeSpanishDialect = null,
             global::System.Action<global::Cartesia.LocalizePortugueseDialect?>? localizePortugueseDialect = null,

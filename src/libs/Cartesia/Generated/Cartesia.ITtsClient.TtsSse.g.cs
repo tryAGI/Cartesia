@@ -7,27 +7,35 @@ namespace Cartesia
     public partial interface ITtsClient
     {
         /// <summary>
-        /// Text to Speech (SSE)
+        /// Text-to-Speech (SSE)<br/>
+        /// Text-to-Speech (SSE).<br/>
+        /// Supports:<br/>
+        ///   - Streaming<br/>
+        ///   - Timestamps<br/>
+        ///   - context_id without transcript buffering<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
-        global::System.Threading.Tasks.Task TtsSseAsync(
+        global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
             global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TTSSSERequest request,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Text to Speech (SSE)
+        /// Text-to-Speech (SSE)<br/>
+        /// Text-to-Speech (SSE).<br/>
+        /// Supports:<br/>
+        ///   - Streaming<br/>
+        ///   - Timestamps<br/>
+        ///   - context_id without transcript buffering<br/>
+        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="modelId">
         /// The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for available models.
         /// </param>
@@ -56,13 +64,12 @@ namespace Cartesia
         /// The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are supported by `sonic-3` models and newer.
         /// </param>
         /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.<br/>
-        /// Some customers use unique identifiers from their own systems (such as conversation IDs) as context IDs.
+        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task TtsSseAsync(
+        global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
             global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
             string modelId,
             string transcript,

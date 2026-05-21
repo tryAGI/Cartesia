@@ -8,15 +8,29 @@ namespace Cartesia
         /// Add Metric to Agent<br/>
         /// Add a metric to an agent. Once the metric is added, it will be run on all calls made to the agent automatically from that point onwards.
         /// </summary>
-        /// <param name="cartesiaVersion">
-        /// Example: 2025-04-16
-        /// </param>
+        /// <param name="cartesiaVersion"></param>
         /// <param name="agentId"></param>
         /// <param name="metricId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task AgentsAddMetricToAgentAsync(
+            global::Cartesia.AgentsAddMetricToAgentCartesiaVersion cartesiaVersion,
+            string agentId,
+            string metricId,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Add Metric to Agent<br/>
+        /// Add a metric to an agent. Once the metric is added, it will be run on all calls made to the agent automatically from that point onwards.
+        /// </summary>
+        /// <param name="cartesiaVersion"></param>
+        /// <param name="agentId"></param>
+        /// <param name="metricId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse> AgentsAddMetricToAgentAsResponseAsync(
             global::Cartesia.AgentsAddMetricToAgentCartesiaVersion cartesiaVersion,
             string agentId,
             string metricId,
