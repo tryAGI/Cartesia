@@ -530,7 +530,7 @@ namespace Cartesia
         /// A description for the voice.
         /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </param>
         /// <param name="baseVoiceId">
         /// The ID of the voice.
@@ -582,7 +582,7 @@ namespace Cartesia
         /// A description for the voice.
         /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </param>
         /// <param name="baseVoiceId">
         /// The ID of the voice.
@@ -1049,7 +1049,7 @@ namespace Cartesia
         /// A description for the voice.
         /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </param>
         /// <param name="baseVoiceId">
         /// The ID of the voice.

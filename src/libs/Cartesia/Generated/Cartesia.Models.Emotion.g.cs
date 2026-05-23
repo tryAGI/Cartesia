@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
+    /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
     /// </summary>
     public enum Emotion
     {
@@ -25,7 +25,7 @@ namespace Cartesia
         /// </summary>
         Amazed,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Angry,
         /// <summary>
@@ -45,7 +45,7 @@ namespace Cartesia
         /// </summary>
         Bored,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Calm,
         /// <summary>
@@ -65,7 +65,7 @@ namespace Cartesia
         /// </summary>
         Contempt,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Content,
         /// <summary>
@@ -161,7 +161,7 @@ namespace Cartesia
         /// </summary>
         Mysterious,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Neutral,
         /// <summary>
@@ -193,7 +193,7 @@ namespace Cartesia
         /// </summary>
         Resigned,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Sad,
         /// <summary>
@@ -201,7 +201,7 @@ namespace Cartesia
         /// </summary>
         Sarcastic,
         /// <summary>
-        /// 
+        /// //docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         Scared,
         /// <summary>

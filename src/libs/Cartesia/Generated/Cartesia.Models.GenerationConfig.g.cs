@@ -5,7 +5,7 @@ namespace Cartesia
 {
     /// <summary>
     /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
-    /// See [Volume, Speed, and Emotion in Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
+    /// See [Volume, Speed, and Emotion in Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
     /// </summary>
     public sealed partial class GenerationConfig
     {
@@ -24,7 +24,7 @@ namespace Cartesia
         public double? Speed { get; set; }
 
         /// <summary>
-        /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
+        /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emotion")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.EmotionJsonConverter))]
@@ -48,7 +48,7 @@ namespace Cartesia
         /// Default Value: 1
         /// </param>
         /// <param name="emotion">
-        /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
+        /// The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see [Prompting Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
