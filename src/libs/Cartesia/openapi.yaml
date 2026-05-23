@@ -1224,7 +1224,7 @@ paths:
         <Note>
 
         For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration
-        Guide](/api-reference/stt/migrate-from-open-ai).
+        Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).
 
         </Note>
       operationId: stt_transcribe
@@ -2539,7 +2539,7 @@ components:
           nullable: true
           description: >-
             The `agent` grant allows the token to be used to access the Agent websocket calling
-            [endpoint](/line/integrations/web-calls#connection).
+            [endpoint](https://docs.cartesia.ai/line/integrations/web-calls#connection).
     TokenRequest:
       title: TokenRequest
       type: object
@@ -3396,8 +3396,8 @@ components:
         model_id:
           type: string
           description: >-
-            The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for
-            available models.
+            The ID of the model to use for the generation. See
+            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -3491,8 +3491,8 @@ components:
         model_id:
           type: string
           description: >-
-            The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for
-            available models.
+            The ID of the model to use for the generation. See
+            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -3535,8 +3535,9 @@ components:
         effect on earlier models.
 
 
-        See [Volume, Speed, and Emotion in Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion) for a
-        guide on this option.
+        See [Volume, Speed, and Emotion in
+        Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on
+        this option.
       properties:
         volume:
           type: number
@@ -3560,7 +3561,8 @@ components:
       type: string
       description: >-
         The primary emotions are `neutral`, `calm`, `angry`, `content`, `sad`, `scared`. For more options, see
-        [Prompting Sonic-3](/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
+        [Prompting
+        Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion#emotion-controls-beta).
       enum:
         - neutral
         - happy
@@ -3627,8 +3629,8 @@ components:
         model_id:
           type: string
           description: >-
-            The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models) for
-            available models.
+            The ID of the model to use for the generation. See
+            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -4077,7 +4079,7 @@ components:
         - pa
       description: >-
         The language that the given voice should speak the transcript in. For valid options, see
-        [Models](/build-with-cartesia/tts-models).
+        [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
     OutputFormat:
       title: OutputFormat
       oneOf:

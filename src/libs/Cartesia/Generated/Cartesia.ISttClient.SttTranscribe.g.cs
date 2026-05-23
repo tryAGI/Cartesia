@@ -12,7 +12,7 @@ namespace Cartesia
         /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
         /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
         /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
+        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
         /// <param name="cartesiaVersion"></param>
@@ -40,7 +40,7 @@ namespace Cartesia
         /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
         /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
         /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
+        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
         /// <param name="cartesiaVersion"></param>
@@ -68,7 +68,7 @@ namespace Cartesia
         /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
         /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
         /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](/api-reference/stt/migrate-from-open-ai).<br/>
+        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
         /// &lt;/Note&gt;
         /// </summary>
         /// <param name="cartesiaVersion"></param>

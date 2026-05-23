@@ -36,7 +36,7 @@ namespace Cartesia
         public string? Description { get; set; }
 
         /// <summary>
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.SupportedLanguageJsonConverter))]
@@ -64,7 +64,7 @@ namespace Cartesia
         /// The name of the voice.
         /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </param>
         /// <param name="description">
         /// A description for the voice.

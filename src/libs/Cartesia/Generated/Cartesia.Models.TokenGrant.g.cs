@@ -21,7 +21,7 @@ namespace Cartesia
         public bool? Stt { get; set; }
 
         /// <summary>
-        /// The `agent` grant allows the token to be used to access the Agent websocket calling [endpoint](/line/integrations/web-calls#connection).
+        /// The `agent` grant allows the token to be used to access the Agent websocket calling [endpoint](https://docs.cartesia.ai/line/integrations/web-calls#connection).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
         public bool? Agent { get; set; }
@@ -42,7 +42,7 @@ namespace Cartesia
         /// The `stt` grant allows the token to be used to access any STT endpoint.
         /// </param>
         /// <param name="agent">
-        /// The `agent` grant allows the token to be used to access the Agent websocket calling [endpoint](/line/integrations/web-calls#connection).
+        /// The `agent` grant allows the token to be used to access the Agent websocket calling [endpoint](https://docs.cartesia.ai/line/integrations/web-calls#connection).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
