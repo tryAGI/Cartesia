@@ -46,7 +46,7 @@ namespace Cartesia
         /// Language code for the fine-tune
         /// </param>
         /// <param name="modelId">
-        /// Base model ID to fine-tune from
+        /// Base model for a fine-tune. See [the docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
         /// </param>
         /// <param name="dataset">
         /// Dataset ID containing training files
@@ -59,8 +59,8 @@ namespace Cartesia
             string name,
             string description,
             string language,
-            string modelId,
             string dataset,
+            global::Cartesia.FineTuneBaseModel modelId = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

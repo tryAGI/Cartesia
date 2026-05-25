@@ -99,7 +99,7 @@ namespace Cartesia
         /// <param name="rightAudio"></param>
         /// <param name="rightAudioname"></param>
         /// <param name="modelId">
-        /// The ID of the model to use for generating audio. Any model other than the first `"sonic"` model is supported.
+        /// Infill models. See [the docs](https://docs.cartesia.ai/api-reference/infill/bytes#body-model-id) for all options.
         /// </param>
         /// <param name="language">
         /// The language of the transcript
@@ -120,7 +120,7 @@ namespace Cartesia
             string? leftAudioname = default,
             byte[]? rightAudio = default,
             string? rightAudioname = default,
-            string? modelId = default,
+            global::Cartesia.InfillModel? modelId = default,
             string? language = default,
             string? transcript = default,
             string? voiceId = default,

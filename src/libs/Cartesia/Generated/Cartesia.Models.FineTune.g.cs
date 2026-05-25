@@ -37,7 +37,7 @@ namespace Cartesia
         public required string Language { get; set; }
 
         /// <summary>
-        /// Base model identifier to fine-tune from
+        /// Base model identifier for the fine-tune
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -80,7 +80,7 @@ namespace Cartesia
         /// Language code of the fine-tune
         /// </param>
         /// <param name="modelId">
-        /// Base model identifier to fine-tune from
+        /// Base model identifier for the fine-tune
         /// </param>
         /// <param name="dataset">
         /// ID of the dataset used for fine-tuning

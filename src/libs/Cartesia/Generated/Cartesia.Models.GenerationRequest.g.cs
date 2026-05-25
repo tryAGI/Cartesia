@@ -11,11 +11,12 @@ namespace Cartesia
     public sealed partial class GenerationRequest
     {
         /// <summary>
-        /// The ID of the model to use for the generation. See [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+        /// Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest) for all options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.TTSModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
+        public required global::Cartesia.TTSModel ModelId { get; set; }
 
         /// <summary>
         /// The transcript to generate speech for.
@@ -129,7 +130,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="GenerationRequest" /> class.
         /// </summary>
         /// <param name="modelId">
-        /// The ID of the model to use for the generation. See [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+        /// Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest) for all options.
         /// </param>
         /// <param name="transcript">
         /// The transcript to generate speech for.
@@ -178,7 +179,7 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerationRequest(
-            string modelId,
+            global::Cartesia.TTSModel modelId,
             string transcript,
             global::Cartesia.TTSRequestVoiceSpecifier voice,
             global::Cartesia.RawOutputFormat outputFormat,
@@ -193,7 +194,7 @@ namespace Cartesia
             bool? useNormalizedTimestamps,
             string? pronunciationDictId)
         {
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
+            this.ModelId = modelId;
             this.Transcript = transcript ?? throw new global::System.ArgumentNullException(nameof(transcript));
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
             this.GenerationConfig = generationConfig;

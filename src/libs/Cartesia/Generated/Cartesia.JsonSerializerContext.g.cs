@@ -49,6 +49,30 @@ namespace Cartesia
 
             typeof(global::Cartesia.JsonConverters.STTEncodingNullableJsonConverter),
 
+            typeof(global::Cartesia.JsonConverters.STTBatchModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTBatchModelNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTRealtimeTurnDetectingModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTRealtimeTurnDetectingModelNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTRealtimeExternalVADModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTRealtimeExternalVADModelNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TTSModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.TTSModelNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.InfillModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.InfillModelNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTuneBaseModelJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.FineTuneBaseModelNullableJsonConverter),
+
             typeof(global::Cartesia.JsonConverters.ModelSpeedJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.ModelSpeedNullableJsonConverter),
@@ -80,6 +104,66 @@ namespace Cartesia
             typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseDiscriminatorTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsCloseCommandTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsCloseCommandTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsConnectedTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsConnectedTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnStartTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnStartTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnUpdateTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnUpdateTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnEagerEndTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnEagerEndTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnResumeTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnResumeTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnEndTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsTurnEndTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTErrorResponseTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTErrorResponseTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsWebSocketResponseDiscriminatorTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsWebSocketResponseDiscriminatorTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketQueryParamsLanguageJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketQueryParamsLanguageNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketRequestJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketRequestNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADTranscriptResponseTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADTranscriptResponseTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADFlushDoneResponseTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADFlushDoneResponseTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADDoneResponseTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADDoneResponseTypeNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketResponseDiscriminatorTypeJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketResponseDiscriminatorTypeNullableJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.EmotionJsonConverter),
 
@@ -117,18 +201,6 @@ namespace Cartesia
 
             typeof(global::Cartesia.JsonConverters.SupportedLanguageNullableJsonConverter),
 
-            typeof(global::Cartesia.JsonConverters.OutputFormatRAWOutputFormatContainerJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.OutputFormatRAWOutputFormatContainerNullableJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.OutputFormatWAVOutputFormatContainerJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.OutputFormatWAVOutputFormatContainerNullableJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerJsonConverter),
-
-            typeof(global::Cartesia.JsonConverters.OutputFormatMP3OutputFormatContainerNullableJsonConverter),
-
             typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerNullableJsonConverter),
@@ -144,6 +216,10 @@ namespace Cartesia
             typeof(global::Cartesia.JsonConverters.WAVOutputFormatContainerJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.WAVOutputFormatContainerNullableJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.MP3OutputFormatContainerJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.MP3OutputFormatContainerNullableJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierModeJsonConverter),
 
@@ -393,6 +469,12 @@ namespace Cartesia
 
             typeof(global::Cartesia.JsonConverters.TTSWebSocketResponseJsonConverter),
 
+            typeof(global::Cartesia.JsonConverters.STTTurnsWebSocketRequestJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTTurnsWebSocketResponseJsonConverter),
+
+            typeof(global::Cartesia.JsonConverters.STTExternalVADWebSocketResponseJsonConverter),
+
             typeof(global::Cartesia.JsonConverters.TTSWebSocketRequestJsonConverter),
 
             typeof(global::Cartesia.JsonConverters.TTSSSEEventJsonConverter),
@@ -410,12 +492,6 @@ namespace Cartesia
             typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>),
 
             typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>),
-
-            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>),
-
-            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat>),
-
-            typeof(global::Cartesia.JsonConverters.AllOfJsonConverter<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>),
 
             typeof(global::Cartesia.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -479,6 +555,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneStatus), TypeInfoPropertyName = "FineTuneStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTune))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneBaseModel), TypeInfoPropertyName = "FineTuneBaseModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedFineTunes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.FineTune>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedVoices))]
@@ -512,7 +589,13 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant42))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseVariant4Type), TypeInfoPropertyName = "StreamingTranscriptionResponseVariant4Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ErrorMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.StreamingTranscriptionResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTEncoding), TypeInfoPropertyName = "STTEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTBatchModel), TypeInfoPropertyName = "STTBatchModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTRealtimeTurnDetectingModel), TypeInfoPropertyName = "STTRealtimeTurnDetectingModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTRealtimeExternalVADModel), TypeInfoPropertyName = "STTRealtimeExternalVADModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSModel), TypeInfoPropertyName = "TTSModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.InfillModel), TypeInfoPropertyName = "InfillModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelSpeed), TypeInfoPropertyName = "ModelSpeed2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponse), TypeInfoPropertyName = "TTSWebSocketResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseVariant1))]
@@ -532,6 +615,40 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "TTSWebSocketResponseDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsWebSocketQueryParams))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsCloseCommand))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsCloseCommandType), TypeInfoPropertyName = "STTTurnsCloseCommandType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsWebSocketRequest), TypeInfoPropertyName = "STTTurnsWebSocketRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsConnected))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsConnectedType), TypeInfoPropertyName = "STTTurnsConnectedType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnStart))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnStartType), TypeInfoPropertyName = "STTTurnsTurnStartType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnUpdate))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnUpdateType), TypeInfoPropertyName = "STTTurnsTurnUpdateType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnEagerEnd))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnEagerEndType), TypeInfoPropertyName = "STTTurnsTurnEagerEndType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnResume))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnResumeType), TypeInfoPropertyName = "STTTurnsTurnResumeType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnEnd))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsTurnEndType), TypeInfoPropertyName = "STTTurnsTurnEndType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTErrorResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTErrorResponseType), TypeInfoPropertyName = "STTErrorResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsWebSocketResponse), TypeInfoPropertyName = "STTTurnsWebSocketResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsWebSocketResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTTurnsWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "STTTurnsWebSocketResponseDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketQueryParams))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketQueryParamsLanguage), TypeInfoPropertyName = "STTExternalVADWebSocketQueryParamsLanguage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketRequest), TypeInfoPropertyName = "STTExternalVADWebSocketRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADTranscriptResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADTranscriptResponseType), TypeInfoPropertyName = "STTExternalVADTranscriptResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADFlushDoneResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADFlushDoneResponseType), TypeInfoPropertyName = "STTExternalVADFlushDoneResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADDoneResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADDoneResponseType), TypeInfoPropertyName = "STTExternalVADDoneResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketResponse), TypeInfoPropertyName = "STTExternalVADWebSocketResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTExternalVADWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "STTExternalVADWebSocketResponseDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CancelContextRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifier))]
@@ -562,21 +679,13 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEDone))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEErrorType), TypeInfoPropertyName = "VoiceChangerSSEErrorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>), TypeInfoPropertyName = "AllOfOutputFormatRAWOutputFormat2RawOutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormat2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatRAWOutputFormatContainer), TypeInfoPropertyName = "OutputFormatRAWOutputFormatContainer2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat>), TypeInfoPropertyName = "AllOfOutputFormatWAVOutputFormat2WAVOutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormat2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatWAVOutputFormatContainer), TypeInfoPropertyName = "OutputFormatWAVOutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WAVOutputFormat))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>), TypeInfoPropertyName = "AllOfOutputFormatMP3OutputFormat2MP3OutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormat2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatMP3OutputFormatContainer), TypeInfoPropertyName = "OutputFormatMP3OutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MP3OutputFormat))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawOutputFormatContainer), TypeInfoPropertyName = "RawOutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.RawEncoding), TypeInfoPropertyName = "RawEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SSEOutputFormatContainer), TypeInfoPropertyName = "SSEOutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.WAVOutputFormatContainer), TypeInfoPropertyName = "WAVOutputFormatContainer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MP3OutputFormatContainer), TypeInfoPropertyName = "MP3OutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifierMode), TypeInfoPropertyName = "TTSRequestVoiceSpecifierMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatContainer), TypeInfoPropertyName = "OutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenderPresentation), TypeInfoPropertyName = "GenderPresentation2")]
@@ -672,6 +781,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PronunciationDict>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TranscriptionWord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.WordTimestamps>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TimestampGranularity>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.VoiceExpandOptions>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumber>))]

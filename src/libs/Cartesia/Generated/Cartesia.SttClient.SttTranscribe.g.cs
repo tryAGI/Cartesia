@@ -68,11 +68,7 @@ namespace Cartesia
         /// Transcribes audio files into text using Cartesia's Speech-to-Text API.<br/>
         /// Upload an audio file and receive a complete transcription response. Supports arbitrarily long audio files with automatic intelligent chunking for longer audio.<br/>
         /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
-        /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
-        /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
-        /// &lt;/Note&gt;
+        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
         /// </summary>
         /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
@@ -109,11 +105,7 @@ namespace Cartesia
         /// Transcribes audio files into text using Cartesia's Speech-to-Text API.<br/>
         /// Upload an audio file and receive a complete transcription response. Supports arbitrarily long audio files with automatic intelligent chunking for longer audio.<br/>
         /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
-        /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
-        /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
-        /// &lt;/Note&gt;
+        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
         /// </summary>
         /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
@@ -274,7 +266,7 @@ namespace Cartesia
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.Model ?? string.Empty),
+                                    content: new global::System.Net.Http.StringContent((request.Model).HasValue ? (request.Model).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"model\"");
 
                             }
@@ -591,11 +583,7 @@ namespace Cartesia
         /// Transcribes audio files into text using Cartesia's Speech-to-Text API.<br/>
         /// Upload an audio file and receive a complete transcription response. Supports arbitrarily long audio files with automatic intelligent chunking for longer audio.<br/>
         /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// **Response format:** Returns JSON with transcribed text, duration, and language. Include `timestamp_granularities: ["word"]` to get word-level timestamps.<br/>
-        /// **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.<br/>
-        /// &lt;Note&gt;<br/>
-        /// For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).<br/>
-        /// &lt;/Note&gt;
+        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
         /// </summary>
         /// <param name="cartesiaVersion"></param>
         /// <param name="encoding">
@@ -605,7 +593,8 @@ namespace Cartesia
         /// <param name="file"></param>
         /// <param name="filename"></param>
         /// <param name="model">
-        /// ID of the model to use for transcription. Use `ink-whisper` for the latest Cartesia Whisper model.
+        /// Models that support batch speech-to-text transcription.<br/>
+        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
         /// </param>
         /// <param name="language">
         /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
@@ -622,7 +611,7 @@ namespace Cartesia
             int? sampleRate = default,
             byte[]? file = default,
             string? filename = default,
-            string? model = default,
+            global::Cartesia.STTBatchModel? model = default,
             global::Cartesia.SttTranscribeRequestLanguage? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,

@@ -33,10 +33,11 @@ namespace Cartesia
         public string? RightAudioname { get; set; }
 
         /// <summary>
-        /// The ID of the model to use for generating audio. Any model other than the first `"sonic"` model is supported.
+        /// Infill models. See [the docs](https://docs.cartesia.ai/api-reference/infill/bytes#body-model-id) for all options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        public string? ModelId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.InfillModelJsonConverter))]
+        public global::Cartesia.InfillModel? ModelId { get; set; }
 
         /// <summary>
         /// The language of the transcript
@@ -77,7 +78,7 @@ namespace Cartesia
         /// <param name="rightAudio"></param>
         /// <param name="rightAudioname"></param>
         /// <param name="modelId">
-        /// The ID of the model to use for generating audio. Any model other than the first `"sonic"` model is supported.
+        /// Infill models. See [the docs](https://docs.cartesia.ai/api-reference/infill/bytes#body-model-id) for all options.
         /// </param>
         /// <param name="language">
         /// The language of the transcript
@@ -97,7 +98,7 @@ namespace Cartesia
             string? leftAudioname,
             byte[]? rightAudio,
             string? rightAudioname,
-            string? modelId,
+            global::Cartesia.InfillModel? modelId,
             string? language,
             string? transcript,
             string? voiceId,
