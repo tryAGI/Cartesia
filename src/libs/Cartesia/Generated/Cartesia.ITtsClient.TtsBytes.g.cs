@@ -65,7 +65,7 @@ namespace Cartesia
         /// </summary>
         /// <param name="cartesiaVersion"></param>
         /// <param name="modelId">
-        /// The ID of the model to use for the generation. See [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+        /// Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest) for all options.
         /// </param>
         /// <param name="transcript"></param>
         /// <param name="voice"></param>
@@ -89,7 +89,7 @@ namespace Cartesia
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<byte[]> TtsBytesAsync(
             global::Cartesia.TtsBytesCartesiaVersion cartesiaVersion,
-            string modelId,
+            global::Cartesia.TTSModel modelId,
             string transcript,
             global::Cartesia.TTSRequestVoiceSpecifier voice,
             global::Cartesia.OutputFormat outputFormat,

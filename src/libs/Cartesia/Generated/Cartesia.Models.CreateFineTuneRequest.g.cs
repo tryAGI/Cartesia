@@ -30,11 +30,11 @@ namespace Cartesia
         public required string Language { get; set; }
 
         /// <summary>
-        /// Base model ID to fine-tune from
+        /// Base model for a fine-tune. See [the docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.FineTuneBaseModelJsonConverter))]
+        public global::Cartesia.FineTuneBaseModel ModelId { get; set; }
 
         /// <summary>
         /// Dataset ID containing training files
@@ -61,11 +61,11 @@ namespace Cartesia
         /// <param name="language">
         /// Language code for the fine-tune
         /// </param>
-        /// <param name="modelId">
-        /// Base model ID to fine-tune from
-        /// </param>
         /// <param name="dataset">
         /// Dataset ID containing training files
+        /// </param>
+        /// <param name="modelId">
+        /// Base model for a fine-tune. See [the docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -74,13 +74,13 @@ namespace Cartesia
             string name,
             string description,
             string language,
-            string modelId,
-            string dataset)
+            string dataset,
+            global::Cartesia.FineTuneBaseModel modelId)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
+            this.ModelId = modelId;
             this.Dataset = dataset ?? throw new global::System.ArgumentNullException(nameof(dataset));
         }
 

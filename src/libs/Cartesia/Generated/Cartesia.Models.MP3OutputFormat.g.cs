@@ -11,6 +11,13 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("container")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.MP3OutputFormatContainerJsonConverter))]
+        public global::Cartesia.MP3OutputFormatContainer Container { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sample_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int SampleRate { get; set; }
@@ -33,13 +40,16 @@ namespace Cartesia
         /// </summary>
         /// <param name="sampleRate"></param>
         /// <param name="bitRate"></param>
+        /// <param name="container"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MP3OutputFormat(
             int sampleRate,
-            int bitRate)
+            int bitRate,
+            global::Cartesia.MP3OutputFormatContainer container)
         {
+            this.Container = container;
             this.SampleRate = sampleRate;
             this.BitRate = bitRate;
         }

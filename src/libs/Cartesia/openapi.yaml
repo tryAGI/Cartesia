@@ -1055,10 +1055,7 @@ paths:
                   type: string
                   format: binary
                 model_id:
-                  description: >-
-                    The ID of the model to use for generating audio. Any model other than the first `"sonic"`
-                    model is supported.
-                  type: string
+                  $ref: '#/components/schemas/InfillModel'
                 language:
                   description: The language of the transcript
                   type: string
@@ -1215,21 +1212,10 @@ paths:
         **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm
 
 
-        **Response format:** Returns JSON with transcribed text, duration, and language. Include
-        `timestamp_granularities: ["word"]` to get word-level timestamps.
-
-        **Pricing:** Batch transcription is priced at **1 credit per 2 seconds** of audio processed.
-
-
-        <Note>
-
-        For migrating from the OpenAI SDK, see our [OpenAI Whisper to Cartesia Ink Migration
-        Guide](https://docs.cartesia.ai/api-reference/stt/migrate-from-open-ai).
-
-        </Note>
+        See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
       operationId: stt_transcribe
       tags:
-        - Stt
+        - STT
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
         - name: encoding
@@ -1285,10 +1271,7 @@ paths:
                   type: string
                   format: binary
                 model:
-                  description: >-
-                    ID of the model to use for transcription. Use `ink-whisper` for the latest Cartesia
-                    Whisper model.
-                  type: string
+                  $ref: '#/components/schemas/STTBatchModel'
                 language:
                   description: The language of the input audio in ISO-639-1 format. Defaults to `en`.
                   enum:
@@ -2725,7 +2708,7 @@ components:
           description: Language code of the fine-tune
         model_id:
           type: string
-          description: Base model identifier to fine-tune from
+          description: Base model identifier for the fine-tune
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -2758,8 +2741,7 @@ components:
           type: string
           description: Language code for the fine-tune
         model_id:
-          type: string
-          description: Base model ID to fine-tune from
+          $ref: '#/components/schemas/FineTuneBaseModel'
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -3017,6 +2999,8 @@ components:
       description: >-
         The server sends transcription results, control messages, or error messages. Each message has a `type`
         field to distinguish between different message types.
+      discriminator:
+        propertyName: type
     TranscriptMessage:
       title: TranscriptMessage
       type: object
@@ -3105,6 +3089,65 @@ components:
         - pcm_mulaw
         - pcm_alaw
       description: The encoding format for audio data sent to the STT WebSocket.
+    STTBatchModel:
+      title: STTBatchModel
+      type: string
+      enum:
+        - ink-whisper
+        - ink-whisper-2025-06-04
+      description: |-
+        Models that support batch speech-to-text transcription.
+        See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+    STTRealtimeTurnDetectingModel:
+      title: STTRealtimeTurnDetectingModel
+      type: string
+      enum:
+        - ink-2
+      description: |-
+        Models that support realtime speech-to-text with turn-detection.
+        This mode detects when the user is speaking and emits turn events.
+        See [the docs](https://docs.cartesia.ai/build-with-cartesia/stt-models/latest) for all options.
+    STTRealtimeExternalVADModel:
+      title: STTRealtimeExternalVADModel
+      type: string
+      enum:
+        - ink-2
+        - ink-whisper
+        - ink-whisper-2025-06-04
+      description: |-
+        Models that support realtime speech-to-text with external VAD (voice activity detection).
+        This mode expects you to send the `finalize` command to trigger transcription.
+        See [the docs](https://docs.cartesia.ai/build-with-cartesia/stt-models/latest) for all options.
+    TTSModel:
+      title: TTSModel
+      type: string
+      enum:
+        - sonic-3.5
+        - sonic-3
+        - sonic-3.5-2026-05-04
+        - sonic-3-2026-01-12
+        - sonic-3-2025-10-27
+      description: >-
+        Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest)
+        for all options.
+    InfillModel:
+      title: InfillModel
+      type: string
+      enum:
+        - sonic-3
+        - sonic-3-2026-01-12
+        - sonic-3-2025-10-27
+      description: >-
+        Infill models. See [the docs](https://docs.cartesia.ai/api-reference/infill/bytes#body-model-id) for
+        all options.
+    FineTuneBaseModel:
+      title: FineTuneBaseModel
+      type: string
+      enum:
+        - sonic-3-2026-01-12
+      description: >-
+        Base model for a fine-tune. See [the
+        docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
     RequestID:
       title: RequestID
       type: string
@@ -3374,6 +3417,400 @@ components:
           - 0.255
           - 0.337
           - 0.418
+    STTTurnsWebSocketQueryParams:
+      type: object
+      required:
+        - model
+        - encoding
+        - sample_rate
+      properties:
+        model:
+          $ref: '#/components/schemas/STTRealtimeTurnDetectingModel'
+        encoding:
+          $ref: '#/components/schemas/STTEncoding'
+        sample_rate:
+          type: integer
+          description: Sample rate in Hz.
+    STTTurnsCloseCommand:
+      title: STTTurnsCloseCommand
+      type: object
+      description: >-
+        Sent as a JSON-encoded WebSocket text frame to close the session cleanly. All buffered audio will be
+        processed by the model into events before the connection closes.
+      properties:
+        type:
+          type: string
+          enum:
+            - close
+          description: Command type. Send this as a JSON-encoded WebSocket text frame to close the session.
+      required:
+        - type
+    STTTurnsWebSocketRequest:
+      title: STTTurnsWebSocketRequest
+      description: |-
+        Text messages sent from the client to the server.
+        Audio data is sent as raw binary messages rather than text messages.
+      oneOf:
+        - $ref: '#/components/schemas/STTTurnsCloseCommand'
+    STTTurnsConnected:
+      title: STTTurnsConnected
+      type: object
+      description: >-
+        Fires once when the WebSocket connection is established. You do not need to wait for this event before
+        sending audio.
+      properties:
+        type:
+          type: string
+          enum:
+            - connected
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this connection.
+      required:
+        - type
+        - request_id
+      example:
+        type: connected
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsTurnStart:
+      title: STTTurnsTurnStart
+      type: object
+      description: >-
+        Marks the start of a user turn. Fires quickly after the user begins speaking. This event can be used
+        to interrupt your agent to avoid talking over the user.
+      properties:
+        type:
+          type: string
+          enum:
+            - turn.start
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this connection. Does not change between turns.
+      required:
+        - type
+        - request_id
+      example:
+        type: turn.start
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsTurnUpdate:
+      title: STTTurnsTurnUpdate
+      type: object
+      description: Fires repeatedly as the model transcribes the current user turn.
+      properties:
+        type:
+          type: string
+          enum:
+            - turn.update
+          description: Event type identifier.
+        transcript:
+          type: string
+          description: >-
+            Cumulative text for the current turn, i.e. the full text transcribed so far in this turn, not a
+            delta.
+        request_id:
+          type: string
+          description: Unique identifier for this connection. Does not change between turns.
+      required:
+        - type
+        - transcript
+        - request_id
+      example:
+        type: turn.update
+        transcript: Hey can you help
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsTurnEagerEnd:
+      title: STTTurnsTurnEagerEnd
+      type: object
+      description: '[PREVIEW] Fires when the model predicts that the user might be done speaking.'
+      properties:
+        type:
+          type: string
+          enum:
+            - turn.eager_end
+          description: Event type identifier.
+        transcript:
+          type: string
+          description: Cumulative text for the current turn.
+        request_id:
+          type: string
+          description: Unique identifier for this connection. Does not change between turns.
+      required:
+        - type
+        - transcript
+        - request_id
+      example:
+        type: turn.eager_end
+        transcript: Hey can you help me with something?
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsTurnResume:
+      title: STTTurnsTurnResume
+      type: object
+      description: '[PREVIEW] Fires after `turn.eager_end` if the user turn has not actually ended.'
+      properties:
+        type:
+          type: string
+          enum:
+            - turn.resume
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this connection. Does not change between turns.
+      required:
+        - type
+        - request_id
+      example:
+        type: turn.resume
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsTurnEnd:
+      title: STTTurnsTurnEnd
+      type: object
+      description: Marks the end of a user turn.
+      properties:
+        type:
+          type: string
+          enum:
+            - turn.end
+          description: Event type identifier.
+        transcript:
+          type: string
+          description: Definitive transcript for the completed turn.
+        request_id:
+          type: string
+          description: Unique identifier for this connection. Does not change between turns.
+      required:
+        - type
+        - transcript
+        - request_id
+      example:
+        type: turn.end
+        transcript: Hey can you help me with something?
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTErrorResponse:
+      title: STTErrorResponse
+      type: object
+      description: Error information for STT WebSocket connections.
+      properties:
+        type:
+          type: string
+          enum:
+            - error
+          description: Event type identifier.
+        error_code:
+          type: string
+          description: Machine-readable error code.
+        status_code:
+          type: integer
+          description: An HTTP response status code.
+        title:
+          type: string
+          description: Human-readable error title.
+        message:
+          type: string
+          description: Human-readable error message.
+        doc_url:
+          type: string
+          description: URL to relevant documentation.
+        request_id:
+          type: string
+          description: Unique identifier for this WebSocket connection.
+      required:
+        - type
+      example:
+        type: error
+        title: Invalid model
+        message: The model is not valid, make sure it is a valid model ID.
+        error_code: model_not_found
+        doc_url: https://docs.cartesia.ai/build-with-cartesia/stt-models/latest
+        status_code: 400
+        request_id: 2ff8af53-4d38-479d-8287-58940f01c701
+    STTTurnsWebSocketResponse:
+      title: STTTurnsWebSocketResponse
+      description: >-
+        Events emitted by the server. Each event has a `type` field that discriminates between message
+        variants. All emitted text is final — the model does not revise previous output. The `transcript`
+        field is cumulative within a turn.
+      oneOf:
+        - $ref: '#/components/schemas/STTTurnsConnected'
+        - $ref: '#/components/schemas/STTTurnsTurnStart'
+        - $ref: '#/components/schemas/STTTurnsTurnUpdate'
+        - $ref: '#/components/schemas/STTTurnsTurnEagerEnd'
+        - $ref: '#/components/schemas/STTTurnsTurnResume'
+        - $ref: '#/components/schemas/STTTurnsTurnEnd'
+        - $ref: '#/components/schemas/STTErrorResponse'
+      discriminator:
+        propertyName: type
+    STTExternalVADWebSocketQueryParams:
+      type: object
+      required:
+        - model
+        - encoding
+        - sample_rate
+      properties:
+        model:
+          $ref: '#/components/schemas/STTRealtimeExternalVADModel'
+        encoding:
+          $ref: '#/components/schemas/STTEncoding'
+        sample_rate:
+          type: integer
+          description: Sample rate in Hz.
+        language:
+          type: string
+          enum:
+            - en
+          description: >-
+            The language of the input audio in ISO-639-1 format. Defaults to `en`.
+
+            See [the docs](https://docs.cartesia.ai/build-with-cartesia/stt-models/latest) for current
+            language support.
+        min_volume:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: >-
+            Used by `ink-whisper` models only. Controls what is considered silence for automatic transcript
+            finalization. Lower values pick up quiet audio; higher values filter noisy audio more
+            aggressively.
+        max_silence_duration_secs:
+          type: number
+          description: >-
+            Used by `ink-whisper` models only. Maximum duration of silence (in seconds) before the API
+            automatically finalizes the transcript. Lower values finalize more aggressively; higher values
+            allow longer pauses within utterances.
+    STTExternalVADWebSocketRequest:
+      title: STTExternalVADWebSocketRequest
+      description: >-
+        Text commands sent to the server:
+
+        - Send ``finalize`` as a text message when the user is done speaking to receive the transcript for any
+        buffered audio
+
+        - Send ``close`` as a text message to flush remaining audio, close session, and receive a done
+        acknowledgment
+
+
+        Audio data is sent as raw binary messages.
+      type: string
+      enum:
+        - finalize
+        - close
+    STTExternalVADTranscriptResponse:
+      title: STTExternalVADTranscriptResponse
+      type: object
+      description: A transcript chunk.
+      properties:
+        type:
+          type: string
+          enum:
+            - transcript
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this WebSocket connection.
+        text:
+          type: string
+          description: >-
+            Transcribed text. This is a delta from the last transcript chunk with `"is_final": true`.
+
+            To assemble the full transcript, concatenate all transcript chunks where `"is_final": true`.
+
+            Do not strip whitespace from `text` or add whitespace between chunks as this will produce an
+            incorrect transcript.
+        is_final:
+          type: boolean
+          description: Whether `text` is finalized.
+        duration:
+          type: number
+          description: Duration of the audio that produced this chunk, in seconds.
+        language:
+          type: string
+          description: Detected language of the audio in ISO-639-1 format.
+        words:
+          type: array
+          description: Word-level timing information for the transcript.
+          items:
+            $ref: '#/components/schemas/WordTimestamps'
+      required:
+        - type
+        - request_id
+        - text
+        - is_final
+      example:
+        type: transcript
+        is_final: true
+        request_id: b67e1c5d-2f4c-4c3d-9f82-96eb4d2f12a8
+        text: How are you doing today?
+        duration: 2.5
+        language: en
+        words:
+          - word: How
+            start: 0
+            end: 0.12
+          - word: are
+            start: 0.15
+            end: 0.25
+          - word: you
+            start: 0.28
+            end: 0.35
+          - word: doing
+            start: 0.38
+            end: 0.55
+          - word: today?
+            start: 0.58
+            end: 0.78
+    STTExternalVADFlushDoneResponse:
+      title: STTExternalVADFlushDoneResponse
+      type: object
+      description: Acknowledgment that buffered audio has been processed in response to a `finalize` command.
+      properties:
+        type:
+          type: string
+          enum:
+            - flush_done
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this WebSocket connection.
+      required:
+        - type
+        - request_id
+      example:
+        type: flush_done
+        request_id: b67e1c5d-2f4c-4c3d-9f82-96eb4d2f12a8
+    STTExternalVADDoneResponse:
+      title: STTExternalVADDoneResponse
+      type: object
+      description: >-
+        Acknowledgment for the `close` command, sent after all buffered audio has been processed and before
+        the connection closes.
+      properties:
+        type:
+          type: string
+          enum:
+            - done
+          description: Event type identifier.
+        request_id:
+          type: string
+          description: Unique identifier for this WebSocket connection.
+      required:
+        - type
+        - request_id
+      example:
+        type: done
+        request_id: b67e1c5d-2f4c-4c3d-9f82-96eb4d2f12a8
+    STTExternalVADWebSocketResponse:
+      title: STTExternalVADWebSocketResponse
+      description: >-
+        Events emitted by the server. Each event has a `type` field that discriminates between message
+        variants.
+      oneOf:
+        - $ref: '#/components/schemas/STTExternalVADTranscriptResponse'
+        - $ref: '#/components/schemas/STTExternalVADFlushDoneResponse'
+        - $ref: '#/components/schemas/STTExternalVADDoneResponse'
+        - $ref: '#/components/schemas/STTErrorResponse'
+      discriminator:
+        propertyName: type
     CancelContextRequest:
       title: CancelContextRequest
       type: object
@@ -3394,10 +3831,7 @@ components:
       type: object
       properties:
         model_id:
-          type: string
-          description: >-
-            The ID of the model to use for the generation. See
-            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+          $ref: '#/components/schemas/TTSModel'
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -3489,10 +3923,7 @@ components:
       type: object
       properties:
         model_id:
-          type: string
-          description: >-
-            The ID of the model to use for the generation. See
-            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+          $ref: '#/components/schemas/TTSModel'
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -3627,10 +4058,7 @@ components:
       type: object
       properties:
         model_id:
-          type: string
-          description: >-
-            The ID of the model to use for the generation. See
-            [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models) for available models.
+          $ref: '#/components/schemas/TTSModel'
           x-stainless-naming:
             python:
               property_name: llm_model_id
@@ -4083,42 +4511,9 @@ components:
     OutputFormat:
       title: OutputFormat
       oneOf:
-        - type: object
-          title: RAWOutputFormat
-          allOf:
-            - type: object
-              properties:
-                container:
-                  type: string
-                  enum:
-                    - raw
-            - $ref: '#/components/schemas/RawOutputFormat'
-          required:
-            - container
-        - type: object
-          title: WAVOutputFormat
-          allOf:
-            - type: object
-              properties:
-                container:
-                  type: string
-                  enum:
-                    - wav
-            - $ref: '#/components/schemas/WAVOutputFormat'
-          required:
-            - container
-        - type: object
-          title: MP3OutputFormat
-          allOf:
-            - type: object
-              properties:
-                container:
-                  type: string
-                  enum:
-                    - mp3
-            - $ref: '#/components/schemas/MP3OutputFormat'
-          required:
-            - container
+        - $ref: '#/components/schemas/RawOutputFormat'
+        - $ref: '#/components/schemas/WAVOutputFormat'
+        - $ref: '#/components/schemas/MP3OutputFormat'
     RawOutputFormat:
       title: RawOutputFormat
       type: object
@@ -4200,6 +4595,10 @@ components:
       title: MP3OutputFormat
       type: object
       properties:
+        container:
+          type: string
+          enum:
+            - mp3
         sample_rate:
           type: integer
           enum:
@@ -4218,6 +4617,7 @@ components:
             - 128000
             - 192000
       required:
+        - container
         - sample_rate
         - bit_rate
     TTSRequestVoiceSpecifier:

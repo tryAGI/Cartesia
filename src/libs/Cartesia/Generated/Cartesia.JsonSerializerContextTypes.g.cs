@@ -264,703 +264,835 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PaginatedFineTunes? Type59 { get; set; }
+        public global::Cartesia.FineTuneBaseModel? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.FineTune>? Type60 { get; set; }
+        public global::Cartesia.PaginatedFineTunes? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PaginatedVoices? Type61 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.FineTune>? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.Voice>? Type62 { get; set; }
+        public global::Cartesia.PaginatedVoices? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.Voice? Type63 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Voice>? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictItem? Type64 { get; set; }
+        public global::Cartesia.Voice? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDict? Type65 { get; set; }
+        public global::Cartesia.PronunciationDictItem? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.PronunciationDictItem>? Type66 { get; set; }
+        public global::Cartesia.PronunciationDict? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.CreatePronunciationDictRequest? Type67 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.PronunciationDictItem>? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.UpdatePronunciationDictRequest? Type68 { get; set; }
+        public global::Cartesia.CreatePronunciationDictRequest? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PaginatedPronunciationDicts? Type69 { get; set; }
+        public global::Cartesia.UpdatePronunciationDictRequest? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.PronunciationDict>? Type70 { get; set; }
+        public global::Cartesia.PaginatedPronunciationDicts? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TimestampGranularity? Type71 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.PronunciationDict>? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TranscriptionWord? Type72 { get; set; }
+        public global::Cartesia.TimestampGranularity? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TranscriptionResponse? Type73 { get; set; }
+        public global::Cartesia.TranscriptionWord? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.TranscriptionWord>? Type74 { get; set; }
+        public global::Cartesia.TranscriptionResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponse? Type75 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.TranscriptionWord>? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>? Type76 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponse? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant12? Type77 { get; set; }
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant12, global::Cartesia.TranscriptMessage>? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant1Type? Type78 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant12? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TranscriptMessage? Type79 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant1Type? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? Type80 { get; set; }
+        public global::Cartesia.TranscriptMessage? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant22? Type81 { get; set; }
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant22, global::Cartesia.FlushDoneMessage>? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant2Type? Type82 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant22? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FlushDoneMessage? Type83 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant2Type? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>? Type84 { get; set; }
+        public global::Cartesia.FlushDoneMessage? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant32? Type85 { get; set; }
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant32, global::Cartesia.DoneMessage>? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant3Type? Type86 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant32? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DoneMessage? Type87 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant3Type? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? Type88 { get; set; }
+        public global::Cartesia.DoneMessage? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant42? Type89 { get; set; }
+        public global::Cartesia.AllOf<global::Cartesia.StreamingTranscriptionResponseVariant42, global::Cartesia.ErrorMessage>? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.StreamingTranscriptionResponseVariant4Type? Type90 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant42? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.ErrorMessage? Type91 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseVariant4Type? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.STTEncoding? Type92 { get; set; }
+        public global::Cartesia.ErrorMessage? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.ModelSpeed? Type93 { get; set; }
+        public global::Cartesia.StreamingTranscriptionResponseDiscriminator? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponse? Type94 { get; set; }
+        public global::Cartesia.STTEncoding? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant1? Type95 { get; set; }
+        public global::Cartesia.STTBatchModel? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant1Type? Type96 { get; set; }
+        public global::Cartesia.STTRealtimeTurnDetectingModel? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant2? Type97 { get; set; }
+        public global::Cartesia.STTRealtimeExternalVADModel? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant2Type? Type98 { get; set; }
+        public global::Cartesia.TTSModel? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant3? Type99 { get; set; }
+        public global::Cartesia.InfillModel? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant3Type? Type100 { get; set; }
+        public global::Cartesia.ModelSpeed? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant4? Type101 { get; set; }
+        public global::Cartesia.TTSWebSocketResponse? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant4Type? Type102 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant1? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.WordTimestamps? Type103 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant1Type? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant5? Type104 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant2? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant5Type? Type105 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant2Type? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant6? Type106 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant3? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseVariant6Type? Type107 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant3Type? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PhonemeTimestamps? Type108 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant4? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseDiscriminator? Type109 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant4Type? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketResponseDiscriminatorType? Type110 { get; set; }
+        public global::Cartesia.WordTimestamps? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type111 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant5? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.CancelContextRequest? Type112 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant5Type? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.GenerationRequest? Type113 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant6? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSRequestVoiceSpecifier? Type114 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseVariant6Type? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.GenerationConfig? Type115 { get; set; }
+        public global::Cartesia.PhonemeTimestamps? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SupportedLanguage? Type116 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseDiscriminator? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.RawOutputFormat? Type117 { get; set; }
+        public global::Cartesia.TTSWebSocketResponseDiscriminatorType? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSWebSocketRequest? Type118 { get; set; }
+        public global::System.Collections.Generic.IList<double>? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSRequest? Type119 { get; set; }
+        public global::Cartesia.STTTurnsWebSocketQueryParams? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormat? Type120 { get; set; }
+        public global::Cartesia.STTTurnsCloseCommand? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.Emotion? Type121 { get; set; }
+        public global::Cartesia.STTTurnsCloseCommandType? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSERequest? Type122 { get; set; }
+        public global::Cartesia.STTTurnsWebSocketRequest? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SSEOutputFormat? Type123 { get; set; }
+        public global::Cartesia.STTTurnsConnected? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEEvent? Type124 { get; set; }
+        public global::Cartesia.STTTurnsConnectedType? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEChunkEvent? Type125 { get; set; }
+        public global::Cartesia.STTTurnsTurnStart? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSETimestampsEvent? Type126 { get; set; }
+        public global::Cartesia.STTTurnsTurnStartType? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEPhonemeTimestampsEvent? Type127 { get; set; }
+        public global::Cartesia.STTTurnsTurnUpdate? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEDoneEvent? Type128 { get; set; }
+        public global::Cartesia.STTTurnsTurnUpdateType? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEErrorEvent? Type129 { get; set; }
+        public global::Cartesia.STTTurnsTurnEagerEnd? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEEventDiscriminator? Type130 { get; set; }
+        public global::Cartesia.STTTurnsTurnEagerEndType? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEEventDiscriminatorType? Type131 { get; set; }
+        public global::Cartesia.STTTurnsTurnResume? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEChunkEventType? Type132 { get; set; }
+        public global::Cartesia.STTTurnsTurnResumeType? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSETimestampsEventType? Type133 { get; set; }
+        public global::Cartesia.STTTurnsTurnEnd? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEPhonemeTimestampsEventType? Type134 { get; set; }
+        public global::Cartesia.STTTurnsTurnEndType? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEDoneEventType? Type135 { get; set; }
+        public global::Cartesia.STTErrorResponse? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSSSEErrorEventType? Type136 { get; set; }
+        public global::Cartesia.STTErrorResponseType? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEEvent? Type137 { get; set; }
+        public global::Cartesia.STTTurnsWebSocketResponse? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEChunk? Type138 { get; set; }
+        public global::Cartesia.STTTurnsWebSocketResponseDiscriminator? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEDone? Type139 { get; set; }
+        public global::Cartesia.STTTurnsWebSocketResponseDiscriminatorType? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEError? Type140 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketQueryParams? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEErrorType? Type141 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketQueryParamsLanguage? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.OutputFormatRAWOutputFormat2, global::Cartesia.RawOutputFormat>? Type142 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketRequest? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatRAWOutputFormat2? Type143 { get; set; }
+        public global::Cartesia.STTExternalVADTranscriptResponse? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatRAWOutputFormatContainer? Type144 { get; set; }
+        public global::Cartesia.STTExternalVADTranscriptResponseType? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.OutputFormatWAVOutputFormat2, global::Cartesia.WAVOutputFormat>? Type145 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatWAVOutputFormat2? Type146 { get; set; }
+        public global::Cartesia.STTExternalVADFlushDoneResponse? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatWAVOutputFormatContainer? Type147 { get; set; }
+        public global::Cartesia.STTExternalVADFlushDoneResponseType? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.WAVOutputFormat? Type148 { get; set; }
+        public global::Cartesia.STTExternalVADDoneResponse? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AllOf<global::Cartesia.OutputFormatMP3OutputFormat2, global::Cartesia.MP3OutputFormat>? Type149 { get; set; }
+        public global::Cartesia.STTExternalVADDoneResponseType? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatMP3OutputFormat2? Type150 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketResponse? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatMP3OutputFormatContainer? Type151 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketResponseDiscriminator? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.MP3OutputFormat? Type152 { get; set; }
+        public global::Cartesia.STTExternalVADWebSocketResponseDiscriminatorType? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.RawOutputFormatContainer? Type153 { get; set; }
+        public global::Cartesia.CancelContextRequest? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.RawEncoding? Type154 { get; set; }
+        public global::Cartesia.GenerationRequest? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SSEOutputFormatContainer? Type155 { get; set; }
+        public global::Cartesia.TTSRequestVoiceSpecifier? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.WAVOutputFormatContainer? Type156 { get; set; }
+        public global::Cartesia.GenerationConfig? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TTSRequestVoiceSpecifierMode? Type157 { get; set; }
+        public global::Cartesia.SupportedLanguage? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.OutputFormatContainer? Type158 { get; set; }
+        public global::Cartesia.RawOutputFormat? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.GenderPresentation? Type159 { get; set; }
+        public global::Cartesia.TTSWebSocketRequest? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceMetadata? Type160 { get; set; }
+        public global::Cartesia.TTSRequest? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.GetVoicesResponse? Type161 { get; set; }
+        public global::Cartesia.OutputFormat? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.UpdateVoiceRequest? Type162 { get; set; }
+        public global::Cartesia.Emotion? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeTargetLanguage? Type163 { get; set; }
+        public global::Cartesia.TTSSSERequest? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeEnglishDialect? Type164 { get; set; }
+        public global::Cartesia.SSEOutputFormat? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeFrenchDialect? Type165 { get; set; }
+        public global::Cartesia.TTSSSEEvent? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeSpanishDialect? Type166 { get; set; }
+        public global::Cartesia.TTSSSEChunkEvent? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizePortugueseDialect? Type167 { get; set; }
+        public global::Cartesia.TTSSSETimestampsEvent? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeDialect? Type168 { get; set; }
+        public global::Cartesia.TTSSSEPhonemeTimestampsEvent? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.Gender? Type169 { get; set; }
+        public global::Cartesia.TTSSSEDoneEvent? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceExpandOptions? Type170 { get; set; }
+        public global::Cartesia.TTSSSEErrorEvent? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.LocalizeVoiceRequest? Type171 { get; set; }
+        public global::Cartesia.TTSSSEEventDiscriminator? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsUploadFileRequest? Type172 { get; set; }
+        public global::Cartesia.TTSSSEEventDiscriminatorType? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type173 { get; set; }
+        public global::Cartesia.TTSSSEChunkEventType? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.InfillBytesRequest? Type174 { get; set; }
+        public global::Cartesia.TTSSSETimestampsEventType? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SttTranscribeRequest? Type175 { get; set; }
+        public global::Cartesia.TTSSSEPhonemeTimestampsEventType? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SttTranscribeRequestLanguage? Type176 { get; set; }
+        public global::Cartesia.TTSSSEDoneEventType? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? Type177 { get; set; }
+        public global::Cartesia.TTSSSEErrorEventType? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerBytesRequest? Type178 { get; set; }
+        public global::Cartesia.VoiceChangerSSEEvent? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSseRequest? Type179 { get; set; }
+        public global::Cartesia.VoiceChangerSSEChunk? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesCloneRequest? Type180 { get; set; }
+        public global::Cartesia.VoiceChangerSSEDone? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsListCartesiaVersion? Type181 { get; set; }
+        public global::Cartesia.VoiceChangerSSEError? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsGetCartesiaVersion? Type182 { get; set; }
+        public global::Cartesia.VoiceChangerSSEErrorType? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsUpdateCartesiaVersion? Type183 { get; set; }
+        public global::Cartesia.WAVOutputFormat? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsDeleteCartesiaVersion? Type184 { get; set; }
+        public global::Cartesia.MP3OutputFormat? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsTemplatesCartesiaVersion? Type185 { get; set; }
+        public global::Cartesia.RawOutputFormatContainer? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsListCallsCartesiaVersion? Type186 { get; set; }
+        public global::Cartesia.RawEncoding? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsGetCallCartesiaVersion? Type187 { get; set; }
+        public global::Cartesia.SSEOutputFormatContainer? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsDownloadCallAudioCartesiaVersion? Type188 { get; set; }
+        public global::Cartesia.WAVOutputFormatContainer? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsPhoneNumbersCartesiaVersion? Type189 { get; set; }
+        public global::Cartesia.MP3OutputFormatContainer? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsListMetricsCartesiaVersion? Type190 { get; set; }
+        public global::Cartesia.TTSRequestVoiceSpecifierMode? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsCreateMetricCartesiaVersion? Type191 { get; set; }
+        public global::Cartesia.OutputFormatContainer? Type191 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsGetMetricCartesiaVersion? Type192 { get; set; }
+        public global::Cartesia.GenderPresentation? Type192 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsListMetricResultsCartesiaVersion? Type193 { get; set; }
+        public global::Cartesia.VoiceMetadata? Type193 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsExportMetricResultsCartesiaVersion? Type194 { get; set; }
+        public global::Cartesia.GetVoicesResponse? Type194 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsAddMetricToAgentCartesiaVersion? Type195 { get; set; }
+        public global::Cartesia.UpdateVoiceRequest? Type195 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion? Type196 { get; set; }
+        public global::Cartesia.LocalizeTargetLanguage? Type196 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsListDeploymentsCartesiaVersion? Type197 { get; set; }
+        public global::Cartesia.LocalizeEnglishDialect? Type197 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AgentsGetDeploymentCartesiaVersion? Type198 { get; set; }
+        public global::Cartesia.LocalizeFrenchDialect? Type198 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.ApiStatusGetCartesiaVersion? Type199 { get; set; }
+        public global::Cartesia.LocalizeSpanishDialect? Type199 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.AuthAccessTokenCartesiaVersion? Type200 { get; set; }
+        public global::Cartesia.LocalizePortugueseDialect? Type200 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsListCartesiaVersion? Type201 { get; set; }
+        public global::Cartesia.LocalizeDialect? Type201 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsCreateCartesiaVersion? Type202 { get; set; }
+        public global::Cartesia.Gender? Type202 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsGetCartesiaVersion? Type203 { get; set; }
+        public global::Cartesia.VoiceExpandOptions? Type203 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsUpdateCartesiaVersion? Type204 { get; set; }
+        public global::Cartesia.LocalizeVoiceRequest? Type204 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsDeleteCartesiaVersion? Type205 { get; set; }
+        public global::Cartesia.DatasetsUploadFileRequest? Type205 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsListFilesCartesiaVersion? Type206 { get; set; }
+        public byte[]? Type206 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsUploadFileCartesiaVersion? Type207 { get; set; }
+        public global::Cartesia.InfillBytesRequest? Type207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.DatasetsDeleteFileCartesiaVersion? Type208 { get; set; }
+        public global::Cartesia.SttTranscribeRequest? Type208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FineTunesListCartesiaVersion? Type209 { get; set; }
+        public global::Cartesia.SttTranscribeRequestLanguage? Type209 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FineTunesCreateCartesiaVersion? Type210 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? Type210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FineTunesGetCartesiaVersion? Type211 { get; set; }
+        public global::Cartesia.VoiceChangerBytesRequest? Type211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FineTunesDeleteCartesiaVersion? Type212 { get; set; }
+        public global::Cartesia.VoiceChangerSseRequest? Type212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.FineTunesListVoicesCartesiaVersion? Type213 { get; set; }
+        public global::Cartesia.VoicesCloneRequest? Type213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.InfillBytesCartesiaVersion? Type214 { get; set; }
+        public global::Cartesia.AgentsListCartesiaVersion? Type214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictsListCartesiaVersion? Type215 { get; set; }
+        public global::Cartesia.AgentsGetCartesiaVersion? Type215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictsCreateCartesiaVersion? Type216 { get; set; }
+        public global::Cartesia.AgentsUpdateCartesiaVersion? Type216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictsGetCartesiaVersion? Type217 { get; set; }
+        public global::Cartesia.AgentsDeleteCartesiaVersion? Type217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictsUpdateCartesiaVersion? Type218 { get; set; }
+        public global::Cartesia.AgentsTemplatesCartesiaVersion? Type218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.PronunciationDictsDeleteCartesiaVersion? Type219 { get; set; }
+        public global::Cartesia.AgentsListCallsCartesiaVersion? Type219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.SttTranscribeCartesiaVersion? Type220 { get; set; }
+        public global::Cartesia.AgentsGetCallCartesiaVersion? Type220 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TtsBytesCartesiaVersion? Type221 { get; set; }
+        public global::Cartesia.AgentsDownloadCallAudioCartesiaVersion? Type221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.TtsSseCartesiaVersion? Type222 { get; set; }
+        public global::Cartesia.AgentsPhoneNumbersCartesiaVersion? Type222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerBytesCartesiaVersion? Type223 { get; set; }
+        public global::Cartesia.AgentsListMetricsCartesiaVersion? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoiceChangerSseCartesiaVersion? Type224 { get; set; }
+        public global::Cartesia.AgentsCreateMetricCartesiaVersion? Type224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesListCartesiaVersion? Type225 { get; set; }
+        public global::Cartesia.AgentsGetMetricCartesiaVersion? Type225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? Type226 { get; set; }
+        public global::Cartesia.AgentsListMetricResultsCartesiaVersion? Type226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesCloneCartesiaVersion? Type227 { get; set; }
+        public global::Cartesia.AgentsExportMetricResultsCartesiaVersion? Type227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesDeleteCartesiaVersion? Type228 { get; set; }
+        public global::Cartesia.AgentsAddMetricToAgentCartesiaVersion? Type228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesUpdateCartesiaVersion? Type229 { get; set; }
+        public global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion? Type229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesGetCartesiaVersion? Type230 { get; set; }
+        public global::Cartesia.AgentsListDeploymentsCartesiaVersion? Type230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Cartesia.VoicesLocalizeCartesiaVersion? Type231 { get; set; }
+        public global::Cartesia.AgentsGetDeploymentCartesiaVersion? Type231 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.PhoneNumber>? Type232 { get; set; }
+        public global::Cartesia.ApiStatusGetCartesiaVersion? Type232 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.Deployment>? Type233 { get; set; }
+        public global::Cartesia.AuthAccessTokenCartesiaVersion? Type233 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsListCartesiaVersion? Type234 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsCreateCartesiaVersion? Type235 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsGetCartesiaVersion? Type236 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsUpdateCartesiaVersion? Type237 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsDeleteCartesiaVersion? Type238 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsListFilesCartesiaVersion? Type239 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsUploadFileCartesiaVersion? Type240 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.DatasetsDeleteFileCartesiaVersion? Type241 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.FineTunesListCartesiaVersion? Type242 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.FineTunesCreateCartesiaVersion? Type243 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.FineTunesGetCartesiaVersion? Type244 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.FineTunesDeleteCartesiaVersion? Type245 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.FineTunesListVoicesCartesiaVersion? Type246 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.InfillBytesCartesiaVersion? Type247 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.PronunciationDictsListCartesiaVersion? Type248 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.PronunciationDictsCreateCartesiaVersion? Type249 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.PronunciationDictsGetCartesiaVersion? Type250 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.PronunciationDictsUpdateCartesiaVersion? Type251 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.PronunciationDictsDeleteCartesiaVersion? Type252 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.SttTranscribeCartesiaVersion? Type253 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TtsBytesCartesiaVersion? Type254 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.TtsSseCartesiaVersion? Type255 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoiceChangerBytesCartesiaVersion? Type256 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoiceChangerSseCartesiaVersion? Type257 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesListCartesiaVersion? Type258 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? Type259 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesCloneCartesiaVersion? Type260 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesDeleteCartesiaVersion? Type261 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesUpdateCartesiaVersion? Type262 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesGetCartesiaVersion? Type263 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Cartesia.VoicesLocalizeCartesiaVersion? Type264 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Cartesia.PhoneNumber>? Type265 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Cartesia.Deployment>? Type266 { get; set; }
 
         /// <summary>
         /// 
@@ -1037,18 +1169,22 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Cartesia.TimestampGranularity>? ListType18 { get; set; }
+        public global::System.Collections.Generic.List<global::Cartesia.WordTimestamps>? ListType18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Cartesia.VoiceExpandOptions>? ListType19 { get; set; }
+        public global::System.Collections.Generic.List<global::Cartesia.TimestampGranularity>? ListType19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Cartesia.PhoneNumber>? ListType20 { get; set; }
+        public global::System.Collections.Generic.List<global::Cartesia.VoiceExpandOptions>? ListType20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Cartesia.Deployment>? ListType21 { get; set; }
+        public global::System.Collections.Generic.List<global::Cartesia.PhoneNumber>? ListType21 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Deployment>? ListType22 { get; set; }
     }
 }

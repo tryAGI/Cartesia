@@ -21,10 +21,12 @@ namespace Cartesia
         public string? Filename { get; set; }
 
         /// <summary>
-        /// ID of the model to use for transcription. Use `ink-whisper` for the latest Cartesia Whisper model.
+        /// Models that support batch speech-to-text transcription.<br/>
+        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.STTBatchModelJsonConverter))]
+        public global::Cartesia.STTBatchModel? Model { get; set; }
 
         /// <summary>
         /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
@@ -51,7 +53,8 @@ namespace Cartesia
         /// <param name="file"></param>
         /// <param name="filename"></param>
         /// <param name="model">
-        /// ID of the model to use for transcription. Use `ink-whisper` for the latest Cartesia Whisper model.
+        /// Models that support batch speech-to-text transcription.<br/>
+        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
         /// </param>
         /// <param name="language">
         /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
@@ -65,7 +68,7 @@ namespace Cartesia
         public SttTranscribeRequest(
             byte[]? file,
             string? filename,
-            string? model,
+            global::Cartesia.STTBatchModel? model,
             global::Cartesia.SttTranscribeRequestLanguage? language,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities)
         {
