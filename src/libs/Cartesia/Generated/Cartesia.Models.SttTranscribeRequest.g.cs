@@ -12,13 +12,15 @@ namespace Cartesia
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
-        public byte[]? File { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required byte[] File { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
-        public string? Filename { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Filename { get; set; }
 
         /// <summary>
         /// Models that support batch speech-to-text transcription.<br/>
@@ -26,7 +28,8 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.STTBatchModelJsonConverter))]
-        public global::Cartesia.STTBatchModel? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.STTBatchModel Model { get; set; }
 
         /// <summary>
         /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
@@ -66,14 +69,14 @@ namespace Cartesia
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SttTranscribeRequest(
-            byte[]? file,
-            string? filename,
-            global::Cartesia.STTBatchModel? model,
+            byte[] file,
+            string filename,
+            global::Cartesia.STTBatchModel model,
             global::Cartesia.SttTranscribeRequestLanguage? language,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities)
         {
-            this.File = file;
-            this.Filename = filename;
+            this.File = file ?? throw new global::System.ArgumentNullException(nameof(file));
+            this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.Model = model;
             this.Language = language;
             this.TimestampGranularities = timestampGranularities;
