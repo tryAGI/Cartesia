@@ -27,23 +27,23 @@ public sealed partial class CartesiaClient : ISpeechToTextClient
     {
         _ = audioSpeechStream ?? throw new ArgumentNullException(nameof(audioSpeechStream));
 
-        var request = options?.RawRepresentationFactory?.Invoke(this) as SttTranscribeRequest
-            ?? new SttTranscribeRequest();
+        var request = options?.RawRepresentationFactory?.Invoke(this) as SttTranscribeRequest;
+        if (request is null)
+        {
+            request = new SttTranscribeRequest
+            {
+                File = await ReadAudioBytesAsync(audioSpeechStream, cancellationToken).ConfigureAwait(false),
+                Filename = "audio.wav",
+                Model = ResolveSttBatchModel(options?.ModelId),
+            };
+        }
 
         if (request.File is null)
         {
-            MemoryStream? ms = audioSpeechStream as MemoryStream;
-            if (ms is null || ms.Position != 0)
-            {
-                ms = new MemoryStream();
-                await audioSpeechStream.CopyToAsync(ms, 81920, cancellationToken).ConfigureAwait(false);
-            }
-
-            request.File = ms.TryGetBuffer(out ArraySegment<byte> buffer)
-                && buffer.Array is not null && buffer.Offset == 0 && buffer.Count == ms.Length
-                    ? buffer.Array
-                    : ms.ToArray();
+            request.File = await ReadAudioBytesAsync(audioSpeechStream, cancellationToken).ConfigureAwait(false);
         }
+
+        request.Filename ??= "audio.wav";
 
         // Map MEAI options
         if (options?.SpeechLanguage is { Length: > 0 } language
@@ -52,7 +52,10 @@ public sealed partial class CartesiaClient : ISpeechToTextClient
             request.Language ??= languageCode;
         }
 
-        request.Model ??= options?.ModelId;
+        if (options?.ModelId is { Length: > 0 } modelId)
+        {
+            request.Model = ResolveSttBatchModel(modelId);
+        }
 
         // Request word-level timestamps for timing info
         request.TimestampGranularities ??= [TimestampGranularity.Word];
@@ -78,7 +81,7 @@ public sealed partial class CartesiaClient : ISpeechToTextClient
         return new SpeechToTextResponse(response.Text)
         {
             RawRepresentation = response,
-            ModelId = request.Model,
+            ModelId = request.Model.ToValueString(),
             StartTime = startTime,
             EndTime = endTime,
         };
@@ -98,5 +101,33 @@ public sealed partial class CartesiaClient : ISpeechToTextClient
         {
             yield return update;
         }
+    }
+
+    private static async Task<byte[]> ReadAudioBytesAsync(
+        Stream audioSpeechStream,
+        CancellationToken cancellationToken)
+    {
+        MemoryStream? ms = audioSpeechStream as MemoryStream;
+        if (ms is null || ms.Position != 0)
+        {
+            ms = new MemoryStream();
+            await audioSpeechStream.CopyToAsync(ms, 81920, cancellationToken).ConfigureAwait(false);
+        }
+
+        return ms.TryGetBuffer(out ArraySegment<byte> buffer)
+            && buffer.Array is not null && buffer.Offset == 0 && buffer.Count == ms.Length
+                ? buffer.Array
+                : ms.ToArray();
+    }
+
+    private static STTBatchModel ResolveSttBatchModel(string? modelId)
+    {
+        if (modelId is not { Length: > 0 })
+        {
+            return STTBatchModel.InkWhisper;
+        }
+
+        return STTBatchModelExtensions.ToEnum(modelId)
+            ?? throw new ArgumentException($"Unknown Cartesia STT model '{modelId}'.", nameof(modelId));
     }
 }
