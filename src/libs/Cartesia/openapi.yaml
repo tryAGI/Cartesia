@@ -1201,16 +1201,10 @@ paths:
       security: *ref_0
   /stt:
     post:
-      description: >-
-        Transcribes audio files into text using Cartesia's Speech-to-Text API.
-
-
-        Upload an audio file and receive a complete transcription response. Supports arbitrarily long audio
-        files with automatic intelligent chunking for longer audio.
-
+      description: |-
+        Transcribes audio files into text.
 
         **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm
-
 
         See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
       operationId: stt_transcribe
@@ -1220,24 +1214,6 @@ paths:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
         - name: encoding
           in: query
-          description: >-
-            The encoding format to process the audio as. If not specified, the audio file will be decoded
-            automatically.
-
-
-            **Supported formats:**
-
-            - `pcm_s16le` - 16-bit signed integer PCM, little-endian (recommended for best performance)
-
-            - `pcm_s32le` - 32-bit signed integer PCM, little-endian
-
-            - `pcm_f16le` - 16-bit floating point PCM, little-endian
-
-            - `pcm_f32le` - 32-bit floating point PCM, little-endian
-
-            - `pcm_mulaw` - 8-bit μ-law encoded PCM
-
-            - `pcm_alaw` - 8-bit A-law encoded PCM
           required: false
           schema:
             $ref: '#/components/schemas/STTEncoding'
@@ -1266,6 +1242,9 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              required:
+                - file
+                - model
               properties:
                 file:
                   type: string
@@ -1274,6 +1253,7 @@ paths:
                   $ref: '#/components/schemas/STTBatchModel'
                 language:
                   description: The language of the input audio in ISO-639-1 format. Defaults to `en`.
+                  type: string
                   enum:
                     - en
                     - zh
@@ -1375,8 +1355,6 @@ paths:
                     - jw
                     - su
                     - yue
-                  type: string
-                  nullable: true
                 timestamp_granularities[]:
                   description: >-
                     The timestamp granularities to populate for this transcription. Currently only `word`
@@ -1384,7 +1362,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/TimestampGranularity'
-                  nullable: true
   /tts/bytes:
     post:
       operationId: tts_bytes
@@ -2927,120 +2904,38 @@ components:
       title: TranscriptionResponse
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - transcript
+          description: The message type. Always `transcript` for a batch transcription response.
+        request_id:
+          type: string
+          description: Unique identifier for this transcription request.
         text:
           type: string
           description: The transcribed text.
+        is_final:
+          type: boolean
+          description: Not used for batch transcription.
+          deprecated: true
         language:
           type: string
-          nullable: true
           description: The specified language of the input audio.
         duration:
           type: number
           format: double
-          nullable: true
           description: The duration of the input audio in seconds.
         words:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptionWord'
-          nullable: true
           description: >-
             Word-level timestamps showing the start and end time of each word. Only included when `[word]` is
             passed into `timestamp_granularities[]`.
       required:
+        - type
         - text
-    StreamingTranscriptionResponse:
-      title: StreamingTranscriptionResponse
-      oneOf:
-        - type: object
-          allOf:
-            - type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - transcript
-            - $ref: '#/components/schemas/TranscriptMessage'
-          required:
-            - type
-        - type: object
-          allOf:
-            - type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - flush_done
-            - $ref: '#/components/schemas/FlushDoneMessage'
-          required:
-            - type
-        - type: object
-          allOf:
-            - type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - done
-            - $ref: '#/components/schemas/DoneMessage'
-          required:
-            - type
-        - type: object
-          allOf:
-            - type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - error
-            - $ref: '#/components/schemas/ErrorMessage'
-          required:
-            - type
-      description: >-
-        The server sends transcription results, control messages, or error messages. Each message has a `type`
-        field to distinguish between different message types.
-      discriminator:
-        propertyName: type
-    TranscriptMessage:
-      title: TranscriptMessage
-      type: object
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for this transcription session.
-        text:
-          type: string
-          description: >-
-            The transcribed text. May be partial or final depending on is_final.
-
-
-            **Note**: Text may be empty in initial responses while the system accumulates sufficient audio for
-            transcription. This is normal behavior - wait for responses with non-empty text or monitor
-            is_final for completion status.
-        is_final:
-          type: boolean
-          description: Whether this is a final transcription result or an interim result.
-        duration:
-          type: number
-          format: double
-          nullable: true
-          description: The duration of the audio transcribed so far, in seconds.
-        language:
-          type: string
-          nullable: true
-          description: The specified language of the input audio.
-        words:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranscriptionWord'
-          nullable: true
-          description: >-
-            Word-level timestamps showing the start and end time of each word in seconds. Always included in
-            streaming responses.
-      required:
-        - request_id
-        - text
-        - is_final
     FlushDoneMessage:
       title: FlushDoneMessage
       type: object
@@ -3098,24 +2993,24 @@ components:
       description: |-
         Models that support batch speech-to-text transcription.
         See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
-    STTRealtimeTurnDetectingModel:
-      title: STTRealtimeTurnDetectingModel
+    STTAutoFinalizeModel:
+      title: STTAutoFinalizeModel
       type: string
       enum:
         - ink-2
       description: |-
-        Models that support realtime speech-to-text with turn-detection.
+        Models that support realtime speech-to-text (auto finalize).
         This mode detects when the user is speaking and emits turn events.
         See [the docs](https://docs.cartesia.ai/build-with-cartesia/stt-models/latest) for all options.
-    STTRealtimeExternalVADModel:
-      title: STTRealtimeExternalVADModel
+    STTManualFinalizeModel:
+      title: STTManualFinalizeModel
       type: string
       enum:
         - ink-2
         - ink-whisper
         - ink-whisper-2025-06-04
       description: |-
-        Models that support realtime speech-to-text with external VAD (voice activity detection).
+        Models that support realtime speech-to-text (manual finalize).
         This mode expects you to send the `finalize` command to trigger transcription.
         See [the docs](https://docs.cartesia.ai/build-with-cartesia/stt-models/latest) for all options.
     TTSModel:
@@ -3417,7 +3312,7 @@ components:
           - 0.255
           - 0.337
           - 0.418
-    STTTurnsWebSocketQueryParams:
+    STTAutoFinalizeWebSocketQueryParams:
       type: object
       required:
         - model
@@ -3425,14 +3320,14 @@ components:
         - sample_rate
       properties:
         model:
-          $ref: '#/components/schemas/STTRealtimeTurnDetectingModel'
+          $ref: '#/components/schemas/STTAutoFinalizeModel'
         encoding:
           $ref: '#/components/schemas/STTEncoding'
         sample_rate:
           type: integer
           description: Sample rate in Hz.
-    STTTurnsCloseCommand:
-      title: STTTurnsCloseCommand
+    STTAutoFinalizeCloseCommand:
+      title: STTAutoFinalizeCloseCommand
       type: object
       description: >-
         Sent as a JSON-encoded WebSocket text frame to close the session cleanly. All buffered audio will be
@@ -3445,15 +3340,15 @@ components:
           description: Command type. Send this as a JSON-encoded WebSocket text frame to close the session.
       required:
         - type
-    STTTurnsWebSocketRequest:
-      title: STTTurnsWebSocketRequest
+    STTAutoFinalizeWebSocketRequest:
+      title: STTAutoFinalizeWebSocketRequest
       description: |-
         Text messages sent from the client to the server.
         Audio data is sent as raw binary messages rather than text messages.
       oneOf:
-        - $ref: '#/components/schemas/STTTurnsCloseCommand'
-    STTTurnsConnected:
-      title: STTTurnsConnected
+        - $ref: '#/components/schemas/STTAutoFinalizeCloseCommand'
+    STTAutoFinalizeConnected:
+      title: STTAutoFinalizeConnected
       type: object
       description: >-
         Fires once when the WebSocket connection is established. You do not need to wait for this event before
@@ -3473,8 +3368,8 @@ components:
       example:
         type: connected
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsTurnStart:
-      title: STTTurnsTurnStart
+    STTAutoFinalizeTurnStart:
+      title: STTAutoFinalizeTurnStart
       type: object
       description: >-
         Marks the start of a user turn. Fires quickly after the user begins speaking. This event can be used
@@ -3494,8 +3389,8 @@ components:
       example:
         type: turn.start
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsTurnUpdate:
-      title: STTTurnsTurnUpdate
+    STTAutoFinalizeTurnUpdate:
+      title: STTAutoFinalizeTurnUpdate
       type: object
       description: Fires repeatedly as the model transcribes the current user turn.
       properties:
@@ -3520,8 +3415,8 @@ components:
         type: turn.update
         transcript: Hey can you help
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsTurnEagerEnd:
-      title: STTTurnsTurnEagerEnd
+    STTAutoFinalizeTurnEagerEnd:
+      title: STTAutoFinalizeTurnEagerEnd
       type: object
       description: '[PREVIEW] Fires when the model predicts that the user might be done speaking.'
       properties:
@@ -3544,8 +3439,8 @@ components:
         type: turn.eager_end
         transcript: Hey can you help me with something?
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsTurnResume:
-      title: STTTurnsTurnResume
+    STTAutoFinalizeTurnResume:
+      title: STTAutoFinalizeTurnResume
       type: object
       description: '[PREVIEW] Fires after `turn.eager_end` if the user turn has not actually ended.'
       properties:
@@ -3563,8 +3458,8 @@ components:
       example:
         type: turn.resume
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsTurnEnd:
-      title: STTTurnsTurnEnd
+    STTAutoFinalizeTurnEnd:
+      title: STTAutoFinalizeTurnEnd
       type: object
       description: Marks the end of a user turn.
       properties:
@@ -3625,23 +3520,23 @@ components:
         doc_url: https://docs.cartesia.ai/build-with-cartesia/stt-models/latest
         status_code: 400
         request_id: 2ff8af53-4d38-479d-8287-58940f01c701
-    STTTurnsWebSocketResponse:
-      title: STTTurnsWebSocketResponse
+    STTAutoFinalizeWebSocketResponse:
+      title: STTAutoFinalizeWebSocketResponse
       description: >-
         Events emitted by the server. Each event has a `type` field that discriminates between message
         variants. All emitted text is final — the model does not revise previous output. The `transcript`
         field is cumulative within a turn.
       oneOf:
-        - $ref: '#/components/schemas/STTTurnsConnected'
-        - $ref: '#/components/schemas/STTTurnsTurnStart'
-        - $ref: '#/components/schemas/STTTurnsTurnUpdate'
-        - $ref: '#/components/schemas/STTTurnsTurnEagerEnd'
-        - $ref: '#/components/schemas/STTTurnsTurnResume'
-        - $ref: '#/components/schemas/STTTurnsTurnEnd'
+        - $ref: '#/components/schemas/STTAutoFinalizeConnected'
+        - $ref: '#/components/schemas/STTAutoFinalizeTurnStart'
+        - $ref: '#/components/schemas/STTAutoFinalizeTurnUpdate'
+        - $ref: '#/components/schemas/STTAutoFinalizeTurnEagerEnd'
+        - $ref: '#/components/schemas/STTAutoFinalizeTurnResume'
+        - $ref: '#/components/schemas/STTAutoFinalizeTurnEnd'
         - $ref: '#/components/schemas/STTErrorResponse'
       discriminator:
         propertyName: type
-    STTExternalVADWebSocketQueryParams:
+    STTManualFinalizeWebSocketQueryParams:
       type: object
       required:
         - model
@@ -3649,7 +3544,7 @@ components:
         - sample_rate
       properties:
         model:
-          $ref: '#/components/schemas/STTRealtimeExternalVADModel'
+          $ref: '#/components/schemas/STTManualFinalizeModel'
         encoding:
           $ref: '#/components/schemas/STTEncoding'
         sample_rate:
@@ -3678,8 +3573,8 @@ components:
             Used by `ink-whisper` models only. Maximum duration of silence (in seconds) before the API
             automatically finalizes the transcript. Lower values finalize more aggressively; higher values
             allow longer pauses within utterances.
-    STTExternalVADWebSocketRequest:
-      title: STTExternalVADWebSocketRequest
+    STTManualFinalizeWebSocketRequest:
+      title: STTManualFinalizeWebSocketRequest
       description: >-
         Text commands sent to the server:
 
@@ -3695,8 +3590,8 @@ components:
       enum:
         - finalize
         - close
-    STTExternalVADTranscriptResponse:
-      title: STTExternalVADTranscriptResponse
+    STTManualFinalizeTranscriptResponse:
+      title: STTManualFinalizeTranscriptResponse
       type: object
       description: A transcript chunk.
       properties:
@@ -3759,8 +3654,8 @@ components:
           - word: today?
             start: 0.58
             end: 0.78
-    STTExternalVADFlushDoneResponse:
-      title: STTExternalVADFlushDoneResponse
+    STTManualFinalizeFlushDoneResponse:
+      title: STTManualFinalizeFlushDoneResponse
       type: object
       description: Acknowledgment that buffered audio has been processed in response to a `finalize` command.
       properties:
@@ -3778,8 +3673,8 @@ components:
       example:
         type: flush_done
         request_id: b67e1c5d-2f4c-4c3d-9f82-96eb4d2f12a8
-    STTExternalVADDoneResponse:
-      title: STTExternalVADDoneResponse
+    STTManualFinalizeDoneResponse:
+      title: STTManualFinalizeDoneResponse
       type: object
       description: >-
         Acknowledgment for the `close` command, sent after all buffered audio has been processed and before
@@ -3799,15 +3694,15 @@ components:
       example:
         type: done
         request_id: b67e1c5d-2f4c-4c3d-9f82-96eb4d2f12a8
-    STTExternalVADWebSocketResponse:
-      title: STTExternalVADWebSocketResponse
+    STTManualFinalizeWebSocketResponse:
+      title: STTManualFinalizeWebSocketResponse
       description: >-
         Events emitted by the server. Each event has a `type` field that discriminates between message
         variants.
       oneOf:
-        - $ref: '#/components/schemas/STTExternalVADTranscriptResponse'
-        - $ref: '#/components/schemas/STTExternalVADFlushDoneResponse'
-        - $ref: '#/components/schemas/STTExternalVADDoneResponse'
+        - $ref: '#/components/schemas/STTManualFinalizeTranscriptResponse'
+        - $ref: '#/components/schemas/STTManualFinalizeFlushDoneResponse'
+        - $ref: '#/components/schemas/STTManualFinalizeDoneResponse'
         - $ref: '#/components/schemas/STTErrorResponse'
       discriminator:
         propertyName: type

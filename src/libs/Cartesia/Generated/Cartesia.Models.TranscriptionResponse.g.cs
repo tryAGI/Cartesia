@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Cartesia
@@ -9,11 +11,31 @@ namespace Cartesia
     public sealed partial class TranscriptionResponse
     {
         /// <summary>
+        /// The message type. Always `transcript` for a batch transcription response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.TranscriptionResponseTypeJsonConverter))]
+        public global::Cartesia.TranscriptionResponseType Type { get; set; }
+
+        /// <summary>
+        /// Unique identifier for this transcription request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
+        public string? RequestId { get; set; }
+
+        /// <summary>
         /// The transcribed text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
+
+        /// <summary>
+        /// Not used for batch transcription.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_final")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public bool? IsFinal { get; set; }
 
         /// <summary>
         /// The specified language of the input audio.
@@ -45,6 +67,12 @@ namespace Cartesia
         /// <param name="text">
         /// The transcribed text.
         /// </param>
+        /// <param name="type">
+        /// The message type. Always `transcript` for a batch transcription response.
+        /// </param>
+        /// <param name="requestId">
+        /// Unique identifier for this transcription request.
+        /// </param>
         /// <param name="language">
         /// The specified language of the input audio.
         /// </param>
@@ -59,10 +87,14 @@ namespace Cartesia
 #endif
         public TranscriptionResponse(
             string text,
+            global::Cartesia.TranscriptionResponseType type,
+            string? requestId,
             string? language,
             double? duration,
             global::System.Collections.Generic.IList<global::Cartesia.TranscriptionWord>? words)
         {
+            this.Type = type;
+            this.RequestId = requestId;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Language = language;
             this.Duration = duration;
