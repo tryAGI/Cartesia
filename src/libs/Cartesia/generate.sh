@@ -20,17 +20,20 @@ fetch_spec() {
 readonly stats_url="https://raw.githubusercontent.com/cartesia-ai/cartesia-python/main/.stats.yml"
 
 echo "Fetching latest spec URL from .stats.yml..."
-openapi_url=$(fetch_spec --fail --silent --show-error --location "$stats_url" | grep 'openapi_spec_url:' | sed 's/openapi_spec_url: *//')
+openapi_url=$(fetch_spec "$stats_url" | sed -n 's/^openapi_spec_url:[[:space:]]*//p' | sed -n '1p')
 
-if [ -z "$openapi_url" ]; then
-  echo "ERROR: Could not extract openapi_spec_url from .stats.yml"
+if [ -n "$openapi_url" ]; then
+  echo "Spec URL: $openapi_url"
+  fetch_spec "$openapi_url" -o openapi.yaml
+elif [ -f openapi.yaml ]; then
+  echo "WARNING: .stats.yml does not expose openapi_spec_url; using the checked-in spec."
+else
+  echo "ERROR: .stats.yml does not expose openapi_spec_url and no checked-in spec exists."
   exit 1
 fi
 
-echo "Spec URL: $openapi_url"
 install_autosdk_cli
 rm -rf Generated
-fetch_spec --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
 
 autosdk generate openapi.yaml \
   --namespace Cartesia \
