@@ -72,6 +72,13 @@ namespace Cartesia
         public required global::Cartesia.SupportedLanguage Language { get; set; }
 
         /// <summary>
+        /// Locales this voice can speak. The native/source locale is first (`is_native: true`), followed by attached cross-lingual locales.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("locales")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Cartesia.VoiceLocale> Locales { get; set; }
+
+        /// <summary>
         /// The country associated with the voice, as an ISO 3166-1 alpha-2 code when available (e.g. `US`, `GB`, `FR`).<br/>
         /// Example: US
         /// </summary>
@@ -109,6 +116,9 @@ namespace Cartesia
         /// <param name="language">
         /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </param>
+        /// <param name="locales">
+        /// Locales this voice can speak. The native/source locale is first (`is_native: true`), followed by attached cross-lingual locales.
+        /// </param>
         /// <param name="gender"></param>
         /// <param name="previewFileUrl">
         /// A URL to download a preview audio file for this voice. Useful to avoid consuming credits when looking for the right voice. The URL requires the same Authorization header. Voice previews may be changed, moved, or deleted so you should avoid storing the URL permanently. This property will be null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
@@ -128,6 +138,7 @@ namespace Cartesia
             string description,
             global::System.DateTime createdAt,
             global::Cartesia.SupportedLanguage language,
+            global::System.Collections.Generic.IList<global::Cartesia.VoiceLocale> locales,
             global::Cartesia.GenderPresentation? gender,
             string? previewFileUrl,
             string? country)
@@ -141,6 +152,7 @@ namespace Cartesia
             this.CreatedAt = createdAt;
             this.PreviewFileUrl = previewFileUrl;
             this.Language = language;
+            this.Locales = locales ?? throw new global::System.ArgumentNullException(nameof(locales));
             this.Country = country;
         }
 

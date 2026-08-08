@@ -34,6 +34,7 @@ namespace Cartesia
             ref string? q,
             ref bool? isOwner,
             ref global::Cartesia.GenderPresentation? gender,
+            ref string? language,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -45,6 +46,7 @@ namespace Cartesia
             string? q,
             bool? isOwner,
             global::Cartesia.GenderPresentation? gender,
+            string? language,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -65,6 +67,7 @@ namespace Cartesia
         /// <param name="q"></param>
         /// <param name="isOwner"></param>
         /// <param name="gender"></param>
+        /// <param name="language"></param>
         /// <param name="expand"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -77,6 +80,7 @@ namespace Cartesia
             string? q = default,
             bool? isOwner = default,
             global::Cartesia.GenderPresentation? gender = default,
+            string? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -89,6 +93,7 @@ namespace Cartesia
                 q: q,
                 isOwner: isOwner,
                 gender: gender,
+                language: language,
                 expand: expand,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -106,6 +111,7 @@ namespace Cartesia
         /// <param name="q"></param>
         /// <param name="isOwner"></param>
         /// <param name="gender"></param>
+        /// <param name="language"></param>
         /// <param name="expand"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -118,6 +124,7 @@ namespace Cartesia
             string? q = default,
             bool? isOwner = default,
             global::Cartesia.GenderPresentation? gender = default,
+            string? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -133,6 +140,7 @@ namespace Cartesia
                 q: ref q,
                 isOwner: ref isOwner,
                 gender: ref gender,
+                language: ref language,
                 expand: expand);
 
 
@@ -168,6 +176,7 @@ namespace Cartesia
                                 .AddOptionalParameter("q", q)
                                 .AddOptionalParameter("is_owner", isOwner?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("gender", gender?.ToValueString())
+                                .AddOptionalParameter("language", language)
                                 .AddOptionalParameter("expand[]", expand, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -220,6 +229,7 @@ namespace Cartesia
                     q: q,
                     isOwner: isOwner,
                     gender: gender,
+                    language: language,
                     expand: expand);
 
                 global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);

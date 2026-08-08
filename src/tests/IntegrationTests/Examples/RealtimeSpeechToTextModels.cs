@@ -27,6 +27,50 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RealtimeSpeechToText_KeytermsAreAvailableOnBothModes()
+    {
+        //// Keyterm prompting biases Ink 2 toward product names, jargon, and uncommon phrases.
+        string[] keyterms = ["Cartesia", "Ink 2", "Sonic"];
+
+        var auto = new STTAutoFinalizeWebSocketQueryParams(
+            model: STTAutoFinalizeModel.Ink2,
+            encoding: STTEncoding.PcmS16le,
+            sampleRate: 16000,
+            keyterm: keyterms);
+        var manual = new STTManualFinalizeWebSocketQueryParams(
+            model: STTManualFinalizeModel.Ink2,
+            encoding: STTEncoding.PcmS16le,
+            sampleRate: 16000,
+            language: null,
+            minVolume: null,
+            maxSilenceDurationSecs: null,
+            keyterm: keyterms);
+
+        auto.Keyterm.Should().Equal(keyterms);
+        manual.Keyterm.Should().Equal(keyterms);
+    }
+
+    [TestMethod]
+    public async Task RealtimeSpeechToText_KeytermsEnforceConnectionLimits()
+    {
+        using var api = new CartesiaClient("dummy-key");
+        var tooManyKeyterms = Enumerable.Repeat("Cartesia", 101).ToArray();
+        string[] tooLongKeyterms = [new('x', 1201)];
+
+        var tooManyAct = () => api.ConnectRealtimeSttAutoAsync(
+            STTEncoding.PcmS16le,
+            sampleRate: 16000,
+            keyterms: tooManyKeyterms);
+        var tooLongAct = () => api.ConnectRealtimeSttManualAsync(
+            STTEncoding.PcmS16le,
+            sampleRate: 16000,
+            keyterms: tooLongKeyterms);
+
+        await Assert.ThrowsExactlyAsync<ArgumentException>(tooManyAct);
+        await Assert.ThrowsExactlyAsync<ArgumentException>(tooLongAct);
+    }
+
+    [TestMethod]
     public void RealtimeSpeechToText_AutoFinalizeParsesInk2TurnEvents()
     {
         var response = STTAutoFinalizeWebSocketResponse.FromJson(

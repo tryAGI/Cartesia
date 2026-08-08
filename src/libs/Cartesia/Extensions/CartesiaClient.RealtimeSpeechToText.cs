@@ -71,7 +71,37 @@ public sealed partial class CartesiaClient
             new STTAutoFinalizeWebSocketQueryParams(
                 encoding: encoding,
                 sampleRate: sampleRate,
-                model: model),
+                model: model,
+                keyterm: null),
+            cartesiaVersion,
+            cancellationToken);
+    }
+
+    /// <summary>
+    /// Connects to realtime speech-to-text with automatic turn finalization and Ink 2 keyterm prompting.
+    /// </summary>
+    /// <param name="encoding">Audio encoding for binary audio frames.</param>
+    /// <param name="sampleRate">Audio sample rate in Hz.</param>
+    /// <param name="keyterms">Terms and phrases to bias transcription toward, up to 100 values and 1200 total characters.</param>
+    /// <param name="model">Realtime STT auto-finalize model.</param>
+    /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    public Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
+        STTEncoding encoding,
+        int sampleRate,
+        IReadOnlyList<string> keyterms,
+        STTAutoFinalizeModel model = STTAutoFinalizeModel.Ink2,
+        string cartesiaVersion = DefaultRealtimeSttCartesiaVersion,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(keyterms);
+
+        return ConnectRealtimeSttAutoAsync(
+            new STTAutoFinalizeWebSocketQueryParams(
+                encoding: encoding,
+                sampleRate: sampleRate,
+                model: model,
+                keyterm: [.. keyterms]),
             cartesiaVersion,
             cancellationToken);
     }
@@ -138,7 +168,46 @@ public sealed partial class CartesiaClient
                 sampleRate: sampleRate,
                 language: language,
                 minVolume: minVolume,
-                maxSilenceDurationSecs: maxSilenceDurationSecs),
+                maxSilenceDurationSecs: maxSilenceDurationSecs,
+                keyterm: null),
+            cartesiaVersion,
+            cancellationToken);
+    }
+
+    /// <summary>
+    /// Connects to realtime speech-to-text with caller-controlled finalization and Ink 2 keyterm prompting.
+    /// </summary>
+    /// <param name="encoding">Audio encoding for binary audio frames.</param>
+    /// <param name="sampleRate">Audio sample rate in Hz.</param>
+    /// <param name="keyterms">Terms and phrases to bias transcription toward, up to 100 values and 1200 total characters.</param>
+    /// <param name="model">Realtime STT manual-finalize model.</param>
+    /// <param name="language">Optional input audio language. Ink 2 currently supports English.</param>
+    /// <param name="minVolume">Optional silence threshold for Ink Whisper models.</param>
+    /// <param name="maxSilenceDurationSecs">Optional silence duration for Ink Whisper models.</param>
+    /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    public Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
+        STTEncoding encoding,
+        int sampleRate,
+        IReadOnlyList<string> keyterms,
+        STTManualFinalizeModel model = STTManualFinalizeModel.Ink2,
+        STTManualFinalizeWebSocketQueryParamsLanguage? language = default,
+        double? minVolume = default,
+        double? maxSilenceDurationSecs = default,
+        string cartesiaVersion = DefaultRealtimeSttCartesiaVersion,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(keyterms);
+
+        return ConnectRealtimeSttManualAsync(
+            new STTManualFinalizeWebSocketQueryParams(
+                model: model,
+                encoding: encoding,
+                sampleRate: sampleRate,
+                language: language,
+                minVolume: minVolume,
+                maxSilenceDurationSecs: maxSilenceDurationSecs,
+                keyterm: [.. keyterms]),
             cartesiaVersion,
             cancellationToken);
     }
@@ -223,6 +292,12 @@ public sealed partial class CartesiaClient
         yield return new KeyValuePair<string, string>(
             "sample_rate",
             queryParams.SampleRate.ToString(CultureInfo.InvariantCulture));
+
+        foreach (var keyterm in ValidateKeyterms(queryParams.Keyterm))
+        {
+            yield return new KeyValuePair<string, string>("keyterm", keyterm);
+        }
+
         yield return new KeyValuePair<string, string>("cartesia_version", cartesiaVersion);
     }
 
@@ -265,7 +340,44 @@ public sealed partial class CartesiaClient
                 maxSilenceDurationSecs.ToString(CultureInfo.InvariantCulture));
         }
 
+        foreach (var keyterm in ValidateKeyterms(queryParams.Keyterm))
+        {
+            yield return new KeyValuePair<string, string>("keyterm", keyterm);
+        }
+
         yield return new KeyValuePair<string, string>("cartesia_version", cartesiaVersion);
+    }
+
+    private static IEnumerable<string> ValidateKeyterms(IList<string>? keyterms)
+    {
+        if (keyterms is null)
+        {
+            yield break;
+        }
+
+        if (keyterms.Count > 100)
+        {
+            throw new ArgumentException("Cartesia realtime STT accepts at most 100 keyterms.", nameof(keyterms));
+        }
+
+        var totalCharacters = 0;
+        foreach (var keyterm in keyterms)
+        {
+            if (keyterm is null)
+            {
+                throw new ArgumentException("Cartesia realtime STT keyterms cannot contain null values.", nameof(keyterms));
+            }
+
+            totalCharacters += keyterm.Length;
+            if (totalCharacters > 1200)
+            {
+                throw new ArgumentException(
+                    "Cartesia realtime STT keyterms can contain at most 1200 total characters.",
+                    nameof(keyterms));
+            }
+
+            yield return keyterm;
+        }
     }
 
     private static IEnumerable<KeyValuePair<string, string>> CreateAdditionalQuery(

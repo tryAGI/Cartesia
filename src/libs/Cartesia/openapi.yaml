@@ -1588,6 +1588,16 @@ paths:
           schema:
             $ref: '#/components/schemas/GenderPresentation'
             nullable: true
+        - name: language
+          in: query
+          description: >-
+            Filter voices by a language or language-locale pair such as `en` or `en-GB`. A language-locale
+            pair returns voices for that specific locale; a language alone returns all accents for that
+            language. Both `-` and `_` separators are accepted.
+          required: false
+          schema:
+            type: string
+            nullable: true
         - name: expand[]
           in: query
           description: Additional fields to include in the response.
@@ -3326,6 +3336,18 @@ components:
         sample_rate:
           type: integer
           description: Sample rate in Hz.
+        keyterm:
+          type: array
+          maxItems: 100
+          items:
+            type: string
+          description: >-
+            Key terms to improve the recall of specific words and phrases. Each value is sent as a repeated
+            `keyterm` query parameter. Pass up to 100 keyterms totaling 1200 characters. To boost one
+            multi-word phrase, keep the words in a single value.
+
+
+            See [Keyterm prompting](https://docs.cartesia.ai/use-the-api/stt/keyterms) for details.
     STTAutoFinalizeCloseCommand:
       title: STTAutoFinalizeCloseCommand
       type: object
@@ -3573,6 +3595,18 @@ components:
             Used by `ink-whisper` models only. Maximum duration of silence (in seconds) before the API
             automatically finalizes the transcript. Lower values finalize more aggressively; higher values
             allow longer pauses within utterances.
+        keyterm:
+          type: array
+          maxItems: 100
+          items:
+            type: string
+          description: >-
+            Used by `ink-2` models only. Key terms to improve the recall of specific words and phrases. Each
+            value is sent as a repeated `keyterm` query parameter. Pass up to 100 keyterms totaling 1200
+            characters. To boost one multi-word phrase, keep the words in a single value.
+
+
+            See [Keyterm prompting](https://docs.cartesia.ai/use-the-api/stt/keyterms) for details.
     STTManualFinalizeWebSocketRequest:
       title: STTManualFinalizeWebSocketRequest
       description: >-
@@ -4543,6 +4577,23 @@ components:
       title: BaseVoiceId
       $ref: '#/components/schemas/VoiceId'
       description: Pull in features from a base voice, used for features like voice mixing.
+    VoiceLocale:
+      title: VoiceLocale
+      type: object
+      description: >-
+        One locale a voice can speak, as a BCP-47 language-region tag plus whether it is the voice's
+        native/source locale.
+      properties:
+        locale:
+          type: string
+          pattern: '^[a-z]{2}-[A-Z]{2}$'
+          description: The locale's BCP-47 language-region tag (for example, `en-US`).
+        is_native:
+          type: boolean
+          description: Whether this is the voice's native/source locale.
+      required:
+        - locale
+        - is_native
     Voice:
       title: Voice
       type: object
@@ -4579,6 +4630,13 @@ components:
             null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
         language:
           $ref: '#/components/schemas/SupportedLanguage'
+        locales:
+          type: array
+          description: >-
+            Locales this voice can speak. The native/source locale is first (`is_native: true`), followed by
+            attached cross-lingual locales.
+          items:
+            $ref: '#/components/schemas/VoiceLocale'
         country:
           title: VoiceCountry
           type: string
@@ -4595,6 +4653,7 @@ components:
         - description
         - created_at
         - language
+        - locales
       example:
         id: <string>
         is_owner: true

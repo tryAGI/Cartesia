@@ -54,6 +54,13 @@ namespace Cartesia
         public double? MaxSilenceDurationSecs { get; set; }
 
         /// <summary>
+        /// Used by `ink-2` models only. Key terms to improve the recall of specific words and phrases. Each value is sent as a repeated `keyterm` query parameter. Pass up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, keep the words in a single value.<br/>
+        /// See [Keyterm prompting](https://docs.cartesia.ai/use-the-api/stt/keyterms) for details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyterm")]
+        public global::System.Collections.Generic.IList<string>? Keyterm { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +90,10 @@ namespace Cartesia
         /// <param name="maxSilenceDurationSecs">
         /// Used by `ink-whisper` models only. Maximum duration of silence (in seconds) before the API automatically finalizes the transcript. Lower values finalize more aggressively; higher values allow longer pauses within utterances.
         /// </param>
+        /// <param name="keyterm">
+        /// Used by `ink-2` models only. Key terms to improve the recall of specific words and phrases. Each value is sent as a repeated `keyterm` query parameter. Pass up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, keep the words in a single value.<br/>
+        /// See [Keyterm prompting](https://docs.cartesia.ai/use-the-api/stt/keyterms) for details.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,7 +103,8 @@ namespace Cartesia
             int sampleRate,
             global::Cartesia.STTManualFinalizeWebSocketQueryParamsLanguage? language,
             double? minVolume,
-            double? maxSilenceDurationSecs)
+            double? maxSilenceDurationSecs,
+            global::System.Collections.Generic.IList<string>? keyterm)
         {
             this.Model = model;
             this.Encoding = encoding;
@@ -100,6 +112,7 @@ namespace Cartesia
             this.Language = language;
             this.MinVolume = minVolume;
             this.MaxSilenceDurationSecs = maxSilenceDurationSecs;
+            this.Keyterm = keyterm;
         }
 
         /// <summary>
