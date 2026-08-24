@@ -153,14 +153,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(id ?? string.Empty),
-                                name: "\"id\"");
-
                             if (request.File != default)
                             {
 

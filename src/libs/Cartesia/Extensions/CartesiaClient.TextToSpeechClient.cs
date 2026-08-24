@@ -300,12 +300,24 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
             return null;
         }
 
-        var normalized = language.Split('-', '_')[0];
+        var normalized = language.Replace('_', '-');
         foreach (var supportedLanguage in Enum.GetValues<SupportedLanguage>())
         {
             if (string.Equals(
                 supportedLanguage.ToValueString(),
                 normalized,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                return supportedLanguage;
+            }
+        }
+
+        var baseLanguage = normalized.Split('-')[0];
+        foreach (var supportedLanguage in Enum.GetValues<SupportedLanguage>())
+        {
+            if (string.Equals(
+                supportedLanguage.ToValueString(),
+                baseLanguage,
                 StringComparison.OrdinalIgnoreCase))
             {
                 return supportedLanguage;

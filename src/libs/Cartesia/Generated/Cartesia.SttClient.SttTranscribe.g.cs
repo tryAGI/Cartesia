@@ -198,26 +198,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
-                            if (encoding != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((encoding).HasValue ? (encoding).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"encoding\"");
-
-                            }
-                            if (sampleRate != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(sampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"sample_rate\"");
-
-                            }
                             var __contentFile = new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>());
                             __contentFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Filename is null
@@ -747,26 +727,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
-                            if (encoding != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((encoding).HasValue ? (encoding).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"encoding\"");
-
-                            }
-                            if (sampleRate != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(sampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"sample_rate\"");
-
-                            }
                             var __contentFile = new global::System.Net.Http.StreamContent(file);
                             __contentFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Filename is null
@@ -1232,26 +1192,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
-                            if (encoding != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((encoding).HasValue ? (encoding).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"encoding\"");
-
-                            }
-                            if (sampleRate != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(sampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"sample_rate\"");
-
-                            }
                             var __contentFile = new global::System.Net.Http.StreamContent(file);
                             __contentFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Filename is null

@@ -154,10 +154,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
                             var __contentClip = new global::System.Net.Http.ByteArrayContent(request.Clip ?? global::System.Array.Empty<byte>());
                             __contentClip.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Clipname is null
@@ -675,10 +671,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
                             var __contentClip = new global::System.Net.Http.StreamContent(clip);
                             __contentClip.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Clipname is null
@@ -1138,10 +1130,6 @@ namespace Cartesia
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(cartesiaVersion.ToValueString()),
-                                name: "\"Cartesia-Version\"");
-
                             var __contentClip = new global::System.Net.Http.StreamContent(clip);
                             __contentClip.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.Clipname is null

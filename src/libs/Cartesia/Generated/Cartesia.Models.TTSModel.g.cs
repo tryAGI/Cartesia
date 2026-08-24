@@ -28,6 +28,10 @@ namespace Cartesia
         /// 
         /// </summary>
         Sonic3520260504,
+        /// <summary>
+        /// 
+        /// </summary>
+        SonicPreview,
     }
 
     /// <summary>
@@ -47,6 +51,7 @@ namespace Cartesia
                 TTSModel.Sonic320260112 => "sonic-3-2026-01-12",
                 TTSModel.Sonic35 => "sonic-3.5",
                 TTSModel.Sonic3520260504 => "sonic-3.5-2026-05-04",
+                TTSModel.SonicPreview => "sonic-preview",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,6 +67,7 @@ namespace Cartesia
                 "sonic-3-2026-01-12" => TTSModel.Sonic320260112,
                 "sonic-3.5" => TTSModel.Sonic35,
                 "sonic-3.5-2026-05-04" => TTSModel.Sonic3520260504,
+                "sonic-preview" => TTSModel.SonicPreview,
                 _ => null,
             };
         }

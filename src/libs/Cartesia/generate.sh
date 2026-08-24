@@ -32,6 +32,12 @@ else
   exit 1
 fi
 
+# Cartesia documents Sonic 3.6 beta as `sonic-preview`, plus Odia, Urdu,
+# and locale-aware language codes. The Stainless OpenAPI document currently
+# lags those documented values, so apply a fail-closed, idempotent override
+# before generation.
+python3 patch-openapi.py openapi.yaml
+
 install_autosdk_cli
 rm -rf Generated
 

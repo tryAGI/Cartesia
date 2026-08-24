@@ -41,9 +41,53 @@ namespace Cartesia
         /// </summary>
         En,
         /// <summary>
+        /// 
+        /// </summary>
+        EnAu,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnGb,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnIe,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnIn,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnNz,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnSg,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnUs,
+        /// <summary>
+        /// 
+        /// </summary>
+        EnZa,
+        /// <summary>
         /// //docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </summary>
         Es,
+        /// <summary>
+        /// 
+        /// </summary>
+        EsEs,
+        /// <summary>
+        /// 
+        /// </summary>
+        EsMx,
+        /// <summary>
+        /// 
+        /// </summary>
+        EsUs,
         /// <summary>
         /// 
         /// </summary>
@@ -52,6 +96,14 @@ namespace Cartesia
         /// 
         /// </summary>
         Fr,
+        /// <summary>
+        /// 
+        /// </summary>
+        FrCa,
+        /// <summary>
+        /// 
+        /// </summary>
+        FrFr,
         /// <summary>
         /// //docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </summary>
@@ -115,7 +167,19 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        NlBe,
+        /// <summary>
+        /// 
+        /// </summary>
+        NlNl,
+        /// <summary>
+        /// 
+        /// </summary>
         No,
+        /// <summary>
+        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        /// </summary>
+        Or,
         /// <summary>
         /// 
         /// </summary>
@@ -128,6 +192,14 @@ namespace Cartesia
         /// //docs.cartesia.ai/build-with-cartesia/tts-models).
         /// </summary>
         Pt,
+        /// <summary>
+        /// 
+        /// </summary>
+        PtBr,
+        /// <summary>
+        /// 
+        /// </summary>
+        PtPt,
         /// <summary>
         /// 
         /// </summary>
@@ -171,6 +243,10 @@ namespace Cartesia
         /// <summary>
         /// 
         /// </summary>
+        Ur,
+        /// <summary>
+        /// 
+        /// </summary>
         Vi,
         /// <summary>
         /// 
@@ -198,9 +274,22 @@ namespace Cartesia
                 SupportedLanguage.De => "de",
                 SupportedLanguage.El => "el",
                 SupportedLanguage.En => "en",
+                SupportedLanguage.EnAu => "en-AU",
+                SupportedLanguage.EnGb => "en-GB",
+                SupportedLanguage.EnIe => "en-IE",
+                SupportedLanguage.EnIn => "en-IN",
+                SupportedLanguage.EnNz => "en-NZ",
+                SupportedLanguage.EnSg => "en-SG",
+                SupportedLanguage.EnUs => "en-US",
+                SupportedLanguage.EnZa => "en-ZA",
                 SupportedLanguage.Es => "es",
+                SupportedLanguage.EsEs => "es-ES",
+                SupportedLanguage.EsMx => "es-MX",
+                SupportedLanguage.EsUs => "es-US",
                 SupportedLanguage.Fi => "fi",
                 SupportedLanguage.Fr => "fr",
+                SupportedLanguage.FrCa => "fr-CA",
+                SupportedLanguage.FrFr => "fr-FR",
                 SupportedLanguage.Gu => "gu",
                 SupportedLanguage.He => "he",
                 SupportedLanguage.Hi => "hi",
@@ -216,10 +305,15 @@ namespace Cartesia
                 SupportedLanguage.Mr => "mr",
                 SupportedLanguage.Ms => "ms",
                 SupportedLanguage.Nl => "nl",
+                SupportedLanguage.NlBe => "nl-BE",
+                SupportedLanguage.NlNl => "nl-NL",
                 SupportedLanguage.No => "no",
+                SupportedLanguage.Or => "or",
                 SupportedLanguage.Pa => "pa",
                 SupportedLanguage.Pl => "pl",
                 SupportedLanguage.Pt => "pt",
+                SupportedLanguage.PtBr => "pt-BR",
+                SupportedLanguage.PtPt => "pt-PT",
                 SupportedLanguage.Ro => "ro",
                 SupportedLanguage.Ru => "ru",
                 SupportedLanguage.Sk => "sk",
@@ -230,6 +324,7 @@ namespace Cartesia
                 SupportedLanguage.Tl => "tl",
                 SupportedLanguage.Tr => "tr",
                 SupportedLanguage.Uk => "uk",
+                SupportedLanguage.Ur => "ur",
                 SupportedLanguage.Vi => "vi",
                 SupportedLanguage.Zh => "zh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -250,9 +345,22 @@ namespace Cartesia
                 "de" => SupportedLanguage.De,
                 "el" => SupportedLanguage.El,
                 "en" => SupportedLanguage.En,
+                "en-AU" => SupportedLanguage.EnAu,
+                "en-GB" => SupportedLanguage.EnGb,
+                "en-IE" => SupportedLanguage.EnIe,
+                "en-IN" => SupportedLanguage.EnIn,
+                "en-NZ" => SupportedLanguage.EnNz,
+                "en-SG" => SupportedLanguage.EnSg,
+                "en-US" => SupportedLanguage.EnUs,
+                "en-ZA" => SupportedLanguage.EnZa,
                 "es" => SupportedLanguage.Es,
+                "es-ES" => SupportedLanguage.EsEs,
+                "es-MX" => SupportedLanguage.EsMx,
+                "es-US" => SupportedLanguage.EsUs,
                 "fi" => SupportedLanguage.Fi,
                 "fr" => SupportedLanguage.Fr,
+                "fr-CA" => SupportedLanguage.FrCa,
+                "fr-FR" => SupportedLanguage.FrFr,
                 "gu" => SupportedLanguage.Gu,
                 "he" => SupportedLanguage.He,
                 "hi" => SupportedLanguage.Hi,
@@ -268,10 +376,15 @@ namespace Cartesia
                 "mr" => SupportedLanguage.Mr,
                 "ms" => SupportedLanguage.Ms,
                 "nl" => SupportedLanguage.Nl,
+                "nl-BE" => SupportedLanguage.NlBe,
+                "nl-NL" => SupportedLanguage.NlNl,
                 "no" => SupportedLanguage.No,
+                "or" => SupportedLanguage.Or,
                 "pa" => SupportedLanguage.Pa,
                 "pl" => SupportedLanguage.Pl,
                 "pt" => SupportedLanguage.Pt,
+                "pt-BR" => SupportedLanguage.PtBr,
+                "pt-PT" => SupportedLanguage.PtPt,
                 "ro" => SupportedLanguage.Ro,
                 "ru" => SupportedLanguage.Ru,
                 "sk" => SupportedLanguage.Sk,
@@ -282,6 +395,7 @@ namespace Cartesia
                 "tl" => SupportedLanguage.Tl,
                 "tr" => SupportedLanguage.Tr,
                 "uk" => SupportedLanguage.Uk,
+                "ur" => SupportedLanguage.Ur,
                 "vi" => SupportedLanguage.Vi,
                 "zh" => SupportedLanguage.Zh,
                 _ => null,

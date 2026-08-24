@@ -43,12 +43,15 @@ public partial class Tests
     [TestMethod]
     public void MultilingualVoices_ExposeAllTtsLanguages()
     {
-        //// The TTS language model includes all 42 languages currently published by Cartesia.
-        Enum.GetValues<SupportedLanguage>().Should().HaveCount(42);
+        //// The TTS model includes all 44 languages plus 17 locale-specific selectors.
+        Enum.GetValues<SupportedLanguage>().Should().HaveCount(61);
         SupportedLanguage.Ar.ToValueString().Should().Be("ar");
+        SupportedLanguage.EnGb.ToValueString().Should().Be("en-GB");
         SupportedLanguage.He.ToValueString().Should().Be("he");
+        SupportedLanguage.Or.ToValueString().Should().Be("or");
         SupportedLanguage.Ta.ToValueString().Should().Be("ta");
         SupportedLanguage.Te.ToValueString().Should().Be("te");
         SupportedLanguage.Th.ToValueString().Should().Be("th");
+        SupportedLanguage.Ur.ToValueString().Should().Be("ur");
     }
 }

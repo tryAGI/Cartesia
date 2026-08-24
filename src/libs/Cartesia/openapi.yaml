@@ -3032,6 +3032,7 @@ components:
         - sonic-3.5-2026-05-04
         - sonic-3-2026-01-12
         - sonic-3-2025-10-27
+        - 'sonic-preview'
       description: >-
         Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest)
         for all options.
@@ -4434,6 +4435,25 @@ components:
         - ml
         - mr
         - pa
+        - 'or'
+        - 'ur'
+        - 'en-GB'
+        - 'en-US'
+        - 'en-IN'
+        - 'en-IE'
+        - 'en-ZA'
+        - 'en-NZ'
+        - 'en-SG'
+        - 'en-AU'
+        - 'es-ES'
+        - 'es-MX'
+        - 'es-US'
+        - 'fr-FR'
+        - 'fr-CA'
+        - 'nl-NL'
+        - 'nl-BE'
+        - 'pt-PT'
+        - 'pt-BR'
       description: >-
         The language that the given voice should speak the transcript in. For valid options, see
         [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
