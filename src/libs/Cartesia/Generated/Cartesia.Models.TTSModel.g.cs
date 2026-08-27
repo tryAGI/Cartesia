@@ -9,27 +9,27 @@ namespace Cartesia
     public enum TTSModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic320251027,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic320260112,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic35,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic3520260504,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SonicPreview,
     }

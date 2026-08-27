@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FineTunesListCartesiaVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x20251104,
     }

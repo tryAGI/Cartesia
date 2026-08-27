@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UpdateVoiceRequest
     {
@@ -21,7 +21,7 @@ namespace Cartesia
         public string? Description { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gender")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.GenderPresentationJsonConverter))]

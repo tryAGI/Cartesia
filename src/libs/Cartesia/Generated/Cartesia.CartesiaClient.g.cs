@@ -37,7 +37,7 @@ namespace Cartesia
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Cartesia.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -47,7 +47,7 @@ namespace Cartesia
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentsClient Agents => new AgentsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -56,7 +56,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ApiStatusClient ApiStatus => new ApiStatusClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -65,7 +65,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth => new AuthClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -74,7 +74,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DatasetsClient Datasets => new DatasetsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -83,7 +83,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FineTunesClient FineTunes => new FineTunesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -92,7 +92,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InfillClient Infill => new InfillClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -101,7 +101,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PronunciationDictsClient PronunciationDicts => new PronunciationDictsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -110,7 +110,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SttClient Stt => new SttClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -119,7 +119,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsClient Tts => new TtsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -128,7 +128,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerClient VoiceChanger => new VoiceChangerClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -137,7 +137,7 @@ namespace Cartesia
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices => new VoicesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

@@ -12,15 +12,15 @@ namespace Cartesia
     public enum ModelSpeed
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Normal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Slow,
     }

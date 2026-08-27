@@ -4,16 +4,16 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum LocalizeFrenchDialect
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ca,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Eu,
     }

@@ -10,7 +10,7 @@ namespace Cartesia
     public readonly partial struct STTManualFinalizeWebSocketResponse : global::System.IEquatable<STTManualFinalizeWebSocketResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTManualFinalizeWebSocketResponseDiscriminatorType? Type { get; }
 
@@ -25,7 +25,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Transcript))]
@@ -33,7 +33,7 @@ namespace Cartesia
         public bool IsTranscript => Transcript != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTranscript(
 #if NET6_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTManualFinalizeTranscriptResponse PickTranscript() => IsTranscript
             ? Transcript!
@@ -63,7 +63,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FlushDone))]
@@ -71,7 +71,7 @@ namespace Cartesia
         public bool IsFlushDone => FlushDone != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFlushDone(
 #if NET6_0_OR_GREATER
@@ -84,7 +84,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTManualFinalizeFlushDoneResponse PickFlushDone() => IsFlushDone
             ? FlushDone!
@@ -101,7 +101,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Done))]
@@ -109,7 +109,7 @@ namespace Cartesia
         public bool IsDone => Done != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDone(
 #if NET6_0_OR_GREATER
@@ -122,7 +122,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTManualFinalizeDoneResponse PickDone() => IsDone
             ? Done!
@@ -139,7 +139,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Error))]
@@ -147,7 +147,7 @@ namespace Cartesia
         public bool IsError => Error != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickError(
 #if NET6_0_OR_GREATER
@@ -160,23 +160,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTErrorResponse PickError() => IsError
             ? Error!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeTranscriptResponse value) => new STTManualFinalizeWebSocketResponse((global::Cartesia.STTManualFinalizeTranscriptResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTManualFinalizeTranscriptResponse?(STTManualFinalizeWebSocketResponse @this) => @this.Transcript;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeTranscriptResponse? value)
         {
@@ -184,22 +184,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTManualFinalizeWebSocketResponse FromTranscript(global::Cartesia.STTManualFinalizeTranscriptResponse? value) => new STTManualFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeFlushDoneResponse value) => new STTManualFinalizeWebSocketResponse((global::Cartesia.STTManualFinalizeFlushDoneResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTManualFinalizeFlushDoneResponse?(STTManualFinalizeWebSocketResponse @this) => @this.FlushDone;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeFlushDoneResponse? value)
         {
@@ -207,22 +207,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTManualFinalizeWebSocketResponse FromFlushDone(global::Cartesia.STTManualFinalizeFlushDoneResponse? value) => new STTManualFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeDoneResponse value) => new STTManualFinalizeWebSocketResponse((global::Cartesia.STTManualFinalizeDoneResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTManualFinalizeDoneResponse?(STTManualFinalizeWebSocketResponse @this) => @this.Done;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTManualFinalizeWebSocketResponse(global::Cartesia.STTManualFinalizeDoneResponse? value)
         {
@@ -230,22 +230,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTManualFinalizeWebSocketResponse FromDone(global::Cartesia.STTManualFinalizeDoneResponse? value) => new STTManualFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTManualFinalizeWebSocketResponse(global::Cartesia.STTErrorResponse value) => new STTManualFinalizeWebSocketResponse((global::Cartesia.STTErrorResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTErrorResponse?(STTManualFinalizeWebSocketResponse @this) => @this.Error;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTManualFinalizeWebSocketResponse(global::Cartesia.STTErrorResponse? value)
         {
@@ -253,12 +253,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTManualFinalizeWebSocketResponse FromError(global::Cartesia.STTErrorResponse? value) => new STTManualFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTManualFinalizeWebSocketResponse(
             global::Cartesia.STTManualFinalizeWebSocketResponseDiscriminatorType? type,
@@ -277,27 +277,27 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Error as object ??
             Done as object ??
             FlushDone as object ??
-            Transcript as object 
+            Transcript as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Transcript?.ToString() ??
             FlushDone?.ToString() ??
             Done?.ToString() ??
-            Error?.ToString() 
+            Error?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -305,7 +305,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.STTManualFinalizeTranscriptResponse, TResult>? transcript = null,
@@ -340,7 +340,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.STTManualFinalizeTranscriptResponse>? transcript = null,
@@ -376,7 +376,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.STTManualFinalizeTranscriptResponse>? transcript = null,
@@ -409,7 +409,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -434,7 +434,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(STTManualFinalizeWebSocketResponse other)
         {
@@ -442,12 +442,12 @@ namespace Cartesia
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTManualFinalizeTranscriptResponse?>.Default.Equals(Transcript, other.Transcript) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTManualFinalizeFlushDoneResponse?>.Default.Equals(FlushDone, other.FlushDone) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTManualFinalizeDoneResponse?>.Default.Equals(Done, other.Done) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTErrorResponse?>.Default.Equals(Error, other.Error) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTErrorResponse?>.Default.Equals(Error, other.Error)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(STTManualFinalizeWebSocketResponse obj1, STTManualFinalizeWebSocketResponse obj2)
         {
@@ -455,7 +455,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(STTManualFinalizeWebSocketResponse obj1, STTManualFinalizeWebSocketResponse obj2)
         {
@@ -463,7 +463,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

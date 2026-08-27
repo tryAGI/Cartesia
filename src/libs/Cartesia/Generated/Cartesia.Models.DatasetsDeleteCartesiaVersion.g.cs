@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DatasetsDeleteCartesiaVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x20251104,
     }

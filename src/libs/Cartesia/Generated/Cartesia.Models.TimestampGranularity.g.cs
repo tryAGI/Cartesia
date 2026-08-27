@@ -10,7 +10,7 @@ namespace Cartesia
     public enum TimestampGranularity
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Word,
     }

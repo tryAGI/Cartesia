@@ -20,7 +20,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(STTAutoFinalizeCloseCommand))]
@@ -28,7 +28,7 @@ namespace Cartesia
         public bool IsSTTAutoFinalizeCloseCommand => STTAutoFinalizeCloseCommand != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSTTAutoFinalizeCloseCommand(
 #if NET6_0_OR_GREATER
@@ -41,23 +41,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeCloseCommand PickSTTAutoFinalizeCloseCommand() => IsSTTAutoFinalizeCloseCommand
             ? STTAutoFinalizeCloseCommand!
             : throw new global::System.InvalidOperationException($"Expected union variant 'STTAutoFinalizeCloseCommand' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketRequest(global::Cartesia.STTAutoFinalizeCloseCommand value) => new STTAutoFinalizeWebSocketRequest((global::Cartesia.STTAutoFinalizeCloseCommand?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeCloseCommand?(STTAutoFinalizeWebSocketRequest @this) => @this.STTAutoFinalizeCloseCommand;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketRequest(global::Cartesia.STTAutoFinalizeCloseCommand? value)
         {
@@ -65,26 +65,26 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketRequest FromSTTAutoFinalizeCloseCommand(global::Cartesia.STTAutoFinalizeCloseCommand? value) => new STTAutoFinalizeWebSocketRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            STTAutoFinalizeCloseCommand as object 
+            STTAutoFinalizeCloseCommand as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            STTAutoFinalizeCloseCommand?.ToString() 
+            STTAutoFinalizeCloseCommand?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -92,7 +92,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.STTAutoFinalizeCloseCommand, TResult>? sTTAutoFinalizeCloseCommand = null,
@@ -112,7 +112,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.STTAutoFinalizeCloseCommand>? sTTAutoFinalizeCloseCommand = null,
@@ -130,7 +130,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.STTAutoFinalizeCloseCommand>? sTTAutoFinalizeCloseCommand = null,
@@ -148,7 +148,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -167,17 +167,17 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(STTAutoFinalizeWebSocketRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTAutoFinalizeCloseCommand?>.Default.Equals(STTAutoFinalizeCloseCommand, other.STTAutoFinalizeCloseCommand) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTAutoFinalizeCloseCommand?>.Default.Equals(STTAutoFinalizeCloseCommand, other.STTAutoFinalizeCloseCommand)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(STTAutoFinalizeWebSocketRequest obj1, STTAutoFinalizeWebSocketRequest obj2)
         {
@@ -185,7 +185,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(STTAutoFinalizeWebSocketRequest obj1, STTAutoFinalizeWebSocketRequest obj2)
         {
@@ -193,7 +193,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

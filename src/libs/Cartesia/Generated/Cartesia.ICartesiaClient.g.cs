@@ -39,63 +39,63 @@ namespace Cartesia
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentsClient Agents { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ApiStatusClient ApiStatus { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DatasetsClient Datasets { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FineTunesClient FineTunes { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InfillClient Infill { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PronunciationDictsClient PronunciationDicts { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SttClient Stt { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsClient Tts { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerClient VoiceChanger { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices { get; }
 

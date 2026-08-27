@@ -6,7 +6,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TranscriptionResponse
     {

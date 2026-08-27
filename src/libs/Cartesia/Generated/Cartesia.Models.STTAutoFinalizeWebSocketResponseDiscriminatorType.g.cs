@@ -4,36 +4,36 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum STTAutoFinalizeWebSocketResponseDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Connected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnEagerEnd,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnEnd,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnResume,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnStart,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnUpdate,
     }

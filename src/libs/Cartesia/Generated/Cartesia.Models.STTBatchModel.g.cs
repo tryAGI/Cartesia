@@ -10,11 +10,11 @@ namespace Cartesia
     public enum STTBatchModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InkWhisper,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InkWhisper20250604,
     }

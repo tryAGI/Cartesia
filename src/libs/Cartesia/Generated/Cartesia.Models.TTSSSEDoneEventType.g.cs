@@ -9,7 +9,7 @@ namespace Cartesia
     public enum TTSSSEDoneEventType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
     }

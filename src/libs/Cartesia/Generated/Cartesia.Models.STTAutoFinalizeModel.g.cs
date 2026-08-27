@@ -11,7 +11,7 @@ namespace Cartesia
     public enum STTAutoFinalizeModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ink2,
     }

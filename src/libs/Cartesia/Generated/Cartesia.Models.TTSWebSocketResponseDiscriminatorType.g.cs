@@ -4,32 +4,32 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSWebSocketResponseDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chunk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FlushDone,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhonemeTimestamps,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Timestamps,
     }

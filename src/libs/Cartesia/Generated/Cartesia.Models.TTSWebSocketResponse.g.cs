@@ -5,17 +5,17 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TTSWebSocketResponse : global::System.IEquatable<TTSWebSocketResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant1? Chunk { get; init; }
@@ -24,7 +24,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Chunk))]
@@ -32,7 +32,7 @@ namespace Cartesia
         public bool IsChunk => Chunk != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChunk(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant1 PickChunk() => IsChunk
             ? Chunk!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Chunk' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant2? FlushDone { get; init; }
@@ -61,7 +61,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FlushDone))]
@@ -69,7 +69,7 @@ namespace Cartesia
         public bool IsFlushDone => FlushDone != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFlushDone(
 #if NET6_0_OR_GREATER
@@ -82,14 +82,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant2 PickFlushDone() => IsFlushDone
             ? FlushDone!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FlushDone' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant3? Done { get; init; }
@@ -98,7 +98,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Done))]
@@ -106,7 +106,7 @@ namespace Cartesia
         public bool IsDone => Done != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDone(
 #if NET6_0_OR_GREATER
@@ -119,14 +119,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant3 PickDone() => IsDone
             ? Done!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant4? Timestamps { get; init; }
@@ -135,7 +135,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Timestamps))]
@@ -143,7 +143,7 @@ namespace Cartesia
         public bool IsTimestamps => Timestamps != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTimestamps(
 #if NET6_0_OR_GREATER
@@ -156,14 +156,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant4 PickTimestamps() => IsTimestamps
             ? Timestamps!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Timestamps' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant5? Error { get; init; }
@@ -172,7 +172,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Error))]
@@ -180,7 +180,7 @@ namespace Cartesia
         public bool IsError => Error != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickError(
 #if NET6_0_OR_GREATER
@@ -193,14 +193,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant5 PickError() => IsError
             ? Error!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.TTSWebSocketResponseVariant6? PhonemeTimestamps { get; init; }
@@ -209,7 +209,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PhonemeTimestamps))]
@@ -217,7 +217,7 @@ namespace Cartesia
         public bool IsPhonemeTimestamps => PhonemeTimestamps != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPhonemeTimestamps(
 #if NET6_0_OR_GREATER
@@ -230,23 +230,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSWebSocketResponseVariant6 PickPhonemeTimestamps() => IsPhonemeTimestamps
             ? PhonemeTimestamps!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PhonemeTimestamps' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant1 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant1?(TTSWebSocketResponse @this) => @this.Chunk;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant1? value)
         {
@@ -254,22 +254,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromChunk(global::Cartesia.TTSWebSocketResponseVariant1? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant2 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant2?(TTSWebSocketResponse @this) => @this.FlushDone;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant2? value)
         {
@@ -277,22 +277,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromFlushDone(global::Cartesia.TTSWebSocketResponseVariant2? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant3 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant3?(TTSWebSocketResponse @this) => @this.Done;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant3? value)
         {
@@ -300,22 +300,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromDone(global::Cartesia.TTSWebSocketResponseVariant3? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant4 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant4?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant4?(TTSWebSocketResponse @this) => @this.Timestamps;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant4? value)
         {
@@ -323,22 +323,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromTimestamps(global::Cartesia.TTSWebSocketResponseVariant4? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant5 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant5?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant5?(TTSWebSocketResponse @this) => @this.Error;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant5? value)
         {
@@ -346,22 +346,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromError(global::Cartesia.TTSWebSocketResponseVariant5? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant6 value) => new TTSWebSocketResponse((global::Cartesia.TTSWebSocketResponseVariant6?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSWebSocketResponseVariant6?(TTSWebSocketResponse @this) => @this.PhonemeTimestamps;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(global::Cartesia.TTSWebSocketResponseVariant6? value)
         {
@@ -369,12 +369,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketResponse FromPhonemeTimestamps(global::Cartesia.TTSWebSocketResponseVariant6? value) => new TTSWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketResponse(
             global::Cartesia.TTSWebSocketResponseDiscriminatorType? type,
@@ -397,7 +397,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             PhonemeTimestamps as object ??
@@ -405,11 +405,11 @@ namespace Cartesia
             Timestamps as object ??
             Done as object ??
             FlushDone as object ??
-            Chunk as object 
+            Chunk as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Chunk?.ToString() ??
@@ -417,11 +417,11 @@ namespace Cartesia
             Done?.ToString() ??
             Timestamps?.ToString() ??
             Error?.ToString() ??
-            PhonemeTimestamps?.ToString() 
+            PhonemeTimestamps?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -429,7 +429,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.TTSWebSocketResponseVariant1, TResult>? chunk = null,
@@ -474,7 +474,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.TTSWebSocketResponseVariant1>? chunk = null,
@@ -522,7 +522,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.TTSWebSocketResponseVariant1>? chunk = null,
@@ -565,7 +565,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -594,7 +594,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TTSWebSocketResponse other)
         {
@@ -604,12 +604,12 @@ namespace Cartesia
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSWebSocketResponseVariant3?>.Default.Equals(Done, other.Done) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSWebSocketResponseVariant4?>.Default.Equals(Timestamps, other.Timestamps) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSWebSocketResponseVariant5?>.Default.Equals(Error, other.Error) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSWebSocketResponseVariant6?>.Default.Equals(PhonemeTimestamps, other.PhonemeTimestamps) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSWebSocketResponseVariant6?>.Default.Equals(PhonemeTimestamps, other.PhonemeTimestamps)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TTSWebSocketResponse obj1, TTSWebSocketResponse obj2)
         {
@@ -617,7 +617,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TTSWebSocketResponse obj1, TTSWebSocketResponse obj2)
         {
@@ -625,7 +625,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

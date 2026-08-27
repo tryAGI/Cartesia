@@ -20,7 +20,7 @@ namespace Cartesia.JsonConverters
                     {
                         return global::Cartesia.AgentsUpdateCartesiaVersionExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

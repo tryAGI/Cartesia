@@ -20,7 +20,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(VoiceChangerSSEChunk))]
@@ -28,7 +28,7 @@ namespace Cartesia
         public bool IsVoiceChangerSSEChunk => VoiceChangerSSEChunk != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVoiceChangerSSEChunk(
 #if NET6_0_OR_GREATER
@@ -41,7 +41,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.VoiceChangerSSEChunk PickVoiceChangerSSEChunk() => IsVoiceChangerSSEChunk
             ? VoiceChangerSSEChunk!
@@ -58,7 +58,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(VoiceChangerSSEDone))]
@@ -66,7 +66,7 @@ namespace Cartesia
         public bool IsVoiceChangerSSEDone => VoiceChangerSSEDone != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVoiceChangerSSEDone(
 #if NET6_0_OR_GREATER
@@ -79,7 +79,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.VoiceChangerSSEDone PickVoiceChangerSSEDone() => IsVoiceChangerSSEDone
             ? VoiceChangerSSEDone!
@@ -96,7 +96,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(VoiceChangerSSEError))]
@@ -104,7 +104,7 @@ namespace Cartesia
         public bool IsVoiceChangerSSEError => VoiceChangerSSEError != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVoiceChangerSSEError(
 #if NET6_0_OR_GREATER
@@ -117,23 +117,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.VoiceChangerSSEError PickVoiceChangerSSEError() => IsVoiceChangerSSEError
             ? VoiceChangerSSEError!
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEError' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEChunk value) => new VoiceChangerSSEEvent((global::Cartesia.VoiceChangerSSEChunk?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.VoiceChangerSSEChunk?(VoiceChangerSSEEvent @this) => @this.VoiceChangerSSEChunk;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEChunk? value)
         {
@@ -141,22 +141,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoiceChangerSSEEvent FromVoiceChangerSSEChunk(global::Cartesia.VoiceChangerSSEChunk? value) => new VoiceChangerSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEDone value) => new VoiceChangerSSEEvent((global::Cartesia.VoiceChangerSSEDone?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.VoiceChangerSSEDone?(VoiceChangerSSEEvent @this) => @this.VoiceChangerSSEDone;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEDone? value)
         {
@@ -164,22 +164,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoiceChangerSSEEvent FromVoiceChangerSSEDone(global::Cartesia.VoiceChangerSSEDone? value) => new VoiceChangerSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEError value) => new VoiceChangerSSEEvent((global::Cartesia.VoiceChangerSSEError?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.VoiceChangerSSEError?(VoiceChangerSSEEvent @this) => @this.VoiceChangerSSEError;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerSSEEvent(global::Cartesia.VoiceChangerSSEError? value)
         {
@@ -187,12 +187,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoiceChangerSSEEvent FromVoiceChangerSSEError(global::Cartesia.VoiceChangerSSEError? value) => new VoiceChangerSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoiceChangerSSEEvent(
             global::Cartesia.VoiceChangerSSEChunk? voiceChangerSSEChunk,
@@ -206,25 +206,25 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             VoiceChangerSSEError as object ??
             VoiceChangerSSEDone as object ??
-            VoiceChangerSSEChunk as object 
+            VoiceChangerSSEChunk as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             VoiceChangerSSEChunk?.ToString() ??
             VoiceChangerSSEDone?.ToString() ??
-            VoiceChangerSSEError?.ToString() 
+            VoiceChangerSSEError?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -232,7 +232,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.VoiceChangerSSEChunk, TResult>? voiceChangerSSEChunk = null,
@@ -262,7 +262,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.VoiceChangerSSEChunk>? voiceChangerSSEChunk = null,
@@ -292,7 +292,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.VoiceChangerSSEChunk>? voiceChangerSSEChunk = null,
@@ -320,7 +320,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -343,19 +343,19 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(VoiceChangerSSEEvent other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.VoiceChangerSSEChunk?>.Default.Equals(VoiceChangerSSEChunk, other.VoiceChangerSSEChunk) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.VoiceChangerSSEDone?>.Default.Equals(VoiceChangerSSEDone, other.VoiceChangerSSEDone) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.VoiceChangerSSEError?>.Default.Equals(VoiceChangerSSEError, other.VoiceChangerSSEError) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.VoiceChangerSSEError?>.Default.Equals(VoiceChangerSSEError, other.VoiceChangerSSEError)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(VoiceChangerSSEEvent obj1, VoiceChangerSSEEvent obj2)
         {
@@ -363,7 +363,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(VoiceChangerSSEEvent obj1, VoiceChangerSSEEvent obj2)
         {
@@ -371,7 +371,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

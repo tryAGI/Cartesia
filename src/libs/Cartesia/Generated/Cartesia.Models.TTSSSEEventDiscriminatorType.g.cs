@@ -4,28 +4,28 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSSSEEventDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chunk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhonemeTimestamps,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Timestamps,
     }

@@ -4,19 +4,19 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class VoicesCloneRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("clip")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required byte[] Clip { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("clipname")]
         [global::System.Text.Json.Serialization.JsonRequired]

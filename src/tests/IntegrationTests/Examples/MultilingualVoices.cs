@@ -41,6 +41,31 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void MultilingualVoices_ParseListResponseWithoutLocales()
+    {
+        //// The List Voices endpoint does not always include expanded locale metadata.
+        var voice = Voice.FromJson(
+            """
+            {
+              "id": "db6b0ed5-d5d3-463d-ae85-518a07d3c2b4",
+              "is_owner": false,
+              "is_public": true,
+              "name": "Skylar",
+              "description": "Friendly guide",
+              "gender": "feminine",
+              "language": "en",
+              "country": "US",
+              "created_at": "2026-03-31T17:37:05.961874Z"
+            }
+            """,
+            SourceGenerationContext.Default);
+
+        voice.Should().NotBeNull();
+        voice!.Name.Should().Be("Skylar");
+        voice.Locales.Should().BeNull();
+    }
+
+    [TestMethod]
     public void MultilingualVoices_ExposeAllTtsLanguages()
     {
         //// The TTS model includes all 44 languages plus 17 locale-specific selectors.

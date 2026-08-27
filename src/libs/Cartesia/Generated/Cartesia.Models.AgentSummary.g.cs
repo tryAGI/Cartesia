@@ -69,7 +69,7 @@ namespace Cartesia
         public global::System.DateTime? DeletedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("git_repository")]
         public global::Cartesia.GitRepository? GitRepository { get; set; }

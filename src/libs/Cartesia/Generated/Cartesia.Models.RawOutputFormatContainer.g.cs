@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RawOutputFormatContainer
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Raw,
     }

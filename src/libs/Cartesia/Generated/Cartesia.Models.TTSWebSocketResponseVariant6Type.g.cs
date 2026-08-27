@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSWebSocketResponseVariant6Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhonemeTimestamps,
     }

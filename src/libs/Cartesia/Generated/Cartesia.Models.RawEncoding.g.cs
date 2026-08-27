@@ -4,24 +4,24 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RawEncoding
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PcmAlaw,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PcmF32le,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PcmMulaw,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PcmS16le,
     }

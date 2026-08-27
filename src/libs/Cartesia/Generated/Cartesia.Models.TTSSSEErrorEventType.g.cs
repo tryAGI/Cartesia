@@ -9,7 +9,7 @@ namespace Cartesia
     public enum TTSSSEErrorEventType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

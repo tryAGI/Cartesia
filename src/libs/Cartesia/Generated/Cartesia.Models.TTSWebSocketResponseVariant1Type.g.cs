@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSWebSocketResponseVariant1Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chunk,
     }

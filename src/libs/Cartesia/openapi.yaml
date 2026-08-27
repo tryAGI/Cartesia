@@ -4673,7 +4673,6 @@ components:
         - description
         - created_at
         - language
-        - locales
       example:
         id: <string>
         is_owner: true

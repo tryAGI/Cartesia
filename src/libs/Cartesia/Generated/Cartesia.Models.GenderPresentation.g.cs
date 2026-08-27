@@ -4,20 +4,20 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GenderPresentation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Feminine,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GenderNeutral,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Masculine,
     }

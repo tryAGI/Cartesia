@@ -9,7 +9,7 @@ namespace Cartesia
     public enum TranscriptionResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcript,
     }

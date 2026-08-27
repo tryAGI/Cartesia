@@ -4,24 +4,24 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum STTManualFinalizeWebSocketResponseDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FlushDone,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcript,
     }

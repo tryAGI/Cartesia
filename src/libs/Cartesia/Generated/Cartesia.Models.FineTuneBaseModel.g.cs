@@ -9,7 +9,7 @@ namespace Cartesia
     public enum FineTuneBaseModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic320260112,
     }

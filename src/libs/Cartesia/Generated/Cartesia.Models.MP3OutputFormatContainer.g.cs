@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum MP3OutputFormatContainer
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mp3,
     }

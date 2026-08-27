@@ -9,11 +9,11 @@ namespace Cartesia
     public enum AgentMetricResultStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Completed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
     }

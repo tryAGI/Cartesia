@@ -9,15 +9,15 @@ namespace Cartesia
     public enum InfillModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic320251027,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic320260112,
     }

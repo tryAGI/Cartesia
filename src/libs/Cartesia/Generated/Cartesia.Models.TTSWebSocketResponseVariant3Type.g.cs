@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSWebSocketResponseVariant3Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
     }

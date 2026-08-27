@@ -9,7 +9,7 @@ namespace Cartesia
     public enum STTAutoFinalizeTurnEndType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TurnEnd,
     }

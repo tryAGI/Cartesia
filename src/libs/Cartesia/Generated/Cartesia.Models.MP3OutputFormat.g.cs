@@ -4,26 +4,26 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MP3OutputFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("container")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.MP3OutputFormatContainerJsonConverter))]
         public global::Cartesia.MP3OutputFormatContainer Container { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sample_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int SampleRate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bit_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,7 +9,7 @@ namespace Cartesia
     public enum VoiceChangerSSEErrorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

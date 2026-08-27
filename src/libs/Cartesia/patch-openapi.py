@@ -53,6 +53,54 @@ def add_enum_values(document: str, schema_name: str, values: list[str]) -> str:
     return document[:schema_start] + block + document[next_schema:]
 
 
+def make_schema_property_optional(document: str, schema_name: str, property_name: str) -> str:
+    """Keep a documented property while tolerating responses that omit it."""
+    schema_marker = f"    {schema_name}:\n"
+    schema_start = document.find(schema_marker)
+    if schema_start < 0:
+        raise SystemExit(f"Schema {schema_name} was not found in the Cartesia OpenAPI document.")
+
+    next_schema_match = re.search(
+        r"^    \S[^\n]*:\s*$",
+        document[schema_start + len(schema_marker):],
+        re.MULTILINE,
+    )
+    next_schema = (
+        schema_start + len(schema_marker) + next_schema_match.start()
+        if next_schema_match
+        else len(document)
+    )
+
+    block = document[schema_start:next_schema]
+    property_marker = f"        {property_name}:\n"
+    if property_marker not in block:
+        raise SystemExit(f"Schema {schema_name} does not define property {property_name}.")
+
+    required_marker = "      required:\n"
+    required_start = block.find(required_marker)
+    if required_start < 0:
+        return document
+
+    required_end_match = re.search(
+        r"^      \S[^\n]*:\s*$",
+        block[required_start + len(required_marker):],
+        re.MULTILINE,
+    )
+    required_end = (
+        required_start + len(required_marker) + required_end_match.start()
+        if required_end_match
+        else len(block)
+    )
+    required_block = block[required_start:required_end]
+    required_line = f"        - {property_name}\n"
+    if required_line not in required_block:
+        return document
+
+    required_block = required_block.replace(required_line, "", 1)
+    block = block[:required_start] + required_block + block[required_end:]
+    return document[:schema_start] + block + document[next_schema:]
+
+
 if len(sys.argv) != 2:
     raise SystemExit("usage: patch-openapi.py <openapi.yaml>")
 
@@ -84,4 +132,7 @@ spec = add_enum_values(
         "pt-BR",
     ],
 )
+# Cartesia's List Voices response can omit locales unless that data is expanded.
+# Leaving the field required makes a successful page fail JSON deserialization.
+spec = make_schema_property_optional(spec, "Voice", "locales")
 spec_path.write_text(spec, encoding="utf-8")

@@ -10,7 +10,7 @@ namespace Cartesia
     public readonly partial struct TTSSSEEvent : global::System.IEquatable<TTSSSEEvent>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSEEventDiscriminatorType? Type { get; }
 
@@ -25,7 +25,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Chunk))]
@@ -33,7 +33,7 @@ namespace Cartesia
         public bool IsChunk => Chunk != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChunk(
 #if NET6_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSEChunkEvent PickChunk() => IsChunk
             ? Chunk!
@@ -63,7 +63,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Timestamps))]
@@ -71,7 +71,7 @@ namespace Cartesia
         public bool IsTimestamps => Timestamps != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTimestamps(
 #if NET6_0_OR_GREATER
@@ -84,7 +84,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSETimestampsEvent PickTimestamps() => IsTimestamps
             ? Timestamps!
@@ -101,7 +101,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PhonemeTimestamps))]
@@ -109,7 +109,7 @@ namespace Cartesia
         public bool IsPhonemeTimestamps => PhonemeTimestamps != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPhonemeTimestamps(
 #if NET6_0_OR_GREATER
@@ -122,7 +122,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSEPhonemeTimestampsEvent PickPhonemeTimestamps() => IsPhonemeTimestamps
             ? PhonemeTimestamps!
@@ -139,7 +139,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Done))]
@@ -147,7 +147,7 @@ namespace Cartesia
         public bool IsDone => Done != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDone(
 #if NET6_0_OR_GREATER
@@ -160,7 +160,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSEDoneEvent PickDone() => IsDone
             ? Done!
@@ -177,7 +177,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Error))]
@@ -185,7 +185,7 @@ namespace Cartesia
         public bool IsError => Error != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickError(
 #if NET6_0_OR_GREATER
@@ -198,23 +198,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.TTSSSEErrorEvent PickError() => IsError
             ? Error!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEChunkEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEChunkEvent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSSSEChunkEvent?(TTSSSEEvent @this) => @this.Chunk;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(global::Cartesia.TTSSSEChunkEvent? value)
         {
@@ -222,22 +222,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSSSEEvent FromChunk(global::Cartesia.TTSSSEChunkEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSETimestampsEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSETimestampsEvent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSSSETimestampsEvent?(TTSSSEEvent @this) => @this.Timestamps;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(global::Cartesia.TTSSSETimestampsEvent? value)
         {
@@ -245,22 +245,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSSSEEvent FromTimestamps(global::Cartesia.TTSSSETimestampsEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEPhonemeTimestampsEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEPhonemeTimestampsEvent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSSSEPhonemeTimestampsEvent?(TTSSSEEvent @this) => @this.PhonemeTimestamps;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(global::Cartesia.TTSSSEPhonemeTimestampsEvent? value)
         {
@@ -268,22 +268,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSSSEEvent FromPhonemeTimestamps(global::Cartesia.TTSSSEPhonemeTimestampsEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEDoneEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEDoneEvent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSSSEDoneEvent?(TTSSSEEvent @this) => @this.Done;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(global::Cartesia.TTSSSEDoneEvent? value)
         {
@@ -291,22 +291,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSSSEEvent FromDone(global::Cartesia.TTSSSEDoneEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSSSEEvent(global::Cartesia.TTSSSEErrorEvent value) => new TTSSSEEvent((global::Cartesia.TTSSSEErrorEvent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.TTSSSEErrorEvent?(TTSSSEEvent @this) => @this.Error;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(global::Cartesia.TTSSSEErrorEvent? value)
         {
@@ -314,12 +314,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSSSEEvent FromError(global::Cartesia.TTSSSEErrorEvent? value) => new TTSSSEEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSSSEEvent(
             global::Cartesia.TTSSSEEventDiscriminatorType? type,
@@ -340,29 +340,29 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Error as object ??
             Done as object ??
             PhonemeTimestamps as object ??
             Timestamps as object ??
-            Chunk as object 
+            Chunk as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Chunk?.ToString() ??
             Timestamps?.ToString() ??
             PhonemeTimestamps?.ToString() ??
             Done?.ToString() ??
-            Error?.ToString() 
+            Error?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -370,7 +370,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.TTSSSEChunkEvent, TResult>? chunk = null,
@@ -410,7 +410,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.TTSSSEChunkEvent>? chunk = null,
@@ -452,7 +452,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.TTSSSEChunkEvent>? chunk = null,
@@ -490,7 +490,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -517,7 +517,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TTSSSEEvent other)
         {
@@ -526,12 +526,12 @@ namespace Cartesia
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSSSETimestampsEvent?>.Default.Equals(Timestamps, other.Timestamps) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSSSEPhonemeTimestampsEvent?>.Default.Equals(PhonemeTimestamps, other.PhonemeTimestamps) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSSSEDoneEvent?>.Default.Equals(Done, other.Done) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSSSEErrorEvent?>.Default.Equals(Error, other.Error) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.TTSSSEErrorEvent?>.Default.Equals(Error, other.Error)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TTSSSEEvent obj1, TTSSSEEvent obj2)
         {
@@ -539,7 +539,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TTSSSEEvent obj1, TTSSSEEvent obj2)
         {
@@ -547,7 +547,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

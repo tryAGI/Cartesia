@@ -11,15 +11,15 @@ namespace Cartesia
     public enum STTManualFinalizeModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ink2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InkWhisper,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InkWhisper20250604,
     }

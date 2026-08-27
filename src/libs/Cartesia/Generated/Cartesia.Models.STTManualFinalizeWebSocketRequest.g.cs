@@ -12,11 +12,11 @@ namespace Cartesia
     public enum STTManualFinalizeWebSocketRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Close,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Finalize,
     }

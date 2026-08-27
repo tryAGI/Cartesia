@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentTranscript
     {
@@ -66,13 +66,13 @@ namespace Cartesia
         public float? TtsTtfb { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("log_event")]
         public global::Cartesia.LogEvent? LogEvent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("log_metric")]
         public global::Cartesia.LogMetric? LogMetric { get; set; }

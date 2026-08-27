@@ -10,7 +10,7 @@ namespace Cartesia
     public readonly partial struct STTAutoFinalizeWebSocketResponse : global::System.IEquatable<STTAutoFinalizeWebSocketResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminatorType? Type { get; }
 
@@ -25,7 +25,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Connected))]
@@ -33,7 +33,7 @@ namespace Cartesia
         public bool IsConnected => Connected != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConnected(
 #if NET6_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeConnected PickConnected() => IsConnected
             ? Connected!
@@ -63,7 +63,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TurnStart))]
@@ -71,7 +71,7 @@ namespace Cartesia
         public bool IsTurnStart => TurnStart != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTurnStart(
 #if NET6_0_OR_GREATER
@@ -84,7 +84,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeTurnStart PickTurnStart() => IsTurnStart
             ? TurnStart!
@@ -101,7 +101,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TurnUpdate))]
@@ -109,7 +109,7 @@ namespace Cartesia
         public bool IsTurnUpdate => TurnUpdate != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTurnUpdate(
 #if NET6_0_OR_GREATER
@@ -122,7 +122,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeTurnUpdate PickTurnUpdate() => IsTurnUpdate
             ? TurnUpdate!
@@ -139,7 +139,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TurnEagerEnd))]
@@ -147,7 +147,7 @@ namespace Cartesia
         public bool IsTurnEagerEnd => TurnEagerEnd != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTurnEagerEnd(
 #if NET6_0_OR_GREATER
@@ -160,7 +160,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeTurnEagerEnd PickTurnEagerEnd() => IsTurnEagerEnd
             ? TurnEagerEnd!
@@ -177,7 +177,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TurnResume))]
@@ -185,7 +185,7 @@ namespace Cartesia
         public bool IsTurnResume => TurnResume != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTurnResume(
 #if NET6_0_OR_GREATER
@@ -198,7 +198,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeTurnResume PickTurnResume() => IsTurnResume
             ? TurnResume!
@@ -215,7 +215,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TurnEnd))]
@@ -223,7 +223,7 @@ namespace Cartesia
         public bool IsTurnEnd => TurnEnd != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTurnEnd(
 #if NET6_0_OR_GREATER
@@ -236,7 +236,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTAutoFinalizeTurnEnd PickTurnEnd() => IsTurnEnd
             ? TurnEnd!
@@ -253,7 +253,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Error))]
@@ -261,7 +261,7 @@ namespace Cartesia
         public bool IsError => Error != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickError(
 #if NET6_0_OR_GREATER
@@ -274,23 +274,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.STTErrorResponse PickError() => IsError
             ? Error!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeConnected value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeConnected?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeConnected?(STTAutoFinalizeWebSocketResponse @this) => @this.Connected;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeConnected? value)
         {
@@ -298,22 +298,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromConnected(global::Cartesia.STTAutoFinalizeConnected? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnStart value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeTurnStart?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeTurnStart?(STTAutoFinalizeWebSocketResponse @this) => @this.TurnStart;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnStart? value)
         {
@@ -321,22 +321,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromTurnStart(global::Cartesia.STTAutoFinalizeTurnStart? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnUpdate value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeTurnUpdate?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeTurnUpdate?(STTAutoFinalizeWebSocketResponse @this) => @this.TurnUpdate;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnUpdate? value)
         {
@@ -344,22 +344,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromTurnUpdate(global::Cartesia.STTAutoFinalizeTurnUpdate? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnEagerEnd value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeTurnEagerEnd?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeTurnEagerEnd?(STTAutoFinalizeWebSocketResponse @this) => @this.TurnEagerEnd;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnEagerEnd? value)
         {
@@ -367,22 +367,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromTurnEagerEnd(global::Cartesia.STTAutoFinalizeTurnEagerEnd? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnResume value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeTurnResume?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeTurnResume?(STTAutoFinalizeWebSocketResponse @this) => @this.TurnResume;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnResume? value)
         {
@@ -390,22 +390,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromTurnResume(global::Cartesia.STTAutoFinalizeTurnResume? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnEnd value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTAutoFinalizeTurnEnd?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTAutoFinalizeTurnEnd?(STTAutoFinalizeWebSocketResponse @this) => @this.TurnEnd;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTAutoFinalizeTurnEnd? value)
         {
@@ -413,22 +413,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromTurnEnd(global::Cartesia.STTAutoFinalizeTurnEnd? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator STTAutoFinalizeWebSocketResponse(global::Cartesia.STTErrorResponse value) => new STTAutoFinalizeWebSocketResponse((global::Cartesia.STTErrorResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.STTErrorResponse?(STTAutoFinalizeWebSocketResponse @this) => @this.Error;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(global::Cartesia.STTErrorResponse? value)
         {
@@ -436,12 +436,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static STTAutoFinalizeWebSocketResponse FromError(global::Cartesia.STTErrorResponse? value) => new STTAutoFinalizeWebSocketResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public STTAutoFinalizeWebSocketResponse(
             global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminatorType? type,
@@ -466,7 +466,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Error as object ??
@@ -475,11 +475,11 @@ namespace Cartesia
             TurnEagerEnd as object ??
             TurnUpdate as object ??
             TurnStart as object ??
-            Connected as object 
+            Connected as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Connected?.ToString() ??
@@ -488,11 +488,11 @@ namespace Cartesia
             TurnEagerEnd?.ToString() ??
             TurnResume?.ToString() ??
             TurnEnd?.ToString() ??
-            Error?.ToString() 
+            Error?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -500,7 +500,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.STTAutoFinalizeConnected, TResult>? connected = null,
@@ -550,7 +550,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.STTAutoFinalizeConnected>? connected = null,
@@ -604,7 +604,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.STTAutoFinalizeConnected>? connected = null,
@@ -652,7 +652,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -683,7 +683,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(STTAutoFinalizeWebSocketResponse other)
         {
@@ -694,12 +694,12 @@ namespace Cartesia
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTAutoFinalizeTurnEagerEnd?>.Default.Equals(TurnEagerEnd, other.TurnEagerEnd) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTAutoFinalizeTurnResume?>.Default.Equals(TurnResume, other.TurnResume) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTAutoFinalizeTurnEnd?>.Default.Equals(TurnEnd, other.TurnEnd) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTErrorResponse?>.Default.Equals(Error, other.Error) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.STTErrorResponse?>.Default.Equals(Error, other.Error)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(STTAutoFinalizeWebSocketResponse obj1, STTAutoFinalizeWebSocketResponse obj2)
         {
@@ -707,7 +707,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(STTAutoFinalizeWebSocketResponse obj1, STTAutoFinalizeWebSocketResponse obj2)
         {
@@ -715,7 +715,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

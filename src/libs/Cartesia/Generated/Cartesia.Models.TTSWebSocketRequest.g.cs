@@ -5,12 +5,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TTSWebSocketRequest : global::System.IEquatable<TTSWebSocketRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.GenerationRequest? GenerationRequest { get; init; }
@@ -19,7 +19,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GenerationRequest))]
@@ -27,7 +27,7 @@ namespace Cartesia
         public bool IsGenerationRequest => GenerationRequest != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGenerationRequest(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.GenerationRequest PickGenerationRequest() => IsGenerationRequest
             ? GenerationRequest!
             : throw new global::System.InvalidOperationException($"Expected union variant 'GenerationRequest' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.CancelContextRequest? CancelContextRequest { get; init; }
@@ -56,7 +56,7 @@ namespace Cartesia
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelContextRequest))]
@@ -64,7 +64,7 @@ namespace Cartesia
         public bool IsCancelContextRequest => CancelContextRequest != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCancelContextRequest(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Cartesia.CancelContextRequest PickCancelContextRequest() => IsCancelContextRequest
             ? CancelContextRequest!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CancelContextRequest' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketRequest(global::Cartesia.GenerationRequest value) => new TTSWebSocketRequest((global::Cartesia.GenerationRequest?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.GenerationRequest?(TTSWebSocketRequest @this) => @this.GenerationRequest;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketRequest(global::Cartesia.GenerationRequest? value)
         {
@@ -101,22 +101,22 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketRequest FromGenerationRequest(global::Cartesia.GenerationRequest? value) => new TTSWebSocketRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TTSWebSocketRequest(global::Cartesia.CancelContextRequest value) => new TTSWebSocketRequest((global::Cartesia.CancelContextRequest?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Cartesia.CancelContextRequest?(TTSWebSocketRequest @this) => @this.CancelContextRequest;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketRequest(global::Cartesia.CancelContextRequest? value)
         {
@@ -124,12 +124,12 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TTSWebSocketRequest FromCancelContextRequest(global::Cartesia.CancelContextRequest? value) => new TTSWebSocketRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TTSWebSocketRequest(
             global::Cartesia.GenerationRequest? generationRequest,
@@ -141,23 +141,23 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CancelContextRequest as object ??
-            GenerationRequest as object 
+            GenerationRequest as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             GenerationRequest?.ToString() ??
-            CancelContextRequest?.ToString() 
+            CancelContextRequest?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Cartesia.GenerationRequest, TResult>? generationRequest = null,
@@ -190,7 +190,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Cartesia.GenerationRequest>? generationRequest = null,
@@ -214,7 +214,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Cartesia.GenerationRequest>? generationRequest = null,
@@ -237,7 +237,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TTSWebSocketRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.GenerationRequest?>.Default.Equals(GenerationRequest, other.GenerationRequest) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.CancelContextRequest?>.Default.Equals(CancelContextRequest, other.CancelContextRequest) 
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.CancelContextRequest?>.Default.Equals(CancelContextRequest, other.CancelContextRequest)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TTSWebSocketRequest obj1, TTSWebSocketRequest obj2)
         {
@@ -277,7 +277,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TTSWebSocketRequest obj1, TTSWebSocketRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace Cartesia
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

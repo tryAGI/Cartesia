@@ -13,11 +13,11 @@ namespace Cartesia
         /// </summary>
         Ar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bn,
         /// <summary>
@@ -25,7 +25,7 @@ namespace Cartesia
         /// </summary>
         Cs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Da,
         /// <summary>
@@ -41,35 +41,35 @@ namespace Cartesia
         /// </summary>
         En,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnAu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnGb,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnIe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnNz,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnSg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnUs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnZa,
         /// <summary>
@@ -77,31 +77,31 @@ namespace Cartesia
         /// </summary>
         Es,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EsEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EsMx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EsUs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FrCa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FrFr,
         /// <summary>
@@ -113,15 +113,15 @@ namespace Cartesia
         /// </summary>
         He,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hu,
         /// <summary>
@@ -133,47 +133,47 @@ namespace Cartesia
         /// </summary>
         It,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ja,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ka,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ko,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ml,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ms,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NlBe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NlNl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         No,
         /// <summary>
@@ -181,11 +181,11 @@ namespace Cartesia
         /// </summary>
         Or,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pl,
         /// <summary>
@@ -193,31 +193,31 @@ namespace Cartesia
         /// </summary>
         Pt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PtBr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PtPt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ru,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sv,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ta,
         /// <summary>
@@ -229,7 +229,7 @@ namespace Cartesia
         /// </summary>
         Th,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tl,
         /// <summary>
@@ -237,19 +237,19 @@ namespace Cartesia
         /// </summary>
         Tr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ur,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zh,
     }

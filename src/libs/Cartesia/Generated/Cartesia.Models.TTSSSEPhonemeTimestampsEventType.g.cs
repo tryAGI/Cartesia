@@ -9,7 +9,7 @@ namespace Cartesia
     public enum TTSSSEPhonemeTimestampsEventType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhonemeTimestamps,
     }

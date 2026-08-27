@@ -9,7 +9,7 @@ namespace Cartesia
     public enum STTAutoFinalizeCloseCommandType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Close,
     }

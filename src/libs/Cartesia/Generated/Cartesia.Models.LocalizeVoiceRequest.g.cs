@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class LocalizeVoiceRequest
     {
@@ -39,7 +39,7 @@ namespace Cartesia
         public required global::Cartesia.LocalizeTargetLanguage Language { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("original_speaker_gender")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.GenderJsonConverter))]

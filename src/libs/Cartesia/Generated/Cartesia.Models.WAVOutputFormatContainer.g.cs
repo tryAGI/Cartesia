@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum WAVOutputFormatContainer
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Wav,
     }

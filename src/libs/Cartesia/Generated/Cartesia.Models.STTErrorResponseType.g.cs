@@ -9,7 +9,7 @@ namespace Cartesia
     public enum STTErrorResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }
