@@ -29,7 +29,7 @@ var response = await ttsClient.GetAudioAsync(
     "Cartesia Sonic is available through Microsoft.Extensions.AI.",
     new TextToSpeechOptions
     {
-        ModelId = "sonic-3.5",
+        ModelId = "sonic-3.6",
         VoiceId = "694f9389-aac1-45b6-b726-9d9369183238",
         AudioFormat = "wav",
         Language = "en-US",
@@ -49,7 +49,7 @@ await foreach (var update in ttsClient.GetStreamingAudioAsync(
     "Streaming speech starts returning audio before the full generation is done.",
     new TextToSpeechOptions
     {
-        ModelId = "sonic-3.5",
+        ModelId = "sonic-3.6",
         VoiceId = "694f9389-aac1-45b6-b726-9d9369183238",
         AudioFormat = "pcm_s16le",
     }))

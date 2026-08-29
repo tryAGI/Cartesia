@@ -21,7 +21,7 @@ public partial class Tests
 
         Assert.IsNotNull(metadata);
         Assert.AreEqual("cartesia", metadata.ProviderName);
-        Assert.AreEqual("sonic-3.5", metadata.DefaultModelId);
+        Assert.AreEqual("sonic-3.6", metadata.DefaultModelId);
         Assert.IsNotNull(metadata.ProviderUri);
     }
 }

@@ -106,7 +106,11 @@ if len(sys.argv) != 2:
 
 spec_path = Path(sys.argv[1])
 spec = spec_path.read_text(encoding="utf-8")
-spec = add_enum_values(spec, "TTSModel", ["sonic-preview"])
+spec = add_enum_values(
+    spec,
+    "TTSModel",
+    ["sonic-3.6", "sonic-3.6-2026-08-27", "sonic-preview"],
+)
 spec = add_enum_values(
     spec,
     "SupportedLanguage",

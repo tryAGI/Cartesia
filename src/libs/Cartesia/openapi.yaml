@@ -3033,6 +3033,8 @@ components:
         - sonic-3-2026-01-12
         - sonic-3-2025-10-27
         - 'sonic-preview'
+        - 'sonic-3.6'
+        - 'sonic-3.6-2026-08-27'
       description: >-
         Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest)
         for all options.

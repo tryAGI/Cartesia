@@ -39,7 +39,7 @@ public partial class Tests
             "Hello from Cartesia.",
             new TextToSpeechOptions
             {
-                ModelId = "sonic-preview",
+                ModelId = "sonic-3.6",
                 VoiceId = "694f9389-aac1-45b6-b726-9d9369183238",
                 AudioFormat = "wav",
                 Language = "en-GB",
@@ -75,7 +75,7 @@ public partial class Tests
 
         Assert.IsNotNull(capturedRequest);
         Assert.AreEqual("Hello from Cartesia.", capturedRequest.Transcript);
-        Assert.AreEqual(TTSModel.SonicPreview, capturedRequest.ModelId);
+        Assert.AreEqual(TTSModel.Sonic36, capturedRequest.ModelId);
         Assert.AreEqual("694f9389-aac1-45b6-b726-9d9369183238", capturedRequest.Voice.Id);
         Assert.AreEqual(SupportedLanguage.EnGb, capturedRequest.Language);
         Assert.AreEqual("pronunciation-dictionary-id", capturedRequest.PronunciationDictId);

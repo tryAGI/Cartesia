@@ -9,7 +9,7 @@ namespace Cartesia;
 
 public sealed partial class CartesiaClient : ITextToSpeechClient
 {
-    private const TTSModel DefaultTtsModel = TTSModel.Sonic35;
+    private const TTSModel DefaultTtsModel = TTSModel.Sonic36;
     private const TtsBytesCartesiaVersion DefaultTtsBytesVersion = TtsBytesCartesiaVersion.x20251104;
     private const TtsSseCartesiaVersion DefaultTtsSseVersion = TtsSseCartesiaVersion.x20251104;
     private const int DefaultSampleRate = 44100;

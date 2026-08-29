@@ -3,7 +3,7 @@ order: 30
 title: Realtime Speech To Text Models
 slug: realtime-speech-to-text-models
 
-Use Sonic 3.5 for text-to-speech and Ink 2 for realtime speech-to-text.
+Use Sonic 3.6 for text-to-speech and Ink 2 for realtime speech-to-text.
 */
 
 namespace Cartesia.IntegrationTests;
@@ -13,9 +13,9 @@ public partial class Tests
     [TestMethod]
     public void RealtimeSpeechToText_ModelsExposeStableIds()
     {
-        //// Sonic 3.5 is available for TTS bytes and SSE calls.
-        TTSModel.Sonic35.ToValueString().Should().Be("sonic-3.5");
-        TTSModel.Sonic3520260504.ToValueString().Should().Be("sonic-3.5-2026-05-04");
+        //// Sonic 3.6 exposes both the rolling stable alias and immutable production snapshot.
+        TTSModel.Sonic36.ToValueString().Should().Be("sonic-3.6");
+        TTSModel.Sonic3620260827.ToValueString().Should().Be("sonic-3.6-2026-08-27");
 
         //// Ink 2 is available for realtime STT auto-finalize and manual-finalize sessions.
         STTAutoFinalizeModel.Ink2.ToValueString().Should().Be("ink-2");
