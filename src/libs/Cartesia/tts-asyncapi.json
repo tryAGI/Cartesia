@@ -1,0 +1,927 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Cartesia Realtime Text-to-Speech WebSocket API",
+    "version": "2026-08-14",
+    "description": "Generate audio in realtime with contexts"
+  },
+  "servers": {
+    "production": {
+      "host": "api.cartesia.ai",
+      "pathname": "/tts/websocket",
+      "protocol": "wss",
+      "description": "Cartesia realtime text-to-speech WebSocket endpoint.",
+      "variables": {
+        "cartesia_version": {
+          "description": "Cartesia API version.",
+          "default": "2026-08-14"
+        }
+      },
+      "security": [
+        {
+          "$ref": "#/components/securitySchemes/apiKey"
+        },
+        {
+          "$ref": "#/components/securitySchemes/accessToken"
+        }
+      ]
+    }
+  },
+  "channels": {
+    "textToSpeech": {
+      "address": "/tts/websocket",
+      "messages": {
+        "GenerationRequest": {
+          "$ref": "#/components/messages/GenerationRequest"
+        },
+        "CancelRequest": {
+          "$ref": "#/components/messages/CancelRequest"
+        },
+        "ChunkResponse": {
+          "$ref": "#/components/messages/ChunkResponse"
+        },
+        "FlushDoneResponse": {
+          "$ref": "#/components/messages/FlushDoneResponse"
+        },
+        "GenerationDoneResponse": {
+          "$ref": "#/components/messages/GenerationDoneResponse"
+        },
+        "TimestampsResponse": {
+          "$ref": "#/components/messages/TimestampsResponse"
+        },
+        "PhonemeTimestampsResponse": {
+          "$ref": "#/components/messages/PhonemeTimestampsResponse"
+        },
+        "TTSErrorResponse": {
+          "$ref": "#/components/messages/TTSErrorResponse"
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendGenerationRequest": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/GenerationRequest"
+        }
+      ]
+    },
+    "sendCancelRequest": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/CancelRequest"
+        }
+      ]
+    },
+    "receiveChunkResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/ChunkResponse"
+        }
+      ]
+    },
+    "receiveFlushDoneResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/FlushDoneResponse"
+        }
+      ]
+    },
+    "receiveGenerationDoneResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/GenerationDoneResponse"
+        }
+      ]
+    },
+    "receiveTimestampsResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/TimestampsResponse"
+        }
+      ]
+    },
+    "receivePhonemeTimestampsResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/PhonemeTimestampsResponse"
+        }
+      ]
+    },
+    "receiveTTSErrorResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/textToSpeech"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/textToSpeech/messages/TTSErrorResponse"
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for trusted server applications."
+      },
+      "accessToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token",
+        "description": "Short-lived token for browser and mobile applications."
+      }
+    },
+    "messages": {
+      "GenerationRequest": {
+        "name": "GenerationRequest",
+        "title": "Generation Request",
+        "description": "Use this to generate speech for a transcript.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/GenerationRequest"
+        }
+      },
+      "CancelRequest": {
+        "name": "CancelRequest",
+        "title": "Cancel Context Request",
+        "description": "Use this to cancel a context, so that no more messages are generated for that context.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/CancelRequest"
+        }
+      },
+      "ChunkResponse": {
+        "name": "ChunkResponse",
+        "title": "Audio Chunk Response",
+        "description": "Audio data chunk",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/ChunkResponse"
+        }
+      },
+      "FlushDoneResponse": {
+        "name": "FlushDoneResponse",
+        "title": "Flush Done Response",
+        "description": "Acknowledgment that flush command was received. See [Context Flushing](/use-the-api/tts-websocket/context-flushing-and-flush-i-ds) for details.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/FlushDoneResponse"
+        }
+      },
+      "GenerationDoneResponse": {
+        "name": "GenerationDoneResponse",
+        "title": "Done Response",
+        "description": "Generation completion signal",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/GenerationDoneResponse"
+        }
+      },
+      "TimestampsResponse": {
+        "name": "TimestampsResponse",
+        "title": "Word Timestamps Response",
+        "description": "Word-level timing information",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/TimestampsResponse"
+        }
+      },
+      "PhonemeTimestampsResponse": {
+        "name": "PhonemeTimestampsResponse",
+        "title": "Phoneme Timestamps Response",
+        "description": "Phoneme-level timing information",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/PhonemeTimestampsResponse"
+        }
+      },
+      "TTSErrorResponse": {
+        "name": "TTSErrorResponse",
+        "title": "Error Response",
+        "description": "Error information for TTS WebSocket connections.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/TTSErrorResponse"
+        }
+      }
+    },
+    "schemas": {
+      "GenerationRequest": {
+        "type": "object",
+        "required": [
+          "model_id",
+          "transcript",
+          "voice",
+          "output_format",
+          "context_id"
+        ],
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "enum": [
+              "sonic-3.6",
+              "sonic-3.5",
+              "sonic-3",
+              "sonic-latest"
+            ],
+            "example": "sonic-3.6",
+            "description": "The ID of the model to use for the generation. See [Models](/build-with-cartesia/tts-models/latest) for all options."
+          },
+          "transcript": {
+            "type": "string",
+            "description": "Transcript chunk to add to the audio being generated by this context."
+          },
+          "voice": {
+            "description": "The voice to use for generation. Pass either a voice ID string or an object with a required `id` (additional object fields may be added in future API versions). Use the same value for all generation requests made to the same context. Embeddings are not accepted in this API version.",
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TTSRequestVoiceId",
+                "description": "The ID of the voice.",
+                "example": "a0e99841-438c-4a64-b679-ae501e7d6091"
+              },
+              {
+                "type": "object",
+                "title": "TTSRequestVoiceObject",
+                "description": "Voice object. `id` is required; other fields may be added in future API versions.",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "The ID of the voice.",
+                    "example": "a0e99841-438c-4a64-b679-ae501e7d6091"
+                  }
+                },
+                "additionalProperties": true
+              }
+            ]
+          },
+          "output_format": {
+            "type": "object",
+            "description": "Audio output format configuration. Use the same value for all generation requests made to the same context.",
+            "required": [
+              "container",
+              "encoding",
+              "sample_rate"
+            ],
+            "properties": {
+              "container": {
+                "type": "string",
+                "enum": [
+                  "raw"
+                ],
+                "description": "Audio container format",
+                "default": "raw"
+              },
+              "encoding": {
+                "type": "string",
+                "enum": [
+                  "pcm_f32le",
+                  "pcm_s16le",
+                  "pcm_mulaw",
+                  "pcm_alaw"
+                ],
+                "description": "Audio encoding format. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use."
+              },
+              "sample_rate": {
+                "type": "integer",
+                "enum": [
+                  8000,
+                  16000,
+                  22050,
+                  24000,
+                  44100,
+                  48000
+                ],
+                "description": "Audio sample rate in Hz."
+              }
+            }
+          },
+          "language": {
+            "type": "string",
+            "description": "The transcript's language or locale. Use a base language code such as `en` or a regional locale code such as `en-GB`. `language` and `locale` accept the same values. Set one or the other, never both; setting both returns an error. The enum lists canonical codes; matching is case-insensitive, and underscore locale aliases such as `en_GB` are also accepted. See [supported codes](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).",
+            "enum": [
+              "en",
+              "fr",
+              "de",
+              "es",
+              "pt",
+              "zh",
+              "ja",
+              "hi",
+              "it",
+              "ko",
+              "nl",
+              "pl",
+              "ru",
+              "sv",
+              "tr",
+              "tl",
+              "bg",
+              "ro",
+              "ar",
+              "cs",
+              "el",
+              "fi",
+              "hr",
+              "ms",
+              "sk",
+              "da",
+              "ta",
+              "uk",
+              "hu",
+              "no",
+              "vi",
+              "bn",
+              "th",
+              "he",
+              "ka",
+              "id",
+              "te",
+              "gu",
+              "kn",
+              "ml",
+              "mr",
+              "pa",
+              "or",
+              "ur",
+              "bg-BG",
+              "bn-IN",
+              "cs-CZ",
+              "da-DK",
+              "de-DE",
+              "el-GR",
+              "en-AU",
+              "en-GB",
+              "en-IE",
+              "en-IN",
+              "en-NZ",
+              "en-SG",
+              "en-US",
+              "en-ZA",
+              "es-ES",
+              "es-MX",
+              "es-US",
+              "fi-FI",
+              "fr-CA",
+              "fr-FR",
+              "gu-IN",
+              "he-IL",
+              "hi-IN",
+              "hr-HR",
+              "hu-HU",
+              "id-ID",
+              "it-IT",
+              "ja-JP",
+              "ka-GE",
+              "kn-IN",
+              "ko-KR",
+              "ml-IN",
+              "mr-IN",
+              "ms-MY",
+              "nl-BE",
+              "nl-NL",
+              "no-NO",
+              "or-IN",
+              "pa-IN",
+              "pl-PL",
+              "pt-BR",
+              "pt-PT",
+              "ro-RO",
+              "ru-RU",
+              "sk-SK",
+              "sv-SE",
+              "ta-IN",
+              "te-IN",
+              "th-TH",
+              "tl-PH",
+              "tr-TR",
+              "uk-UA",
+              "ur-IN",
+              "vi-VN",
+              "zh-CN"
+            ]
+          },
+          "locale": {
+            "type": "string",
+            "description": "The transcript's language or locale. Use a base language code such as `en` or a regional locale code such as `en-GB`. `language` and `locale` accept the same values. Set one or the other, never both; setting both returns an error. The enum lists canonical codes; matching is case-insensitive, and underscore locale aliases such as `en_GB` are also accepted. See [supported codes](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).",
+            "enum": [
+              "en",
+              "fr",
+              "de",
+              "es",
+              "pt",
+              "zh",
+              "ja",
+              "hi",
+              "it",
+              "ko",
+              "nl",
+              "pl",
+              "ru",
+              "sv",
+              "tr",
+              "tl",
+              "bg",
+              "ro",
+              "ar",
+              "cs",
+              "el",
+              "fi",
+              "hr",
+              "ms",
+              "sk",
+              "da",
+              "ta",
+              "uk",
+              "hu",
+              "no",
+              "vi",
+              "bn",
+              "th",
+              "he",
+              "ka",
+              "id",
+              "te",
+              "gu",
+              "kn",
+              "ml",
+              "mr",
+              "pa",
+              "or",
+              "ur",
+              "bg-BG",
+              "bn-IN",
+              "cs-CZ",
+              "da-DK",
+              "de-DE",
+              "el-GR",
+              "en-AU",
+              "en-GB",
+              "en-IE",
+              "en-IN",
+              "en-NZ",
+              "en-SG",
+              "en-US",
+              "en-ZA",
+              "es-ES",
+              "es-MX",
+              "es-US",
+              "fi-FI",
+              "fr-CA",
+              "fr-FR",
+              "gu-IN",
+              "he-IL",
+              "hi-IN",
+              "hr-HR",
+              "hu-HU",
+              "id-ID",
+              "it-IT",
+              "ja-JP",
+              "ka-GE",
+              "kn-IN",
+              "ko-KR",
+              "ml-IN",
+              "mr-IN",
+              "ms-MY",
+              "nl-BE",
+              "nl-NL",
+              "no-NO",
+              "or-IN",
+              "pa-IN",
+              "pl-PL",
+              "pt-BR",
+              "pt-PT",
+              "ro-RO",
+              "ru-RU",
+              "sk-SK",
+              "sv-SE",
+              "ta-IN",
+              "te-IN",
+              "th-TH",
+              "tl-PH",
+              "tr-TR",
+              "uk-UA",
+              "ur-IN",
+              "vi-VN",
+              "zh-CN"
+            ]
+          },
+          "accent": {
+            "type": "string",
+            "description": "Usually unnecessary: Cartesia picks the closest accent the voice supports for the requested `language` or `locale`. Set it only to make a [multilingual voice](/build-with-cartesia/capability-guides/multilingual-voices) sound accented (e.g. speak English with a French accent). Must come from the voice's [Get Voice `accents` field](/api-reference/voices/get#response-accents). Learn more [here](/build-with-cartesia/capability-guides/multilingual-voices#using-a-multilingual-voice)."
+          },
+          "normalization": {
+            "type": "string",
+            "description": "Text normalization. `auto` (initial default) runs the locale-aware normalizer, `off` skips it, or pass a language or locale code (for example `en` or `en-IN`) to pin the normalizer independently of the generation language. If omitted on a later request in the same context, the previous value is reused. See [Text Normalization](/build-with-cartesia/capability-guides/text-normalization)."
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          },
+          "continue": {
+            "type": "boolean",
+            "description": "Whether `transcript` may be followed by more text:\n  - Set to `true` if you will add more `transcript` chunks to this context\n  - Set to `false` on the last `transcript` chunk for this context to minimize latency\n\nDefaults to `false`\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details\n",
+            "default": false
+          },
+          "max_buffer_delay_ms": {
+            "type": "integer",
+            "description": "The maximum time in milliseconds to buffer text before starting generation. Values between [0, 5000]ms are supported. Defaults to 3000ms.\n\nSee [Buffering](/use-the-api/tts-websocket/buffering) for details\n",
+            "default": 3000
+          },
+          "flush": {
+            "type": "boolean",
+            "description": "Whether to flush the context\n\nSee [Context Flushing](/use-the-api/tts-websocket/context-flushing-and-flush-i-ds) for details\n"
+          },
+          "add_timestamps": {
+            "type": "boolean",
+            "description": "Whether to include word-level timestamps for the generated audio\n",
+            "default": false
+          },
+          "add_phoneme_timestamps": {
+            "type": "boolean",
+            "description": "Whether to include phoneme-level timestamps for the generated audio\n",
+            "default": false
+          },
+          "use_normalized_timestamps": {
+            "type": "boolean",
+            "description": "Whether to use normalized timestamps (`true`) or original timestamps (`false`)"
+          },
+          "pronunciation_dict_id": {
+            "type": "string",
+            "description": "The ID of a pronunciation dictionary to use for the generation\nSee [Custom Pronunciations](/build-with-cartesia/capability-guides/custom-pronunciations) for details"
+          },
+          "generation_config": {
+            "type": "object",
+            "description": "Configure the various attributes of the generated speech\nSee [Volume, Speed, and Emotion](/build-with-cartesia/capability-guides/volume-speed-emotion) for details",
+            "properties": {
+              "volume": {
+                "type": "number",
+                "description": "Adjust the volume of the generated speech between 0.5x and 2.0x the default volume. Valid values are between [0.5, 2.0] inclusive.",
+                "minimum": 0.5,
+                "maximum": 2,
+                "default": 1
+              },
+              "speed": {
+                "type": "number",
+                "description": "Adjust the speed of the generated speech between 0.6x and 1.5x the default speed. Valid values are between [0.6, 1.5] inclusive.",
+                "minimum": 0.6,
+                "maximum": 1.5,
+                "default": 1
+              },
+              "emotion": {
+                "title": "Emotion",
+                "type": "string",
+                "description": "Optional. If omitted, the model interprets the emotional subtext of the transcript. Must match a valid option exactly.\nA complete list can be found on the [Volume, Speed, and Emotion](/build-with-cartesia/capability-guides/volume-speed-emotion) page.",
+                "enum": [
+                  "neutral",
+                  "calm",
+                  "angry",
+                  "content",
+                  "sad"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Use this to generate speech for a transcript."
+      },
+      "CancelRequest": {
+        "type": "object",
+        "required": [
+          "context_id",
+          "cancel"
+        ],
+        "properties": {
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          },
+          "cancel": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "Whether to cancel the context, so that no more messages are generated for that context."
+          }
+        },
+        "description": "Use this to cancel a context, so that no more messages are generated for that context."
+      },
+      "ChunkResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "data",
+          "done",
+          "status_code",
+          "step_time",
+          "context_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "chunk"
+            ],
+            "description": "Response type identifier"
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64-encoded audio data"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether this is the final chunk for this context"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP-style status code"
+          },
+          "step_time": {
+            "type": "number",
+            "description": "Server-side processing time for this chunk in milliseconds"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          }
+        },
+        "description": "Audio data chunk"
+      },
+      "FlushDoneResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "done",
+          "flush_done",
+          "flush_id",
+          "status_code",
+          "context_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "flush_done"
+            ],
+            "description": "Response type identifier"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether generation is complete"
+          },
+          "flush_done": {
+            "type": "boolean",
+            "description": "Whether the flush is complete"
+          },
+          "flush_id": {
+            "type": "integer",
+            "description": "An identifier corresponding to the number of flush commands that have been sent for this context. Starts at 1. This can be used to map chunks of audio to certain transcript submissions."
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP-style status code"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          }
+        },
+        "description": "Acknowledgment that flush command was received. See [Context Flushing](/use-the-api/tts-websocket/context-flushing-and-flush-i-ds) for details."
+      },
+      "GenerationDoneResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "done",
+          "status_code",
+          "context_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "done"
+            ],
+            "description": "Response type identifier"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether generation is complete"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP-style status code"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          }
+        },
+        "description": "Generation completion signal"
+      },
+      "TimestampsResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "done",
+          "status_code",
+          "context_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "timestamps"
+            ],
+            "description": "Response type identifier"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether generation is complete"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP-style status code"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          },
+          "word_timestamps": {
+            "type": "object",
+            "description": "Word-level timing information",
+            "properties": {
+              "words": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of words in order"
+              },
+              "start": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Start times in seconds for each word"
+              },
+              "end": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "End times in seconds for each word"
+              }
+            }
+          }
+        },
+        "description": "Word-level timing information"
+      },
+      "PhonemeTimestampsResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "done",
+          "status_code",
+          "context_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "phoneme_timestamps"
+            ],
+            "description": "Response type identifier"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether generation is complete"
+          },
+          "status_code": {
+            "type": "integer",
+            "description": "HTTP-style status code"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          },
+          "phoneme_timestamps": {
+            "type": "object",
+            "description": "Phoneme-level timing information",
+            "properties": {
+              "phonemes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of phonemes in order"
+              },
+              "start": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Start times in seconds for each phoneme"
+              },
+              "end": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "End times in seconds for each phoneme"
+              }
+            }
+          }
+        },
+        "description": "Phoneme-level timing information"
+      },
+      "TTSErrorResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "title",
+          "message",
+          "status_code"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "error"
+            ],
+            "description": "Response type identifier"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "Whether generation is complete"
+          },
+          "error_code": {
+            "type": "string",
+            "description": "Machine-readable error code."
+          },
+          "status_code": {
+            "type": "number",
+            "format": "integer",
+            "description": "An HTTP response status code."
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable error title."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message."
+          },
+          "doc_url": {
+            "type": "string",
+            "description": "URL to relevant documentation"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this websocket connection"
+          },
+          "context_id": {
+            "type": "string",
+            "description": "A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.\n\nSee [Contexts](/use-the-api/tts-websocket/contexts) for details.\n"
+          }
+        },
+        "description": "Error information for TTS WebSocket connections."
+      }
+    }
+  }
+}

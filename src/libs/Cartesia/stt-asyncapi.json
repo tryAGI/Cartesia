@@ -1,0 +1,479 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Cartesia Realtime Speech-to-Text WebSocket API",
+    "version": "2026-08-14",
+    "description": "Realtime speech transcription without turn detection\n\n<Note>\n  This endpoint relies on the `finalize` command to trigger transcription. See [Compare STT Endpoints](/use-the-api/stt/compare-endpoints) for details.\n</Note>\n"
+  },
+  "servers": {
+    "production": {
+      "host": "api.cartesia.ai",
+      "pathname": "/stt/websocket",
+      "protocol": "wss",
+      "description": "Cartesia manual-finalization speech-to-text WebSocket endpoint.",
+      "variables": {},
+      "security": [
+        {
+          "$ref": "#/components/securitySchemes/apiKey"
+        },
+        {
+          "$ref": "#/components/securitySchemes/accessToken"
+        }
+      ]
+    }
+  },
+  "channels": {
+    "speechToText": {
+      "address": "/stt/websocket",
+      "messages": {
+        "STTAudioData": {
+          "$ref": "#/components/messages/STTAudioData"
+        },
+        "STTFinalizeCommand": {
+          "$ref": "#/components/messages/STTFinalizeCommand"
+        },
+        "STTCloseCommand": {
+          "$ref": "#/components/messages/STTCloseCommand"
+        },
+        "STTTranscriptResponse": {
+          "$ref": "#/components/messages/STTTranscriptResponse"
+        },
+        "STTFlushDoneResponse": {
+          "$ref": "#/components/messages/STTFlushDoneResponse"
+        },
+        "STTDoneResponse": {
+          "$ref": "#/components/messages/STTDoneResponse"
+        },
+        "STTErrorResponse": {
+          "$ref": "#/components/messages/STTErrorResponse"
+        }
+      },
+      "bindings": {
+        "ws": {
+          "query": {
+            "type": "object",
+            "required": [
+              "model",
+              "encoding",
+              "sample_rate",
+              "cartesia_version"
+            ],
+            "properties": {
+              "model": {
+                "$ref": "#/components/schemas/SpeechToTextModel"
+              },
+              "encoding": {
+                "$ref": "#/components/schemas/SpeechToTextEncoding"
+              },
+              "sample_rate": {
+                "type": "integer",
+                "format": "int32",
+                "example": 16000,
+                "description": "The sample rate of the audio in Hz.\n"
+              },
+              "cartesia_version": {
+                "$ref": "#/components/schemas/SpeechToTextApiVersion"
+              },
+              "language": {
+                "type": "string",
+                "default": "en",
+                "description": "Used by `ink-whisper` models only.\n\nThe language of the input audio in ISO-639-1 format. Defaults to `en`.\n\nSee [Older models](/build-with-cartesia/stt/older-models#ink-whisper) for all options.\n"
+              },
+              "min_volume": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Used by `ink-whisper` models only.\n\nControls what is considered silence for automatic transcript finalization. Range: 0.0-1.0.\n\nLower values will pick up quiet audio.\nHigher values lead to more filtering for noisy audio.\n"
+              },
+              "max_silence_duration_secs": {
+                "type": "number",
+                "description": "Used by `ink-whisper` models only.\n\nMaximum duration of silence (in seconds) before the API automatically finalizes the transcript.\n\nLower values will finalize transcripts more aggressively.\nHigher values allow for longer pauses within utterances.\n"
+              },
+              "keyterm": {
+                "type": "array",
+                "description": "Used by `ink-2` and `ink-preview` only.\n\nKey terms to improve the recall of specific words and phrases.\n\nRepeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.\n\nExample: `?keyterm=Ink%202&keyterm=Cartesia`\n\nSee [Keyterm prompting](/use-the-api/stt/keyterms) for details.\n",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendSTTAudioData": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTAudioData"
+        }
+      ]
+    },
+    "sendSTTFinalizeCommand": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTFinalizeCommand"
+        }
+      ]
+    },
+    "sendSTTCloseCommand": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTCloseCommand"
+        }
+      ]
+    },
+    "receiveSTTTranscriptResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTTranscriptResponse"
+        }
+      ]
+    },
+    "receiveSTTFlushDoneResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTFlushDoneResponse"
+        }
+      ]
+    },
+    "receiveSTTDoneResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTDoneResponse"
+        }
+      ]
+    },
+    "receiveSTTErrorResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToText"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToText/messages/STTErrorResponse"
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for trusted server applications."
+      },
+      "accessToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token",
+        "description": "Short-lived token for browser and mobile applications."
+      }
+    },
+    "messages": {
+      "STTAudioData": {
+        "name": "STTAudioData",
+        "title": "Send Audio Data",
+        "description": "Send WebSocket binary messages containing raw audio data as specified by the `encoding` and `sample_rate` query parameters.\n\nAudio Requirements:\n- Send audio in small chunks, e.g. 100 ms\n- Audio format must match the `encoding` and `sample_rate` parameters\n",
+        "contentType": "application/octet-stream",
+        "payload": {
+          "$ref": "#/components/schemas/STTAudioData"
+        }
+      },
+      "STTFinalizeCommand": {
+        "name": "STTFinalizeCommand",
+        "title": "Finalize Command",
+        "description": "Send `finalize` as a text message when the user is done speaking to receive the transcript for any buffered audio.",
+        "contentType": "text/plain",
+        "payload": {
+          "$ref": "#/components/schemas/STTFinalizeCommand"
+        }
+      },
+      "STTCloseCommand": {
+        "name": "STTCloseCommand",
+        "title": "Close Command",
+        "description": "Send `close` as a text message to flush remaining audio, close session, and receive a done acknowledgment",
+        "contentType": "text/plain",
+        "payload": {
+          "$ref": "#/components/schemas/STTCloseCommand"
+        }
+      },
+      "STTTranscriptResponse": {
+        "name": "STTTranscriptResponse",
+        "title": "Transcript Response",
+        "description": "Transcript chunks.\n\nYou should send the `finalize` command after the user is done speaking to make the API emit these transcript chunks;\nalthough, the API may send transcript chunks even before you send the `finalize` command.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTranscriptResponse"
+        }
+      },
+      "STTFlushDoneResponse": {
+        "name": "STTFlushDoneResponse",
+        "title": "Flush Done Response",
+        "description": "Acknowledgment for the `finalize` command",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTFlushDoneResponse"
+        }
+      },
+      "STTDoneResponse": {
+        "name": "STTDoneResponse",
+        "title": "Done Response",
+        "description": "Acknowledgment for the `close` command",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTDoneResponse"
+        }
+      },
+      "STTErrorResponse": {
+        "name": "STTErrorResponse",
+        "title": "Error Response",
+        "description": "Error information for STT WebSocket connections.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTErrorResponse"
+        }
+      }
+    },
+    "schemas": {
+      "STTAudioData": {
+        "type": "string",
+        "format": "binary",
+        "description": "Raw audio data as a binary message in the format specified by the `encoding` parameter. Send audio in small chunks, e.g. 100 ms."
+      },
+      "STTFinalizeCommand": {
+        "type": "string",
+        "enum": [
+          "finalize"
+        ],
+        "description": "The value `finalize` as a text message",
+        "examples": [
+          "finalize"
+        ]
+      },
+      "STTCloseCommand": {
+        "type": "string",
+        "enum": [
+          "close"
+        ],
+        "description": "The value `close` as a text message",
+        "examples": [
+          "close"
+        ]
+      },
+      "STTTranscriptResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "is_final",
+          "request_id",
+          "text"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "transcript"
+            ],
+            "description": "Response type identifier"
+          },
+          "is_final": {
+            "type": "boolean",
+            "description": "Whether `text` is finalized."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this WebSocket connection."
+          },
+          "text": {
+            "type": "string",
+            "description": "Transcribed text. This is a delta from the last transcript chunk with `\"is_final\": true`.\n\nTo assemble the full transcript, concatenate all transcript chunks where `\"is_final\": true`.\n\nDo not strip whitespace from `text` or add whitespace between chunks as this will produce an incorrect transcript.\n"
+          },
+          "duration": {
+            "type": "number",
+            "description": "Duration of the audio in seconds"
+          },
+          "words": {
+            "type": "array",
+            "description": "Word-level timestamps",
+            "items": {
+              "type": "object",
+              "required": [
+                "word",
+                "start",
+                "end"
+              ],
+              "properties": {
+                "word": {
+                  "type": "string",
+                  "description": "The transcribed word"
+                },
+                "start": {
+                  "type": "number",
+                  "description": "Start time in seconds"
+                },
+                "end": {
+                  "type": "number",
+                  "description": "End time in seconds"
+                }
+              }
+            }
+          }
+        },
+        "description": "Transcript chunks.\n\nYou should send the `finalize` command after the user is done speaking to make the API emit these transcript chunks;\nalthough, the API may send transcript chunks even before you send the `finalize` command.\n"
+      },
+      "STTFlushDoneResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "flush_done"
+            ],
+            "description": "Response type identifier"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this websocket connection"
+          },
+          "is_final": {
+            "type": "boolean",
+            "deprecated": true,
+            "description": "Has no meaning for this message"
+          }
+        },
+        "description": "Acknowledgment for the `finalize` command"
+      },
+      "STTDoneResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "done"
+            ],
+            "description": "Response type identifier"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this websocket connection"
+          },
+          "is_final": {
+            "type": "boolean",
+            "deprecated": true,
+            "description": "Has no meaning for this message"
+          }
+        },
+        "description": "Acknowledgment for the `close` command"
+      },
+      "STTErrorResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "status_code",
+          "title",
+          "message"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "error"
+            ],
+            "description": "Event type identifier."
+          },
+          "error_code": {
+            "type": "string",
+            "description": "Machine-readable error code."
+          },
+          "status_code": {
+            "type": "number",
+            "format": "integer",
+            "description": "An HTTP response status code."
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable error title."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message."
+          },
+          "doc_url": {
+            "type": "string",
+            "description": "URL to relevant documentation"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this websocket connection"
+          }
+        },
+        "description": "Error information for STT WebSocket connections."
+      },
+      "SpeechToTextModel": {
+        "type": "string",
+        "enum": [
+          "ink-2",
+          "ink-preview",
+          "ink-whisper"
+        ],
+        "example": "ink-2",
+        "description": "ID of the model to use for transcription.\n\nSee [Models](/build-with-cartesia/stt/latest) for details.\n"
+      },
+      "SpeechToTextEncoding": {
+        "type": "string",
+        "enum": [
+          "pcm_s16le",
+          "pcm_s32le",
+          "pcm_f16le",
+          "pcm_f32le",
+          "pcm_mulaw",
+          "pcm_alaw"
+        ],
+        "description": "The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.\n\nFor guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).\n"
+      },
+      "SpeechToTextApiVersion": {
+        "type": "string",
+        "enum": [
+          "2026-08-14"
+        ],
+        "example": "2026-08-14",
+        "description": "API version."
+      }
+    }
+  }
+}

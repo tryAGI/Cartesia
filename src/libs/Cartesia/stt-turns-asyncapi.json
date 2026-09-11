@@ -1,0 +1,619 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Cartesia Turn-Detecting Speech-to-Text WebSocket API",
+    "version": "2026-08-14",
+    "description": "Realtime speech transcription with built-in turn detection\n\n<Note>\n`ink-2` supports English only. For English, French, Hindi, Japanese, and Spanish, use `ink-preview`;\nit detects the language automatically.\n</Note>\n"
+  },
+  "servers": {
+    "production": {
+      "host": "api.cartesia.ai",
+      "pathname": "/stt/turns/websocket",
+      "protocol": "wss",
+      "description": "Cartesia turn-detecting speech-to-text WebSocket endpoint.",
+      "variables": {},
+      "security": [
+        {
+          "$ref": "#/components/securitySchemes/apiKey"
+        },
+        {
+          "$ref": "#/components/securitySchemes/accessToken"
+        }
+      ]
+    }
+  },
+  "channels": {
+    "speechToTextTurns": {
+      "address": "/stt/turns/websocket",
+      "messages": {
+        "STTTurnsAudioData": {
+          "$ref": "#/components/messages/STTTurnsAudioData"
+        },
+        "STTTurnsCloseCommand": {
+          "$ref": "#/components/messages/STTTurnsCloseCommand"
+        },
+        "STTTurnsConfigCommand": {
+          "$ref": "#/components/messages/STTTurnsConfigCommand"
+        },
+        "STTTurnsConnected": {
+          "$ref": "#/components/messages/STTTurnsConnected"
+        },
+        "STTTurnsTurnStart": {
+          "$ref": "#/components/messages/STTTurnsTurnStart"
+        },
+        "STTTurnsTurnUpdate": {
+          "$ref": "#/components/messages/STTTurnsTurnUpdate"
+        },
+        "STTTurnsTurnEagerEnd": {
+          "$ref": "#/components/messages/STTTurnsTurnEagerEnd"
+        },
+        "STTTurnsTurnResume": {
+          "$ref": "#/components/messages/STTTurnsTurnResume"
+        },
+        "STTTurnsTurnEnd": {
+          "$ref": "#/components/messages/STTTurnsTurnEnd"
+        },
+        "STTErrorResponse": {
+          "$ref": "#/components/messages/STTErrorResponse"
+        }
+      },
+      "bindings": {
+        "ws": {
+          "query": {
+            "type": "object",
+            "required": [
+              "model",
+              "encoding",
+              "sample_rate",
+              "cartesia_version"
+            ],
+            "properties": {
+              "model": {
+                "type": "string",
+                "example": "ink-2",
+                "description": "ID of the model to use for transcription: `ink-2`, `ink-preview`.\n\nSee [Models](/build-with-cartesia/stt/latest) for details.\n"
+              },
+              "encoding": {
+                "$ref": "#/components/schemas/SpeechToTextTurnsEncoding"
+              },
+              "sample_rate": {
+                "type": "integer",
+                "format": "int32",
+                "example": 16000,
+                "description": "The sample rate of the audio in Hz.\n"
+              },
+              "cartesia_version": {
+                "$ref": "#/components/schemas/SpeechToTextTurnsApiVersion"
+              },
+              "turn_start_threshold": {
+                "type": "number",
+                "default": 0.8,
+                "minimum": 0.5,
+                "maximum": 0.9,
+                "description": "Threshold above which to start the turn. Default: 0.8. Range: 0.5\u20130.9. Must stay above the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "turn_eager_end_threshold": {
+                "type": "number",
+                "default": 0.4,
+                "minimum": 0.3,
+                "maximum": 0.6,
+                "description": "Threshold below which to eager end the turn. Default: 0.4. Range: 0.3\u20130.6. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "turn_end_threshold": {
+                "type": "number",
+                "default": 0.2,
+                "minimum": 0.05,
+                "maximum": 0.5,
+                "description": "Threshold below which to end the turn. Default: 0.2. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "turn_end_timeout_ms": {
+                "type": "number",
+                "default": 5600,
+                "minimum": 640,
+                "maximum": 11200,
+                "description": "Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "keyterm": {
+                "type": "array",
+                "description": "Key terms to improve the recall of specific words and phrases.\n\nRepeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.\n\nExample: `?keyterm=Ink%202&keyterm=Cartesia`\n\nSee [Keyterm prompting](/use-the-api/stt/keyterms) for details.\n",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendSTTTurnsAudioData": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsAudioData"
+        }
+      ]
+    },
+    "sendSTTTurnsCloseCommand": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsCloseCommand"
+        }
+      ]
+    },
+    "sendSTTTurnsConfigCommand": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsConfigCommand"
+        }
+      ]
+    },
+    "receiveSTTTurnsConnected": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsConnected"
+        }
+      ]
+    },
+    "receiveSTTTurnsTurnStart": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsTurnStart"
+        }
+      ]
+    },
+    "receiveSTTTurnsTurnUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsTurnUpdate"
+        }
+      ]
+    },
+    "receiveSTTTurnsTurnEagerEnd": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsTurnEagerEnd"
+        }
+      ]
+    },
+    "receiveSTTTurnsTurnResume": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsTurnResume"
+        }
+      ]
+    },
+    "receiveSTTTurnsTurnEnd": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTTurnsTurnEnd"
+        }
+      ]
+    },
+    "receiveSTTErrorResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/speechToTextTurns"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/speechToTextTurns/messages/STTErrorResponse"
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for trusted server applications."
+      },
+      "accessToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token",
+        "description": "Short-lived token for browser and mobile applications."
+      }
+    },
+    "messages": {
+      "STTTurnsAudioData": {
+        "name": "STTTurnsAudioData",
+        "title": "Send Audio Data",
+        "description": "Send WebSocket binary messages containing raw audio data as specified by the `encoding` and `sample_rate` query parameters.\n\nAudio Requirements:\n- Send audio in small chunks, e.g. 100 ms\n- Audio format must match the `encoding` and `sample_rate` parameters\n",
+        "contentType": "application/octet-stream",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsAudioData"
+        }
+      },
+      "STTTurnsCloseCommand": {
+        "name": "STTTurnsCloseCommand",
+        "title": "Close Command",
+        "description": "Send a JSON encoded close command as WebSocket text message to close the session cleanly. All buffered audio will be processed by the model into events.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsCloseCommand"
+        }
+      },
+      "STTTurnsConfigCommand": {
+        "name": "STTTurnsConfigCommand",
+        "title": "Config Command",
+        "description": "Send a JSON encoded config command as a WebSocket text message to update model settings.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsConfigCommand"
+        }
+      },
+      "STTTurnsConnected": {
+        "name": "STTTurnsConnected",
+        "title": "Connected",
+        "description": "Fires once when the WebSocket connection is established.\n\nYou do not need to wait for this event before sending audio.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsConnected"
+        }
+      },
+      "STTTurnsTurnStart": {
+        "name": "STTTurnsTurnStart",
+        "title": "Turn Start",
+        "description": "Marks the start of a user turn. Fires quickly after the user begins speaking.\n\nThis event can be used to interrupt your agent to avoid talking over the user.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsTurnStart"
+        }
+      },
+      "STTTurnsTurnUpdate": {
+        "name": "STTTurnsTurnUpdate",
+        "title": "Turn Update",
+        "description": "Fires repeatedly as the model transcribes the current user turn.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsTurnUpdate"
+        }
+      },
+      "STTTurnsTurnEagerEnd": {
+        "name": "STTTurnsTurnEagerEnd",
+        "title": "Turn Eager End",
+        "description": "Fires when the model predicts that the user might be done speaking.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsTurnEagerEnd"
+        }
+      },
+      "STTTurnsTurnResume": {
+        "name": "STTTurnsTurnResume",
+        "title": "Turn Resume",
+        "description": "Fires after `turn.eager_end` if the user turn has not actually ended.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsTurnResume"
+        }
+      },
+      "STTTurnsTurnEnd": {
+        "name": "STTTurnsTurnEnd",
+        "title": "Turn End",
+        "description": "Marks the end of a user turn.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTTurnsTurnEnd"
+        }
+      },
+      "STTErrorResponse": {
+        "name": "STTErrorResponse",
+        "title": "Error Response",
+        "description": "Error information for STT WebSocket connections.",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/STTErrorResponse"
+        }
+      }
+    },
+    "schemas": {
+      "STTTurnsAudioData": {
+        "type": "string",
+        "format": "binary",
+        "description": "Raw audio data as a binary message in the format specified by the `encoding` parameter. Send audio in small chunks, e.g. 100 ms."
+      },
+      "STTTurnsCloseCommand": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "close"
+            ],
+            "description": "Command type. Send this as a JSON encoded WebSocket text message to close the session."
+          }
+        },
+        "description": "Send a JSON encoded close command as WebSocket text message to close the session cleanly. All buffered audio will be processed by the model into events."
+      },
+      "STTTurnsConfigCommand": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "config"
+            ],
+            "description": "Command type. Send this as a JSON encoded WebSocket text message to update model settings."
+          },
+          "turn": {
+            "type": "object",
+            "description": "Turn detection settings.",
+            "properties": {
+              "start_threshold": {
+                "type": "number",
+                "default": 0.8,
+                "description": "Threshold above which to start the turn. Default: 0.8. Range: 0.5\u20130.9. Must stay above the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "eager_end_threshold": {
+                "type": "number",
+                "default": 0.4,
+                "description": "Threshold below which to eager end the turn. Default: 0.4. Range: 0.3\u20130.6. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "end_threshold": {
+                "type": "number",
+                "default": 0.2,
+                "description": "Threshold below which to end the turn. Default: 0.2. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              },
+              "end_timeout_ms": {
+                "type": "number",
+                "default": 5600,
+                "description": "Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+              }
+            }
+          }
+        },
+        "description": "Send a JSON encoded config command as a WebSocket text message to update model settings."
+      },
+      "STTTurnsConnected": {
+        "type": "object",
+        "required": [
+          "type",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "connected"
+            ],
+            "description": "Event type identifier."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection."
+          }
+        },
+        "description": "Fires once when the WebSocket connection is established.\n\nYou do not need to wait for this event before sending audio.\n"
+      },
+      "STTTurnsTurnStart": {
+        "type": "object",
+        "required": [
+          "type",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn.start"
+            ],
+            "description": "Event type identifier."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection. Does not change between turns."
+          }
+        },
+        "description": "Marks the start of a user turn. Fires quickly after the user begins speaking.\n\nThis event can be used to interrupt your agent to avoid talking over the user.\n"
+      },
+      "STTTurnsTurnUpdate": {
+        "type": "object",
+        "required": [
+          "type",
+          "transcript",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn.update"
+            ],
+            "description": "Event type identifier."
+          },
+          "transcript": {
+            "type": "string",
+            "description": "Cumulative text for the current turn, i.e. the full text transcribed so far in this turn, not a delta."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection. Does not change between turns."
+          }
+        },
+        "description": "Fires repeatedly as the model transcribes the current user turn.\n"
+      },
+      "STTTurnsTurnEagerEnd": {
+        "type": "object",
+        "required": [
+          "type",
+          "transcript",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn.eager_end"
+            ],
+            "description": "Event type identifier."
+          },
+          "transcript": {
+            "type": "string",
+            "description": "Cumulative text for the current turn."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection. Does not change between turns."
+          }
+        },
+        "description": "Fires when the model predicts that the user might be done speaking.\n"
+      },
+      "STTTurnsTurnResume": {
+        "type": "object",
+        "required": [
+          "type",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn.resume"
+            ],
+            "description": "Event type identifier."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection. Does not change between turns."
+          }
+        },
+        "description": "Fires after `turn.eager_end` if the user turn has not actually ended.\n"
+      },
+      "STTTurnsTurnEnd": {
+        "type": "object",
+        "required": [
+          "type",
+          "transcript",
+          "request_id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn.end"
+            ],
+            "description": "Event type identifier."
+          },
+          "transcript": {
+            "type": "string",
+            "description": "Definitive transcript for the completed turn."
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this connection. Does not change between turns."
+          }
+        },
+        "description": "Marks the end of a user turn.\n"
+      },
+      "STTErrorResponse": {
+        "type": "object",
+        "required": [
+          "type",
+          "status_code",
+          "title",
+          "message"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "error"
+            ],
+            "description": "Event type identifier."
+          },
+          "error_code": {
+            "type": "string",
+            "description": "Machine-readable error code."
+          },
+          "status_code": {
+            "type": "number",
+            "format": "integer",
+            "description": "An HTTP response status code."
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable error title."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message."
+          },
+          "doc_url": {
+            "type": "string",
+            "description": "URL to relevant documentation"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique identifier for this websocket connection"
+          }
+        },
+        "description": "Error information for STT WebSocket connections."
+      },
+      "SpeechToTextTurnsEncoding": {
+        "type": "string",
+        "enum": [
+          "pcm_s16le",
+          "pcm_s32le",
+          "pcm_f16le",
+          "pcm_f32le",
+          "pcm_mulaw",
+          "pcm_alaw"
+        ],
+        "description": "The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.\n\nFor guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).\n"
+      },
+      "SpeechToTextTurnsApiVersion": {
+        "type": "string",
+        "enum": [
+          "2026-08-14"
+        ],
+        "example": "2026-08-14",
+        "description": "API version."
+      }
+    }
+  }
+}

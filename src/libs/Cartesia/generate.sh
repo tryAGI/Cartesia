@@ -40,7 +40,10 @@ python3 patch-openapi.py openapi.yaml
 install_autosdk_cli
 python3 -c "import yaml" 2>/dev/null || \
   python3 -m pip install --quiet --user --break-system-packages pyyaml
-python3 fetch-asyncapi.py managed-agents-asyncapi.json
+python3 fetch-asyncapi.py --contract agents managed-agents-asyncapi.json
+python3 fetch-asyncapi.py --contract tts tts-asyncapi.json
+python3 fetch-asyncapi.py --contract stt stt-asyncapi.json
+python3 fetch-asyncapi.py --contract stt-turns stt-turns-asyncapi.json
 
 rm -rf Generated
 
@@ -55,5 +58,26 @@ autosdk generate managed-agents-asyncapi.json \
   --namespace Cartesia.Realtime \
   --websocket-class-name CartesiaManagedAgentRealtimeClient \
   --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated
+
+autosdk generate tts-asyncapi.json \
+  --namespace Cartesia.Realtime.TextToSpeech \
+  --websocket-class-name CartesiaTextToSpeechRealtimeClient \
+  --json-serializer-context TextToSpeechSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated
+
+autosdk generate stt-asyncapi.json \
+  --namespace Cartesia.Realtime.SpeechToText \
+  --websocket-class-name CartesiaSpeechToTextRealtimeClient \
+  --json-serializer-context SpeechToTextSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated
+
+autosdk generate stt-turns-asyncapi.json \
+  --namespace Cartesia.Realtime.SpeechToTextTurns \
+  --websocket-class-name CartesiaSpeechToTextTurnsRealtimeClient \
+  --json-serializer-context SpeechToTextTurnsSourceGenerationContext \
   --targetFramework net10.0 \
   --output Generated
