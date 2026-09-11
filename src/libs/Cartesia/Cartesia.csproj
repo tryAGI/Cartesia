@@ -7,7 +7,7 @@
 
   <PropertyGroup Label="Nuget">
     <Description>Generated C# SDK for Cartesia — low-latency TTS, STT, voice cloning, agents, fine-tuning, and pronunciation dictionaries.</Description>
-    <PackageTags>cartesia;tts;stt;text-to-speech;speech-to-text;voice;cloning;agents;meai;api;sdk;dotnet;openapi;generated</PackageTags>
+    <PackageTags>cartesia;tts;stt;text-to-speech;speech-to-text;voice;cloning;agents;websocket;realtime;meai;api;sdk;dotnet;openapi;asyncapi;generated</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

@@ -38,6 +38,10 @@ fi
 python3 patch-openapi.py openapi.yaml
 
 install_autosdk_cli
+python3 -c "import yaml" 2>/dev/null || \
+  python3 -m pip install --quiet --user --break-system-packages pyyaml
+python3 fetch-asyncapi.py managed-agents-asyncapi.json
+
 rm -rf Generated
 
 autosdk generate openapi.yaml \
@@ -46,3 +50,10 @@ autosdk generate openapi.yaml \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations
+
+autosdk generate managed-agents-asyncapi.json \
+  --namespace Cartesia.Realtime \
+  --websocket-class-name CartesiaManagedAgentRealtimeClient \
+  --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated

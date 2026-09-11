@@ -70,4 +70,74 @@ public partial class Tests
             "AgentsCreateMetricAsync",
         ]);
     }
+
+    [TestMethod]
+    public void ManagedAgents_ExposeTypedRealtimeWebSocketProtocol()
+    {
+        //// Start a session with a typed audio configuration before streaming audio or tool results.
+        var session = new Realtime.AgentSessionCreateEvent
+        {
+            Type = Realtime.AgentSessionCreateEventType.SessionCreate,
+            Audio = new Realtime.AgentSessionCreateEventAudio
+            {
+                InputFormat = Realtime.AgentSessionCreateEventAudioInputFormat.Pcm44100,
+                OutputDelivery = Realtime.AgentSessionCreateEventAudioOutputDelivery.SpeakingPace,
+            },
+        };
+
+        var json = session.ToJson(Realtime.RealtimeSourceGenerationContext.Default);
+        json.Should().Contain("\"type\":\"session_create\"");
+        json.Should().Contain("\"input_format\":\"pcm_44100\"");
+
+        //// Server events deserialize into a discriminator-backed union for safe event handling.
+        var serverEvent = Realtime.ServerEvent.FromJson(
+            """
+            {
+              "type": "session_ready",
+              "call_id": "ac_123",
+              "agent_id": "agent_123",
+              "agent_version_id": "av_123",
+              "audio": {
+                "input_format": "pcm_44100",
+                "output_delivery": "speaking_pace"
+              }
+            }
+            """,
+            Realtime.RealtimeSourceGenerationContext.Default);
+
+        serverEvent.Should().NotBeNull();
+        serverEvent!.Value.IsSessionReady.Should().BeTrue();
+        serverEvent.Value.PickSessionReady().CallId.Should().Be("ac_123");
+
+        //// The generated client supports both server API keys and client access tokens.
+        var methodNames = typeof(Realtime.CartesiaManagedAgentRealtimeClient)
+            .GetMethods()
+            .Select(method => method.Name)
+            .ToHashSet();
+        methodNames.Should().Contain([
+            "AuthorizeUsingApiKeyInHeader",
+            "AuthorizeUsingApiKeyInQuery",
+            "SendAgentSessionCreateEventAsync",
+            "SendAgentAudioInputEventAsync",
+            "SendAgentDtmfInputEventAsync",
+            "SendAgentClientToolResultEventAsync",
+            "ReceiveUpdatesAsync",
+        ]);
+
+        var serverEventProperties = typeof(Realtime.ServerEvent)
+            .GetProperties()
+            .Select(property => property.Name)
+            .ToHashSet();
+        serverEventProperties.Should().Contain([
+            "SessionReady",
+            "AudioOutput",
+            "AudioOutputClear",
+            "DtmfOutput",
+            "ClientToolCall",
+            "TurnStarted",
+            "TurnOutputTextDelta",
+            "TurnEnded",
+            "Error",
+        ]);
+    }
 }

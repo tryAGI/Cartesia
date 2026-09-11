@@ -1,0 +1,815 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Cartesia Managed Agents WebSocket API",
+    "version": "2026-08-14",
+    "description": "Stream audio and events between an application and a Managed Agent. Server applications authenticate with `X-API-Key`; browser and mobile applications pass an `access_token` query parameter. See the [WebSocket guide](/line/integrations/websocket-api) for setup, limits, and audio handling.\n"
+  },
+  "servers": {
+    "production": {
+      "host": "api.cartesia.ai",
+      "pathname": "/v1/agents/websocket/{agent_id}",
+      "protocol": "wss",
+      "description": "Cartesia Managed Agents WebSocket endpoint.",
+      "variables": {
+        "agent_id": {
+          "description": "ID of the managed agent to connect to."
+        },
+        "cartesia_version": {
+          "description": "Cartesia API version.",
+          "default": "2026-08-14"
+        }
+      },
+      "security": [
+        {
+          "$ref": "#/components/securitySchemes/apiKey"
+        },
+        {
+          "$ref": "#/components/securitySchemes/accessToken"
+        }
+      ]
+    }
+  },
+  "channels": {
+    "managedAgent": {
+      "address": "/v1/agents/websocket/{agent_id}",
+      "messages": {
+        "AgentSessionCreateEvent": {
+          "$ref": "#/components/messages/AgentSessionCreateEvent"
+        },
+        "AgentAudioInputEvent": {
+          "$ref": "#/components/messages/AgentAudioInputEvent"
+        },
+        "AgentDtmfInputEvent": {
+          "$ref": "#/components/messages/AgentDtmfInputEvent"
+        },
+        "AgentClientToolResultEvent": {
+          "$ref": "#/components/messages/AgentClientToolResultEvent"
+        },
+        "AgentSessionReadyEvent": {
+          "$ref": "#/components/messages/AgentSessionReadyEvent"
+        },
+        "AgentAudioOutputEvent": {
+          "$ref": "#/components/messages/AgentAudioOutputEvent"
+        },
+        "AgentAudioOutputClearEvent": {
+          "$ref": "#/components/messages/AgentAudioOutputClearEvent"
+        },
+        "AgentDtmfOutputEvent": {
+          "$ref": "#/components/messages/AgentDtmfOutputEvent"
+        },
+        "AgentClientToolCallEvent": {
+          "$ref": "#/components/messages/AgentClientToolCallEvent"
+        },
+        "AgentTurnStartedEvent": {
+          "$ref": "#/components/messages/AgentTurnStartedEvent"
+        },
+        "AgentTurnOutputTextDeltaEvent": {
+          "$ref": "#/components/messages/AgentTurnOutputTextDeltaEvent"
+        },
+        "AgentTurnEndedEvent": {
+          "$ref": "#/components/messages/AgentTurnEndedEvent"
+        },
+        "AgentErrorEvent": {
+          "$ref": "#/components/messages/AgentErrorEvent"
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendAgentSessionCreateEvent": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentSessionCreateEvent"
+        }
+      ]
+    },
+    "sendAgentAudioInputEvent": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentAudioInputEvent"
+        }
+      ]
+    },
+    "sendAgentDtmfInputEvent": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentDtmfInputEvent"
+        }
+      ]
+    },
+    "sendAgentClientToolResultEvent": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentClientToolResultEvent"
+        }
+      ]
+    },
+    "receiveAgentSessionReadyEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentSessionReadyEvent"
+        }
+      ]
+    },
+    "receiveAgentAudioOutputEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentAudioOutputEvent"
+        }
+      ]
+    },
+    "receiveAgentAudioOutputClearEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentAudioOutputClearEvent"
+        }
+      ]
+    },
+    "receiveAgentDtmfOutputEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentDtmfOutputEvent"
+        }
+      ]
+    },
+    "receiveAgentClientToolCallEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentClientToolCallEvent"
+        }
+      ]
+    },
+    "receiveAgentTurnStartedEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentTurnStartedEvent"
+        }
+      ]
+    },
+    "receiveAgentTurnOutputTextDeltaEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentTurnOutputTextDeltaEvent"
+        }
+      ]
+    },
+    "receiveAgentTurnEndedEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentTurnEndedEvent"
+        }
+      ]
+    },
+    "receiveAgentErrorEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/managedAgent"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/managedAgent/messages/AgentErrorEvent"
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for trusted server applications."
+      },
+      "accessToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token",
+        "description": "Short-lived token for browser and mobile applications."
+      }
+    },
+    "messages": {
+      "AgentSessionCreateEvent": {
+        "name": "AgentSessionCreateEvent",
+        "title": "Session Create",
+        "description": "Configures the session's audio. **This must be the first message sent.** The server closes the connection if any other event arrives first, or if no event arrives within 10 seconds. Unknown fields are rejected.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentSessionCreateEvent"
+        }
+      },
+      "AgentAudioInputEvent": {
+        "name": "AgentAudioInputEvent",
+        "title": "Audio Input",
+        "description": "Streams user audio to the agent. Send chunks continuously (for example every 20\u2013100 ms) for the best latency. `audio` must be base64-encoded audio in the format declared in `session_create.audio.input_format`. Wait for `session_ready` before sending audio; audio sent earlier is dropped.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentAudioInputEvent"
+        }
+      },
+      "AgentDtmfInputEvent": {
+        "name": "AgentDtmfInputEvent",
+        "title": "DTMF Input",
+        "description": "Sends a DTMF (dual-tone multi-frequency) digit to the agent.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentDtmfInputEvent"
+        }
+      },
+      "AgentClientToolResultEvent": {
+        "name": "AgentClientToolResultEvent",
+        "title": "Client Tool Result",
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentClientToolResultEvent"
+        }
+      },
+      "AgentSessionReadyEvent": {
+        "name": "AgentSessionReadyEvent",
+        "title": "Session Ready",
+        "description": "Sent once after `session_create`, when the agent pipeline can accept audio. Reports the call record created for this session and the agent version the session is pinned to. Use `call_id` with the [calls API](/api-reference/agents/calls/get-call) to fetch the recording and transcript after the call.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentSessionReadyEvent"
+        }
+      },
+      "AgentAudioOutputEvent": {
+        "name": "AgentAudioOutputEvent",
+        "title": "Audio Output",
+        "description": "The agent's speech. `audio` is base64-encoded audio in the format declared in `session_create.audio.input_format`.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentAudioOutputEvent"
+        }
+      },
+      "AgentAudioOutputClearEvent": {
+        "name": "AgentAudioOutputClearEvent",
+        "title": "Audio Output Clear",
+        "description": "Sent when the user starts speaking. Discard buffered agent audio and stop playback. The event can arrive while no agent audio is playing, in which case there is nothing to clear.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentAudioOutputClearEvent"
+        }
+      },
+      "AgentDtmfOutputEvent": {
+        "name": "AgentDtmfOutputEvent",
+        "title": "DTMF Output",
+        "description": "A DTMF digit the agent sends, for clients bridging a telephony system.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentDtmfOutputEvent"
+        }
+      },
+      "AgentClientToolCallEvent": {
+        "name": "AgentClientToolCallEvent",
+        "title": "Client Tool Call",
+        "description": "The agent asks this client to run a client tool. When `expects_response` is `true`, answer with a `client_tool_result` carrying the same `tool_call_id`; the invocation stays open until a result, error, or timeout. When `false`, dispatching the action completes the invocation.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentClientToolCallEvent"
+        }
+      },
+      "AgentTurnStartedEvent": {
+        "name": "AgentTurnStartedEvent",
+        "title": "Turn Started",
+        "description": "Sent when the user starts speaking or the agent starts responding. `turn` comes from a single counter shared by both roles, starting at 1 and strictly increasing over the call, so `turn` alone identifies a turn.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentTurnStartedEvent"
+        }
+      },
+      "AgentTurnOutputTextDeltaEvent": {
+        "name": "AgentTurnOutputTextDeltaEvent",
+        "title": "Turn Text Delta",
+        "description": "Sent as the agent speaks, carrying the text spoken since the previous delta, typically one word at a time. Deltas include separator spaces, so build the running text by appending `text` verbatim. The user's speech is not streamed incrementally. It arrives as finalized text in `turn_ended`.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentTurnOutputTextDeltaEvent"
+        }
+      },
+      "AgentTurnEndedEvent": {
+        "name": "AgentTurnEndedEvent",
+        "title": "Turn Ended",
+        "description": "Sent when a turn finishes, with the complete final text for the turn. This is the version to store and display. The events for a single turn always arrive in order: `turn_started`, then any `turn_output_text_delta` events, then `turn_ended`. If the agent hangs up mid-turn, the connection closes without a final `turn_ended`; treat the close as ending any open turn.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentTurnEndedEvent"
+        }
+      },
+      "AgentErrorEvent": {
+        "name": "AgentErrorEvent",
+        "title": "Error",
+        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.\n",
+        "contentType": "application/json",
+        "payload": {
+          "$ref": "#/components/schemas/AgentErrorEvent"
+        }
+      }
+    },
+    "schemas": {
+      "AgentSessionCreateEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "audio"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "session_create"
+            ],
+            "description": "Event type identifier."
+          },
+          "audio": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "input_format"
+            ],
+            "properties": {
+              "input_format": {
+                "type": "string",
+                "enum": [
+                  "mulaw_8000",
+                  "pcm_16000",
+                  "pcm_24000",
+                  "pcm_44100"
+                ],
+                "description": "Format of the audio your client sends. Agent audio is returned in the same format. Required, because a sample rate that mismatches your capture format fails silently as garbled audio."
+              },
+              "output_delivery": {
+                "type": "string",
+                "enum": [
+                  "speaking_pace",
+                  "as_available"
+                ],
+                "default": "speaking_pace",
+                "description": "How the server delivers agent audio. `speaking_pace` paces audio to playback speed. `as_available` sends it as fast as the model produces it, so a client that buffers locally can play it back on its own clock for lower latency. Not supported when the agent uses a background sound."
+              }
+            }
+          }
+        },
+        "description": "Configures the session's audio. **This must be the first message sent.** The server closes the connection if any other event arrives first, or if no event arrives within 10 seconds. Unknown fields are rejected.\n"
+      },
+      "AgentAudioInputEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "audio"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "audio_input"
+            ],
+            "description": "Event type identifier."
+          },
+          "audio": {
+            "type": "string",
+            "description": "Base64-encoded audio in the format declared in `session_create.audio.input_format`."
+          }
+        },
+        "description": "Streams user audio to the agent. Send chunks continuously (for example every 20\u2013100 ms) for the best latency. `audio` must be base64-encoded audio in the format declared in `session_create.audio.input_format`. Wait for `session_ready` before sending audio; audio sent earlier is dropped.\n"
+      },
+      "AgentDtmfInputEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "digit"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "dtmf_input"
+            ],
+            "description": "Event type identifier."
+          },
+          "digit": {
+            "type": "string",
+            "description": "A single DTMF digit, one of `0`-`9`, `*`, or `#`.",
+            "pattern": "^[0-9*#]$",
+            "minLength": 1,
+            "maxLength": 1
+          }
+        },
+        "description": "Sends a DTMF (dual-tone multi-frequency) digit to the agent.\n"
+      },
+      "AgentClientToolResultEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "tool_call_id",
+          "result"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "client_tool_result"
+            ],
+            "description": "Event type identifier."
+          },
+          "tool_call_id": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "The `tool_call_id` from the `client_tool_call` being answered."
+          },
+          "result": {
+            "type": "string",
+            "description": "The tool's result, as a string the model can read. At most 4 KiB decoded."
+          },
+          "is_error": {
+            "type": "boolean",
+            "default": false,
+            "description": "Set to `true` when the tool failed. The agent sees the result as an error."
+          },
+          "error_type": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "Optional machine-readable category for a failure, such as `timeout`."
+          }
+        },
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n"
+      },
+      "AgentSessionReadyEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "call_id",
+          "agent_id",
+          "agent_version_id",
+          "audio"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "session_ready"
+            ],
+            "description": "Event type identifier."
+          },
+          "call_id": {
+            "type": "string",
+            "description": "Identifier of the call record created for this session. Use it with the calls API to fetch the recording and transcript after the call."
+          },
+          "agent_id": {
+            "type": "string",
+            "description": "The connected agent."
+          },
+          "agent_version_id": {
+            "type": "string",
+            "description": "The agent version this session is pinned to, which is the version published when the connection opened."
+          },
+          "audio": {
+            "type": "object",
+            "properties": {
+              "input_format": {
+                "type": "string",
+                "description": "The accepted input format, echoed from `session_create`."
+              },
+              "output_delivery": {
+                "type": "string",
+                "description": "The resolved output delivery mode."
+              }
+            }
+          }
+        },
+        "description": "Sent once after `session_create`, when the agent pipeline can accept audio. Reports the call record created for this session and the agent version the session is pinned to. Use `call_id` with the [calls API](/api-reference/agents/calls/get-call) to fetch the recording and transcript after the call.\n"
+      },
+      "AgentAudioOutputEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "audio"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "audio_output"
+            ],
+            "description": "Event type identifier."
+          },
+          "audio": {
+            "type": "string",
+            "description": "Base64-encoded agent audio in the format declared in `session_create.audio.input_format`."
+          }
+        },
+        "description": "The agent's speech. `audio` is base64-encoded audio in the format declared in `session_create.audio.input_format`.\n"
+      },
+      "AgentAudioOutputClearEvent": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "audio_output_clear"
+            ],
+            "description": "Event type identifier."
+          }
+        },
+        "description": "Sent when the user starts speaking. Discard buffered agent audio and stop playback. The event can arrive while no agent audio is playing, in which case there is nothing to clear.\n"
+      },
+      "AgentDtmfOutputEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "digit"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "dtmf_output"
+            ],
+            "description": "Event type identifier."
+          },
+          "digit": {
+            "type": "string",
+            "description": "A single DTMF digit, one of `0`-`9`, `*`, or `#`.",
+            "pattern": "^[0-9*#]$",
+            "minLength": 1,
+            "maxLength": 1
+          }
+        },
+        "description": "A DTMF digit the agent sends, for clients bridging a telephony system.\n"
+      },
+      "AgentClientToolCallEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "tool_call_id",
+          "tool_name",
+          "parameters",
+          "expects_response"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "client_tool_call"
+            ],
+            "description": "Event type identifier."
+          },
+          "tool_call_id": {
+            "type": "string",
+            "description": "Identifies this invocation. Echo it in `client_tool_result`."
+          },
+          "tool_name": {
+            "type": "string",
+            "description": "Name of the client tool to run."
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Arguments for the tool, matching the tool's parameter schema."
+          },
+          "expects_response": {
+            "type": "boolean",
+            "description": "Whether the agent waits for a `client_tool_result`. Comes from the tool's definition."
+          }
+        },
+        "description": "The agent asks this client to run a client tool. When `expects_response` is `true`, answer with a `client_tool_result` carrying the same `tool_call_id`; the invocation stays open until a result, error, or timeout. When `false`, dispatching the action completes the invocation.\n"
+      },
+      "AgentTurnStartedEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "turn",
+          "role",
+          "start_time"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn_started"
+            ],
+            "description": "Event type identifier."
+          },
+          "turn": {
+            "type": "integer",
+            "description": "Turn index, unique across the call."
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "description": "Who is speaking."
+          },
+          "start_time": {
+            "type": "number",
+            "description": "Seconds since the start of the session."
+          }
+        },
+        "description": "Sent when the user starts speaking or the agent starts responding. `turn` comes from a single counter shared by both roles, starting at 1 and strictly increasing over the call, so `turn` alone identifies a turn.\n"
+      },
+      "AgentTurnOutputTextDeltaEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "turn",
+          "role",
+          "text"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn_output_text_delta"
+            ],
+            "description": "Event type identifier."
+          },
+          "turn": {
+            "type": "integer",
+            "description": "Matches the `turn` of the turn the text belongs to."
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "assistant"
+            ],
+            "description": "Always `assistant`."
+          },
+          "text": {
+            "type": "string",
+            "description": "The exact substring to append. Separator spaces are included, so build the running text with `buffer[turn] += text`."
+          }
+        },
+        "description": "Sent as the agent speaks, carrying the text spoken since the previous delta, typically one word at a time. Deltas include separator spaces, so build the running text by appending `text` verbatim. The user's speech is not streamed incrementally. It arrives as finalized text in `turn_ended`.\n"
+      },
+      "AgentTurnEndedEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "turn",
+          "role",
+          "text",
+          "interrupted",
+          "start_time",
+          "end_time",
+          "tool_calls"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turn_ended"
+            ],
+            "description": "Event type identifier."
+          },
+          "turn": {
+            "type": "integer",
+            "description": "Matches the `turn` of the corresponding `turn_started` event."
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "description": "Who spoke."
+          },
+          "text": {
+            "type": "string",
+            "description": "The finalized text of the turn. For a user turn, the transcribed speech. For an assistant turn, the text the agent actually spoke."
+          },
+          "interrupted": {
+            "type": "boolean",
+            "description": "For assistant turns, `true` when the user interrupted the turn. For user turns, `true` only when the call ended mid-turn."
+          },
+          "start_time": {
+            "type": "number",
+            "description": "Seconds since the start of the session."
+          },
+          "end_time": {
+            "type": "number",
+            "description": "Seconds since the start of the session."
+          },
+          "tool_calls": {
+            "type": "array",
+            "description": "Tool calls made during the turn. Each entry has `name`, `arguments`, and optionally `result` and `id`.",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "arguments"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the tool."
+                },
+                "arguments": {
+                  "type": "object",
+                  "description": "Arguments the model supplied."
+                },
+                "result": {
+                  "type": "string",
+                  "description": "The tool's result, when one was recorded."
+                },
+                "id": {
+                  "type": "string",
+                  "description": "Identifier of the invocation."
+                }
+              }
+            }
+          }
+        },
+        "description": "Sent when a turn finishes, with the complete final text for the turn. This is the version to store and display. The events for a single turn always arrive in order: `turn_started`, then any `turn_output_text_delta` events, then `turn_ended`. If the agent hangs up mid-turn, the connection closes without a final `turn_ended`; treat the close as ending any open turn.\n"
+      },
+      "AgentErrorEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "code",
+          "message",
+          "fatal"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "error"
+            ],
+            "description": "Event type identifier."
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "invalid_event",
+              "agent_failed"
+            ],
+            "description": "`invalid_event` for a rejected client event, `agent_failed` for an agent pipeline failure."
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable explanation."
+          },
+          "fatal": {
+            "type": "boolean",
+            "description": "Whether the server closes the connection after this error."
+          }
+        },
+        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.\n"
+      }
+    }
+  }
+}
