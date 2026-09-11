@@ -1,0 +1,60 @@
+
+#nullable enable
+
+namespace Cartesia
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public sealed partial class ManagedAgentConfigV1AudioInput
+    {
+        /// <summary>
+        /// Words or phrases that the speech recognizer should prioritize.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("keyterms")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<string> Keyterms { get; set; }
+
+        /// <summary>
+        /// Noise suppression applied to incoming audio. Use `off` to disable it, `auto` for the default level, or `max` for stronger suppression.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("noise_suppression")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedAgentConfigV1AudioInputNoiseSuppressionJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression NoiseSuppression { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagedAgentConfigV1AudioInput" /> class.
+        /// </summary>
+        /// <param name="keyterms">
+        /// Words or phrases that the speech recognizer should prioritize.
+        /// </param>
+        /// <param name="noiseSuppression">
+        /// Noise suppression applied to incoming audio. Use `off` to disable it, `auto` for the default level, or `max` for stronger suppression.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public ManagedAgentConfigV1AudioInput(
+            global::System.Collections.Generic.IList<string> keyterms,
+            global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression noiseSuppression)
+        {
+            this.Keyterms = keyterms ?? throw new global::System.ArgumentNullException(nameof(keyterms));
+            this.NoiseSuppression = noiseSuppression;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagedAgentConfigV1AudioInput" /> class.
+        /// </summary>
+        public ManagedAgentConfigV1AudioInput()
+        {
+        }
+
+    }
+}

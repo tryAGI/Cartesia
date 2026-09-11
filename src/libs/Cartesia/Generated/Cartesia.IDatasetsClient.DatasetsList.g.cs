@@ -7,7 +7,10 @@ namespace Cartesia
         /// <summary>
         /// Paginated list of datasets
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -15,7 +18,7 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.PaginatedDatasets> DatasetsListAsync(
-            global::Cartesia.DatasetsListCartesiaVersion cartesiaVersion,
+            global::Cartesia.DatasetsListCartesiaVersion cartesiaVersion = global::Cartesia.DatasetsListCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -24,7 +27,10 @@ namespace Cartesia
         /// <summary>
         /// Paginated list of datasets
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -32,7 +38,7 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.PaginatedDatasets>> DatasetsListAsResponseAsync(
-            global::Cartesia.DatasetsListCartesiaVersion cartesiaVersion,
+            global::Cartesia.DatasetsListCartesiaVersion cartesiaVersion = global::Cartesia.DatasetsListCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,

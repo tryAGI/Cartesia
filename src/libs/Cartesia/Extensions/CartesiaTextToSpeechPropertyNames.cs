@@ -22,6 +22,15 @@ public static class CartesiaTextToSpeechPropertyNames
     /// <summary>Cartesia emotion control value, such as <c>calm</c> or <c>content</c>.</summary>
     public const string Emotion = "cartesia:emotion";
 
+    /// <summary>Accent ID used to override the locale-selected voice accent.</summary>
+    public const string Accent = "cartesia:accent";
+
+    /// <summary>Language or BCP-47 locale used for synthesis, such as <c>en-GB</c>.</summary>
+    public const string Locale = "cartesia:locale";
+
+    /// <summary>Text normalization mode: <c>auto</c>, <c>off</c>, or a language/locale code.</summary>
+    public const string Normalization = "cartesia:normalization";
+
     /// <summary>Pronunciation dictionary identifier to use for synthesis.</summary>
     public const string PronunciationDictionaryId = "cartesia:pronunciation_dict_id";
 

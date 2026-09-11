@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -45,24 +45,27 @@ namespace Cartesia
 
         /// <summary>
         /// Generate a New Access Token<br/>
-        /// Generates a new Access Token for the client. These tokens are short-lived and should be used to make requests to the API from authenticated clients.
+        /// Generates a short-lived access token to make API requests from authenticated clients.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.TokenResponse> AuthAccessTokenAsync(
-            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TokenRequest request,
+            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion = global::Cartesia.AuthAccessTokenCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await AuthAccessTokenAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
 
                 request: request,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -71,17 +74,20 @@ namespace Cartesia
         }
         /// <summary>
         /// Generate a New Access Token<br/>
-        /// Generates a new Access Token for the client. These tokens are short-lived and should be used to make requests to the API from authenticated clients.
+        /// Generates a short-lived access token to make API requests from authenticated clients.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TokenResponse>> AuthAccessTokenAsResponseAsync(
-            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TokenRequest request,
+            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion = global::Cartesia.AuthAccessTokenCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -449,9 +455,12 @@ namespace Cartesia
         }
         /// <summary>
         /// Generate a New Access Token<br/>
-        /// Generates a new Access Token for the client. These tokens are short-lived and should be used to make requests to the API from authenticated clients.
+        /// Generates a short-lived access token to make API requests from authenticated clients.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="grants"></param>
         /// <param name="expiresIn">
         /// The number of seconds the token will be valid for since the time of generation. The maximum is 1 hour (3600 seconds).
@@ -460,7 +469,7 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.TokenResponse> AuthAccessTokenAsync(
-            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion,
+            global::Cartesia.AuthAccessTokenCartesiaVersion cartesiaVersion = global::Cartesia.AuthAccessTokenCartesiaVersion.x20260814,
             global::Cartesia.TokenGrant? grants = default,
             int? expiresIn = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,

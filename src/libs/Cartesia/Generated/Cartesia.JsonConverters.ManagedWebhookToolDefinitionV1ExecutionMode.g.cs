@@ -1,0 +1,53 @@
+#nullable enable
+
+namespace Cartesia.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class ManagedWebhookToolDefinitionV1ExecutionModeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode>
+    {
+        /// <inheritdoc />
+        public override global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionModeExtensions.ToEnum(stringValue) ?? default;
+                    }
+
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            writer.WriteStringValue(global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionModeExtensions.ToValueString(value));
+        }
+    }
+}

@@ -5,42 +5,6 @@ namespace Cartesia
 {
     public partial class AgentsClient
     {
-
-
-        private static readonly global::Cartesia.EndPointSecurityRequirement s_AgentsTemplatesSecurityRequirement0 =
-            new global::Cartesia.EndPointSecurityRequirement
-            {
-                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
-                {                    new global::Cartesia.EndPointAuthorizationRequirement
-                    {
-                        Type = "Http",
-                        SchemeId = "TokenAuth",
-                        Location = "Header",
-                        Name = "Bearer",
-                        FriendlyName = "Bearer",
-                    },
-                },
-            };
-
-        private static readonly global::Cartesia.EndPointSecurityRequirement s_AgentsTemplatesSecurityRequirement1 =
-            new global::Cartesia.EndPointSecurityRequirement
-            {
-                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
-                {                    new global::Cartesia.EndPointAuthorizationRequirement
-                    {
-                        Type = "Http",
-                        SchemeId = "TokenAuth",
-                        Location = "Header",
-                        Name = "Bearer",
-                        FriendlyName = "Bearer",
-                    },
-                },
-            };
-        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_AgentsTemplatesSecurityRequirements =
-            new global::Cartesia.EndPointSecurityRequirement[]
-            {                s_AgentsTemplatesSecurityRequirement0,
-                s_AgentsTemplatesSecurityRequirement1,
-            };
         partial void PrepareAgentsTemplatesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.AgentsTemplatesCartesiaVersion cartesiaVersion);
@@ -61,12 +25,15 @@ namespace Cartesia
         /// List Templates<br/>
         /// List of public, Cartesia-provided agent templates to help you get started.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.GetTemplatesResponse> AgentsTemplatesAsync(
-            global::Cartesia.AgentsTemplatesCartesiaVersion cartesiaVersion,
+            global::Cartesia.AgentsTemplatesCartesiaVersion cartesiaVersion = global::Cartesia.AgentsTemplatesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -82,12 +49,15 @@ namespace Cartesia
         /// List Templates<br/>
         /// List of public, Cartesia-provided agent templates to help you get started.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.GetTemplatesResponse>> AgentsTemplatesAsResponseAsync(
-            global::Cartesia.AgentsTemplatesCartesiaVersion cartesiaVersion,
+            global::Cartesia.AgentsTemplatesCartesiaVersion cartesiaVersion = global::Cartesia.AgentsTemplatesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,12 +66,6 @@ namespace Cartesia
             PrepareAgentsTemplatesArguments(
                 httpClient: HttpClient,
                 cartesiaVersion: ref cartesiaVersion);
-
-
-            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
-                availableAuthorizations: Authorizations,
-                securityRequirements: s_AgentsTemplatesSecurityRequirements,
-                operationName: "AgentsTemplatesAsync");
 
             using var __timeoutCancellationTokenSource = global::Cartesia.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -135,23 +99,6 @@ namespace Cartesia
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
-
-            foreach (var __authorization in __authorizations)
-            {
-                if (__authorization.Type == "Http" ||
-                    __authorization.Type == "OAuth2" ||
-                    __authorization.Type == "OpenIdConnect")
-                {
-                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
-                        scheme: __authorization.Name,
-                        parameter: __authorization.Value);
-                }
-                else if (__authorization.Type == "ApiKey" &&
-                         __authorization.Location == "Header")
-                {
-                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                }
-            }
 
                 __httpRequest.Headers.TryAddWithoutValidation("Cartesia-Version", cartesiaVersion.ToValueString());
 

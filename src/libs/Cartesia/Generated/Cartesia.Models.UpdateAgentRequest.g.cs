@@ -21,7 +21,7 @@ namespace Cartesia
         public string? Description { get; set; }
 
         /// <summary>
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts_voice")]
         public string? TtsVoice { get; set; }
@@ -48,7 +48,7 @@ namespace Cartesia
         /// The description of the agent.
         /// </param>
         /// <param name="ttsVoice">
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </param>
         /// <param name="ttsLanguage">
         /// The language to use for text-to-speech.

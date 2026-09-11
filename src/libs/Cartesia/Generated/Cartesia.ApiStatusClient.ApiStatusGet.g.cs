@@ -5,49 +5,11 @@ namespace Cartesia
 {
     public partial class ApiStatusClient
     {
-
-
-        private static readonly global::Cartesia.EndPointSecurityRequirement s_ApiStatusGetSecurityRequirement0 =
-            new global::Cartesia.EndPointSecurityRequirement
-            {
-                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
-                {                    new global::Cartesia.EndPointAuthorizationRequirement
-                    {
-                        Type = "Http",
-                        SchemeId = "TokenAuth",
-                        Location = "Header",
-                        Name = "Bearer",
-                        FriendlyName = "Bearer",
-                    },
-                },
-            };
-
-        private static readonly global::Cartesia.EndPointSecurityRequirement s_ApiStatusGetSecurityRequirement1 =
-            new global::Cartesia.EndPointSecurityRequirement
-            {
-                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
-                {                    new global::Cartesia.EndPointAuthorizationRequirement
-                    {
-                        Type = "Http",
-                        SchemeId = "TokenAuth",
-                        Location = "Header",
-                        Name = "Bearer",
-                        FriendlyName = "Bearer",
-                    },
-                },
-            };
-        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_ApiStatusGetSecurityRequirements =
-            new global::Cartesia.EndPointSecurityRequirement[]
-            {                s_ApiStatusGetSecurityRequirement0,
-                s_ApiStatusGetSecurityRequirement1,
-            };
         partial void PrepareApiStatusGetArguments(
-            global::System.Net.Http.HttpClient httpClient,
-            ref global::Cartesia.ApiStatusGetCartesiaVersion cartesiaVersion);
+            global::System.Net.Http.HttpClient httpClient);
         partial void PrepareApiStatusGetRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Cartesia.ApiStatusGetCartesiaVersion cartesiaVersion);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
         partial void ProcessApiStatusGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -60,17 +22,14 @@ namespace Cartesia
         /// <summary>
         /// API Status and Version
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.APIInfo> ApiStatusGetAsync(
-            global::Cartesia.ApiStatusGetCartesiaVersion cartesiaVersion,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ApiStatusGetAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -80,26 +39,17 @@ namespace Cartesia
         /// <summary>
         /// API Status and Version
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.APIInfo>> ApiStatusGetAsResponseAsync(
-            global::Cartesia.ApiStatusGetCartesiaVersion cartesiaVersion,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareApiStatusGetArguments(
-                httpClient: HttpClient,
-                cartesiaVersion: ref cartesiaVersion);
-
-
-            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
-                availableAuthorizations: Authorizations,
-                securityRequirements: s_ApiStatusGetSecurityRequirements,
-                operationName: "ApiStatusGetAsync");
+                httpClient: HttpClient);
 
             using var __timeoutCancellationTokenSource = global::Cartesia.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -133,26 +83,6 @@ namespace Cartesia
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
-
-            foreach (var __authorization in __authorizations)
-            {
-                if (__authorization.Type == "Http" ||
-                    __authorization.Type == "OAuth2" ||
-                    __authorization.Type == "OpenIdConnect")
-                {
-                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
-                        scheme: __authorization.Name,
-                        parameter: __authorization.Value);
-                }
-                else if (__authorization.Type == "ApiKey" &&
-                         __authorization.Location == "Header")
-                {
-                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                }
-            }
-
-                __httpRequest.Headers.TryAddWithoutValidation("Cartesia-Version", cartesiaVersion.ToValueString());
-
                 global::Cartesia.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -163,8 +93,7 @@ namespace Cartesia
                     request: __httpRequest);
                 PrepareApiStatusGetRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion!);
+                    httpRequestMessage: __httpRequest);
 
                 return __httpRequest;
             }

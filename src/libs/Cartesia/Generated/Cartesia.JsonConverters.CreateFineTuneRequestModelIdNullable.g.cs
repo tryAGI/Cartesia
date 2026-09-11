@@ -1,0 +1,60 @@
+#nullable enable
+
+namespace Cartesia.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class CreateFineTuneRequestModelIdNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.CreateFineTuneRequestModelId?>
+    {
+        /// <inheritdoc />
+        public override global::Cartesia.CreateFineTuneRequestModelId? Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::Cartesia.CreateFineTuneRequestModelIdExtensions.ToEnum(stringValue);
+                    }
+
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::Cartesia.CreateFineTuneRequestModelId)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Cartesia.CreateFineTuneRequestModelId?);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::Cartesia.CreateFineTuneRequestModelId? value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Cartesia.CreateFineTuneRequestModelIdExtensions.ToValueString(value.Value));
+            }
+        }
+    }
+}

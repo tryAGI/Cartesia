@@ -37,7 +37,14 @@ namespace Cartesia
         public required string Language { get; set; }
 
         /// <summary>
-        /// Base model identifier for the fine-tune
+        /// Accent metadata for the voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accent")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.VoiceAccentJsonConverter))]
+        public global::Cartesia.VoiceAccent? Accent { get; set; }
+
+        /// <summary>
+        /// Base model that was used to create this fine-tune
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -57,6 +64,12 @@ namespace Cartesia
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.FineTuneStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Cartesia.FineTuneStatus Status { get; set; }
+
+        /// <summary>
+        /// Structured user-facing errors when training fails.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_errors")]
+        public global::System.Collections.Generic.IList<global::Cartesia.FineTuneUserError>? UserErrors { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -80,13 +93,19 @@ namespace Cartesia
         /// Language code of the fine-tune
         /// </param>
         /// <param name="modelId">
-        /// Base model identifier for the fine-tune
+        /// Base model that was used to create this fine-tune
         /// </param>
         /// <param name="dataset">
         /// ID of the dataset used for fine-tuning
         /// </param>
         /// <param name="status">
         /// Status of a fine-tune
+        /// </param>
+        /// <param name="accent">
+        /// Accent metadata for the voice.
+        /// </param>
+        /// <param name="userErrors">
+        /// Structured user-facing errors when training fails.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -98,15 +117,19 @@ namespace Cartesia
             string language,
             string modelId,
             string dataset,
-            global::Cartesia.FineTuneStatus status)
+            global::Cartesia.FineTuneStatus status,
+            global::Cartesia.VoiceAccent? accent,
+            global::System.Collections.Generic.IList<global::Cartesia.FineTuneUserError>? userErrors)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
+            this.Accent = accent;
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.Dataset = dataset ?? throw new global::System.ArgumentNullException(nameof(dataset));
             this.Status = status;
+            this.UserErrors = userErrors;
         }
 
         /// <summary>

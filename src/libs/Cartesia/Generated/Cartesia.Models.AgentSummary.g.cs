@@ -43,7 +43,7 @@ namespace Cartesia
         public required global::System.DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts_voice")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -122,7 +122,7 @@ namespace Cartesia
         /// The date and time when the agent was last updated.
         /// </param>
         /// <param name="ttsVoice">
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </param>
         /// <param name="ttsLanguage">
         /// The language used for text-to-speech by the agent.

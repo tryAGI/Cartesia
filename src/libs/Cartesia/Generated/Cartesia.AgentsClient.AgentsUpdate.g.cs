@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -48,25 +48,28 @@ namespace Cartesia
         /// <summary>
         /// Update Agent
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="agentId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AgentSummary> AgentsUpdateAsync(
-            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion,
             string agentId,
 
             global::Cartesia.UpdateAgentRequest request,
+            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion = global::Cartesia.AgentsUpdateCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await AgentsUpdateAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
                 agentId: agentId,
 
                 request: request,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,17 +79,20 @@ namespace Cartesia
         /// <summary>
         /// Update Agent
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="agentId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.AgentSummary>> AgentsUpdateAsResponseAsync(
-            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion,
             string agentId,
 
             global::Cartesia.UpdateAgentRequest request,
+            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion = global::Cartesia.AgentsUpdateCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -457,7 +463,10 @@ namespace Cartesia
         /// <summary>
         /// Update Agent
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="agentId"></param>
         /// <param name="name">
         /// The name of the agent.
@@ -466,7 +475,7 @@ namespace Cartesia
         /// The description of the agent.
         /// </param>
         /// <param name="ttsVoice">
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </param>
         /// <param name="ttsLanguage">
         /// The language to use for text-to-speech.
@@ -475,8 +484,8 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AgentSummary> AgentsUpdateAsync(
-            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion,
             string agentId,
+            global::Cartesia.AgentsUpdateCartesiaVersion cartesiaVersion = global::Cartesia.AgentsUpdateCartesiaVersion.x20260814,
             string? name = default,
             string? description = default,
             string? ttsVoice = default,

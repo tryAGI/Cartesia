@@ -9,21 +9,21 @@ namespace Cartesia
     public sealed partial class GetVoicesResponse
     {
         /// <summary>
-        /// The paginated list of Voices.
+        /// The paginated list of voices.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Cartesia.Voice> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more pages of voices.
+        /// Whether there are more voices to fetch.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
 
         /// <summary>
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -38,13 +38,13 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="GetVoicesResponse" /> class.
         /// </summary>
         /// <param name="data">
-        /// The paginated list of Voices.
+        /// The paginated list of voices.
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more pages of voices.
+        /// Whether there are more voices to fetch.
         /// </param>
         /// <param name="nextPage">
-        /// The ID of the voice.
+        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

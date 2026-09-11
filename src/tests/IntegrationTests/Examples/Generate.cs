@@ -16,8 +16,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         //// Check the API status to verify connectivity.
-        var response = await client.ApiStatus.ApiStatusGetAsync(
-            cartesiaVersion: ApiStatusGetCartesiaVersion.x20251104);
+        var response = await client.ApiStatus.ApiStatusGetAsync();
 
         Assert.IsNotNull(response);
     }

@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
     /// </summary>
     public enum RawEncoding
     {

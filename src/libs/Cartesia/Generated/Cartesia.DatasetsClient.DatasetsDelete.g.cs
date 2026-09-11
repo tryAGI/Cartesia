@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -41,20 +41,23 @@ namespace Cartesia
         /// <summary>
         /// Delete a dataset
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task DatasetsDeleteAsync(
-            global::Cartesia.DatasetsDeleteCartesiaVersion cartesiaVersion,
             string id,
+            global::Cartesia.DatasetsDeleteCartesiaVersion cartesiaVersion = global::Cartesia.DatasetsDeleteCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await DatasetsDeleteAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
                 id: id,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -62,14 +65,17 @@ namespace Cartesia
         /// <summary>
         /// Delete a dataset
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse> DatasetsDeleteAsResponseAsync(
-            global::Cartesia.DatasetsDeleteCartesiaVersion cartesiaVersion,
             string id,
+            global::Cartesia.DatasetsDeleteCartesiaVersion cartesiaVersion = global::Cartesia.DatasetsDeleteCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

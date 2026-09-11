@@ -4,14 +4,15 @@
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// Default Value: 2026-08-14<br/>
+    /// Example: 2026-08-14
     /// </summary>
     public enum VoicesUpdateCartesiaVersion
     {
         /// <summary>
         ///
         /// </summary>
-        x20251104,
+        x20260814,
     }
 
     /// <summary>
@@ -26,7 +27,7 @@ namespace Cartesia
         {
             return value switch
             {
-                VoicesUpdateCartesiaVersion.x20251104 => "2025-11-04",
+                VoicesUpdateCartesiaVersion.x20260814 => "2026-08-14",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -37,7 +38,7 @@ namespace Cartesia
         {
             return value switch
             {
-                "2025-11-04" => VoicesUpdateCartesiaVersion.x20251104,
+                "2026-08-14" => VoicesUpdateCartesiaVersion.x20260814,
                 _ => null,
             };
         }

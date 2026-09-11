@@ -4,12 +4,12 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
+    /// The language that the given voice should speak the transcript in. This may depend on the model you're using. See [Models](/build-with-cartesia/tts-models/latest) for details.
     /// </summary>
     public enum SupportedLanguage
     {
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Ar,
         /// <summary>
@@ -21,7 +21,7 @@ namespace Cartesia
         /// </summary>
         Bn,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Cs,
         /// <summary>
@@ -29,15 +29,15 @@ namespace Cartesia
         /// </summary>
         Da,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         De,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         El,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         En,
         /// <summary>
@@ -73,7 +73,7 @@ namespace Cartesia
         /// </summary>
         EnZa,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Es,
         /// <summary>
@@ -105,11 +105,11 @@ namespace Cartesia
         /// </summary>
         FrFr,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Gu,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         He,
         /// <summary>
@@ -125,11 +125,11 @@ namespace Cartesia
         /// </summary>
         Hu,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Id,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         It,
         /// <summary>
@@ -177,7 +177,7 @@ namespace Cartesia
         /// </summary>
         No,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Or,
         /// <summary>
@@ -189,7 +189,7 @@ namespace Cartesia
         /// </summary>
         Pl,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Pt,
         /// <summary>
@@ -221,11 +221,11 @@ namespace Cartesia
         /// </summary>
         Ta,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Te,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Th,
         /// <summary>
@@ -233,7 +233,7 @@ namespace Cartesia
         /// </summary>
         Tl,
         /// <summary>
-        /// //docs.cartesia.ai/build-with-cartesia/tts-models).
+        ///
         /// </summary>
         Tr,
         /// <summary>

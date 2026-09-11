@@ -1,0 +1,69 @@
+
+#nullable enable
+
+namespace Cartesia
+{
+    /// <summary>
+    /// Configuration for transferring the call. Omit to keep the current setting or set to `null` to disable this tool.
+    /// </summary>
+    public sealed partial class UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber
+    {
+        /// <summary>
+        /// What the tool does and when the agent should use it. Set to `null` to use the default system-optimized description.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pre_tool_speech")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeechJsonConverter))]
+        public global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech? PreToolSpeech { get; set; }
+
+        /// <summary>
+        /// Phone numbers the agent can transfer a call to.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transfers")]
+        public global::System.Collections.Generic.IList<global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>? Transfers { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber" /> class.
+        /// </summary>
+        /// <param name="description">
+        /// What the tool does and when the agent should use it. Set to `null` to use the default system-optimized description.
+        /// </param>
+        /// <param name="preToolSpeech">
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// </param>
+        /// <param name="transfers">
+        /// Phone numbers the agent can transfer a call to.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber(
+            string? description,
+            global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech? preToolSpeech,
+            global::System.Collections.Generic.IList<global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>? transfers)
+        {
+            this.Description = description;
+            this.PreToolSpeech = preToolSpeech;
+            this.Transfers = transfers;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber" /> class.
+        /// </summary>
+        public UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber()
+        {
+        }
+
+    }
+}

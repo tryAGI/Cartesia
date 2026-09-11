@@ -24,7 +24,7 @@ namespace Cartesia
         public required bool Done { get; set; }
 
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
         public string? ContextId { get; set; }
@@ -34,7 +34,7 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word_timestamps")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.WordTimestamps WordTimestamps { get; set; }
+        public required global::Cartesia.TTSSSETimestampsEventWordTimestamps WordTimestamps { get; set; }
 
         /// <summary>
         /// HTTP-style status code.
@@ -64,15 +64,13 @@ namespace Cartesia
         /// <param name="type">
         /// Event type identifier.
         /// </param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
-        /// </param>
+        /// <param name="contextId"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TTSSSETimestampsEvent(
             bool done,
-            global::Cartesia.WordTimestamps wordTimestamps,
+            global::Cartesia.TTSSSETimestampsEventWordTimestamps wordTimestamps,
             int statusCode,
             global::Cartesia.TTSSSETimestampsEventType type,
             string? contextId)

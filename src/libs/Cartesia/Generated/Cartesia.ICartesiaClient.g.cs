@@ -47,7 +47,17 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public AgentToolsClient AgentTools { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public AgentsClient Agents { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ApiKeysClient ApiKeys { get; }
 
         /// <summary>
         ///
@@ -67,6 +77,11 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public FilesClient Files { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public FineTunesClient FineTunes { get; }
 
         /// <summary>
@@ -77,7 +92,22 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public OrganizationsClient Organizations { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public PhoneNumbersClient PhoneNumbers { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public PronunciationDictsClient PronunciationDicts { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ProvidersClient Providers { get; }
 
         /// <summary>
         ///
@@ -88,6 +118,11 @@ namespace Cartesia
         ///
         /// </summary>
         public TtsClient Tts { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public UsageClient Usage { get; }
 
         /// <summary>
         ///

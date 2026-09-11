@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -41,44 +41,48 @@ namespace Cartesia
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Remove Metric from Agent<br/>
-        /// Remove a metric from an agent. Once the metric is removed, it will no longer be run on all calls made to the agent automatically from that point onwards. Existing metric results will remain.
+        /// Remove Metric from Agent
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="agentId"></param>
         /// <param name="metricId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task AgentsRemoveMetricFromAgentAsync(
-            global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion cartesiaVersion,
             string agentId,
             string metricId,
+            global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion cartesiaVersion = global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await AgentsRemoveMetricFromAgentAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
                 agentId: agentId,
                 metricId: metricId,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove Metric from Agent<br/>
-        /// Remove a metric from an agent. Once the metric is removed, it will no longer be run on all calls made to the agent automatically from that point onwards. Existing metric results will remain.
+        /// Remove Metric from Agent
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="agentId"></param>
         /// <param name="metricId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse> AgentsRemoveMetricFromAgentAsResponseAsync(
-            global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion cartesiaVersion,
             string agentId,
             string metricId,
+            global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion cartesiaVersion = global::Cartesia.AgentsRemoveMetricFromAgentCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

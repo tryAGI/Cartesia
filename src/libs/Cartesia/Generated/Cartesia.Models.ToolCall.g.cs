@@ -12,8 +12,7 @@ namespace Cartesia
         /// The unique identifier for the tool call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// The name of the tool that was called.
@@ -27,7 +26,13 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.Dictionary<string, string> Arguments { get; set; }
+        public required object Arguments { get; set; }
+
+        /// <summary>
+        /// The result returned by the tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("result")]
+        public string? Result { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,26 +43,31 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolCall" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The unique identifier for the tool call.
-        /// </param>
         /// <param name="name">
         /// The name of the tool that was called.
         /// </param>
         /// <param name="arguments">
         /// The arguments passed to the tool.
         /// </param>
+        /// <param name="id">
+        /// The unique identifier for the tool call.
+        /// </param>
+        /// <param name="result">
+        /// The result returned by the tool.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolCall(
-            string id,
             string name,
-            global::System.Collections.Generic.Dictionary<string, string> arguments)
+            object arguments,
+            string? id,
+            string? result)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
+            this.Result = result;
         }
 
         /// <summary>

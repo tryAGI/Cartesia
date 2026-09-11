@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Cartesia
@@ -24,18 +22,11 @@ namespace Cartesia
         public string? RequestId { get; set; }
 
         /// <summary>
-        /// The transcribed text.
+        /// The transcribed text. A batch response is always the complete transcription.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
-
-        /// <summary>
-        /// Not used for batch transcription.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_final")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? IsFinal { get; set; }
 
         /// <summary>
         /// The specified language of the input audio.
@@ -65,7 +56,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="TranscriptionResponse" /> class.
         /// </summary>
         /// <param name="text">
-        /// The transcribed text.
+        /// The transcribed text. A batch response is always the complete transcription.
         /// </param>
         /// <param name="type">
         /// The message type. Always `transcript` for a batch transcription response.

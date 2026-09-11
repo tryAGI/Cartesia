@@ -9,14 +9,15 @@ namespace Cartesia
     public sealed partial class RawOutputFormat
     {
         /// <summary>
-        ///
+        /// Default Value: raw
         /// </summary>
+        /// <default>global::Cartesia.RawOutputFormatContainer.Raw</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("container")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawOutputFormatContainerJsonConverter))]
-        public global::Cartesia.RawOutputFormatContainer Container { get; set; }
+        public global::Cartesia.RawOutputFormatContainer Container { get; set; } = global::Cartesia.RawOutputFormatContainer.Raw;
 
         /// <summary>
-        ///
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawEncodingJsonConverter))]
@@ -39,16 +40,20 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="RawOutputFormat" /> class.
         /// </summary>
-        /// <param name="encoding"></param>
+        /// <param name="encoding">
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
+        /// </param>
         /// <param name="sampleRate"></param>
-        /// <param name="container"></param>
+        /// <param name="container">
+        /// Default Value: raw
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RawOutputFormat(
             global::Cartesia.RawEncoding encoding,
             int sampleRate,
-            global::Cartesia.RawOutputFormatContainer container)
+            global::Cartesia.RawOutputFormatContainer container = global::Cartesia.RawOutputFormatContainer.Raw)
         {
             this.Container = container;
             this.Encoding = encoding;

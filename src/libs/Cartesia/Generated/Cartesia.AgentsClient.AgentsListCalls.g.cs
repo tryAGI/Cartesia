@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -28,7 +28,10 @@ namespace Cartesia
         partial void PrepareAgentsListCallsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion,
-            ref string agentId,
+            ref string? agentId,
+            ref string? batchId,
+            ref global::System.DateTime? startTimeGte,
+            ref global::System.DateTime? startTimeLte,
             ref string? expand,
             ref string? startingAfter,
             ref string? endingBefore,
@@ -37,7 +40,10 @@ namespace Cartesia
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion,
-            string agentId,
+            string? agentId,
+            string? batchId,
+            global::System.DateTime? startTimeGte,
+            global::System.DateTime? startTimeLte,
             string? expand,
             string? startingAfter,
             string? endingBefore,
@@ -53,10 +59,20 @@ namespace Cartesia
 
         /// <summary>
         /// List Calls<br/>
-        /// Lists calls sorted by start time in descending order for a specific agent. `agent_id` is required and if you want to include `transcript` in the response, add `expand=transcript` to the request. This endpoint is paginated.
+        /// Lists an agent's calls, or the calls placed for one outbound call batch. One of `agent_id` or `batch_id` is required.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
-        /// <param name="agentId"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
+        /// <param name="agentId">
+        /// Example: agent_abc123
+        /// </param>
+        /// <param name="batchId">
+        /// Example: acb_abc123
+        /// </param>
+        /// <param name="startTimeGte"></param>
+        /// <param name="startTimeLte"></param>
         /// <param name="expand"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -65,8 +81,11 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.GetCallsResponse> AgentsListCallsAsync(
-            global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion,
-            string agentId,
+            global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion = global::Cartesia.AgentsListCallsCartesiaVersion.x20260814,
+            string? agentId = default,
+            string? batchId = default,
+            global::System.DateTime? startTimeGte = default,
+            global::System.DateTime? startTimeLte = default,
             string? expand = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -77,6 +96,9 @@ namespace Cartesia
             var __response = await AgentsListCallsAsResponseAsync(
                 cartesiaVersion: cartesiaVersion,
                 agentId: agentId,
+                batchId: batchId,
+                startTimeGte: startTimeGte,
+                startTimeLte: startTimeLte,
                 expand: expand,
                 startingAfter: startingAfter,
                 endingBefore: endingBefore,
@@ -89,10 +111,20 @@ namespace Cartesia
         }
         /// <summary>
         /// List Calls<br/>
-        /// Lists calls sorted by start time in descending order for a specific agent. `agent_id` is required and if you want to include `transcript` in the response, add `expand=transcript` to the request. This endpoint is paginated.
+        /// Lists an agent's calls, or the calls placed for one outbound call batch. One of `agent_id` or `batch_id` is required.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
-        /// <param name="agentId"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
+        /// <param name="agentId">
+        /// Example: agent_abc123
+        /// </param>
+        /// <param name="batchId">
+        /// Example: acb_abc123
+        /// </param>
+        /// <param name="startTimeGte"></param>
+        /// <param name="startTimeLte"></param>
         /// <param name="expand"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -101,8 +133,11 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.GetCallsResponse>> AgentsListCallsAsResponseAsync(
-            global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion,
-            string agentId,
+            global::Cartesia.AgentsListCallsCartesiaVersion cartesiaVersion = global::Cartesia.AgentsListCallsCartesiaVersion.x20260814,
+            string? agentId = default,
+            string? batchId = default,
+            global::System.DateTime? startTimeGte = default,
+            global::System.DateTime? startTimeLte = default,
             string? expand = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -116,6 +151,9 @@ namespace Cartesia
                 httpClient: HttpClient,
                 cartesiaVersion: ref cartesiaVersion,
                 agentId: ref agentId,
+                batchId: ref batchId,
+                startTimeGte: ref startTimeGte,
+                startTimeLte: ref startTimeLte,
                 expand: ref expand,
                 startingAfter: ref startingAfter,
                 endingBefore: ref endingBefore,
@@ -148,7 +186,10 @@ namespace Cartesia
                                 path: "/agents/calls",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddRequiredParameter("agent_id", agentId)
+                                .AddOptionalParameter("agent_id", agentId)
+                                .AddOptionalParameter("batch_id", batchId)
+                                .AddOptionalParameter("start_time_gte", startTimeGte?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                .AddOptionalParameter("start_time_lte", startTimeLte?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("expand", expand)
                                 .AddOptionalParameter("starting_after", startingAfter)
                                 .AddOptionalParameter("ending_before", endingBefore)
@@ -198,7 +239,10 @@ namespace Cartesia
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     cartesiaVersion: cartesiaVersion!,
-                    agentId: agentId!,
+                    agentId: agentId,
+                    batchId: batchId,
+                    startTimeGte: startTimeGte,
+                    startTimeLte: startTimeLte,
                     expand: expand,
                     startingAfter: startingAfter,
                     endingBefore: endingBefore,
@@ -383,6 +427,70 @@ namespace Cartesia
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            //
+                            if ((int)__response.StatusCode == 400)
+                            {
+                                string? __content_400 = null;
+                                global::System.Exception? __exception_400 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_400 = __ex;
+                                }
+
+
+                                throw global::Cartesia.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_400,
+                                    responseBody: __content_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            //
+                            if ((int)__response.StatusCode == 404)
+                            {
+                                string? __content_404 = null;
+                                global::System.Exception? __exception_404 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_404 = __ex;
+                                }
+
+
+                                throw global::Cartesia.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_404,
+                                    responseBody: __content_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
 
                             if (__effectiveReadResponseAsString)
                             {

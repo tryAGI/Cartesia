@@ -1,57 +1,56 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// Request to localize a voice into an accent.<br/>
+    /// Example: {"voice_id":"0418348a-0ca2-4e90-9986-800fb8b3bbc0","name":"Skylar French","accent":"parisian","access":"private"}
     /// </summary>
     public sealed partial class LocalizeVoiceRequest
     {
         /// <summary>
-        /// The ID of the voice to localize.
+        /// ID of the existing voice you want to localize.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string VoiceId { get; set; }
 
         /// <summary>
-        /// The name of the new localized voice.
+        /// Name for the newly localized voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
 
         /// <summary>
-        /// The description of the new localized voice.
+        /// Description for the newly localized voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
-        /// Target language to localize the voice to.<br/>
-        /// Options: English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// Short tagline for the newly localized voice.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.LocalizeTargetLanguageJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.LocalizeTargetLanguage Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tagline")]
+        public string? Tagline { get; set; }
 
         /// <summary>
-        ///
+        /// The accent to localize into. Get ids from [GET /accents](/api-reference/accents/list) with `is_localizable=true`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("original_speaker_gender")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.GenderJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonPropertyName("accent")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.LocalizeVoiceAccentJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.Gender OriginalSpeakerGender { get; set; }
+        public required global::Cartesia.LocalizeVoiceAccent Accent { get; set; }
 
         /// <summary>
-        /// The dialect to localize to. Only supported for English (`en`), Spanish (`es`), Portuguese (`pt`), and French (`fr`).
+        /// Controls who can access this resource. Prefer `"public"` | `"private"`. Deprecated nested `{ "type": "public" | "private" }` is still accepted.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dialect")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.LocalizeDialectJsonConverter))]
-        public global::Cartesia.LocalizeDialect? Dialect { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("access")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>))]
+        public global::Cartesia.OneOf<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>? Access { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,21 +62,22 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="LocalizeVoiceRequest" /> class.
         /// </summary>
         /// <param name="voiceId">
-        /// The ID of the voice to localize.
+        /// ID of the existing voice you want to localize.
         /// </param>
         /// <param name="name">
-        /// The name of the new localized voice.
+        /// Name for the newly localized voice.
+        /// </param>
+        /// <param name="accent">
+        /// The accent to localize into. Get ids from [GET /accents](/api-reference/accents/list) with `is_localizable=true`.
         /// </param>
         /// <param name="description">
-        /// The description of the new localized voice.
+        /// Description for the newly localized voice.
         /// </param>
-        /// <param name="language">
-        /// Target language to localize the voice to.<br/>
-        /// Options: English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// <param name="tagline">
+        /// Short tagline for the newly localized voice.
         /// </param>
-        /// <param name="originalSpeakerGender"></param>
-        /// <param name="dialect">
-        /// The dialect to localize to. Only supported for English (`en`), Spanish (`es`), Portuguese (`pt`), and French (`fr`).
+        /// <param name="access">
+        /// Controls who can access this resource. Prefer `"public"` | `"private"`. Deprecated nested `{ "type": "public" | "private" }` is still accepted.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -85,17 +85,17 @@ namespace Cartesia
         public LocalizeVoiceRequest(
             string voiceId,
             string name,
-            string description,
-            global::Cartesia.LocalizeTargetLanguage language,
-            global::Cartesia.Gender originalSpeakerGender,
-            global::Cartesia.LocalizeDialect? dialect)
+            global::Cartesia.LocalizeVoiceAccent accent,
+            string? description,
+            string? tagline,
+            global::Cartesia.OneOf<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>? access)
         {
             this.VoiceId = voiceId ?? throw new global::System.ArgumentNullException(nameof(voiceId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
-            this.Language = language;
-            this.OriginalSpeakerGender = originalSpeakerGender;
-            this.Dialect = dialect;
+            this.Description = description;
+            this.Tagline = tagline;
+            this.Accent = accent;
+            this.Access = access;
         }
 
         /// <summary>

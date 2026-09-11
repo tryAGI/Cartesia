@@ -49,7 +49,25 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public AgentToolsClient AgentTools => new AgentToolsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
         public AgentsClient Agents => new AgentsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ApiKeysClient ApiKeys => new ApiKeysClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContextProvider = JsonSerializerContextProvider,
@@ -85,6 +103,15 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
         public FineTunesClient FineTunes => new FineTunesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
@@ -103,7 +130,34 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public OrganizationsClient Organizations => new OrganizationsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
+        public PhoneNumbersClient PhoneNumbers => new PhoneNumbersClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
         public PronunciationDictsClient PronunciationDicts => new PronunciationDictsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ProvidersClient Providers => new ProvidersClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContextProvider = JsonSerializerContextProvider,
@@ -122,6 +176,15 @@ namespace Cartesia
         ///
         /// </summary>
         public TtsClient Tts => new TtsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
+        public UsageClient Usage => new UsageClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContextProvider = JsonSerializerContextProvider,

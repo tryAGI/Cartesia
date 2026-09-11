@@ -16,11 +16,13 @@ namespace Cartesia
         public required bool Ok { get; set; }
 
         /// <summary>
-        ///
+        /// Latest API version<br/>
+        /// Example: 2026-03-01
         /// </summary>
+        /// <example>2026-03-01</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Version { get; set; }
+        public required global::System.DateTime Version { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,16 +34,19 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="APIInfo" /> class.
         /// </summary>
         /// <param name="ok"></param>
-        /// <param name="version"></param>
+        /// <param name="version">
+        /// Latest API version<br/>
+        /// Example: 2026-03-01
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public APIInfo(
             bool ok,
-            string version)
+            global::System.DateTime version)
         {
             this.Ok = ok;
-            this.Version = version ?? throw new global::System.ArgumentNullException(nameof(version));
+            this.Version = version;
         }
 
         /// <summary>

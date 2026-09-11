@@ -13,7 +13,7 @@ public static class CartesiaTtsSseExtensions
     /// <summary>
     /// Default Cartesia API version for text-to-speech SSE endpoints.
     /// </summary>
-    public const TtsSseCartesiaVersion DefaultTtsSseCartesiaVersion = TtsSseCartesiaVersion.x20251104;
+    public const TtsSseCartesiaVersion DefaultTtsSseCartesiaVersion = TtsSseCartesiaVersion.x20260814;
 
     /// <summary>
     /// Streams text-to-speech SSE events and decodes audio chunks as they arrive.
@@ -100,8 +100,8 @@ public static class CartesiaTtsSseExtensions
         ArgumentNullException.ThrowIfNull(request);
 
         await foreach (var @event in client.TtsSseAsync(
-            cartesiaVersion,
             request,
+            cartesiaVersion,
             requestOptions,
             cancellationToken).ConfigureAwait(false))
         {

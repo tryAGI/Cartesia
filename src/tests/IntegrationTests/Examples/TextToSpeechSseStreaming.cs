@@ -24,13 +24,9 @@ public partial class Tests
 
         var request = new TTSSSERequest
         {
-            ModelId = TTSModel.Sonic35,
+            ModelId = TTSModelID.Sonic35,
             Transcript = "Hello from Cartesia.",
-            Voice = new TTSRequestVoiceSpecifier
-            {
-                Mode = TTSRequestVoiceSpecifierMode.Id,
-                Id = "694f9389-aac1-45b6-b726-9d9369183238",
-            },
+            Voice = "694f9389-aac1-45b6-b726-9d9369183238",
             OutputFormat = new SSEOutputFormat
             {
                 Container = SSEOutputFormatContainer.Raw,

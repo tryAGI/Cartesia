@@ -4,7 +4,8 @@
 namespace Cartesia
 {
     /// <summary>
-    /// A dictionary of text-to-alias mappings
+    /// A dictionary of text-to-pronunciation mappings<br/>
+    /// Example: {"id":"pdict_123","name":"Acme","description":"An example dictionary","is_owner":true,"pinned":false,"access":"private","items":[{"text":"acme","pronunciation":"\u003C\u003C\u02C8|\u00E6|k|m|i\u003E\u003E","case_sensitive":false}],"created_at":"2025-10-27T14:54:26.68581Z","visibility":"owner"}
     /// </summary>
     public sealed partial class PronunciationDict
     {
@@ -23,11 +24,26 @@ namespace Cartesia
         public required string Name { get; set; }
 
         /// <summary>
-        /// ID of the user who owns this dictionary
+        /// Description of the pronunciation dictionary
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner_id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string OwnerId { get; set; }
+        public required string Description { get; set; }
+
+        /// <summary>
+        /// Whether your organization owns the pronunciation dictionary.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_owner")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool IsOwner { get; set; }
+
+        /// <summary>
+        /// Who can use the resource. `private` means only the owner can use the resource. `public` means everyone can use the resource.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("access")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.PronunciationDictAccessJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.PronunciationDictAccess Access { get; set; }
 
         /// <summary>
         /// Whether this dictionary is pinned for the user
@@ -51,6 +67,14 @@ namespace Cartesia
         public required string CreatedAt { get; set; }
 
         /// <summary>
+        /// When the resource is returned by the list endpoint. `owner` means the resource appears for the owner only. `all` means the resource appears for all users.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.PronunciationDictVisibilityJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.PronunciationDictVisibility Visibility { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -65,8 +89,14 @@ namespace Cartesia
         /// <param name="name">
         /// Name of the pronunciation dictionary
         /// </param>
-        /// <param name="ownerId">
-        /// ID of the user who owns this dictionary
+        /// <param name="description">
+        /// Description of the pronunciation dictionary
+        /// </param>
+        /// <param name="isOwner">
+        /// Whether your organization owns the pronunciation dictionary.
+        /// </param>
+        /// <param name="access">
+        /// Who can use the resource. `private` means only the owner can use the resource. `public` means everyone can use the resource.
         /// </param>
         /// <param name="pinned">
         /// Whether this dictionary is pinned for the user
@@ -77,23 +107,32 @@ namespace Cartesia
         /// <param name="createdAt">
         /// ISO 8601 timestamp of when the dictionary was created
         /// </param>
+        /// <param name="visibility">
+        /// When the resource is returned by the list endpoint. `owner` means the resource appears for the owner only. `all` means the resource appears for all users.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PronunciationDict(
             string id,
             string name,
-            string ownerId,
+            string description,
+            bool isOwner,
+            global::Cartesia.PronunciationDictAccess access,
             bool pinned,
             global::System.Collections.Generic.IList<global::Cartesia.PronunciationDictItem> items,
-            string createdAt)
+            string createdAt,
+            global::Cartesia.PronunciationDictVisibility visibility)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.OwnerId = ownerId ?? throw new global::System.ArgumentNullException(nameof(ownerId));
+            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.IsOwner = isOwner;
+            this.Access = access;
             this.Pinned = pinned;
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Visibility = visibility;
         }
 
         /// <summary>

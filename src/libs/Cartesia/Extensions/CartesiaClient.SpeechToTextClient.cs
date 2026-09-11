@@ -7,7 +7,7 @@ namespace Cartesia;
 
 public sealed partial class CartesiaClient : ISpeechToTextClient
 {
-    private const SttTranscribeCartesiaVersion DefaultSttVersion = SttTranscribeCartesiaVersion.x20251104;
+    private const SttTranscribeCartesiaVersion DefaultSttVersion = SttTranscribeCartesiaVersion.x20260814;
 
     private SpeechToTextClientMetadata? _speechMetadata;
 
@@ -120,14 +120,14 @@ public sealed partial class CartesiaClient : ISpeechToTextClient
                 : ms.ToArray();
     }
 
-    private static STTBatchModel ResolveSttBatchModel(string? modelId)
+    private static SttTranscribeRequestModel ResolveSttBatchModel(string? modelId)
     {
         if (modelId is not { Length: > 0 })
         {
-            return STTBatchModel.InkWhisper;
+            return SttTranscribeRequestModel.InkWhisper;
         }
 
-        return STTBatchModelExtensions.ToEnum(modelId)
+        return SttTranscribeRequestModelExtensions.ToEnum(modelId)
             ?? throw new ArgumentException($"Unknown Cartesia STT model '{modelId}'.", nameof(modelId));
     }
 }

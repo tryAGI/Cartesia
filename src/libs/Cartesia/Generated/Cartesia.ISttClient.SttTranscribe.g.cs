@@ -5,14 +5,16 @@ namespace Cartesia
     public partial interface ISttClient
     {
         /// <summary>
-        /// Speech-to-Text (Batch)<br/>
-        /// Transcribes audio files into text.<br/>
-        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
+        /// Batch Speech-to-Text<br/>
+        /// Transcribes an audio file of any length
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="request"></param>
@@ -20,22 +22,24 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
-            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.SttTranscribeRequest request,
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion = global::Cartesia.SttTranscribeCartesiaVersion.x20260814,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Speech-to-Text (Batch)<br/>
-        /// Transcribes audio files into text.<br/>
-        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
+        /// Batch Speech-to-Text<br/>
+        /// Transcribes an audio file of any length
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="request"></param>
@@ -43,125 +47,142 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TranscriptionResponse>> SttTranscribeAsResponseAsync(
-            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.SttTranscribeRequest request,
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion = global::Cartesia.SttTranscribeCartesiaVersion.x20260814,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Speech-to-Text (Batch)<br/>
-        /// Transcribes audio files into text.<br/>
-        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
+        /// Batch Speech-to-Text<br/>
+        /// Transcribes an audio file of any length
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate"></param>
-        /// <param name="file"></param>
-        /// <param name="filename"></param>
+        /// <param name="file">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
+        /// <param name="filename">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
         /// <param name="model">
-        /// Models that support batch speech-to-text transcription.<br/>
-        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+        /// ID of the model to use for transcription. Must be in the `ink-whisper` family of models.<br/>
+        /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+        /// The language of the input audio in ISO-639-1 format<br/>
+        /// Default Value: en
         /// </param>
-        /// <param name="timestampGranularities">
-        /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
-        /// </param>
+        /// <param name="timestampGranularities"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
-            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
             byte[] file,
             string filename,
-            global::Cartesia.STTBatchModel model,
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion = global::Cartesia.SttTranscribeCartesiaVersion.x20260814,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
+            global::Cartesia.SttTranscribeRequestModel model = default,
             global::Cartesia.SttTranscribeRequestLanguage? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Speech-to-Text (Batch)<br/>
-        /// Transcribes audio files into text.<br/>
-        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
+        /// Batch Speech-to-Text<br/>
+        /// Transcribes an audio file of any length
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="file">
-        /// The stream to send as the multipart 'file' file part.
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
-        /// <param name="filename"></param>
+        /// <param name="filename">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
         /// <param name="model">
-        /// Models that support batch speech-to-text transcription.<br/>
-        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+        /// ID of the model to use for transcription. Must be in the `ink-whisper` family of models.<br/>
+        /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+        /// The language of the input audio in ISO-639-1 format<br/>
+        /// Default Value: en
         /// </param>
-        /// <param name="timestampGranularities">
-        /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
-        /// </param>
+        /// <param name="timestampGranularities"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.TranscriptionResponse> SttTranscribeAsync(
-            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
             global::System.IO.Stream file,
             string filename,
-            global::Cartesia.STTBatchModel model,
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion = global::Cartesia.SttTranscribeCartesiaVersion.x20260814,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
+            global::Cartesia.SttTranscribeRequestModel model = default,
             global::Cartesia.SttTranscribeRequestLanguage? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Speech-to-Text (Batch)<br/>
-        /// Transcribes audio files into text.<br/>
-        /// **Supported audio formats:** flac, m4a, mp3, mp4, mpeg, mpga, oga, ogg, wav, webm<br/>
-        /// See [the API docs](https://docs.cartesia.ai/api-reference/stt/transcribe) for details.
+        /// Batch Speech-to-Text<br/>
+        /// Transcribes an audio file of any length
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="file">
-        /// The stream to send as the multipart 'file' file part.
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
-        /// <param name="filename"></param>
+        /// <param name="filename">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
         /// <param name="model">
-        /// Models that support batch speech-to-text transcription.<br/>
-        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+        /// ID of the model to use for transcription. Must be in the `ink-whisper` family of models.<br/>
+        /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+        /// The language of the input audio in ISO-639-1 format<br/>
+        /// Default Value: en
         /// </param>
-        /// <param name="timestampGranularities">
-        /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
-        /// </param>
+        /// <param name="timestampGranularities"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.TranscriptionResponse>> SttTranscribeAsResponseAsync(
-            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion,
             global::System.IO.Stream file,
             string filename,
-            global::Cartesia.STTBatchModel model,
+            global::Cartesia.SttTranscribeCartesiaVersion cartesiaVersion = global::Cartesia.SttTranscribeCartesiaVersion.x20260814,
             global::Cartesia.STTEncoding? encoding = default,
             int? sampleRate = default,
+            global::Cartesia.SttTranscribeRequestModel model = default,
             global::Cartesia.SttTranscribeRequestLanguage? language = default,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,

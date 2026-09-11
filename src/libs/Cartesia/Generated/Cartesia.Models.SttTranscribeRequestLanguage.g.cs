@@ -4,7 +4,8 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+    /// The language of the input audio in ISO-639-1 format<br/>
+    /// Default Value: en
     /// </summary>
     public enum SttTranscribeRequestLanguage
     {

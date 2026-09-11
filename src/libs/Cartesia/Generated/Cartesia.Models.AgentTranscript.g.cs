@@ -9,7 +9,7 @@ namespace Cartesia
     public sealed partial class AgentTranscript
     {
         /// <summary>
-        /// The role of the participant in the conversation. Roles are `user`, `assistant`, or `system`. `assistant` is the agent. `system` is used to indicate logs during the conversation such as `log_event` or `log_metric`.
+        /// The role of the participant in the conversation. Roles are `user`, `assistant`, or `system`. `assistant` is the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -20,12 +20,6 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
-
-        /// <summary>
-        /// The chunks of text at a more granular level in the transcript with timestamps relative to the start of the call.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text_chunks")]
-        public global::System.Collections.Generic.IList<global::Cartesia.TextChunk>? TextChunks { get; set; }
 
         /// <summary>
         /// The start timestamp in seconds relative to the start of the call.
@@ -42,40 +36,22 @@ namespace Cartesia
         public required float EndTimestamp { get; set; }
 
         /// <summary>
-        /// The reason for why the assistant turn ended. This could be `call_ended`, `interrupted`, or `tts_completed`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end_reason")]
-        public string? EndReason { get; set; }
-
-        /// <summary>
         /// The tool calls made during the turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_calls")]
         public global::System.Collections.Generic.IList<global::Cartesia.ToolCall>? ToolCalls { get; set; }
 
         /// <summary>
-        /// The VAD buffer time in milliseconds.
+        /// The time to first byte in seconds for speech-to-text.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("vad_buffer_ms")]
-        public int? VadBufferMs { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("stt_ttfb")]
+        public float? SttTtfb { get; set; }
 
         /// <summary>
         /// The time to first byte in seconds from the agent for text-to-speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts_ttfb")]
         public float? TtsTtfb { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("log_event")]
-        public global::Cartesia.LogEvent? LogEvent { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("log_metric")]
-        public global::Cartesia.LogMetric? LogMetric { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -87,7 +63,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="AgentTranscript" /> class.
         /// </summary>
         /// <param name="role">
-        /// The role of the participant in the conversation. Roles are `user`, `assistant`, or `system`. `assistant` is the agent. `system` is used to indicate logs during the conversation such as `log_event` or `log_metric`.
+        /// The role of the participant in the conversation. Roles are `user`, `assistant`, or `system`. `assistant` is the agent.
         /// </param>
         /// <param name="startTimestamp">
         /// The start timestamp in seconds relative to the start of the call.
@@ -98,23 +74,15 @@ namespace Cartesia
         /// <param name="text">
         /// The text content of the transcript. This is the text that was spoken by the user or the agent.
         /// </param>
-        /// <param name="textChunks">
-        /// The chunks of text at a more granular level in the transcript with timestamps relative to the start of the call.
-        /// </param>
-        /// <param name="endReason">
-        /// The reason for why the assistant turn ended. This could be `call_ended`, `interrupted`, or `tts_completed`.
-        /// </param>
         /// <param name="toolCalls">
         /// The tool calls made during the turn.
         /// </param>
-        /// <param name="vadBufferMs">
-        /// The VAD buffer time in milliseconds.
+        /// <param name="sttTtfb">
+        /// The time to first byte in seconds for speech-to-text.
         /// </param>
         /// <param name="ttsTtfb">
         /// The time to first byte in seconds from the agent for text-to-speech.
         /// </param>
-        /// <param name="logEvent"></param>
-        /// <param name="logMetric"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -123,25 +91,17 @@ namespace Cartesia
             float startTimestamp,
             float endTimestamp,
             string? text,
-            global::System.Collections.Generic.IList<global::Cartesia.TextChunk>? textChunks,
-            string? endReason,
             global::System.Collections.Generic.IList<global::Cartesia.ToolCall>? toolCalls,
-            int? vadBufferMs,
-            float? ttsTtfb,
-            global::Cartesia.LogEvent? logEvent,
-            global::Cartesia.LogMetric? logMetric)
+            float? sttTtfb,
+            float? ttsTtfb)
         {
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
             this.Text = text;
-            this.TextChunks = textChunks;
             this.StartTimestamp = startTimestamp;
             this.EndTimestamp = endTimestamp;
-            this.EndReason = endReason;
             this.ToolCalls = toolCalls;
-            this.VadBufferMs = vadBufferMs;
+            this.SttTtfb = sttTtfb;
             this.TtsTtfb = ttsTtfb;
-            this.LogEvent = logEvent;
-            this.LogMetric = logMetric;
         }
 
         /// <summary>

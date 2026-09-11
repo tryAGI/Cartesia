@@ -32,12 +32,12 @@ namespace Cartesia.JsonConverters
             if (__jsonProps.Contains("encoding")) __score0++;
             if (__jsonProps.Contains("sample_rate")) __score0++;
             var __score1 = 0;
+            if (__jsonProps.Contains("bit_rate")) __score1++;
             if (__jsonProps.Contains("container")) __score1++;
-            if (__jsonProps.Contains("encoding")) __score1++;
             if (__jsonProps.Contains("sample_rate")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("bit_rate")) __score2++;
             if (__jsonProps.Contains("container")) __score2++;
+            if (__jsonProps.Contains("encoding")) __score2++;
             if (__jsonProps.Contains("sample_rate")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
@@ -45,27 +45,12 @@ namespace Cartesia.JsonConverters
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
             if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
-            global::Cartesia.RawOutputFormat? rawOutputFormat = default;
             global::Cartesia.WAVOutputFormat? wAVOutputFormat = default;
             global::Cartesia.MP3OutputFormat? mP3OutputFormat = default;
+            global::Cartesia.RawOutputFormat? rawOutputFormat = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
-                        rawOutputFormat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
                 {
                     try
                     {
@@ -80,7 +65,7 @@ namespace Cartesia.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 2)
+                else if (__bestIndex == 1)
                 {
                     try
                     {
@@ -95,26 +80,24 @@ namespace Cartesia.JsonConverters
                     {
                     }
                 }
-            }
-
-            if (rawOutputFormat == null && wAVOutputFormat == null && mP3OutputFormat == null)
-            {
-                try
+                else if (__bestIndex == 2)
                 {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
-                    rawOutputFormat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
+                        rawOutputFormat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
                 }
             }
 
-            if (rawOutputFormat == null && wAVOutputFormat == null && mP3OutputFormat == null)
+            if (wAVOutputFormat == null && mP3OutputFormat == null && rawOutputFormat == null)
             {
                 try
                 {
@@ -131,7 +114,7 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            if (rawOutputFormat == null && wAVOutputFormat == null && mP3OutputFormat == null)
+            if (wAVOutputFormat == null && mP3OutputFormat == null && rawOutputFormat == null)
             {
                 try
                 {
@@ -148,12 +131,29 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            var __value = new global::Cartesia.OutputFormat(
-                rawOutputFormat,
+            if (wAVOutputFormat == null && mP3OutputFormat == null && rawOutputFormat == null)
+            {
+                try
+                {
 
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
+                    rawOutputFormat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            var __value = new global::Cartesia.OutputFormat(
                 wAVOutputFormat,
 
-                mP3OutputFormat
+                mP3OutputFormat,
+
+                rawOutputFormat
                 );
 
             return __value;
@@ -168,13 +168,7 @@ namespace Cartesia.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsRawOutputFormat)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RawOutputFormat!, typeInfo);
-            }
-            else if (value.IsWAVOutputFormat)
+            if (value.IsWAVOutputFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WAVOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WAVOutputFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WAVOutputFormat).Name}");
@@ -185,6 +179,12 @@ namespace Cartesia.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.MP3OutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.MP3OutputFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.MP3OutputFormat).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.MP3OutputFormat!, typeInfo);
+            }
+            else if (value.IsRawOutputFormat)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RawOutputFormat!, typeInfo);
             }
         }
     }

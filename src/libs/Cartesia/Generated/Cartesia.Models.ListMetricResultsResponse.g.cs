@@ -16,7 +16,7 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.MetricResult> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more pages of metric results.
+        /// Whether there are more metric results to fetch.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -41,7 +41,7 @@ namespace Cartesia
         /// List of metric results.
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more pages of metric results.
+        /// Whether there are more metric results to fetch.
         /// </param>
         /// <param name="nextPage">
         /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of metric results.

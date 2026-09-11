@@ -1,0 +1,60 @@
+#nullable enable
+
+namespace Cartesia.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class UpdateVoiceRequestAccessEnumTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.UpdateVoiceRequestAccessEnumType?>
+    {
+        /// <inheritdoc />
+        public override global::Cartesia.UpdateVoiceRequestAccessEnumType? Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::Cartesia.UpdateVoiceRequestAccessEnumTypeExtensions.ToEnum(stringValue);
+                    }
+
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::Cartesia.UpdateVoiceRequestAccessEnumType)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Cartesia.UpdateVoiceRequestAccessEnumType?);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::Cartesia.UpdateVoiceRequestAccessEnumType? value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Cartesia.UpdateVoiceRequestAccessEnumTypeExtensions.ToValueString(value.Value));
+            }
+        }
+    }
+}

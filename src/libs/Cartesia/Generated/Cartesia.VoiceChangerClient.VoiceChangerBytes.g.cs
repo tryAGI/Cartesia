@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -49,22 +49,25 @@ namespace Cartesia
         /// Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation, but with a different voice.<br/>
         /// This endpoint is priced at 15 characters per second of input audio.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<byte[]> VoiceChangerBytesAsync(
-            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.VoiceChangerBytesRequest request,
+            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion = global::Cartesia.VoiceChangerBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await VoiceChangerBytesAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
 
                 request: request,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -77,15 +80,18 @@ namespace Cartesia
         /// Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation, but with a different voice.<br/>
         /// This endpoint is priced at 15 characters per second of input audio.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.IO.Stream> VoiceChangerBytesAsStreamAsync(
-            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.VoiceChangerBytesRequest request,
+            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion = global::Cartesia.VoiceChangerBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -493,15 +499,18 @@ namespace Cartesia
         /// Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation, but with a different voice.<br/>
         /// This endpoint is priced at 15 characters per second of input audio.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<byte[]>> VoiceChangerBytesAsResponseAsync(
-            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.VoiceChangerBytesRequest request,
+            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion = global::Cartesia.VoiceChangerBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -946,13 +955,18 @@ namespace Cartesia
         /// Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation, but with a different voice.<br/>
         /// This endpoint is priced at 15 characters per second of input audio.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="clip"></param>
         /// <param name="clipname"></param>
         /// <param name="voiceId"></param>
         /// <param name="outputFormatContainer"></param>
         /// <param name="outputFormatSampleRate"></param>
-        /// <param name="outputFormatEncoding"></param>
+        /// <param name="outputFormatEncoding">
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
+        /// </param>
         /// <param name="outputFormatBitRate">
         /// Required for `mp3` containers.
         /// </param>
@@ -960,7 +974,7 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<byte[]> VoiceChangerBytesAsync(
-            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion,
+            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion = global::Cartesia.VoiceChangerBytesCartesiaVersion.x20260814,
             byte[]? clip = default,
             string? clipname = default,
             string? voiceId = default,

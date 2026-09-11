@@ -24,19 +24,17 @@ namespace Cartesia
         public required bool Done { get; set; }
 
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
         public string? ContextId { get; set; }
 
         /// <summary>
-        /// Phoneme-level timing information.<br/>
-        /// Example: {"phonemes":["h","\u0259","l","o\u028A"],"start":[0.093,0.174,0.255,0.337],"end":[0.174,0.255,0.337,0.418]}
+        /// Phoneme-level timing information.
         /// </summary>
-        /// <example>{"phonemes":["h","\u0259","l","o\u028A"],"start":[0.093,0.174,0.255,0.337],"end":[0.174,0.255,0.337,0.418]}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("phoneme_timestamps")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.PhonemeTimestamps PhonemeTimestamps { get; set; }
+        public required global::Cartesia.TTSSSEPhonemeTimestampsEventPhonemeTimestamps PhonemeTimestamps { get; set; }
 
         /// <summary>
         /// HTTP-style status code.
@@ -58,8 +56,7 @@ namespace Cartesia
         /// Whether this is the final event for the request. Always `false` for phoneme_timestamps events.
         /// </param>
         /// <param name="phonemeTimestamps">
-        /// Phoneme-level timing information.<br/>
-        /// Example: {"phonemes":["h","\u0259","l","o\u028A"],"start":[0.093,0.174,0.255,0.337],"end":[0.174,0.255,0.337,0.418]}
+        /// Phoneme-level timing information.
         /// </param>
         /// <param name="statusCode">
         /// HTTP-style status code.
@@ -67,15 +64,13 @@ namespace Cartesia
         /// <param name="type">
         /// Event type identifier.
         /// </param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
-        /// </param>
+        /// <param name="contextId"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TTSSSEPhonemeTimestampsEvent(
             bool done,
-            global::Cartesia.PhonemeTimestamps phonemeTimestamps,
+            global::Cartesia.TTSSSEPhonemeTimestampsEventPhonemeTimestamps phonemeTimestamps,
             int statusCode,
             global::Cartesia.TTSSSEPhonemeTimestampsEventType type,
             string? contextId)

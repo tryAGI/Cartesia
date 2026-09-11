@@ -22,6 +22,13 @@ namespace Cartesia
         public string? NextPage { get; set; }
 
         /// <summary>
+        /// Whether there are more results available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool HasMore { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -33,6 +40,9 @@ namespace Cartesia
         /// <param name="data">
         /// The list of agent calls.
         /// </param>
+        /// <param name="hasMore">
+        /// Whether there are more results available.
+        /// </param>
         /// <param name="nextPage">
         /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of calls.
         /// </param>
@@ -41,10 +51,12 @@ namespace Cartesia
 #endif
         public GetCallsResponse(
             global::System.Collections.Generic.IList<global::Cartesia.AgentCall> data,
+            bool hasMore,
             string? nextPage)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
             this.NextPage = nextPage;
+            this.HasMore = hasMore;
         }
 
         /// <summary>

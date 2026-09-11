@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Paginated list of pronunciation dictionaries.
+    /// Paginated list of pronunciation dictionaries
     /// </summary>
     public sealed partial class PaginatedPronunciationDicts
     {
@@ -16,14 +16,14 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.PronunciationDict> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more pages of dictionaries.
+        /// Whether there are more dictionaries available
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
 
         /// <summary>
-        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of dictionaries.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -41,10 +41,10 @@ namespace Cartesia
         /// List of pronunciation dictionary objects
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more pages of dictionaries.
+        /// Whether there are more dictionaries available
         /// </param>
         /// <param name="nextPage">
-        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of dictionaries.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of data.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

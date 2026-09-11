@@ -18,7 +18,8 @@ namespace Cartesia
         public global::Cartesia.STTAutoFinalizeModel Model { get; set; }
 
         /// <summary>
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.STTEncodingJsonConverter))]
@@ -49,7 +50,8 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="STTAutoFinalizeWebSocketQueryParams" /> class.
         /// </summary>
         /// <param name="encoding">
-        /// The encoding format for audio data sent to the STT WebSocket.
+        /// Must match the actual encoding of your audio.<br/>
+        /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
         /// </param>
         /// <param name="sampleRate">
         /// Sample rate in Hz.

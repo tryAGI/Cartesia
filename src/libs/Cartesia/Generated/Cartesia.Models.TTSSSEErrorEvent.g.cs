@@ -5,7 +5,7 @@ namespace Cartesia
 {
     /// <summary>
     /// Error information for the TTS SSE request.<br/>
-    /// Example: {"type":"error","done":true,"title":"Invalid model","message":"The model is not valid, make sure it is a valid model ID.","error_code":"model_not_found","status_code":400,"doc_url":"https://docs.cartesia.ai/build-with-cartesia/tts-models/latest","request_id":"2ff8af53-4d38-479d-8287-58940f01c701","context_id":"50dc3b5e-5841-4aa1-9f94-60cfb9aead79"}
+    /// Example: {"type":"error","done":true,"title":"Invalid model","message":"The model is not valid, make sure it is a valid model ID.","error_code":"model_not_found","status_code":400,"doc_url":"https://docs.cartesia.ai/build-with-cartesia/tts-models/latest","request_id":"2ff8af53-4d38-479d-8287-58940f01c701"}
     /// </summary>
     public sealed partial class TTSSSEErrorEvent
     {

@@ -24,7 +24,7 @@ namespace Cartesia
         public required bool Done { get; set; }
 
         /// <summary>
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_id")]
         public string? ContextId { get; set; }
@@ -54,9 +54,7 @@ namespace Cartesia
         /// <param name="type">
         /// Event type identifier.
         /// </param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
-        /// </param>
+        /// <param name="contextId"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

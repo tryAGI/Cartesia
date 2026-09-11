@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// Default Value: wav
     /// </summary>
     public enum WAVOutputFormatContainer
     {

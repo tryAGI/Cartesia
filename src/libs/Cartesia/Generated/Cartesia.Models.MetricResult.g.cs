@@ -30,6 +30,12 @@ namespace Cartesia
         public required string MetricName { get; set; }
 
         /// <summary>
+        /// The display name of the metric, if available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metricDisplayName")]
+        public string? MetricDisplayName { get; set; }
+
+        /// <summary>
         /// A summary of the transcript of the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
@@ -55,13 +61,6 @@ namespace Cartesia
         [global::System.Text.Json.Serialization.JsonPropertyName("callId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallId { get; set; }
-
-        /// <summary>
-        /// The identifier of the deployment associated with the metric result.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deploymentId")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string DeploymentId { get; set; }
 
         /// <summary>
         /// The raw result of the metric in a string format.
@@ -130,9 +129,6 @@ namespace Cartesia
         /// <param name="callId">
         /// The identifier of the call associated with the metric result.
         /// </param>
-        /// <param name="deploymentId">
-        /// The identifier of the deployment associated with the metric result.
-        /// </param>
         /// <param name="result">
         /// The raw result of the metric in a string format.
         /// </param>
@@ -141,6 +137,9 @@ namespace Cartesia
         /// </param>
         /// <param name="createdAt">
         /// The UTC timestamp when the metric result was created.
+        /// </param>
+        /// <param name="metricDisplayName">
+        /// The display name of the metric, if available.
         /// </param>
         /// <param name="transcript">
         /// The transcript of the call.
@@ -164,10 +163,10 @@ namespace Cartesia
             string summary,
             string agentId,
             string callId,
-            string deploymentId,
             string result,
             global::Cartesia.AgentMetricResultStatus status,
             global::System.DateTime createdAt,
+            string? metricDisplayName,
             global::System.Collections.Generic.IList<global::Cartesia.AgentTranscript>? transcript,
             object? jsonResult,
             object? value,
@@ -176,11 +175,11 @@ namespace Cartesia
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.MetricId = metricId ?? throw new global::System.ArgumentNullException(nameof(metricId));
             this.MetricName = metricName ?? throw new global::System.ArgumentNullException(nameof(metricName));
+            this.MetricDisplayName = metricDisplayName;
             this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
             this.Transcript = transcript;
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
-            this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
             this.Result = result ?? throw new global::System.ArgumentNullException(nameof(result));
             this.JsonResult = jsonResult;
             this.Value = value;

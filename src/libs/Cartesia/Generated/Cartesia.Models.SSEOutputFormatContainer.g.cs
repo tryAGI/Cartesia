@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// Default Value: raw
     /// </summary>
     public enum SSEOutputFormatContainer
     {

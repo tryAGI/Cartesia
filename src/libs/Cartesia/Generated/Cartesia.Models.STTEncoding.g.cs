@@ -4,7 +4,8 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The encoding format for audio data sent to the STT WebSocket.
+    /// Must match the actual encoding of your audio.<br/>
+    /// For detailed guidance on each format, see [Audio Input](/build-with-cartesia/stt/audio-input).
     /// </summary>
     public enum STTEncoding
     {

@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    ///
+    /// Default Value: mp3
     /// </summary>
     public enum MP3OutputFormatContainer
     {

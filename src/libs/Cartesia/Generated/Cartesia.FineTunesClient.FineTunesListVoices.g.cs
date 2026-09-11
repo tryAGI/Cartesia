@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -52,7 +52,10 @@ namespace Cartesia
         /// <summary>
         /// List all voices created from a fine-tune
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="id"></param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
@@ -61,8 +64,8 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.PaginatedVoices> FineTunesListVoicesAsync(
-            global::Cartesia.FineTunesListVoicesCartesiaVersion cartesiaVersion,
             string id,
+            global::Cartesia.FineTunesListVoicesCartesiaVersion cartesiaVersion = global::Cartesia.FineTunesListVoicesCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -70,8 +73,8 @@ namespace Cartesia
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await FineTunesListVoicesAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
                 id: id,
+                cartesiaVersion: cartesiaVersion,
                 limit: limit,
                 startingAfter: startingAfter,
                 endingBefore: endingBefore,
@@ -84,7 +87,10 @@ namespace Cartesia
         /// <summary>
         /// List all voices created from a fine-tune
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="id"></param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
@@ -93,8 +99,8 @@ namespace Cartesia
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.PaginatedVoices>> FineTunesListVoicesAsResponseAsync(
-            global::Cartesia.FineTunesListVoicesCartesiaVersion cartesiaVersion,
             string id,
+            global::Cartesia.FineTunesListVoicesCartesiaVersion cartesiaVersion = global::Cartesia.FineTunesListVoicesCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,

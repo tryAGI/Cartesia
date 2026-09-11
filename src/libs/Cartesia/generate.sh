@@ -15,8 +15,9 @@ fetch_spec() {
 
 # OpenAPI spec: resolved from cartesia-ai/cartesia-python/.stats.yml (Stainless-hosted)
 
-# Cartesia spec is hosted on Stainless GCS with hash-based URLs that change each update.
-# We dynamically resolve the latest URL from cartesia-ai/cartesia-python/.stats.yml.
+# Cartesia historically exposed a Stainless-hosted aggregate spec through
+# cartesia-python/.stats.yml. Newer releases only expose an endpoint count there,
+# while the public docs still expose one complete OpenAPI fragment per endpoint.
 readonly stats_url="https://raw.githubusercontent.com/cartesia-ai/cartesia-python/main/.stats.yml"
 
 echo "Fetching latest spec URL from .stats.yml..."
@@ -25,11 +26,9 @@ openapi_url=$(fetch_spec "$stats_url" | sed -n 's/^openapi_spec_url:[[:space:]]*
 if [ -n "$openapi_url" ]; then
   echo "Spec URL: $openapi_url"
   fetch_spec "$openapi_url" -o openapi.yaml
-elif [ -f openapi.yaml ]; then
-  echo "WARNING: .stats.yml does not expose openapi_spec_url; using the checked-in spec."
 else
-  echo "ERROR: .stats.yml does not expose openapi_spec_url and no checked-in spec exists."
-  exit 1
+  echo ".stats.yml does not expose openapi_spec_url; assembling the latest public API fragments."
+  python3 fetch-openapi.py openapi.yaml --fallback-spec openapi.yaml
 fi
 
 # Cartesia documents Sonic 3.6 as generally available, alongside its immutable

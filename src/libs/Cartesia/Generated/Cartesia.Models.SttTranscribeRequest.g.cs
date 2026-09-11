@@ -9,37 +9,40 @@ namespace Cartesia
     public sealed partial class SttTranscribeRequest
     {
         /// <summary>
-        ///
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required byte[] File { get; set; }
 
         /// <summary>
-        ///
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Filename { get; set; }
 
         /// <summary>
-        /// Models that support batch speech-to-text transcription.<br/>
-        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+        /// ID of the model to use for transcription. Must be in the `ink-whisper` family of models.<br/>
+        /// Example: ink-whisper
         /// </summary>
+        /// <example>ink-whisper</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.STTBatchModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.STTBatchModel Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.SttTranscribeRequestModelJsonConverter))]
+        public global::Cartesia.SttTranscribeRequestModel Model { get; set; }
 
         /// <summary>
-        /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+        /// The language of the input audio in ISO-639-1 format<br/>
+        /// Default Value: en
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.SttTranscribeRequestLanguageJsonConverter))]
         public global::Cartesia.SttTranscribeRequestLanguage? Language { get; set; }
 
         /// <summary>
-        /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timestamp_granularities[]")]
         public global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? TimestampGranularities { get; set; }
@@ -53,25 +56,30 @@ namespace Cartesia
         /// <summary>
         /// Initializes a new instance of the <see cref="SttTranscribeRequest" /> class.
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="filename"></param>
+        /// <param name="file">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
+        /// <param name="filename">
+        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
         /// <param name="model">
-        /// Models that support batch speech-to-text transcription.<br/>
-        /// See [the docs](https://docs.cartesia.ai/api-reference/stt/transcribe#body-model) for all options.
+        /// ID of the model to use for transcription. Must be in the `ink-whisper` family of models.<br/>
+        /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format. Defaults to `en`.
+        /// The language of the input audio in ISO-639-1 format<br/>
+        /// Default Value: en
         /// </param>
-        /// <param name="timestampGranularities">
-        /// The timestamp granularities to populate for this transcription. Currently only `word` level timestamps are supported.
-        /// </param>
+        /// <param name="timestampGranularities"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SttTranscribeRequest(
             byte[] file,
             string filename,
-            global::Cartesia.STTBatchModel model,
+            global::Cartesia.SttTranscribeRequestModel model,
             global::Cartesia.SttTranscribeRequestLanguage? language,
             global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>? timestampGranularities)
         {

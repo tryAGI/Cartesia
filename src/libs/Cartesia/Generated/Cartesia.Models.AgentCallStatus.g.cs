@@ -11,19 +11,19 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        Active,
-        /// <summary>
-        ///
-        /// </summary>
-        Cancelled,
-        /// <summary>
-        ///
-        /// </summary>
         Completed,
         /// <summary>
         ///
         /// </summary>
+        Created,
+        /// <summary>
+        ///
+        /// </summary>
         Failed,
+        /// <summary>
+        ///
+        /// </summary>
+        Started,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Cartesia
         {
             return value switch
             {
-                AgentCallStatus.Active => "active",
-                AgentCallStatus.Cancelled => "cancelled",
                 AgentCallStatus.Completed => "completed",
+                AgentCallStatus.Created => "created",
                 AgentCallStatus.Failed => "failed",
+                AgentCallStatus.Started => "started",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Cartesia
         {
             return value switch
             {
-                "active" => AgentCallStatus.Active,
-                "cancelled" => AgentCallStatus.Cancelled,
                 "completed" => AgentCallStatus.Completed,
+                "created" => AgentCallStatus.Created,
                 "failed" => AgentCallStatus.Failed,
+                "started" => AgentCallStatus.Started,
                 _ => null,
             };
         }

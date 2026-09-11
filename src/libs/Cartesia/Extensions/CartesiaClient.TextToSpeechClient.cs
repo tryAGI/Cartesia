@@ -9,9 +9,9 @@ namespace Cartesia;
 
 public sealed partial class CartesiaClient : ITextToSpeechClient
 {
-    private const TTSModel DefaultTtsModel = TTSModel.Sonic36;
-    private const TtsBytesCartesiaVersion DefaultTtsBytesVersion = TtsBytesCartesiaVersion.x20251104;
-    private const TtsSseCartesiaVersion DefaultTtsSseVersion = TtsSseCartesiaVersion.x20251104;
+    private const TTSModelID DefaultTtsModel = TTSModelID.Sonic36;
+    private const TtsBytesCartesiaVersion DefaultTtsBytesVersion = TtsBytesCartesiaVersion.x20260814;
+    private const TtsSseCartesiaVersion DefaultTtsSseVersion = TtsSseCartesiaVersion.x20260814;
     private const int DefaultSampleRate = 44100;
     private const int DefaultBitRate = 128000;
     private TextToSpeechClientMetadata? _textToSpeechMetadata;
@@ -47,8 +47,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
             RawRepresentation = request,
             AdditionalProperties = CreateResponseProperties(
                 modelId: request.ModelId.ToValueString(),
-                voiceId: request.Voice.Id,
-                language: request.Language?.ToValueString(),
+                voiceId: GetVoiceId(request.Voice),
+                language: request.Locale ?? request.Language,
                 mediaType: GetMediaType(request.OutputFormat)),
         };
     }
@@ -73,8 +73,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
             RawRepresentation = request,
             AdditionalProperties = CreateResponseProperties(
                 modelId: modelId,
-                voiceId: request.Voice.Id,
-                language: request.Language?.ToValueString(),
+                voiceId: GetVoiceId(request.Voice),
+                language: request.Locale ?? request.Language,
                 mediaType: mediaType,
                 contextId: request.ContextId),
         };
@@ -96,8 +96,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
                     RawRepresentation = chunk,
                     AdditionalProperties = CreateResponseProperties(
                         modelId: modelId,
-                        voiceId: request.Voice.Id,
-                        language: request.Language?.ToValueString(),
+                        voiceId: GetVoiceId(request.Voice),
+                        language: request.Locale ?? request.Language,
                         mediaType: mediaType,
                         contextId: chunk.ContextId ?? request.ContextId,
                         statusCode: chunk.StatusCode,
@@ -117,8 +117,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
                     RawRepresentation = timestamps,
                     AdditionalProperties = CreateResponseProperties(
                         modelId: modelId,
-                        voiceId: request.Voice.Id,
-                        language: request.Language?.ToValueString(),
+                        voiceId: GetVoiceId(request.Voice),
+                        language: request.Locale ?? request.Language,
                         mediaType: mediaType,
                         contextId: timestamps.ContextId ?? request.ContextId,
                         statusCode: timestamps.StatusCode),
@@ -137,8 +137,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
                     RawRepresentation = phonemeTimestamps,
                     AdditionalProperties = CreateResponseProperties(
                         modelId: modelId,
-                        voiceId: request.Voice.Id,
-                        language: request.Language?.ToValueString(),
+                        voiceId: GetVoiceId(request.Voice),
+                        language: request.Locale ?? request.Language,
                         mediaType: mediaType,
                         contextId: phonemeTimestamps.ContextId ?? request.ContextId,
                         statusCode: phonemeTimestamps.StatusCode),
@@ -157,8 +157,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
                     RawRepresentation = error,
                     AdditionalProperties = CreateResponseProperties(
                         modelId: modelId,
-                        voiceId: request.Voice.Id,
-                        language: request.Language?.ToValueString(),
+                        voiceId: GetVoiceId(request.Voice),
+                        language: request.Locale ?? request.Language,
                         mediaType: mediaType,
                         statusCode: error.StatusCode),
                 };
@@ -176,8 +176,8 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
                     RawRepresentation = done,
                     AdditionalProperties = CreateResponseProperties(
                         modelId: modelId,
-                        voiceId: request.Voice.Id,
-                        language: request.Language?.ToValueString(),
+                        voiceId: GetVoiceId(request.Voice),
+                        language: request.Locale ?? request.Language,
                         mediaType: mediaType,
                         contextId: done.ContextId ?? request.ContextId,
                         statusCode: done.StatusCode),
@@ -248,21 +248,24 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
     private static void ApplyCommonOptions(TTSRequest request, TextToSpeechOptions? options)
     {
         request.ModelId = ResolveModel(options?.ModelId, request.ModelId);
-        request.Voice = options?.VoiceId is { Length: > 0 } ? CreateVoice(options) : request.Voice ?? CreateVoice(options);
-        request.Language = options?.Language is { Length: > 0 } ? ResolveLanguage(options.Language) : request.Language;
+        request.Voice = options?.VoiceId is { Length: > 0 } || !request.Voice.Validate()
+            ? CreateVoice(options)
+            : request.Voice;
+        ApplyLocaleAndVoiceControls(request, options);
         request.GenerationConfig = CreateGenerationConfig(options, request.GenerationConfig);
         request.OutputFormat = request.OutputFormat.Object is null || options?.AudioFormat is { Length: > 0 }
             ? CreateOutputFormat(options)
             : request.OutputFormat;
-        request.Save ??= options.GetBool(CartesiaTextToSpeechPropertyNames.Save);
         request.PronunciationDictId ??= options.GetString(CartesiaTextToSpeechPropertyNames.PronunciationDictionaryId);
     }
 
     private static void ApplyCommonOptions(TTSSSERequest request, TextToSpeechOptions? options)
     {
         request.ModelId = ResolveModel(options?.ModelId, request.ModelId);
-        request.Voice = options?.VoiceId is { Length: > 0 } ? CreateVoice(options) : request.Voice ?? CreateVoice(options);
-        request.Language = options?.Language is { Length: > 0 } ? ResolveLanguage(options.Language) : request.Language;
+        request.Voice = options?.VoiceId is { Length: > 0 } || !request.Voice.Validate()
+            ? CreateVoice(options)
+            : request.Voice;
+        ApplyLocaleAndVoiceControls(request, options);
         request.GenerationConfig = CreateGenerationConfig(options, request.GenerationConfig);
         request.OutputFormat ??= CreateSseOutputFormat(options);
         request.PronunciationDictId ??= options.GetString(CartesiaTextToSpeechPropertyNames.PronunciationDictionaryId);
@@ -275,56 +278,87 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
             throw new ArgumentException("Cartesia TTS requires TextToSpeechOptions.VoiceId to be set.", nameof(options));
         }
 
-        return new TTSRequestVoiceSpecifier
-        {
-            Mode = TTSRequestVoiceSpecifierMode.Id,
-            Id = voiceId,
-        };
+        return voiceId;
     }
 
-    private static TTSModel ResolveModel(string? modelId, TTSModel defaultModel = DefaultTtsModel)
+    private static TTSModelID ResolveModel(string? modelId, TTSModelID defaultModel = DefaultTtsModel)
     {
         if (modelId is not { Length: > 0 })
         {
             return defaultModel;
         }
 
-        return TTSModelExtensions.ToEnum(modelId)
+        return TTSModelIDExtensions.ToEnum(modelId)
             ?? throw new ArgumentException($"Unknown Cartesia TTS model '{modelId}'.", nameof(modelId));
     }
 
-    private static SupportedLanguage? ResolveLanguage(string? language)
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Globalization",
+        "CA1308:Normalize strings to uppercase",
+        Justification = "BCP-47 language subtags are conventionally lowercase.")]
+    private static string? NormalizeLocale(string? locale)
     {
-        if (language is not { Length: > 0 })
+        if (locale is not { Length: > 0 })
         {
             return null;
         }
 
-        var normalized = language.Replace('_', '-');
-        foreach (var supportedLanguage in Enum.GetValues<SupportedLanguage>())
+        var parts = locale.Replace('_', '-').Split('-', StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length switch
         {
-            if (string.Equals(
-                supportedLanguage.ToValueString(),
-                normalized,
-                StringComparison.OrdinalIgnoreCase))
-            {
-                return supportedLanguage;
-            }
+            0 => null,
+            1 => parts[0].ToLowerInvariant(),
+            _ => $"{parts[0].ToLowerInvariant()}-{parts[1].ToUpperInvariant()}",
+        };
+    }
+
+    private static void ApplyLocaleAndVoiceControls(TTSRequest request, TextToSpeechOptions? options)
+    {
+        var locale = options.GetString(CartesiaTextToSpeechPropertyNames.Locale) ?? options?.Language;
+        if (locale is { Length: > 0 })
+        {
+            request.Locale = NormalizeLocale(locale);
+            request.Language = null;
         }
 
-        var baseLanguage = normalized.Split('-')[0];
-        foreach (var supportedLanguage in Enum.GetValues<SupportedLanguage>())
+        request.Accent ??= options.GetString(CartesiaTextToSpeechPropertyNames.Accent);
+        request.Normalization ??= options.GetString(CartesiaTextToSpeechPropertyNames.Normalization);
+        EnsureLanguageAndLocaleAreExclusive(request.Language, request.Locale, options);
+    }
+
+    private static void ApplyLocaleAndVoiceControls(TTSSSERequest request, TextToSpeechOptions? options)
+    {
+        var locale = options.GetString(CartesiaTextToSpeechPropertyNames.Locale) ?? options?.Language;
+        if (locale is { Length: > 0 })
         {
-            if (string.Equals(
-                supportedLanguage.ToValueString(),
-                baseLanguage,
-                StringComparison.OrdinalIgnoreCase))
-            {
-                return supportedLanguage;
-            }
+            request.Locale = NormalizeLocale(locale);
+            request.Language = null;
         }
 
-        throw new ArgumentException($"Unknown Cartesia TTS language '{language}'.", nameof(language));
+        request.Accent ??= options.GetString(CartesiaTextToSpeechPropertyNames.Accent);
+        request.Normalization ??= options.GetString(CartesiaTextToSpeechPropertyNames.Normalization);
+        EnsureLanguageAndLocaleAreExclusive(request.Language, request.Locale, options);
+    }
+
+    private static void EnsureLanguageAndLocaleAreExclusive(
+        string? language,
+        string? locale,
+        TextToSpeechOptions? options)
+    {
+        if (language is { Length: > 0 } && locale is { Length: > 0 })
+        {
+            throw new ArgumentException("Cartesia TTS accepts either language or locale, never both.", nameof(options));
+        }
+    }
+
+    private static string GetVoiceId(TTSRequestVoiceSpecifier voice)
+    {
+        if (voice.TryPickTTSRequestVoiceId(out var voiceId))
+        {
+            return voiceId;
+        }
+
+        return voice.PickTTSRequestVoiceObject().Id;
     }
 
     private static GenerationConfig? CreateGenerationConfig(
@@ -364,19 +398,16 @@ public sealed partial class CartesiaClient : ITextToSpeechClient
         {
             "mp3" => new MP3OutputFormat
             {
-                Container = MP3OutputFormatContainer.Mp3,
                 SampleRate = sampleRate,
                 BitRate = options.GetInt(CartesiaTextToSpeechPropertyNames.BitRate) ?? DefaultBitRate,
             },
             "wav" => new WAVOutputFormat
             {
-                Container = WAVOutputFormatContainer.Wav,
                 Encoding = RawEncoding.PcmS16le,
                 SampleRate = sampleRate,
             },
             "raw" or "pcm_s16le" => new RawOutputFormat
             {
-                Container = RawOutputFormatContainer.Raw,
                 Encoding = RawEncoding.PcmS16le,
                 SampleRate = sampleRate,
             },

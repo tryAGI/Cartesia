@@ -1,72 +1,86 @@
 #nullable enable
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace Cartesia
 {
     public partial interface IVoicesClient
     {
         /// <summary>
         /// Localize Voice<br/>
-        /// Create a new voice from an existing voice localized to a new language and dialect.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesLocalizeAsync(
-            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.LocalizeVoiceRequest request,
+            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion = global::Cartesia.VoicesLocalizeCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Localize Voice<br/>
-        /// Create a new voice from an existing voice localized to a new language and dialect.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.VoiceMetadata>> VoicesLocalizeAsResponseAsync(
-            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion,
 
             global::Cartesia.LocalizeVoiceRequest request,
+            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion = global::Cartesia.VoicesLocalizeCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Localize Voice<br/>
-        /// Create a new voice from an existing voice localized to a new language and dialect.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="voiceId">
-        /// The ID of the voice to localize.
+        /// ID of the existing voice you want to localize.
         /// </param>
         /// <param name="name">
-        /// The name of the new localized voice.
+        /// Name for the newly localized voice.
         /// </param>
         /// <param name="description">
-        /// The description of the new localized voice.
+        /// Description for the newly localized voice.
         /// </param>
-        /// <param name="language">
-        /// Target language to localize the voice to.<br/>
-        /// Options: English (en), German (de), Spanish (es), French (fr), Japanese (ja), Portuguese (pt), Chinese (zh), Hindi (hi), Italian (it), Korean (ko), Dutch (nl), Polish (pl), Russian (ru), Swedish (sv), Turkish (tr).
+        /// <param name="tagline">
+        /// Short tagline for the newly localized voice.
         /// </param>
-        /// <param name="originalSpeakerGender"></param>
-        /// <param name="dialect">
-        /// The dialect to localize to. Only supported for English (`en`), Spanish (`es`), Portuguese (`pt`), and French (`fr`).
+        /// <param name="accent">
+        /// The accent to localize into. Get ids from [GET /accents](/api-reference/accents/list) with `is_localizable=true`.
+        /// </param>
+        /// <param name="access">
+        /// Controls who can access this resource. Prefer `"public"` | `"private"`. Deprecated nested `{ "type": "public" | "private" }` is still accepted.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Cartesia.VoiceMetadata> VoicesLocalizeAsync(
-            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion,
             string voiceId,
             string name,
-            string description,
-            global::Cartesia.LocalizeTargetLanguage language,
-            global::Cartesia.Gender originalSpeakerGender,
-            global::Cartesia.LocalizeDialect? dialect = default,
+            global::Cartesia.LocalizeVoiceAccent accent,
+            global::Cartesia.VoicesLocalizeCartesiaVersion cartesiaVersion = global::Cartesia.VoicesLocalizeCartesiaVersion.x20260814,
+            string? description = default,
+            string? tagline = default,
+#pragma warning disable CS0618 // Type or member is obsolete
+            global::Cartesia.OneOf<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>? access = default,
+#pragma warning disable CS0618 // Type or member is obsolete
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

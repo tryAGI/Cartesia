@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -35,6 +35,7 @@ namespace Cartesia
             ref bool? isOwner,
             ref global::Cartesia.GenderPresentation? gender,
             ref string? language,
+            ref bool? includeArchived,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -47,6 +48,7 @@ namespace Cartesia
             bool? isOwner,
             global::Cartesia.GenderPresentation? gender,
             string? language,
+            bool? includeArchived,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -60,7 +62,10 @@ namespace Cartesia
         /// <summary>
         /// List Voices
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -68,12 +73,13 @@ namespace Cartesia
         /// <param name="isOwner"></param>
         /// <param name="gender"></param>
         /// <param name="language"></param>
+        /// <param name="includeArchived"></param>
         /// <param name="expand"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.GetVoicesResponse> VoicesListAsync(
-            global::Cartesia.VoicesListCartesiaVersion cartesiaVersion,
+            global::Cartesia.VoicesListCartesiaVersion cartesiaVersion = global::Cartesia.VoicesListCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -81,6 +87,7 @@ namespace Cartesia
             bool? isOwner = default,
             global::Cartesia.GenderPresentation? gender = default,
             string? language = default,
+            bool? includeArchived = default,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -94,6 +101,7 @@ namespace Cartesia
                 isOwner: isOwner,
                 gender: gender,
                 language: language,
+                includeArchived: includeArchived,
                 expand: expand,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -104,7 +112,10 @@ namespace Cartesia
         /// <summary>
         /// List Voices
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="limit"></param>
         /// <param name="startingAfter"></param>
         /// <param name="endingBefore"></param>
@@ -112,12 +123,13 @@ namespace Cartesia
         /// <param name="isOwner"></param>
         /// <param name="gender"></param>
         /// <param name="language"></param>
+        /// <param name="includeArchived"></param>
         /// <param name="expand"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.GetVoicesResponse>> VoicesListAsResponseAsync(
-            global::Cartesia.VoicesListCartesiaVersion cartesiaVersion,
+            global::Cartesia.VoicesListCartesiaVersion cartesiaVersion = global::Cartesia.VoicesListCartesiaVersion.x20260814,
             int? limit = default,
             string? startingAfter = default,
             string? endingBefore = default,
@@ -125,6 +137,7 @@ namespace Cartesia
             bool? isOwner = default,
             global::Cartesia.GenderPresentation? gender = default,
             string? language = default,
+            bool? includeArchived = default,
             global::System.Collections.Generic.IList<global::Cartesia.VoiceExpandOptions>? expand = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -141,6 +154,7 @@ namespace Cartesia
                 isOwner: ref isOwner,
                 gender: ref gender,
                 language: ref language,
+                includeArchived: ref includeArchived,
                 expand: expand);
 
 
@@ -177,6 +191,7 @@ namespace Cartesia
                                 .AddOptionalParameter("is_owner", isOwner?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("gender", gender?.ToValueString())
                                 .AddOptionalParameter("language", language)
+                                .AddOptionalParameter("include_archived", includeArchived?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("expand[]", expand, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -230,6 +245,7 @@ namespace Cartesia
                     isOwner: isOwner,
                     gender: gender,
                     language: language,
+                    includeArchived: includeArchived,
                     expand: expand);
 
                 global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);

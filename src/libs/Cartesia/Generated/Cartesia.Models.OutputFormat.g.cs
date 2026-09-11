@@ -13,43 +13,6 @@ namespace Cartesia
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; init; }
-#else
-        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RawOutputFormat))]
-#endif
-        public bool IsRawOutputFormat => RawOutputFormat != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickRawOutputFormat(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Cartesia.RawOutputFormat? value)
-        {
-            value = RawOutputFormat;
-            return IsRawOutputFormat;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Cartesia.RawOutputFormat PickRawOutputFormat() => IsRawOutputFormat
-            ? RawOutputFormat!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'RawOutputFormat' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
         public global::Cartesia.WAVOutputFormat? WAVOutputFormat { get; init; }
 #else
         public global::Cartesia.WAVOutputFormat? WAVOutputFormat { get; }
@@ -119,29 +82,43 @@ namespace Cartesia
         public global::Cartesia.MP3OutputFormat PickMP3OutputFormat() => IsMP3OutputFormat
             ? MP3OutputFormat!
             : throw new global::System.InvalidOperationException($"Expected union variant 'MP3OutputFormat' but the value was {ToString()}.");
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator OutputFormat(global::Cartesia.RawOutputFormat value) => new OutputFormat((global::Cartesia.RawOutputFormat?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Cartesia.RawOutputFormat?(OutputFormat @this) => @this.RawOutputFormat;
+#if NET6_0_OR_GREATER
+        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; init; }
+#else
+        public global::Cartesia.RawOutputFormat? RawOutputFormat { get; }
+#endif
 
         /// <summary>
         ///
         /// </summary>
-        public OutputFormat(global::Cartesia.RawOutputFormat? value)
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RawOutputFormat))]
+#endif
+        public bool IsRawOutputFormat => RawOutputFormat != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickRawOutputFormat(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Cartesia.RawOutputFormat? value)
         {
-            RawOutputFormat = value;
+            value = RawOutputFormat;
+            return IsRawOutputFormat;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static OutputFormat FromRawOutputFormat(global::Cartesia.RawOutputFormat? value) => new OutputFormat(value);
-
+        public global::Cartesia.RawOutputFormat PickRawOutputFormat() => IsRawOutputFormat
+            ? RawOutputFormat!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RawOutputFormat' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -191,33 +168,56 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator OutputFormat(global::Cartesia.RawOutputFormat value) => new OutputFormat((global::Cartesia.RawOutputFormat?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Cartesia.RawOutputFormat?(OutputFormat @this) => @this.RawOutputFormat;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public OutputFormat(global::Cartesia.RawOutputFormat? value)
+        {
+            RawOutputFormat = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static OutputFormat FromRawOutputFormat(global::Cartesia.RawOutputFormat? value) => new OutputFormat(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public OutputFormat(
-            global::Cartesia.RawOutputFormat? rawOutputFormat,
             global::Cartesia.WAVOutputFormat? wAVOutputFormat,
-            global::Cartesia.MP3OutputFormat? mP3OutputFormat
+            global::Cartesia.MP3OutputFormat? mP3OutputFormat,
+            global::Cartesia.RawOutputFormat? rawOutputFormat
             )
         {
-            RawOutputFormat = rawOutputFormat;
             WAVOutputFormat = wAVOutputFormat;
             MP3OutputFormat = mP3OutputFormat;
+            RawOutputFormat = rawOutputFormat;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            RawOutputFormat as object ??
             MP3OutputFormat as object ??
-            WAVOutputFormat as object ??
-            RawOutputFormat as object
+            WAVOutputFormat as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            RawOutputFormat?.ToString() ??
             WAVOutputFormat?.ToString() ??
-            MP3OutputFormat?.ToString()
+            MP3OutputFormat?.ToString() ??
+            RawOutputFormat?.ToString()
             ;
 
         /// <summary>
@@ -225,16 +225,16 @@ namespace Cartesia
         /// </summary>
         public bool Validate()
         {
-            return IsRawOutputFormat && !IsWAVOutputFormat && !IsMP3OutputFormat || !IsRawOutputFormat && IsWAVOutputFormat && !IsMP3OutputFormat || !IsRawOutputFormat && !IsWAVOutputFormat && IsMP3OutputFormat;
+            return IsWAVOutputFormat && !IsMP3OutputFormat && !IsRawOutputFormat || !IsWAVOutputFormat && IsMP3OutputFormat && !IsRawOutputFormat || !IsWAVOutputFormat && !IsMP3OutputFormat && IsRawOutputFormat;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.RawOutputFormat, TResult>? rawOutputFormat = null,
             global::System.Func<global::Cartesia.WAVOutputFormat, TResult>? wAVOutputFormat = null,
             global::System.Func<global::Cartesia.MP3OutputFormat, TResult>? mP3OutputFormat = null,
+            global::System.Func<global::Cartesia.RawOutputFormat, TResult>? rawOutputFormat = null,
             bool validate = true)
         {
             if (validate)
@@ -242,17 +242,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsRawOutputFormat && rawOutputFormat != null)
-            {
-                return rawOutputFormat(RawOutputFormat!);
-            }
-            else if (IsWAVOutputFormat && wAVOutputFormat != null)
+            if (IsWAVOutputFormat && wAVOutputFormat != null)
             {
                 return wAVOutputFormat(WAVOutputFormat!);
             }
             else if (IsMP3OutputFormat && mP3OutputFormat != null)
             {
                 return mP3OutputFormat(MP3OutputFormat!);
+            }
+            else if (IsRawOutputFormat && rawOutputFormat != null)
+            {
+                return rawOutputFormat(RawOutputFormat!);
             }
 
             return default(TResult);
@@ -262,11 +262,11 @@ namespace Cartesia
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
-
             global::System.Action<global::Cartesia.WAVOutputFormat>? wAVOutputFormat = null,
 
             global::System.Action<global::Cartesia.MP3OutputFormat>? mP3OutputFormat = null,
+
+            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
             bool validate = true)
         {
             if (validate)
@@ -274,17 +274,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsRawOutputFormat)
-            {
-                rawOutputFormat?.Invoke(RawOutputFormat!);
-            }
-            else if (IsWAVOutputFormat)
+            if (IsWAVOutputFormat)
             {
                 wAVOutputFormat?.Invoke(WAVOutputFormat!);
             }
             else if (IsMP3OutputFormat)
             {
                 mP3OutputFormat?.Invoke(MP3OutputFormat!);
+            }
+            else if (IsRawOutputFormat)
+            {
+                rawOutputFormat?.Invoke(RawOutputFormat!);
             }
         }
 
@@ -292,9 +292,9 @@ namespace Cartesia
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
             global::System.Action<global::Cartesia.WAVOutputFormat>? wAVOutputFormat = null,
             global::System.Action<global::Cartesia.MP3OutputFormat>? mP3OutputFormat = null,
+            global::System.Action<global::Cartesia.RawOutputFormat>? rawOutputFormat = null,
             bool validate = true)
         {
             if (validate)
@@ -302,17 +302,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsRawOutputFormat)
-            {
-                rawOutputFormat?.Invoke(RawOutputFormat!);
-            }
-            else if (IsWAVOutputFormat)
+            if (IsWAVOutputFormat)
             {
                 wAVOutputFormat?.Invoke(WAVOutputFormat!);
             }
             else if (IsMP3OutputFormat)
             {
                 mP3OutputFormat?.Invoke(MP3OutputFormat!);
+            }
+            else if (IsRawOutputFormat)
+            {
+                rawOutputFormat?.Invoke(RawOutputFormat!);
             }
         }
 
@@ -323,12 +323,12 @@ namespace Cartesia
         {
             var fields = new object?[]
             {
-                RawOutputFormat,
-                typeof(global::Cartesia.RawOutputFormat),
                 WAVOutputFormat,
                 typeof(global::Cartesia.WAVOutputFormat),
                 MP3OutputFormat,
                 typeof(global::Cartesia.MP3OutputFormat),
+                RawOutputFormat,
+                typeof(global::Cartesia.RawOutputFormat),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -345,9 +345,9 @@ namespace Cartesia
         public bool Equals(OutputFormat other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.RawOutputFormat?>.Default.Equals(RawOutputFormat, other.RawOutputFormat) &&
                 global::System.Collections.Generic.EqualityComparer<global::Cartesia.WAVOutputFormat?>.Default.Equals(WAVOutputFormat, other.WAVOutputFormat) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.MP3OutputFormat?>.Default.Equals(MP3OutputFormat, other.MP3OutputFormat)
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.MP3OutputFormat?>.Default.Equals(MP3OutputFormat, other.MP3OutputFormat) &&
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.RawOutputFormat?>.Default.Equals(RawOutputFormat, other.RawOutputFormat)
                 ;
         }
 

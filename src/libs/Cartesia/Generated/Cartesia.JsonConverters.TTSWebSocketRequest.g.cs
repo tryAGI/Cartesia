@@ -56,8 +56,6 @@ namespace Cartesia.JsonConverters
             if (__jsonProps.Contains("transcript")) __score0++;
             if (__jsonProps.Contains("use_normalized_timestamps")) __score0++;
             if (__jsonProps.Contains("voice")) __score0++;
-            if (__jsonProps.Contains("voice.id")) __score0++;
-            if (__jsonProps.Contains("voice.mode")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("cancel")) __score1++;
             if (__jsonProps.Contains("context_id")) __score1++;

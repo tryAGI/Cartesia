@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Paginated list of files in a dataset.
+    /// Paginated list of files in a dataset
     /// </summary>
     public sealed partial class PaginatedDatasetFiles
     {
@@ -16,14 +16,14 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.DatasetFile> Data { get; set; }
 
         /// <summary>
-        /// Whether there are more pages of files.
+        /// Whether there are more files available
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool HasMore { get; set; }
 
         /// <summary>
-        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of files.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("next_page")]
         public string? NextPage { get; set; }
@@ -41,10 +41,10 @@ namespace Cartesia
         /// List of file objects
         /// </param>
         /// <param name="hasMore">
-        /// Whether there are more pages of files.
+        /// Whether there are more files available
         /// </param>
         /// <param name="nextPage">
-        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of files.
+        /// An ID that can be passed as `starting_after` or `ending_before` to get the next page of data.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

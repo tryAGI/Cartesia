@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -45,34 +45,27 @@ namespace Cartesia
 
         /// <summary>
         /// Infill (Bytes)<br/>
-        /// Infill (Bytes).<br/>
-        /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
-        /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
-        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
-        /// As with all generative models, there's some inherent variability, but here's some tips we recommend to get the best results from infill:<br/>
-        /// - Use longer infill transcripts<br/>
-        ///   - This gives the model more flexibility to adapt to the rest of the audio<br/>
-        /// - Target natural pauses in the audio when deciding where to clip<br/>
-        ///   - This means you don't need word-level timestamps to be as precise<br/>
-        /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
-        ///   - This helps the model generate more natural transitions
+        /// Generate audio that smoothly connects two existing audio segments
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<byte[]> InfillBytesAsync(
-            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.InfillBytesRequest request,
+            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion = global::Cartesia.InfillBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await InfillBytesAsResponseAsync(
-                cartesiaVersion: cartesiaVersion,
 
                 request: request,
+                cartesiaVersion: cartesiaVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -81,27 +74,20 @@ namespace Cartesia
         }
         /// <summary>
         /// Infill (Bytes)<br/>
-        /// Infill (Bytes).<br/>
-        /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
-        /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
-        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
-        /// As with all generative models, there's some inherent variability, but here's some tips we recommend to get the best results from infill:<br/>
-        /// - Use longer infill transcripts<br/>
-        ///   - This gives the model more flexibility to adapt to the rest of the audio<br/>
-        /// - Target natural pauses in the audio when deciding where to clip<br/>
-        ///   - This means you don't need word-level timestamps to be as precise<br/>
-        /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
-        ///   - This helps the model generate more natural transitions
+        /// Generate audio that smoothly connects two existing audio segments
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.IO.Stream> InfillBytesAsStreamAsync(
-            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.InfillBytesRequest request,
+            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion = global::Cartesia.InfillBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -270,7 +256,7 @@ namespace Cartesia
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.Language ?? string.Empty),
+                                    content: new global::System.Net.Http.StringContent((request.Language).HasValue ? (request.Language).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"language\"");
 
                             }
@@ -290,12 +276,36 @@ namespace Cartesia
                                     name: "\"voice_id\"");
 
                             }
-                            if (request.OutputFormat != default)
+                            if (request.OutputFormatContainer != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.OutputFormat.ToString() ?? string.Empty),
-                                    name: "\"output_format\"");
+                                    content: new global::System.Net.Http.StringContent((request.OutputFormatContainer).HasValue ? (request.OutputFormatContainer).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"output_format[container]\"");
+
+                            }
+                            if (request.OutputFormatSampleRate != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.OutputFormatSampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"output_format[sample_rate]\"");
+
+                            }
+                            if (request.OutputFormatEncoding != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.OutputFormatEncoding).HasValue ? (request.OutputFormatEncoding).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"output_format[encoding]\"");
+
+                            }
+                            if (request.OutputFormatBitRate != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.OutputFormatBitRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"output_format[bit_rate]\"");
 
                             }
 
@@ -547,27 +557,20 @@ namespace Cartesia
         }
         /// <summary>
         /// Infill (Bytes)<br/>
-        /// Infill (Bytes).<br/>
-        /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
-        /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
-        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
-        /// As with all generative models, there's some inherent variability, but here's some tips we recommend to get the best results from infill:<br/>
-        /// - Use longer infill transcripts<br/>
-        ///   - This gives the model more flexibility to adapt to the rest of the audio<br/>
-        /// - Target natural pauses in the audio when deciding where to clip<br/>
-        ///   - This means you don't need word-level timestamps to be as precise<br/>
-        /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
-        ///   - This helps the model generate more natural transitions
+        /// Generate audio that smoothly connects two existing audio segments
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<byte[]>> InfillBytesAsResponseAsync(
-            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion,
 
             global::Cartesia.InfillBytesRequest request,
+            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion = global::Cartesia.InfillBytesCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -736,7 +739,7 @@ namespace Cartesia
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.Language ?? string.Empty),
+                                    content: new global::System.Net.Http.StringContent((request.Language).HasValue ? (request.Language).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"language\"");
 
                             }
@@ -756,12 +759,36 @@ namespace Cartesia
                                     name: "\"voice_id\"");
 
                             }
-                            if (request.OutputFormat != default)
+                            if (request.OutputFormatContainer != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.OutputFormat.ToString() ?? string.Empty),
-                                    name: "\"output_format\"");
+                                    content: new global::System.Net.Http.StringContent((request.OutputFormatContainer).HasValue ? (request.OutputFormatContainer).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"output_format[container]\"");
+
+                            }
+                            if (request.OutputFormatSampleRate != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.OutputFormatSampleRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"output_format[sample_rate]\"");
+
+                            }
+                            if (request.OutputFormatEncoding != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.OutputFormatEncoding).HasValue ? (request.OutputFormatEncoding).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"output_format[encoding]\"");
+
+                            }
+                            if (request.OutputFormatBitRate != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.OutputFormatBitRate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"output_format[bit_rate]\"");
 
                             }
 
@@ -1050,50 +1077,80 @@ namespace Cartesia
         }
         /// <summary>
         /// Infill (Bytes)<br/>
-        /// Infill (Bytes).<br/>
-        /// Generate audio that smoothly connects two existing audio segments. This is useful for inserting new speech between existing speech segments while maintaining natural transitions.<br/>
-        /// **The cost is 1 credit per character of the infill text plus a fixed cost of 300 credits.**<br/>
-        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
-        /// As with all generative models, there's some inherent variability, but here's some tips we recommend to get the best results from infill:<br/>
-        /// - Use longer infill transcripts<br/>
-        ///   - This gives the model more flexibility to adapt to the rest of the audio<br/>
-        /// - Target natural pauses in the audio when deciding where to clip<br/>
-        ///   - This means you don't need word-level timestamps to be as precise<br/>
-        /// - Clip right up to the start and end of the audio segment you want infilled, keeping as much silence in the left/right audio segments as possible<br/>
-        ///   - This helps the model generate more natural transitions
+        /// Generate audio that smoothly connects two existing audio segments
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
-        /// <param name="leftAudio"></param>
-        /// <param name="leftAudioname"></param>
-        /// <param name="rightAudio"></param>
-        /// <param name="rightAudioname"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
+        /// <param name="leftAudio">
+        /// Audio clip that comes before the infill transcript:<br/>
+        /// `left_audio` -&gt; `transcript` -&gt; `right_audio`<br/>
+        /// For best results, target natural pauses in the audio and clip tightly.<br/>
+        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
+        /// Supported audio formats: `flac`, `mp3`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
+        /// <param name="leftAudioname">
+        /// Audio clip that comes before the infill transcript:<br/>
+        /// `left_audio` -&gt; `transcript` -&gt; `right_audio`<br/>
+        /// For best results, target natural pauses in the audio and clip tightly.<br/>
+        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
+        /// Supported audio formats: `flac`, `mp3`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
+        /// <param name="rightAudio">
+        /// Audio clip that comes after the infill transcript:<br/>
+        /// `left_audio` -&gt; `transcript` -&gt; `right_audio`<br/>
+        /// For best results, target natural pauses in the audio and clip tightly.<br/>
+        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
+        /// Supported audio formats: `flac`, `mp3`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
+        /// <param name="rightAudioname">
+        /// Audio clip that comes after the infill transcript:<br/>
+        /// `left_audio` -&gt; `transcript` -&gt; `right_audio`<br/>
+        /// For best results, target natural pauses in the audio and clip tightly.<br/>
+        /// At least one of `left_audio` or `right_audio` must be provided.<br/>
+        /// Supported audio formats: `flac`, `mp3`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
+        /// </param>
         /// <param name="modelId">
-        /// Infill models. See [the docs](https://docs.cartesia.ai/api-reference/infill/bytes#body-model-id) for all options.
+        /// The ID of the model to use for generating audio
         /// </param>
         /// <param name="language">
-        /// The language of the transcript
+        /// The language that the given voice should speak the transcript in. This may depend on the model you're using. See [Models](/build-with-cartesia/tts-models/latest) for details.
         /// </param>
         /// <param name="transcript">
-        /// The infill text to generate
+        /// The infill text to generate.<br/>
+        /// For best results, use longer transcripts to give the model more flexibility to adapt to the rest of the audio.
         /// </param>
         /// <param name="voiceId">
         /// The ID of the voice to use for generating audio
         /// </param>
-        /// <param name="outputFormat"></param>
+        /// <param name="outputFormatContainer"></param>
+        /// <param name="outputFormatSampleRate">
+        /// The sample rate of the output audio
+        /// </param>
+        /// <param name="outputFormatEncoding">
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
+        /// </param>
+        /// <param name="outputFormatBitRate">
+        /// Required for `mp3` containers.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<byte[]> InfillBytesAsync(
-            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion,
+            global::Cartesia.InfillBytesCartesiaVersion cartesiaVersion = global::Cartesia.InfillBytesCartesiaVersion.x20260814,
             byte[]? leftAudio = default,
             string? leftAudioname = default,
             byte[]? rightAudio = default,
             string? rightAudioname = default,
-            global::Cartesia.InfillModel? modelId = default,
-            string? language = default,
+            global::Cartesia.InfillBytesRequestModelId? modelId = default,
+            global::Cartesia.SupportedLanguage? language = default,
             string? transcript = default,
             string? voiceId = default,
-            global::Cartesia.OutputFormat? outputFormat = default,
+            global::Cartesia.OutputFormatContainer? outputFormatContainer = default,
+            int? outputFormatSampleRate = default,
+            global::Cartesia.RawEncoding? outputFormatEncoding = default,
+            int? outputFormatBitRate = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -1107,7 +1164,10 @@ namespace Cartesia
                 Language = language,
                 Transcript = transcript,
                 VoiceId = voiceId,
-                OutputFormat = outputFormat,
+                OutputFormatContainer = outputFormatContainer,
+                OutputFormatSampleRate = outputFormatSampleRate,
+                OutputFormatEncoding = outputFormatEncoding,
+                OutputFormatBitRate = outputFormatBitRate,
             };
 
             return await InfillBytesAsync(

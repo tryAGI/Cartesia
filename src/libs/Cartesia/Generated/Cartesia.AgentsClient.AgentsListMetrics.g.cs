@@ -14,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -49,14 +49,17 @@ namespace Cartesia
         /// List Metrics<br/>
         /// List of all LLM-as-a-Judge metrics owned by your account.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="startingAfter"></param>
         /// <param name="limit"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.ListMetricsResponse> AgentsListMetricsAsync(
-            global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion,
+            global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion = global::Cartesia.AgentsListMetricsCartesiaVersion.x20260814,
             string? startingAfter = default,
             int? limit = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
@@ -76,14 +79,17 @@ namespace Cartesia
         /// List Metrics<br/>
         /// List of all LLM-as-a-Judge metrics owned by your account.
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="startingAfter"></param>
         /// <param name="limit"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::Cartesia.ListMetricsResponse>> AgentsListMetricsAsResponseAsync(
-            global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion,
+            global::Cartesia.AgentsListMetricsCartesiaVersion cartesiaVersion = global::Cartesia.AgentsListMetricsCartesiaVersion.x20260814,
             string? startingAfter = default,
             int? limit = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,

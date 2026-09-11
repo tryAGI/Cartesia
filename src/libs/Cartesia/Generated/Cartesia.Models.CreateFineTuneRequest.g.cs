@@ -23,18 +23,27 @@ namespace Cartesia
         public required string Description { get; set; }
 
         /// <summary>
-        /// Language code for the fine-tune
+        /// Language code for the fine-tune. Cannot be changed after training starts or completes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Language { get; set; }
 
         /// <summary>
-        /// Base model for a fine-tune. See [the docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
+        /// Metadata for labeling the accent of this fine-tune. See [GET /accents](/api-reference/accents/list) for values valid for each language. Cannot be changed after training starts or completes.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accent")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.VoiceAccentJsonConverter))]
+        public global::Cartesia.VoiceAccent? Accent { get; set; }
+
+        /// <summary>
+        /// Base model ID to fine-tune from<br/>
+        /// Example: sonic-3.6-2026-08-27
+        /// </summary>
+        /// <example>sonic-3.6-2026-08-27</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.FineTuneBaseModelJsonConverter))]
-        public global::Cartesia.FineTuneBaseModel ModelId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdJsonConverter))]
+        public global::Cartesia.CreateFineTuneRequestModelId ModelId { get; set; }
 
         /// <summary>
         /// Dataset ID containing training files
@@ -59,13 +68,17 @@ namespace Cartesia
         /// Description for the fine-tune
         /// </param>
         /// <param name="language">
-        /// Language code for the fine-tune
+        /// Language code for the fine-tune. Cannot be changed after training starts or completes.
         /// </param>
         /// <param name="dataset">
         /// Dataset ID containing training files
         /// </param>
+        /// <param name="accent">
+        /// Metadata for labeling the accent of this fine-tune. See [GET /accents](/api-reference/accents/list) for values valid for each language. Cannot be changed after training starts or completes.
+        /// </param>
         /// <param name="modelId">
-        /// Base model for a fine-tune. See [the docs](https://docs.cartesia.ai/api-reference/fine-tunes/create#body-model-id) for all options.
+        /// Base model ID to fine-tune from<br/>
+        /// Example: sonic-3.6-2026-08-27
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -75,11 +88,13 @@ namespace Cartesia
             string description,
             string language,
             string dataset,
-            global::Cartesia.FineTuneBaseModel modelId)
+            global::Cartesia.VoiceAccent? accent,
+            global::Cartesia.CreateFineTuneRequestModelId modelId)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
+            this.Accent = accent;
             this.ModelId = modelId;
             this.Dataset = dataset ?? throw new global::System.ArgumentNullException(nameof(dataset));
         }

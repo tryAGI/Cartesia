@@ -47,6 +47,8 @@ public partial class Tests
                 Volume = 0.9f,
                 AdditionalProperties = new()
                 {
+                    [CartesiaTextToSpeechPropertyNames.Accent] = "british",
+                    [CartesiaTextToSpeechPropertyNames.Normalization] = "en-US",
                     [CartesiaTextToSpeechPropertyNames.SampleRate] = 24000,
                     [CartesiaTextToSpeechPropertyNames.PronunciationDictionaryId] = "pronunciation-dictionary-id",
                 },
@@ -54,16 +56,11 @@ public partial class Tests
                 {
                     capturedRequest = new TTSRequest
                     {
-                        ModelId = TTSModel.Sonic3,
+                        ModelId = TTSModelID.Sonic3,
                         Transcript = string.Empty,
-                        Voice = new TTSRequestVoiceSpecifier
-                        {
-                            Mode = TTSRequestVoiceSpecifierMode.Id,
-                            Id = "placeholder",
-                        },
+                        Voice = "placeholder",
                         OutputFormat = new RawOutputFormat
                         {
-                            Container = RawOutputFormatContainer.Raw,
                             Encoding = RawEncoding.PcmS16le,
                             SampleRate = 44100,
                         },
@@ -75,9 +72,12 @@ public partial class Tests
 
         Assert.IsNotNull(capturedRequest);
         Assert.AreEqual("Hello from Cartesia.", capturedRequest.Transcript);
-        Assert.AreEqual(TTSModel.Sonic36, capturedRequest.ModelId);
-        Assert.AreEqual("694f9389-aac1-45b6-b726-9d9369183238", capturedRequest.Voice.Id);
-        Assert.AreEqual(SupportedLanguage.EnGb, capturedRequest.Language);
+        Assert.AreEqual(TTSModelID.Sonic36, capturedRequest.ModelId);
+        Assert.AreEqual("694f9389-aac1-45b6-b726-9d9369183238", capturedRequest.Voice.PickTTSRequestVoiceId());
+        Assert.IsNull(capturedRequest.Language);
+        Assert.AreEqual("en-GB", capturedRequest.Locale);
+        Assert.AreEqual("british", capturedRequest.Accent);
+        Assert.AreEqual("en-US", capturedRequest.Normalization);
         Assert.AreEqual("pronunciation-dictionary-id", capturedRequest.PronunciationDictId);
         capturedRequest.GenerationConfig!.Speed.Should().BeApproximately(1.1d, 0.00001d);
         capturedRequest.GenerationConfig.Volume.Should().BeApproximately(0.9d, 0.00001d);

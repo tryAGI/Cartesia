@@ -9,11 +9,12 @@ namespace Cartesia
     public sealed partial class MP3OutputFormat
     {
         /// <summary>
-        ///
+        /// Default Value: mp3
         /// </summary>
+        /// <default>global::Cartesia.MP3OutputFormatContainer.Mp3</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("container")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.MP3OutputFormatContainerJsonConverter))]
-        public global::Cartesia.MP3OutputFormatContainer Container { get; set; }
+        public global::Cartesia.MP3OutputFormatContainer Container { get; set; } = global::Cartesia.MP3OutputFormatContainer.Mp3;
 
         /// <summary>
         ///
@@ -40,14 +41,16 @@ namespace Cartesia
         /// </summary>
         /// <param name="sampleRate"></param>
         /// <param name="bitRate"></param>
-        /// <param name="container"></param>
+        /// <param name="container">
+        /// Default Value: mp3
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MP3OutputFormat(
             int sampleRate,
             int bitRate,
-            global::Cartesia.MP3OutputFormatContainer container)
+            global::Cartesia.MP3OutputFormatContainer container = global::Cartesia.MP3OutputFormatContainer.Mp3)
         {
             this.Container = container;
             this.SampleRate = sampleRate;

@@ -1,8 +1,6 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace Cartesia
 {
     public partial class TtsClient
@@ -16,7 +14,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -31,7 +29,7 @@ namespace Cartesia
                 {                    new global::Cartesia.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
-                        SchemeId = "TokenAuth",
+                        SchemeId = "APIKeyAuth",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -58,22 +56,20 @@ namespace Cartesia
 
         /// <summary>
         /// Text-to-Speech (SSE)<br/>
-        /// Text-to-Speech (SSE).<br/>
-        /// Supports:<br/>
-        ///   - Streaming<br/>
-        ///   - Timestamps<br/>
-        ///   - context_id without transcript buffering<br/>
-        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
+        /// Stream audio with extra metadata from a complete transcript
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
         public async global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
-            global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
 
             global::Cartesia.TTSSSERequest request,
+            global::Cartesia.TtsSseCartesiaVersion cartesiaVersion = global::Cartesia.TtsSseCartesiaVersion.x20260814,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -163,6 +159,8 @@ namespace Cartesia
                     httpRequestMessage: __httpRequest,
                     cartesiaVersion: cartesiaVersion!,
                     request: request);
+
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
 
                 return __httpRequest;
             }
@@ -410,26 +408,37 @@ namespace Cartesia
         }
         /// <summary>
         /// Text-to-Speech (SSE)<br/>
-        /// Text-to-Speech (SSE).<br/>
-        /// Supports:<br/>
-        ///   - Streaming<br/>
-        ///   - Timestamps<br/>
-        ///   - context_id without transcript buffering<br/>
-        /// See [Compare TTS Endpoints](https://docs.cartesia.ai/use-the-api/compare-tts-endpoints) for details.
+        /// Stream audio with extra metadata from a complete transcript
         /// </summary>
-        /// <param name="cartesiaVersion"></param>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
         /// <param name="modelId">
-        /// Text-to-speech models. See [the docs](https://docs.cartesia.ai/build-with-cartesia/tts-models/latest) for all options.
+        /// The ID of the model to use for the generation.<br/>
+        /// See [Models](/build-with-cartesia/tts-models/latest) all options.<br/>
+        /// Default Value: sonic-3.6<br/>
+        /// Example: sonic-3.6
         /// </param>
-        /// <param name="transcript"></param>
-        /// <param name="voice"></param>
+        /// <param name="transcript">
+        /// Default Value: Hi there, it's awesome to meet you.
+        /// </param>
+        /// <param name="voice">
+        /// The voice to use for generation. Pass either a voice ID string or an object with a required `id` (additional object fields may be added in future API versions). Find a voice in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list). Embeddings are not accepted in this API version.
+        /// </param>
         /// <param name="outputFormat"></param>
-        /// <param name="generationConfig">
-        /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
-        /// See [Volume, Speed, and Emotion in Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
-        /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
+        /// The transcript's language or locale (for example `en` or `en-GB`). `language` and `locale` accept the same values. Set one or the other, never both; setting both returns a 400 error. See [supported codes](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+        /// </param>
+        /// <param name="locale">
+        /// The transcript's language or locale (for example `en` or `en-GB`). `locale` and `language` accept the same values. Set one or the other, never both; setting both returns a 400 error. See [supported codes](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+        /// </param>
+        /// <param name="accent">
+        /// Usually unnecessary: Cartesia picks the closest accent the voice supports for the requested `language` or `locale`. Set it only to make a [multilingual voice](/build-with-cartesia/capability-guides/multilingual-voices) sound accented (e.g. speak English with a French accent). Must come from the voice's [Get Voice `accents` field](/api-reference/voices/get#response-accents). Learn more [here](/build-with-cartesia/capability-guides/multilingual-voices#using-a-multilingual-voice).
+        /// </param>
+        /// <param name="normalization">
+        /// Text normalization. `auto` (default) runs the locale-aware normalizer, `off` skips it, or pass a language or locale code (for example `en` or `en-IN`) to pin the normalizer independently of the generation language. See [Text Normalization](/build-with-cartesia/capability-guides/text-normalization).<br/>
+        /// Default Value: auto
         /// </param>
         /// <param name="addTimestamps">
         /// Whether to return word-level timestamps. If `false` (default), no word timestamps will be produced at all. If `true`, the server will return timestamp events containing word-level timing information.<br/>
@@ -445,24 +454,29 @@ namespace Cartesia
         /// <param name="pronunciationDictId">
         /// The ID of a pronunciation dictionary to use for the generation. Pronunciation dictionaries are supported by `sonic-3` models and newer.
         /// </param>
-        /// <param name="contextId">
-        /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
+        /// <param name="generationConfig">
+        /// Configure the various attributes of the generated speech. Available on `sonic-3` and newer models; not available on earlier models.<br/>
+        /// See [Volume, Speed, and Emotion](/build-with-cartesia/capability-guides/volume-speed-emotion) for a guide on this option.
         /// </param>
+        /// <param name="contextId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Collections.Generic.IAsyncEnumerable<global::Cartesia.TTSSSEEvent> TtsSseAsync(
-            global::Cartesia.TtsSseCartesiaVersion cartesiaVersion,
-            global::Cartesia.TTSModel modelId,
-            string transcript,
             global::Cartesia.TTSRequestVoiceSpecifier voice,
             global::Cartesia.SSEOutputFormat outputFormat,
-            global::Cartesia.GenerationConfig? generationConfig = default,
-            global::Cartesia.SupportedLanguage? language = default,
+            global::Cartesia.TtsSseCartesiaVersion cartesiaVersion = global::Cartesia.TtsSseCartesiaVersion.x20260814,
+            global::Cartesia.TTSModelID modelId = global::Cartesia.TTSModelID.Sonic36,
+            string transcript = "Hi there, it's awesome to meet you.",
+            string? language = default,
+            string? locale = default,
+            string? accent = default,
+            string? normalization = default,
             bool? addTimestamps = default,
             bool? addPhonemeTimestamps = default,
             bool? useNormalizedTimestamps = default,
             string? pronunciationDictId = default,
+            global::Cartesia.GenerationConfig? generationConfig = default,
             string? contextId = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
@@ -473,12 +487,15 @@ namespace Cartesia
                 Transcript = transcript,
                 Voice = voice,
                 OutputFormat = outputFormat,
-                GenerationConfig = generationConfig,
                 Language = language,
+                Locale = locale,
+                Accent = accent,
+                Normalization = normalization,
                 AddTimestamps = addTimestamps,
                 AddPhonemeTimestamps = addPhonemeTimestamps,
                 UseNormalizedTimestamps = useNormalizedTimestamps,
                 PronunciationDictId = pronunciationDictId,
+                GenerationConfig = generationConfig,
                 ContextId = contextId,
             };
 

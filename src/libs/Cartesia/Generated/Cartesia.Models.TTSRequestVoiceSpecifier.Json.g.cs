@@ -2,7 +2,7 @@
 
 namespace Cartesia
 {
-    public sealed partial class TTSRequestVoiceSpecifier
+    public readonly partial struct TTSRequestVoiceSpecifier
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Cartesia
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Cartesia.TTSRequestVoiceSpecifier),
-                jsonSerializerContext) as global::Cartesia.TTSRequestVoiceSpecifier;
+                jsonSerializerContext) as global::Cartesia.TTSRequestVoiceSpecifier?;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Cartesia
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Cartesia.TTSRequestVoiceSpecifier),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Cartesia.TTSRequestVoiceSpecifier;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Cartesia.TTSRequestVoiceSpecifier?;
         }
 
         /// <summary>

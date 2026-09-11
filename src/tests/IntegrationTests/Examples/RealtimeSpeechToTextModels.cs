@@ -14,8 +14,8 @@ public partial class Tests
     public void RealtimeSpeechToText_ModelsExposeStableIds()
     {
         //// Sonic 3.6 exposes both the rolling stable alias and immutable production snapshot.
-        TTSModel.Sonic36.ToValueString().Should().Be("sonic-3.6");
-        TTSModel.Sonic3620260827.ToValueString().Should().Be("sonic-3.6-2026-08-27");
+        TTSModelID.Sonic36.ToValueString().Should().Be("sonic-3.6");
+        TTSModelID.Sonic3620260827.ToValueString().Should().Be("sonic-3.6-2026-08-27");
 
         //// Ink 2 is available for realtime STT auto-finalize and manual-finalize sessions.
         STTAutoFinalizeModel.Ink2.ToValueString().Should().Be("ink-2");

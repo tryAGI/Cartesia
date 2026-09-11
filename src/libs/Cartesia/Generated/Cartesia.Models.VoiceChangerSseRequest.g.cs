@@ -40,7 +40,7 @@ namespace Cartesia
         public int? OutputFormatSampleRate { get; set; }
 
         /// <summary>
-        ///
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_format[encoding]")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.RawEncodingJsonConverter))]
@@ -66,7 +66,9 @@ namespace Cartesia
         /// <param name="voiceId"></param>
         /// <param name="outputFormatContainer"></param>
         /// <param name="outputFormatSampleRate"></param>
-        /// <param name="outputFormatEncoding"></param>
+        /// <param name="outputFormatEncoding">
+        /// The encoding format for output audio. See [TTS Output Audio Format](/build-with-cartesia/capability-guides/tts-output-audio-format) if you're unsure what to use.
+        /// </param>
         /// <param name="outputFormatBitRate">
         /// Required for `mp3` containers.
         /// </param>

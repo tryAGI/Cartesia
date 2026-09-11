@@ -26,21 +26,22 @@ namespace Cartesia
         public required string Transcript { get; set; }
 
         /// <summary>
-        ///
+        /// The voice to use for generation. Pass either a voice ID string or an object with a required `id` (additional object fields may be added in future API versions). Find a voice in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list). Embeddings are not accepted in this API version.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Cartesia.TTSRequestVoiceSpecifier Voice { get; set; }
 
         /// <summary>
-        /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
-        /// See [Volume, Speed, and Emotion in Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
+        /// Configure the various attributes of the generated speech. Available on `sonic-3` and newer models; not available on earlier models.<br/>
+        /// See [Volume, Speed, and Emotion](/build-with-cartesia/capability-guides/volume-speed-emotion) for a guide on this option.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generation_config")]
         public global::Cartesia.GenerationConfig? GenerationConfig { get; set; }
 
         /// <summary>
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. This may depend on the model you're using. See [Models](/build-with-cartesia/tts-models/latest) for details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.SupportedLanguageJsonConverter))]
@@ -135,17 +136,19 @@ namespace Cartesia
         /// <param name="transcript">
         /// The transcript to generate speech for.
         /// </param>
-        /// <param name="voice"></param>
+        /// <param name="voice">
+        /// The voice to use for generation. Pass either a voice ID string or an object with a required `id` (additional object fields may be added in future API versions). Find a voice in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list). Embeddings are not accepted in this API version.
+        /// </param>
         /// <param name="outputFormat"></param>
         /// <param name="contextId">
         /// A unique identifier for the context. You can use any unique identifier, like a UUID or human ID.
         /// </param>
         /// <param name="generationConfig">
-        /// Configure the various attributes of the generated speech. These are only for `sonic-3` and have no effect on earlier models.<br/>
-        /// See [Volume, Speed, and Emotion in Sonic-3](https://docs.cartesia.ai/build-with-cartesia/sonic-3/volume-speed-emotion) for a guide on this option.
+        /// Configure the various attributes of the generated speech. Available on `sonic-3` and newer models; not available on earlier models.<br/>
+        /// See [Volume, Speed, and Emotion](/build-with-cartesia/capability-guides/volume-speed-emotion) for a guide on this option.
         /// </param>
         /// <param name="language">
-        /// The language that the given voice should speak the transcript in. For valid options, see [Models](https://docs.cartesia.ai/build-with-cartesia/tts-models).
+        /// The language that the given voice should speak the transcript in. This may depend on the model you're using. See [Models](/build-with-cartesia/tts-models/latest) for details.
         /// </param>
         /// <param name="continue">
         /// Whether this input may be followed by more inputs.<br/>
@@ -196,7 +199,7 @@ namespace Cartesia
         {
             this.ModelId = modelId;
             this.Transcript = transcript ?? throw new global::System.ArgumentNullException(nameof(transcript));
-            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.Voice = voice;
             this.GenerationConfig = generationConfig;
             this.Language = language;
             this.OutputFormat = outputFormat ?? throw new global::System.ArgumentNullException(nameof(outputFormat));
