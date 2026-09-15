@@ -1403,9 +1403,11 @@ paths:
           description: >-
             The phone number ID.
 
-            The phone number must be unassigned from any agent before it can be
-            deleted. For Cartesia-managed numbers, the number is deprovisioned
-            and cannot be recovered.
+            Twilio numbers can be deleted while assigned. Cartesia disconnects
+            the agent and attempts to clear the Twilio webhook, but cleanup
+            failures do not block deletion. Unassign Cartesia-managed and SIP
+            trunk numbers first. Deleting a Cartesia-managed number releases it
+            permanently.
           required: true
           schema:
             type: string
@@ -1414,8 +1416,8 @@ paths:
           description: Phone number deleted.
         '400':
           description: >-
-            Phone number is assigned to an agent. Unassign it first via PATCH,
-            or provider cleanup failed.
+            A Cartesia-managed or SIP trunk number is still assigned, or
+            provider cleanup failed.
         '404':
           description: Phone number not found.
       security:
@@ -1561,12 +1563,12 @@ paths:
         - Providers
       summary: Update Provider
       description: >-
-        Update a provider. For Twilio, credentials are validated before
-        applying. If phone numbers using this provider cannot be verified with
-        the new credentials, the update is rejected with a list of unreachable
-        numbers. For SIP trunks, omitted fields remain unchanged. Set
-        `credentials` or `destination_country` to `null` to clear that field.
-        Send `[]` to clear an inbound allowlist.
+        Update a provider. To ensure assigned numbers are reachable, Twilio
+        credentials are validated before saving. If the new credentials are
+        invalid, the request fails and returns a list of unreachable numbers
+        currently assigned to agents. For SIP trunks, omitted fields remain
+        unchanged. Set `credentials` or `destination_country` to `null` to clear
+        that field. Send `[]` to clear an inbound allowlist.
       operationId: providers_update
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
@@ -1591,7 +1593,7 @@ paths:
                 $ref: '#/components/schemas/ProviderAccountResponse'
         '400':
           description: >-
-            Invalid credentials, invalid SIP trunk configuration, or phone
+            Invalid credentials, invalid SIP trunk configuration, or Twilio
             numbers are unreachable with the new credentials.
         '404':
           description: Provider not found.
@@ -1607,12 +1609,9 @@ paths:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
         - name: id
           in: path
-          description: >-
+          description: |-
             The provider ID.
-
-            A provider cannot be deleted while it is assigned to any phone
-            numbers. Reassign or delete all associated phone numbers before
-            deleting the provider.
+            Delete linked phone numbers before deleting the provider.
           required: true
           schema:
             type: string
@@ -8281,10 +8280,9 @@ components:
       title: Twilio
       type: object
       description: >-
-        Update Twilio API key credentials and optionally the region. Credentials
-        are validated before applying. If phone numbers using this provider
-        cannot be verified with the new credentials, the update is rejected with
-        a list of unreachable numbers.
+        Update Twilio API key credentials and optionally the region. Cartesia
+        validates the credentials and rejects the update with a list of
+        unreachable numbers assigned to agents.
       properties:
         type:
           type: string

@@ -47,7 +47,7 @@ namespace Cartesia
 
         /// <summary>
         /// Update Provider<br/>
-        /// Update a provider. For Twilio, credentials are validated before applying. If phone numbers using this provider cannot be verified with the new credentials, the update is rejected with a list of unreachable numbers. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
+        /// Update a provider. To ensure assigned numbers are reachable, Twilio credentials are validated before saving. If the new credentials are invalid, the request fails and returns a list of unreachable numbers currently assigned to agents. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -79,7 +79,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Update Provider<br/>
-        /// Update a provider. For Twilio, credentials are validated before applying. If phone numbers using this provider cannot be verified with the new credentials, the update is rejected with a list of unreachable numbers. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
+        /// Update a provider. To ensure assigned numbers are reachable, Twilio credentials are validated before saving. If the new credentials are invalid, the request fails and returns a list of unreachable numbers currently assigned to agents. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -526,7 +526,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Update Provider<br/>
-        /// Update a provider. For Twilio, credentials are validated before applying. If phone numbers using this provider cannot be verified with the new credentials, the update is rejected with a list of unreachable numbers. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
+        /// Update a provider. To ensure assigned numbers are reachable, Twilio credentials are validated before saving. If the new credentials are invalid, the request fails and returns a list of unreachable numbers currently assigned to agents. For SIP trunks, omitted fields remain unchanged. Set `credentials` or `destination_country` to `null` to clear that field. Send `[]` to clear an inbound allowlist.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
