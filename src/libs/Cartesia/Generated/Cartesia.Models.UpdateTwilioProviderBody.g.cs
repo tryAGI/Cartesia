@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Update Twilio API key credentials and optionally the region. Credentials are validated before applying. If phone numbers using this provider cannot be verified with the new credentials, the update is rejected with a list of unreachable numbers.
+    /// Update Twilio API key credentials and optionally the region. Cartesia validates the credentials and rejects the update with a list of unreachable numbers assigned to agents.
     /// </summary>
     public sealed partial class UpdateTwilioProviderBody
     {
