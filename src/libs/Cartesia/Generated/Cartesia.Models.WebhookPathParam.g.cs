@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// A value inserted into a URL path placeholder.
+    /// A value sent in the URL path. The model supplies it unless you set `constant_value` or `dynamic_variable`.
     /// </summary>
     public sealed partial class WebhookPathParam
     {
@@ -16,13 +16,19 @@ namespace Cartesia
         public global::Cartesia.AnyOf<string, double?, bool?>? ConstantValue { get; set; }
 
         /// <summary>
-        /// What value the agent should provide.
+        /// What the agent should provide when it chooses this parameter's value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Allowed values.
+        /// Name of the variable to use when the tool runs. The parameter is hidden from the model. A missing value or type mismatch returns a tool error before execution. Use `constant_value` instead to send a fixed value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variable")]
+        public string? DynamicVariable { get; set; }
+
+        /// <summary>
+        /// Allowed values for the model to choose from. Use only when `constant_value` and `dynamic_variable` are omitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enum")]
         public global::System.Collections.Generic.IList<global::Cartesia.AnyOf<string, double?, bool?>>? Enum { get; set; }
@@ -49,10 +55,13 @@ namespace Cartesia
         /// A fixed value sent on every request. It must match the parameter's `type`. The agent does not see or set it.
         /// </param>
         /// <param name="description">
-        /// What value the agent should provide.
+        /// What the agent should provide when it chooses this parameter's value.
+        /// </param>
+        /// <param name="dynamicVariable">
+        /// Name of the variable to use when the tool runs. The parameter is hidden from the model. A missing value or type mismatch returns a tool error before execution. Use `constant_value` instead to send a fixed value.
         /// </param>
         /// <param name="enum">
-        /// Allowed values.
+        /// Allowed values for the model to choose from. Use only when `constant_value` and `dynamic_variable` are omitted.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -61,10 +70,12 @@ namespace Cartesia
             global::Cartesia.WebhookPathParamType type,
             global::Cartesia.AnyOf<string, double?, bool?>? constantValue,
             string? description,
+            string? dynamicVariable,
             global::System.Collections.Generic.IList<global::Cartesia.AnyOf<string, double?, bool?>>? @enum)
         {
             this.ConstantValue = constantValue;
             this.Description = description;
+            this.DynamicVariable = dynamicVariable;
             this.Enum = @enum;
             this.Type = type;
         }

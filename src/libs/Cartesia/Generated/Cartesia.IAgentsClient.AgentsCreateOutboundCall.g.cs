@@ -52,7 +52,7 @@ namespace Cartesia
         /// Agent that handles the outbound calls.
         /// </param>
         /// <param name="outboundCalls">
-        /// Per-call destination and metadata configuration.
+        /// Destinations and optional per-call dynamic variables
         /// </param>
         /// <param name="ringingTimeoutSeconds">
         /// Seconds to wait for the callee to answer before giving up. Omit to use  the default (60 seconds).

@@ -1,12 +1,12 @@
 #nullable enable
 
-namespace Cartesia.JsonConverters
+namespace Cartesia.Realtime.JsonConverters
 {
     /// <inheritdoc />
-    public class AnyOfJsonConverter<T1, T2> : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.AnyOf<T1, T2>>
+    public class AnyOfJsonConverter<T1, T2, T3, T4> : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.Realtime.AnyOf<T1, T2, T3, T4>>
     {
         /// <inheritdoc />
-        public override global::Cartesia.AnyOf<T1, T2> Read(
+        public override global::Cartesia.Realtime.AnyOf<T1, T2, T3, T4> Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -48,13 +48,39 @@ namespace Cartesia.JsonConverters
                     }
                 }
             }
+            var __score2 = 0;
+            {
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(T3), options);
+                if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
+                {
+                    foreach (var __prop in __ti.Properties)
+                    {
+                        if (__jsonProps.Contains(__prop.Name)) __score2++;
+                    }
+                }
+            }
+            var __score3 = 0;
+            {
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(T4), options);
+                if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
+                {
+                    foreach (var __prop in __ti.Properties)
+                    {
+                        if (__jsonProps.Contains(__prop.Name)) __score3++;
+                    }
+                }
+            }
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
+            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
+            if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
 
             T1? value1 = default;
             T2? value2 = default;
+            T3? value3 = default;
+            T4? value4 = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -90,9 +116,43 @@ namespace Cartesia.JsonConverters
                     {
                     }
                 }
+
+                else if (__bestIndex == 2)
+                {
+                    try
+                    {
+
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T3> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T3).Name}");
+                        value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
+
+                else if (__bestIndex == 3)
+                {
+                    try
+                    {
+
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T4> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T4).Name}");
+                        value4 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
             }
 
-            if (value1 == null && value2 == null)
+            if (value1 == null && value2 == null && value3 == null && value4 == null)
             {
                 try
                 {
@@ -109,7 +169,7 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            if (value1 == null && value2 == null)
+            if (value1 == null && value2 == null && value3 == null && value4 == null)
             {
                 try
                 {
@@ -126,10 +186,48 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            var __value = new global::Cartesia.AnyOf<T1, T2>(
+            if (value1 == null && value2 == null && value3 == null && value4 == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T3> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T3).Name}");
+                    value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            if (value1 == null && value2 == null && value3 == null && value4 == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T4> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T4).Name}");
+                    value4 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            var __value = new global::Cartesia.Realtime.AnyOf<T1, T2, T3, T4>(
                 value1,
 
-                value2
+                value2,
+
+                value3,
+
+                value4
                 );
 
             return __value;
@@ -138,7 +236,7 @@ namespace Cartesia.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Cartesia.AnyOf<T1, T2> value,
+            global::Cartesia.Realtime.AnyOf<T1, T2, T3, T4> value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
@@ -155,6 +253,18 @@ namespace Cartesia.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T2).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
+            }
+            else if (value.IsValue3)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T3?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T3).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value3!, typeInfo);
+            }
+            else if (value.IsValue4)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(T4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<T4?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(T4).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value4!, typeInfo);
             }
         }
     }

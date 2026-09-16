@@ -53,11 +53,11 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioInputEvent? Type5 { get; set; }
+        public object? Type5 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioInputEventType? Type6 { get; set; }
+        public global::Cartesia.Realtime.AnyOf<string, double?, bool?>? Type6 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -65,151 +65,171 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentDtmfInputEvent? Type8 { get; set; }
+        public double? Type8 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentDtmfInputEventType? Type9 { get; set; }
+        public bool? Type9 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentClientToolResultEvent? Type10 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioInputEvent? Type10 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentClientToolResultEventType? Type11 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioInputEventType? Type11 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public bool? Type12 { get; set; }
+        public global::Cartesia.Realtime.AgentDtmfInputEvent? Type12 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentSessionReadyEvent? Type13 { get; set; }
+        public global::Cartesia.Realtime.AgentDtmfInputEventType? Type13 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentSessionReadyEventType? Type14 { get; set; }
+        public global::Cartesia.Realtime.AgentClientToolResultEvent? Type14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentSessionReadyEventAudio? Type15 { get; set; }
+        public global::Cartesia.Realtime.AgentClientToolResultEventType? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputEvent? Type16 { get; set; }
+        public global::Cartesia.Realtime.AgentSessionReadyEvent? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputEventType? Type17 { get; set; }
+        public global::Cartesia.Realtime.AgentSessionReadyEventType? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputClearEvent? Type18 { get; set; }
+        public global::Cartesia.Realtime.AgentSessionReadyEventAudio? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputClearEventType? Type19 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioOutputEvent? Type19 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentDtmfOutputEvent? Type20 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioOutputEventType? Type20 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentDtmfOutputEventType? Type21 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioOutputClearEvent? Type21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentClientToolCallEvent? Type22 { get; set; }
+        public global::Cartesia.Realtime.AgentAudioOutputClearEventType? Type22 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentClientToolCallEventType? Type23 { get; set; }
+        public global::Cartesia.Realtime.AgentDtmfOutputEvent? Type23 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public object? Type24 { get; set; }
+        public global::Cartesia.Realtime.AgentDtmfOutputEventType? Type24 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnStartedEvent? Type25 { get; set; }
+        public global::Cartesia.Realtime.AgentClientToolCallEvent? Type25 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnStartedEventType? Type26 { get; set; }
+        public global::Cartesia.Realtime.AgentClientToolCallEventType? Type26 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public int? Type27 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnStartedEvent? Type27 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnStartedEventRole? Type28 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnStartedEventType? Type28 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public double? Type29 { get; set; }
+        public int? Type29 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent? Type30 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnStartedEventRole? Type30 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEventType? Type31 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent? Type31 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEventRole? Type32 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEventType? Type32 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnEndedEvent? Type33 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEventRole? Type33 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnEndedEventType? Type34 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnEndedEvent? Type34 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnEndedEventRole? Type35 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnEndedEventType? Type35 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCall>? Type36 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnEndedEventRole? Type36 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnEndedEventToolCall? Type37 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCall>? Type37 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEvent? Type38 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnEndedEventToolCall? Type38 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEventType? Type39 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate>? Type39 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEventCode? Type40 { get; set; }
+        public global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate? Type40 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.ServerEvent? Type41 { get; set; }
+        public global::Cartesia.Realtime.AnyOf<string, double?, bool?, object>? Type41 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.ServerEventDiscriminator? Type42 { get; set; }
+        public global::Cartesia.Realtime.AgentErrorEvent? Type42 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.ServerEventDiscriminatorType? Type43 { get; set; }
+        public global::Cartesia.Realtime.AgentErrorEventType? Type43 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.AgentErrorEventCode? Type44 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.ServerEvent? Type45 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.ServerEventDiscriminator? Type46 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.ServerEventDiscriminatorType? Type47 { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         public global::System.Collections.Generic.List<global::Cartesia.Realtime.AgentTurnEndedEventToolCall>? ListType0 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate>? ListType1 { get; set; }
     }
 }

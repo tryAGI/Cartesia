@@ -30,7 +30,7 @@ namespace Cartesia
         public required string FromNumberId { get; set; }
 
         /// <summary>
-        /// Per-call destination and metadata configuration. Up to 5,000 recipients per batch.
+        /// Destinations and optional per-call dynamic variables
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recipients")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -86,7 +86,7 @@ namespace Cartesia
         /// The identifier of the phone number to place calls from. The attached provider handles outbound calling for this number.
         /// </param>
         /// <param name="recipients">
-        /// Per-call destination and metadata configuration. Up to 5,000 recipients per batch.
+        /// Destinations and optional per-call dynamic variables
         /// </param>
         /// <param name="targetConcurrencyLimit">
         /// Maximum number of calls from this batch to dial concurrently. Must not exceed the organization's concurrency limit. Omit to default to half of the organization's agent-call concurrency limit, leaving headroom for other calls.

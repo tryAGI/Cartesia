@@ -23,6 +23,13 @@ namespace Cartesia.Realtime
         public required global::Cartesia.Realtime.AgentSessionCreateEventAudio Audio { get; set; }
 
         /// <summary>
+        /// Custom [dynamic variable](/agents/dynamic-variables) values for this session.<br/>
+        /// Names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. `system__` and `secret__` prefixes are reserved.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
+        public object? DynamicVariables { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,15 +42,21 @@ namespace Cartesia.Realtime
         /// <param name="type">
         /// Event type identifier.
         /// </param>
+        /// <param name="dynamicVariables">
+        /// Custom [dynamic variable](/agents/dynamic-variables) values for this session.<br/>
+        /// Names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. `system__` and `secret__` prefixes are reserved.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentSessionCreateEvent(
             global::Cartesia.Realtime.AgentSessionCreateEventAudio audio,
-            global::Cartesia.Realtime.AgentSessionCreateEventType type)
+            global::Cartesia.Realtime.AgentSessionCreateEventType type,
+            object? dynamicVariables)
         {
             this.Type = type;
             this.Audio = audio ?? throw new global::System.ArgumentNullException(nameof(audio));
+            this.DynamicVariables = dynamicVariables;
         }
 
         /// <summary>

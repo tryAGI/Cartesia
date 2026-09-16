@@ -49,12 +49,6 @@ namespace Cartesia
         public string? ErrorMessage { get; set; }
 
         /// <summary>
-        /// Custom metadata associated with this recipient.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public object? Metadata { get; set; }
-
-        /// <summary>
         /// When the recipient was queued.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -91,9 +85,6 @@ namespace Cartesia
         /// <param name="errorMessage">
         /// Why the request failed before a call could be placed. Returned in place of `agent_call_id` when the recipient never reached a dial attempt.
         /// </param>
-        /// <param name="metadata">
-        /// Custom metadata associated with this recipient.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -104,8 +95,7 @@ namespace Cartesia
             global::System.DateTime createdAt,
             string? agentCallId,
             global::Cartesia.EndReason? endReason,
-            string? errorMessage,
-            object? metadata)
+            string? errorMessage)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));
@@ -113,7 +103,6 @@ namespace Cartesia
             this.AgentCallId = agentCallId;
             this.EndReason = endReason;
             this.ErrorMessage = errorMessage;
-            this.Metadata = metadata;
             this.CreatedAt = createdAt;
         }
 

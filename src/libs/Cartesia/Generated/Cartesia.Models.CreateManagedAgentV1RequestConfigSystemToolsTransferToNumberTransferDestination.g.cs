@@ -9,7 +9,7 @@ namespace Cartesia
     public sealed partial class CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestination
     {
         /// <summary>
-        /// Phone number to transfer the call to, in E.164 format.
+        /// E.164 phone number or a single dynamic variable, such as `{{transfer_number}}`. Must resolve to a valid E.164 number when the tool runs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("phone_number")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,7 +32,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestination" /> class.
         /// </summary>
         /// <param name="phoneNumber">
-        /// Phone number to transfer the call to, in E.164 format.
+        /// E.164 phone number or a single dynamic variable, such as `{{transfer_number}}`. Must resolve to a valid E.164 number when the tool runs.
         /// </param>
         /// <param name="type">
         /// The destination type.

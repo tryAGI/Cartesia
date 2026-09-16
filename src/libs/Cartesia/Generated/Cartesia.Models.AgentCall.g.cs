@@ -93,10 +93,10 @@ namespace Cartesia
         public global::Cartesia.EndReason? EndReason { get; set; }
 
         /// <summary>
-        /// Custom metadata associated with the call.
+        /// Initial custom values while the call is active; final values after it ends, including webhook assignments. System variables are not included. Omitted from ZDR or redacted call history.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public object? Metadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
+        public object? DynamicVariables { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -146,8 +146,8 @@ namespace Cartesia
         /// <param name="endReason">
         /// A machine-readable enum indicating why a call ended.
         /// </param>
-        /// <param name="metadata">
-        /// Custom metadata associated with the call.
+        /// <param name="dynamicVariables">
+        /// Initial custom values while the call is active; final values after it ends, including webhook assignments. System variables are not included. Omitted from ZDR or redacted call history.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -166,7 +166,7 @@ namespace Cartesia
             string? summary,
             string? errorMessage,
             global::Cartesia.EndReason? endReason,
-            object? metadata)
+            object? dynamicVariables)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
@@ -181,7 +181,7 @@ namespace Cartesia
             this.Status = status;
             this.ErrorMessage = errorMessage;
             this.EndReason = endReason;
-            this.Metadata = metadata;
+            this.DynamicVariables = dynamicVariables;
         }
 
         /// <summary>

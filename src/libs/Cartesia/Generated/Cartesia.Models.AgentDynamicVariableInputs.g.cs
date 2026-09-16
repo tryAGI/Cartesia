@@ -4,9 +4,10 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Custom metadata associated with this recipient.
+    /// Custom values for this call. Supply values for variables used in the welcome message.<br/>
+    /// Names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. Start with a letter or underscore; `system__` and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
     /// </summary>
-    public sealed partial class AgentCallBatchRecipientMetadata
+    public sealed partial class AgentDynamicVariableInputs
     {
 
         /// <summary>

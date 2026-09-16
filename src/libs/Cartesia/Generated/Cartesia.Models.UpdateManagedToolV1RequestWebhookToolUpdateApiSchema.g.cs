@@ -44,7 +44,7 @@ namespace Cartesia
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_headers")]
-        public global::System.Collections.Generic.Dictionary<string, global::Cartesia.AnyOf<string, global::Cartesia.WebhookSecret>?>? RequestHeaders { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Cartesia.AnyOf<string, global::Cartesia.WebhookSecret, global::Cartesia.WebhookDynamicVariableHeader>?>? RequestHeaders { get; set; }
 
         /// <summary>
         /// The HTTPS endpoint to call. Use `{name}` for path parameters defined in `path_params_schema`.
@@ -85,7 +85,7 @@ namespace Cartesia
             global::System.Collections.Generic.Dictionary<string, global::Cartesia.WebhookPathParam>? pathParamsSchema,
             global::Cartesia.WebhookQuerySchema? queryParamsSchema,
             global::Cartesia.WebhookBodyParam? requestBodySchema,
-            global::System.Collections.Generic.Dictionary<string, global::Cartesia.AnyOf<string, global::Cartesia.WebhookSecret>?>? requestHeaders,
+            global::System.Collections.Generic.Dictionary<string, global::Cartesia.AnyOf<string, global::Cartesia.WebhookSecret, global::Cartesia.WebhookDynamicVariableHeader>?>? requestHeaders,
             string? url)
         {
             this.Authentication = authentication;

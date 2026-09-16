@@ -15,6 +15,12 @@ namespace Cartesia
         public global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdateApiSchema? ApiSchema { get; set; }
 
         /// <summary>
+        /// Replaces the tool's assignments. Send `null` or `[]` to remove them all.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assignments")]
+        public global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment>? Assignments { get; set; }
+
+        /// <summary>
         /// What the tool does and when the agent should use it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
@@ -56,6 +62,9 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="UpdateManagedToolV1RequestWebhookToolUpdate" /> class.
         /// </summary>
         /// <param name="apiSchema"></param>
+        /// <param name="assignments">
+        /// Replaces the tool's assignments. Send `null` or `[]` to remove them all.
+        /// </param>
         /// <param name="description">
         /// What the tool does and when the agent should use it.
         /// </param>
@@ -76,6 +85,7 @@ namespace Cartesia
 #endif
         public UpdateManagedToolV1RequestWebhookToolUpdate(
             global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdateApiSchema? apiSchema,
+            global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment>? assignments,
             string? description,
             global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdateExecutionMode? executionMode,
             string? name,
@@ -83,6 +93,7 @@ namespace Cartesia
             int? responseTimeoutSecs)
         {
             this.ApiSchema = apiSchema;
+            this.Assignments = assignments;
             this.Description = description;
             this.ExecutionMode = executionMode;
             this.Name = name;

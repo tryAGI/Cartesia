@@ -16,7 +16,7 @@ namespace Cartesia
         public required global::System.Collections.Generic.Dictionary<string, global::Cartesia.WebhookQueryParam> Properties { get; set; }
 
         /// <summary>
-        /// Parameter names the agent must provide. Other agent-provided parameters are optional; parameters with `constant_value` are always sent.
+        /// Parameters the model must provide. Exclude parameters filled by `constant_value` or `dynamic_variable`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("required")]
         public global::System.Collections.Generic.IList<string>? Required { get; set; }
@@ -34,7 +34,7 @@ namespace Cartesia
         /// Query parameters keyed by name.
         /// </param>
         /// <param name="required">
-        /// Parameter names the agent must provide. Other agent-provided parameters are optional; parameters with `constant_value` are always sent.
+        /// Parameters the model must provide. Exclude parameters filled by `constant_value` or `dynamic_variable`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -573,6 +573,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateManagedToolV1Request'
+            examples:
+              lookup_customer:
+                $ref: '#/components/examples/LookupCustomerToolRequest'
       responses:
         '201':
           description: Create a tool
@@ -580,6 +583,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedToolV1'
+              examples:
+                lookup_customer:
+                  $ref: '#/components/examples/LookupCustomerToolResponse'
       security:
         - APIKeyAuth: []
     get:
@@ -669,6 +675,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedToolV1'
+              examples:
+                lookup_customer:
+                  $ref: '#/components/examples/LookupCustomerToolResponse'
         '404':
           description: Not found
           content:
@@ -699,6 +708,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateManagedToolV1Request'
+            examples:
+              assignments:
+                $ref: '#/components/examples/UpdateCustomerAssignmentsRequest'
       responses:
         '200':
           description: Update a tool
@@ -706,6 +718,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedToolV1'
+              examples:
+                lookup_customer:
+                  $ref: '#/components/examples/LookupCustomerToolResponse'
         '404':
           description: Not found
           content:
@@ -860,16 +875,17 @@ paths:
               $ref: '#/components/schemas/AgentOutboundCallRequest'
       responses:
         '200':
-          description: Outbound call requests accepted.
+          description: >-
+            Results for each destination. Check `calls[].error` for failed
+            calls.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/AgentOutboundCallResponse'
         '400':
           description: >-
-            Invalid request body, missing required fields, invalid metadata,
-            invalid `ringing_timeout_seconds`, unsupported telephony provider,
-            or a phone number configuration that cannot place outbound calls.
+            Invalid request or call settings. Per-destination errors are
+            returned in the HTTP 200 response.
         '403':
           description: >-
             The phone number does not belong to the same organization as the
@@ -1053,12 +1069,8 @@ paths:
                 $ref: '#/components/schemas/AgentCallBatch'
         '400':
           description: >-
-            Invalid request body, missing required fields, an invalid recipient
-            (missing or non-E.164 `to_number`, oversized `metadata`), an invalid
-            call configuration, an invalid `scheduled_at`, a
-            `target_concurrency_limit` that exceeds the organization's
-            concurrency limit, or a phone number that cannot place outbound
-            calls.
+            Invalid request or recipient. Dynamic variable errors identify the
+            first failing recipient as `recipients[index]`. No batch is created.
         '402':
           description: >-
             The organization has reached its agents usage limit. Upgrade the
@@ -5160,6 +5172,8 @@ components:
                       type: number
                       minimum: 0.5
                       maximum: 2
+            dynamic_variable_placeholders:
+              $ref: '#/components/schemas/ManagedAgentDynamicVariablePlaceholdersV1'
             initial_message:
               description: >-
                 Message the agent says when the conversation begins. Set to
@@ -5292,11 +5306,12 @@ components:
                             type: object
                             properties:
                               phone_number:
-                                description: >-
-                                  Phone number to transfer the call to, in E.164
-                                  format.
                                 type: string
-                                pattern: ^\+[1-9]\d{6,14}$
+                                description: >-
+                                  E.164 phone number or a single dynamic
+                                  variable, such as `{{transfer_number}}`. Must
+                                  resolve to a valid E.164 number when the tool
+                                  runs.
                               type:
                                 description: The destination type.
                                 type: string
@@ -5313,6 +5328,10 @@ components:
                       uniqueItems: true
                   required:
                     - transfers
+            timezone:
+              type: string
+              description: IANA time zone for `{{system__time}}`. Defaults to `UTC`.
+              example: America/Los_Angeles
             tools:
               description: Tools available to the agent.
               type: array
@@ -5396,6 +5415,27 @@ components:
         - config
         - version
       title: ManagedAgent
+    ManagedAgentDynamicVariablePlaceholdersV1:
+      title: Dynamic variable placeholders
+      type: object
+      maxProperties: 64
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+      description: >-
+        Sample values for Playground test calls. Production calls never use
+        them.
+
+
+        Replaces saved samples on update. Omit to keep them, or send `{}` to
+        clear them.
+
+
+        Variable names are case-sensitive, up to 64 characters, and use letters,
+        digits, or underscores. Start with a letter or underscore; `system__`
+        and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
     ManagedAgentPrimaryLanguageV1:
       description: >-
         ISO 639-1 language code used for speech recognition, agent responses,
@@ -5550,6 +5590,8 @@ components:
           required:
             - input
             - output
+        dynamic_variable_placeholders:
+          $ref: '#/components/schemas/ManagedAgentDynamicVariablePlaceholdersV1'
         initial_message:
           description: >-
             Message the agent says when the conversation begins. Set to `null`
@@ -5596,6 +5638,10 @@ components:
           $ref: '#/components/schemas/ManagedAgentSystemToolsV1'
           description: Built-in tools available to the agent.
           additionalProperties: false
+        timezone:
+          type: string
+          description: IANA time zone for `{{system__time}}`. Defaults to `UTC`.
+          example: America/Los_Angeles
         tools:
           description: Tools available to the agent.
           type: array
@@ -5611,6 +5657,8 @@ components:
         - audio
         - tools
         - system_tools
+        - dynamic_variable_placeholders
+        - timezone
       title: ManagedAgentConfig
     ManagedAgentSystemToolsV1:
       type: object
@@ -5711,9 +5759,11 @@ components:
                     type: object
                     properties:
                       phone_number:
-                        description: Phone number to transfer the call to, in E.164 format.
                         type: string
-                        pattern: ^\+[1-9]\d{6,14}$
+                        description: >-
+                          E.164 phone number or a single dynamic variable, such
+                          as `{{transfer_number}}`. Must resolve to a valid
+                          E.164 number when the tool runs.
                       type:
                         description: The destination type.
                         type: string
@@ -5905,6 +5955,8 @@ components:
                       type: number
                       minimum: 0.5
                       maximum: 2
+            dynamic_variable_placeholders:
+              $ref: '#/components/schemas/ManagedAgentDynamicVariablePlaceholdersV1'
             initial_message:
               description: >-
                 Message the agent says when the conversation begins. Set to
@@ -6037,11 +6089,12 @@ components:
                             type: object
                             properties:
                               phone_number:
-                                description: >-
-                                  Phone number to transfer the call to, in E.164
-                                  format.
                                 type: string
-                                pattern: ^\+[1-9]\d{6,14}$
+                                description: >-
+                                  E.164 phone number or a single dynamic
+                                  variable, such as `{{transfer_number}}`. Must
+                                  resolve to a valid E.164 number when the tool
+                                  runs.
                               type:
                                 description: The destination type.
                                 type: string
@@ -6056,6 +6109,10 @@ components:
                       maxItems: 16
                       minItems: 1
                       uniqueItems: true
+            timezone:
+              type: string
+              description: IANA time zone for `{{system__time}}`. Defaults to `UTC`.
+              example: America/Los_Angeles
             tools:
               description: Tools available to the agent.
               type: array
@@ -6262,6 +6319,14 @@ components:
             $ref: '#/components/schemas/ManagedAgentSummaryV1'
         api_schema:
           $ref: '#/components/schemas/ManagedWebhookApiSchemaV1Response'
+        assignments:
+          description: >-
+            Response fields to save as dynamic variables after a successful JSON
+            response
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookAssignment'
+          maxItems: 64
         created_at:
           description: >-
             An RFC 3339 / ISO 8601 date-time string with timezone (e.g.
@@ -6325,6 +6390,7 @@ components:
         - type
         - response_timeout_secs
         - api_schema
+        - assignments
         - id
         - created_at
         - updated_at
@@ -6421,6 +6487,14 @@ components:
       properties:
         api_schema:
           $ref: '#/components/schemas/ManagedWebhookApiSchemaV1'
+        assignments:
+          description: >-
+            Response fields to save as dynamic variables after a successful JSON
+            response
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookAssignment'
+          maxItems: 64
         description:
           description: What the tool does and when the agent should use it.
           type: string
@@ -6562,9 +6636,10 @@ components:
               - type: string
                 description: A literal header value. Use the secret object for credentials.
               - $ref: '#/components/schemas/WebhookSecretResponse'
+              - $ref: '#/components/schemas/WebhookDynamicVariableHeader'
             description: >-
-              A plain-text header value or a stored secret. The secret value is
-              not returned.
+              A plain-text header value, a stored secret, or a dynamic variable
+              reference. The secret value is not returned.
         url:
           description: >-
             The HTTPS endpoint to call. Use `{name}` for path parameters defined
@@ -6576,6 +6651,33 @@ components:
         - url
         - method
       title: ManagedWebhookApiSchemaResponse
+    WebhookAssignment:
+      description: >-
+        Save a response field as a dynamic variable after a successful JSON
+        response. Missing or `null` fields leave the variable unchanged. Objects
+        and lists are saved as JSON text.
+      type: object
+      additionalProperties: false
+      properties:
+        dynamic_variable:
+          type: string
+          maxLength: 64
+          pattern: ^[A-Za-z_][A-Za-z0-9_]{0,63}$
+          description: >-
+            Name of the custom variable to update. `system__` variables cannot
+            be updated. Assign each variable at most once per tool.
+        value_path:
+          type: string
+          minLength: 1
+          maxLength: 256
+          description: >-
+            Response path, such as `order.status` or `items[0].name`. List
+            positions start at zero; `items.0.name` also selects the first item.
+            Field names cannot contain `.`, `[` or `]`.
+      required:
+        - dynamic_variable
+        - value_path
+      title: WebhookAssignment
     ManagedClientToolParametersV1:
       type: object
       additionalProperties: false
@@ -6637,9 +6739,10 @@ components:
               - type: string
                 description: A literal header value. Use the secret object for credentials.
               - $ref: '#/components/schemas/WebhookSecret'
+              - $ref: '#/components/schemas/WebhookDynamicVariableHeader'
             description: >-
-              A plain-text header value or a secret. Secret values are never
-              returned.
+              A plain-text header value, a secret, or a dynamic variable
+              reference. Secret values are never returned.
         url:
           description: >-
             The HTTPS endpoint to call. Use `{name}` for path parameters defined
@@ -6687,7 +6790,9 @@ components:
           description: Sends an `Authorization` header using a bearer token.
       title: WebhookAuthenticationResponse
     WebhookPathParam:
-      description: A value inserted into a URL path placeholder.
+      description: >-
+        A value sent in the URL path. The model supplies it unless you set
+        `constant_value` or `dynamic_variable`.
       type: object
       properties:
         constant_value:
@@ -6699,11 +6804,24 @@ components:
             - type: number
             - type: boolean
         description:
-          description: What value the agent should provide.
+          description: >-
+            What the agent should provide when it chooses this parameter's
+            value.
           type: string
           maxLength: 1000
+        dynamic_variable:
+          description: >-
+            Name of the variable to use when the tool runs. The parameter is
+            hidden from the model. A missing value or type mismatch returns a
+            tool error before execution. Use `constant_value` instead to send a
+            fixed value.
+          type: string
+          maxLength: 64
+          pattern: ^[A-Za-z_][A-Za-z0-9_]*$
         enum:
-          description: Allowed values.
+          description: >-
+            Allowed values for the model to choose from. Use only when
+            `constant_value` and `dynamic_variable` are omitted.
           type: array
           items:
             anyOf:
@@ -6733,9 +6851,8 @@ components:
             $ref: '#/components/schemas/WebhookQueryParam'
         required:
           description: >-
-            Parameter names the agent must provide. Other agent-provided
-            parameters are optional; parameters with `constant_value` are always
-            sent.
+            Parameters the model must provide. Exclude parameters filled by
+            `constant_value` or `dynamic_variable`.
           type: array
           items:
             type: string
@@ -6745,7 +6862,9 @@ components:
         - properties
       title: WebhookQuerySchema
     WebhookBodyParam:
-      description: A value sent in the JSON request body.
+      description: >-
+        A value sent in the JSON request body. The model supplies it unless you
+        set `constant_value` or `dynamic_variable`.
       type: object
       properties:
         constant_value:
@@ -6757,11 +6876,29 @@ components:
             - type: number
             - type: boolean
         description:
-          description: What value the agent should provide.
+          description: >-
+            What the agent should provide when it chooses this parameter's
+            value.
           type: string
           maxLength: 1000
+        dynamic_variable:
+          description: >-
+            Name of the variable to use when the tool runs. The parameter is
+            hidden from the model. A missing value or type mismatch returns a
+            tool error before execution. Use `constant_value` instead to send a
+            fixed value.
+
+
+            Supported for `string`, `integer`, `number`, and `boolean` fields,
+            including fields within objects. Cannot fill lists or fields within
+            lists. Omit this parameter from `required`.
+          type: string
+          maxLength: 64
+          pattern: ^[A-Za-z_][A-Za-z0-9_]*$
         enum:
-          description: Allowed values.
+          description: >-
+            Allowed values for the model to choose from. Use only when
+            `constant_value` and `dynamic_variable` are omitted.
           type: array
           items:
             anyOf:
@@ -6773,17 +6910,19 @@ components:
           minItems: 1
         items:
           $ref: '#/components/schemas/WebhookBodyParam'
-          description: The array item schema. Required when `type` is `array`.
+          description: >-
+            Describes each item in a list. Required when `type` is `array`.
+            Dynamic variables and constants cannot fill items or fields within
+            them.
         properties:
-          description: Object properties keyed by name.
+          description: Fields within this object, listed by name
           type: object
           additionalProperties:
             $ref: '#/components/schemas/WebhookBodyParam'
         required:
           description: >-
-            Property names the agent must provide. Other agent-provided
-            properties are optional; properties with `constant_value` are always
-            sent.
+            Fields the model must provide. Exclude fields filled by
+            `constant_value` or `dynamic_variable`.
           type: array
           items:
             type: string
@@ -6819,6 +6958,27 @@ components:
       required:
         - type
       title: WebhookSecretResponse
+    WebhookDynamicVariableHeader:
+      description: >-
+        Fill this header with the variable's current value. Numbers and
+        true/false values become text. The result must be nonempty printable
+        ASCII.
+      type: object
+      properties:
+        name:
+          description: Name of the dynamic variable whose value is sent as the header.
+          type: string
+          maxLength: 64
+          pattern: ^[A-Za-z_][A-Za-z0-9_]*$
+        type:
+          type: string
+          enum:
+            - dynamic_variable
+      required:
+        - type
+        - name
+      title: WebhookDynamicVariableHeader
+      additionalProperties: false
     ClientToolParam:
       description: One argument passed to your function.
       type: object
@@ -6922,7 +7082,9 @@ components:
         - type
       title: WebhookSecret
     WebhookQueryParam:
-      description: A value sent in the query string.
+      description: >-
+        A value sent in the query string. The model supplies it unless you set
+        `constant_value` or `dynamic_variable`.
       type: object
       properties:
         constant_value:
@@ -6934,11 +7096,28 @@ components:
             - type: number
             - type: boolean
         description:
-          description: What value the agent should provide.
+          description: >-
+            What the agent should provide when it chooses this parameter's
+            value.
           type: string
           maxLength: 1000
+        dynamic_variable:
+          description: >-
+            Name of the variable to use when the tool runs. The parameter is
+            hidden from the model. A missing value or type mismatch returns a
+            tool error before execution. Use `constant_value` instead to send a
+            fixed value.
+
+
+            Supported for `string`, `integer`, `number`, and `boolean`
+            parameters. Omit this parameter from `required`.
+          type: string
+          maxLength: 64
+          pattern: ^[A-Za-z_][A-Za-z0-9_]*$
         enum:
-          description: Allowed values.
+          description: >-
+            Allowed values for the model to choose from. Use only when
+            `constant_value` and `dynamic_variable` are omitted.
           type: array
           items:
             anyOf:
@@ -6949,7 +7128,7 @@ components:
           maxItems: 64
           minItems: 1
         items:
-          description: The array item type. Required when `type` is `array`.
+          description: The type of each item in the list. Required when `type` is `array`.
           type: object
           properties:
             type:
@@ -7044,9 +7223,10 @@ components:
                           A literal header value. Use the secret object for
                           credentials.
                       - $ref: '#/components/schemas/WebhookSecret'
+                      - $ref: '#/components/schemas/WebhookDynamicVariableHeader'
                     description: >-
-                      A plain-text header value or a secret. Secret values are
-                      never returned.
+                      A plain-text header value, a secret, or a dynamic variable
+                      reference. Secret values are never returned.
                 url:
                   description: >-
                     The HTTPS endpoint to call. Use `{name}` for path parameters
@@ -7054,6 +7234,15 @@ components:
                   type: string
                   maxLength: 2048
                   minLength: 1
+            assignments:
+              nullable: true
+              description: >-
+                Replaces the tool's assignments. Send `null` or `[]` to remove
+                them all.
+              type: array
+              items:
+                $ref: '#/components/schemas/WebhookAssignment'
+              maxItems: 64
             description:
               description: What the tool does and when the agent should use it.
               type: string
@@ -7230,11 +7419,17 @@ components:
           $ref: '#/components/schemas/EndReason'
           nullable: true
           description: The reason why the call ended.
-        metadata:
+        dynamic_variables:
           type: object
-          additionalProperties: true
-          nullable: true
-          description: Custom metadata associated with the call.
+          additionalProperties:
+            anyOf:
+              - type: string
+              - type: number
+              - type: boolean
+          description: >-
+            Initial custom values while the call is active; final values after
+            it ends, including webhook assignments. System variables are not
+            included. Omitted from ZDR or redacted call history.
       required:
         - id
         - agent_id
@@ -7359,13 +7554,59 @@ components:
         arguments:
           type: object
           additionalProperties: true
-          description: The arguments passed to the tool.
+          description: >-
+            Arguments supplied by the model. For webhook tools, this excludes
+            values filled from dynamic variables or constants.
         result:
           type: string
           description: The result returned by the tool.
+        dynamic_variable_updates:
+          type: array
+          description: >-
+            Values assigned by this tool. Omitted when the tool assigned no
+            values.
+          items:
+            $ref: '#/components/schemas/DynamicVariableUpdate'
       required:
         - name
         - arguments
+    DynamicVariableUpdate:
+      type: object
+      properties:
+        variable_name:
+          type: string
+          description: Custom variable that changed
+        old_value:
+          anyOf:
+            - type: string
+              nullable: true
+            - type: number
+            - type: boolean
+          description: Previous value, or null if the variable had no value
+        new_value:
+          anyOf:
+            - type: string
+            - type: number
+            - type: boolean
+          description: Assigned value
+        updated_at:
+          type: number
+          description: Time of the update, in seconds since the call started
+        tool_id:
+          type: string
+          description: ID of the configured tool that assigned the value
+        tool_call_id:
+          type: string
+          description: >-
+            ID of the tool call that assigned the value, matching
+            `tool_calls[].id`
+      required:
+        - variable_name
+        - old_value
+        - new_value
+        - updated_at
+        - tool_id
+        - tool_call_id
     AgentOutboundCallRequest:
       title: AgentOutboundCallRequest
       type: object
@@ -7384,7 +7625,7 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/AgentOutboundCallItem'
-          description: Per-call destination and metadata configuration.
+          description: Destinations and optional per-call dynamic variables
         ringing_timeout_seconds:
           type: integer
           minimum: 5
@@ -7412,18 +7653,15 @@ components:
     AgentOutboundCallItem:
       title: AgentOutboundCallItem
       type: object
-      description: Destination and metadata for one outbound call.
+      description: Destination and dynamic variables for one outbound call
       properties:
         to_number:
           type: string
           description: >-
             Destination phone number for this outbound call, in E.164 format
             (e.g., `+14155559876`).
-        metadata:
-          type: object
-          nullable: true
-          additionalProperties: true
-          description: Custom metadata associated with this call.
+        dynamic_variables:
+          $ref: '#/components/schemas/AgentDynamicVariableInputs'
       required:
         - to_number
     AgentOutboundCallItemResponse:
@@ -7442,8 +7680,8 @@ components:
             the request fails before Cartesia creates the call record.
         error:
           description: >-
-            Error for this destination when the provider could not start the
-            call.
+            Validation or dialing error for this destination. Other valid calls
+            still proceed.
           type: object
           additionalProperties: true
       anyOf:
@@ -7453,6 +7691,22 @@ components:
             - error
       required:
         - number
+    AgentDynamicVariableInputs:
+      type: object
+      maxProperties: 64
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+      description: >-
+        Custom values for this call. Supply values for variables used in the
+        welcome message.
+
+
+        Names are case-sensitive, up to 64 characters, and use letters, digits,
+        or underscores. Start with a letter or underscore; `system__` and
+        `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
     AgentCallBatchRequest:
       title: AgentCallBatchRequest
       type: object
@@ -7475,9 +7729,7 @@ components:
           maxItems: 5000
           items:
             $ref: '#/components/schemas/AgentOutboundCallItem'
-          description: >-
-            Per-call destination and metadata configuration. Up to 5,000
-            recipients per batch.
+          description: Destinations and optional per-call dynamic variables
         target_concurrency_limit:
           type: integer
           minimum: 1
@@ -7694,11 +7946,6 @@ components:
             Why the request failed before a call could be placed. Returned in
             place of `agent_call_id` when the recipient never reached a dial
             attempt.
-        metadata:
-          type: object
-          nullable: true
-          additionalProperties: true
-          description: Custom metadata associated with this recipient.
         created_at:
           type: string
           format: date-time
@@ -10068,8 +10315,6 @@ components:
           type: string
           format: email
           nullable: true
-          pattern: >-
-            ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
         id:
           description: >-
             Stable identifier for the user. Safe to pass to [Get
@@ -11744,3 +11989,49 @@ components:
       scheme: bearer
       bearerFormat: JWT
       description: An Access Token
+  examples:
+    LookupCustomerToolRequest:
+      value:
+        type: webhook
+        name: lookup_customer
+        description: Look up the caller to find their customer details.
+        pre_tool_speech: auto
+        execution_mode: immediate
+        api_schema:
+          url: https://api.example.com/customers/lookup
+          method: GET
+          query_params_schema:
+            properties:
+              phone_number:
+                type: string
+                dynamic_variable: system__caller_id
+        assignments:
+          - dynamic_variable: customer_name
+            value_path: customer.name
+    LookupCustomerToolResponse:
+      value:
+        type: webhook
+        name: lookup_customer
+        description: Look up the caller to find their customer details.
+        pre_tool_speech: auto
+        execution_mode: immediate
+        api_schema:
+          url: https://api.example.com/customers/lookup
+          method: GET
+          query_params_schema:
+            properties:
+              phone_number:
+                type: string
+                dynamic_variable: system__caller_id
+        assignments:
+          - dynamic_variable: customer_name
+            value_path: customer.name
+        id: agent_tool_5RkP2wZmQ8xTnLc4vB7dHy
+        response_timeout_secs: 20
+        created_at: '2026-09-15T12:00:00Z'
+        updated_at: '2026-09-15T12:00:00Z'
+    UpdateCustomerAssignmentsRequest:
+      value:
+        assignments:
+          - dynamic_variable: customer_name
+            value_path: customer.name

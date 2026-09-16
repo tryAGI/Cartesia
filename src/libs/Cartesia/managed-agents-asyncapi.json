@@ -348,7 +348,7 @@
       "AgentErrorEvent": {
         "name": "AgentErrorEvent",
         "title": "Error",
-        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.\n",
+        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the server ignores that event and keeps the connection open. When `fatal` is `true`, it closes the connection with code 1008 for client or protocol errors, or 1011 if the agent fails.",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/AgentErrorEvent"
@@ -398,6 +398,24 @@
                 "description": "How the server delivers agent audio. `speaking_pace` paces audio to playback speed. `as_available` sends it as fast as the model produces it, so a client that buffers locally can play it back on its own clock for lower latency. Not supported when the agent uses a background sound."
               }
             }
+          },
+          "dynamic_variables": {
+            "type": "object",
+            "maxProperties": 64,
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            },
+            "description": "Custom [dynamic variable](/agents/dynamic-variables) values for this session.\n\nNames are case-sensitive, up to 64 characters, and use letters, digits, or underscores. `system__` and `secret__` prefixes are reserved."
           }
         },
         "description": "Configures the session's audio. **This must be the first message sent.** The server closes the connection if any other event arrives first, or if no event arrives within 10 seconds. Unknown fields are rejected.\n"
@@ -745,7 +763,7 @@
           },
           "tool_calls": {
             "type": "array",
-            "description": "Tool calls made during the turn. Each entry has `name`, `arguments`, and optionally `result` and `id`.",
+            "description": "Tools called during this turn.",
             "items": {
               "type": "object",
               "required": [
@@ -768,6 +786,70 @@
                 "id": {
                   "type": "string",
                   "description": "Identifier of the invocation."
+                },
+                "dynamic_variable_updates": {
+                  "type": "array",
+                  "description": "Values assigned by this tool. Omitted when the tool assigned no values.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "variable_name": {
+                        "type": "string",
+                        "description": "Custom variable that changed"
+                      },
+                      "old_value": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "description": "Previous value, or null if the variable had no value"
+                      },
+                      "new_value": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ],
+                        "description": "Assigned value"
+                      },
+                      "updated_at": {
+                        "type": "number",
+                        "description": "Time of the update, in seconds since the call started"
+                      },
+                      "tool_id": {
+                        "type": "string",
+                        "description": "ID of the configured tool that assigned the value"
+                      },
+                      "tool_call_id": {
+                        "type": "string",
+                        "description": "ID of the tool call that assigned the value, matching `tool_calls[].id`"
+                      }
+                    },
+                    "required": [
+                      "variable_name",
+                      "old_value",
+                      "new_value",
+                      "updated_at",
+                      "tool_id",
+                      "tool_call_id"
+                    ]
+                  }
                 }
               }
             }
@@ -795,9 +877,12 @@
             "type": "string",
             "enum": [
               "invalid_event",
-              "agent_failed"
+              "agent_failed",
+              "missing_dynamic_variables",
+              "invalid_dynamic_variables",
+              "dynamic_variables_not_allowed"
             ],
-            "description": "`invalid_event` for a rejected client event, `agent_failed` for an agent pipeline failure."
+            "description": "`invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:\n\n- `missing_dynamic_variables`: a value needed by the welcome message is missing.\n- `invalid_dynamic_variables`: the supplied names or values are invalid.\n- `dynamic_variables_not_allowed`: a browser access token was used to supply custom values."
           },
           "message": {
             "type": "string",
@@ -808,7 +893,7 @@
             "description": "Whether the server closes the connection after this error."
           }
         },
-        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.\n"
+        "description": "Reports a problem with the session or an event you sent. When `fatal` is `false`, the server ignores that event and keeps the connection open. When `fatal` is `true`, it closes the connection with code 1008 for client or protocol errors, or 1011 if the agent fails."
       }
     }
   }
