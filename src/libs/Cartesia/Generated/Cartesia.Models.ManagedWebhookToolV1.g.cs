@@ -22,6 +22,13 @@ namespace Cartesia
         public required global::Cartesia.ManagedWebhookApiSchemaV1Response ApiSchema { get; set; }
 
         /// <summary>
+        /// Response fields to save as dynamic variables after a successful JSON response
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assignments")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment> Assignments { get; set; }
+
+        /// <summary>
         /// An RFC 3339 / ISO 8601 date-time string with timezone (e.g. `2025-04-16T12:34:56.789Z`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -97,6 +104,9 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="ManagedWebhookToolV1" /> class.
         /// </summary>
         /// <param name="apiSchema"></param>
+        /// <param name="assignments">
+        /// Response fields to save as dynamic variables after a successful JSON response
+        /// </param>
         /// <param name="createdAt">
         /// An RFC 3339 / ISO 8601 date-time string with timezone (e.g. `2025-04-16T12:34:56.789Z`).
         /// </param>
@@ -133,6 +143,7 @@ namespace Cartesia
 #endif
         public ManagedWebhookToolV1(
             global::Cartesia.ManagedWebhookApiSchemaV1Response apiSchema,
+            global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment> assignments,
             global::System.DateTime createdAt,
             string description,
             global::Cartesia.ManagedWebhookToolV1ExecutionMode executionMode,
@@ -146,6 +157,7 @@ namespace Cartesia
         {
             this.Agents = agents;
             this.ApiSchema = apiSchema ?? throw new global::System.ArgumentNullException(nameof(apiSchema));
+            this.Assignments = assignments ?? throw new global::System.ArgumentNullException(nameof(assignments));
             this.CreatedAt = createdAt;
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.ExecutionMode = executionMode;

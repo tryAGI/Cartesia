@@ -311,7 +311,7 @@ namespace Cartesia.Realtime
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnEnded' but the value was {ToString()}.");
 
         /// <summary>
-        /// Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.
+        /// Reports a problem with the session or an event you sent. When `fatal` is `false`, the server ignores that event and keeps the connection open. When `fatal` is `true`, it closes the connection with code 1008 for client or protocol errors, or 1011 if the agent fails.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.AgentErrorEvent? Error { get; init; }

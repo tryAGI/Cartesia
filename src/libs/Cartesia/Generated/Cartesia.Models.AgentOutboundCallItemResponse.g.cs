@@ -22,7 +22,7 @@ namespace Cartesia
         public string? AgentCallId { get; set; }
 
         /// <summary>
-        /// Error for this destination when the provider could not start the call.
+        /// Validation or dialing error for this destination. Other valid calls still proceed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         public object? Error { get; set; }
@@ -43,7 +43,7 @@ namespace Cartesia
         /// Agent call ID for tracking per-call information. This is absent when the request fails before Cartesia creates the call record.
         /// </param>
         /// <param name="error">
-        /// Error for this destination when the provider could not start the call.
+        /// Validation or dialing error for this destination. Other valid calls still proceed.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

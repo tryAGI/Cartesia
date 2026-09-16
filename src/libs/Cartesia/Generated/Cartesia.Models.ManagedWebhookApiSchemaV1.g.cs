@@ -36,7 +36,7 @@ namespace Cartesia
         public global::Cartesia.WebhookQuerySchema? QueryParamsSchema { get; set; }
 
         /// <summary>
-        /// A value sent in the JSON request body.
+        /// A value sent in the JSON request body. The model supplies it unless you set `constant_value` or `dynamic_variable`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_body_schema")]
         public global::Cartesia.WebhookBodyParam? RequestBodySchema { get; set; }
@@ -79,7 +79,7 @@ namespace Cartesia
         /// Parameters sent in the request query string.
         /// </param>
         /// <param name="requestBodySchema">
-        /// A value sent in the JSON request body.
+        /// A value sent in the JSON request body. The model supplies it unless you set `constant_value` or `dynamic_variable`.
         /// </param>
         /// <param name="requestHeaders">
         /// Headers sent with every request.

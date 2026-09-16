@@ -4,9 +4,9 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Custom metadata associated with this call.
+    /// Initial custom values while the call is active; final values after it ends, including webhook assignments. System variables are not included. Omitted from ZDR or redacted call history.
     /// </summary>
-    public sealed partial class AgentOutboundCallItemMetadata
+    public sealed partial class AgentCallDynamicVariables
     {
 
         /// <summary>

@@ -43,6 +43,7 @@ namespace Cartesia.JsonConverters
             if (__jsonProps.Contains("api_schema.request_body_schema")) __score0++;
             if (__jsonProps.Contains("api_schema.request_headers")) __score0++;
             if (__jsonProps.Contains("api_schema.url")) __score0++;
+            if (__jsonProps.Contains("assignments")) __score0++;
             if (__jsonProps.Contains("description")) __score0++;
             if (__jsonProps.Contains("execution_mode")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;

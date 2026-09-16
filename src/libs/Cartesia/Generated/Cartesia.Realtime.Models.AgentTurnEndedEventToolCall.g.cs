@@ -35,6 +35,12 @@ namespace Cartesia.Realtime
         public string? Id { get; set; }
 
         /// <summary>
+        /// Values assigned by this tool. Omitted when the tool assigned no values.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variable_updates")]
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate>? DynamicVariableUpdates { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +61,9 @@ namespace Cartesia.Realtime
         /// <param name="id">
         /// Identifier of the invocation.
         /// </param>
+        /// <param name="dynamicVariableUpdates">
+        /// Values assigned by this tool. Omitted when the tool assigned no values.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -62,12 +71,14 @@ namespace Cartesia.Realtime
             string name,
             object arguments,
             string? result,
-            string? id)
+            string? id,
+            global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate>? dynamicVariableUpdates)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
             this.Result = result;
             this.Id = id;
+            this.DynamicVariableUpdates = dynamicVariableUpdates;
         }
 
         /// <summary>

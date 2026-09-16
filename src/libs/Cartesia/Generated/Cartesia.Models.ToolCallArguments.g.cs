@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The arguments passed to the tool.
+    /// Arguments supplied by the model. For webhook tools, this excludes values filled from dynamic variables or constants.
     /// </summary>
     public sealed partial class ToolCallArguments
     {

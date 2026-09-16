@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Object properties keyed by name.
+    /// Fields within this object, listed by name
     /// </summary>
     public sealed partial class WebhookBodyParamProperties
     {

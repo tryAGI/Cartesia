@@ -59,7 +59,7 @@ namespace Cartesia.Realtime
         public required double EndTime { get; set; }
 
         /// <summary>
-        /// Tool calls made during the turn. Each entry has `name`, `arguments`, and optionally `result` and `id`.
+        /// Tools called during this turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_calls")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -93,7 +93,7 @@ namespace Cartesia.Realtime
         /// Seconds since the start of the session.
         /// </param>
         /// <param name="toolCalls">
-        /// Tool calls made during the turn. Each entry has `name`, `arguments`, and optionally `result` and `id`.
+        /// Tools called during this turn.
         /// </param>
         /// <param name="type">
         /// Event type identifier.

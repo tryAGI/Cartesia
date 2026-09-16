@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Error for this destination when the provider could not start the call.
+    /// Validation or dialing error for this destination. Other valid calls still proceed.
     /// </summary>
     public sealed partial class AgentOutboundCallItemResponseError
     {

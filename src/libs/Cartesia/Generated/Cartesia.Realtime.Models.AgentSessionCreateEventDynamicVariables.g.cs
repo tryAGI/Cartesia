@@ -1,12 +1,13 @@
 
 #nullable enable
 
-namespace Cartesia
+namespace Cartesia.Realtime
 {
     /// <summary>
-    /// Custom metadata associated with the call.
+    /// Custom [dynamic variable](/agents/dynamic-variables) values for this session.<br/>
+    /// Names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. `system__` and `secret__` prefixes are reserved.
     /// </summary>
-    public sealed partial class AgentCallMetadata
+    public sealed partial class AgentSessionCreateEventDynamicVariables
     {
 
         /// <summary>

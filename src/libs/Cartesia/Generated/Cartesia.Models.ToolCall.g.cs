@@ -22,7 +22,7 @@ namespace Cartesia
         public required string Name { get; set; }
 
         /// <summary>
-        /// The arguments passed to the tool.
+        /// Arguments supplied by the model. For webhook tools, this excludes values filled from dynamic variables or constants.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -33,6 +33,12 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
         public string? Result { get; set; }
+
+        /// <summary>
+        /// Values assigned by this tool. Omitted when the tool assigned no values.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variable_updates")]
+        public global::System.Collections.Generic.IList<global::Cartesia.DynamicVariableUpdate>? DynamicVariableUpdates { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,13 +53,16 @@ namespace Cartesia
         /// The name of the tool that was called.
         /// </param>
         /// <param name="arguments">
-        /// The arguments passed to the tool.
+        /// Arguments supplied by the model. For webhook tools, this excludes values filled from dynamic variables or constants.
         /// </param>
         /// <param name="id">
         /// The unique identifier for the tool call.
         /// </param>
         /// <param name="result">
         /// The result returned by the tool.
+        /// </param>
+        /// <param name="dynamicVariableUpdates">
+        /// Values assigned by this tool. Omitted when the tool assigned no values.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -62,12 +71,14 @@ namespace Cartesia
             string name,
             object arguments,
             string? id,
-            string? result)
+            string? result,
+            global::System.Collections.Generic.IList<global::Cartesia.DynamicVariableUpdate>? dynamicVariableUpdates)
         {
             this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
             this.Result = result;
+            this.DynamicVariableUpdates = dynamicVariableUpdates;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// The array item type. Required when `type` is `array`.
+    /// The type of each item in the list. Required when `type` is `array`.
     /// </summary>
     public sealed partial class WebhookQueryParamItems
     {

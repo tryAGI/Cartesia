@@ -16,6 +16,12 @@ namespace Cartesia
         public required global::Cartesia.ManagedWebhookApiSchemaV1 ApiSchema { get; set; }
 
         /// <summary>
+        /// Response fields to save as dynamic variables after a successful JSON response
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assignments")]
+        public global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment>? Assignments { get; set; }
+
+        /// <summary>
         /// What the tool does and when the agent should use it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
@@ -81,6 +87,9 @@ namespace Cartesia
         /// <param name="preToolSpeech">
         /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
         /// </param>
+        /// <param name="assignments">
+        /// Response fields to save as dynamic variables after a successful JSON response
+        /// </param>
         /// <param name="responseTimeoutSecs">
         /// Maximum time to wait for the endpoint to respond. Defaults to 20 seconds.<br/>
         /// Default Value: 20
@@ -97,10 +106,12 @@ namespace Cartesia
             global::Cartesia.ManagedWebhookToolDefinitionV1ExecutionMode executionMode,
             string name,
             global::Cartesia.ManagedWebhookToolDefinitionV1PreToolSpeech preToolSpeech,
+            global::System.Collections.Generic.IList<global::Cartesia.WebhookAssignment>? assignments,
             int? responseTimeoutSecs,
             global::Cartesia.ManagedWebhookToolDefinitionV1Type type)
         {
             this.ApiSchema = apiSchema ?? throw new global::System.ArgumentNullException(nameof(apiSchema));
+            this.Assignments = assignments;
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.ExecutionMode = executionMode;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));

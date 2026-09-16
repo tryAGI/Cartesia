@@ -2,6 +2,39 @@
   "Examples": [
     {
       "Order": 1,
+      "Title": "Get a tool",
+      "Slug": "getv1agentstoolsbytool-id",
+      "Description": "Returns one shared tool. Expand \u0060agents\u0060 to include agents that currently reference it.",
+      "Language": "http",
+      "Code": "### Get a tool\n# @name getV1AgentsToolsByTool_id\nGET {{host}}/v1/agents/tools/{{tool_id}}?expand[]={{expand[]}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nAccept: application/json\n\n## Responses\n# 200\n# Description: Get a tool\n# Content-Type: application/json\n# 404\n# Description: Not found\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getV1AgentsToolsByTool_id",
+      "Setup": null
+    },
+    {
+      "Order": 2,
+      "Title": "Update a tool",
+      "Slug": "patchv1agentstoolsbytool-id",
+      "Description": "Sparsely updates a tool.",
+      "Language": "http",
+      "Code": "### Update a tool\n# @name patchV1AgentsToolsByTool_id\nPATCH {{host}}/v1/agents/tools/{{tool_id}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022assignments\u0022: [\n    {\n      \u0022dynamic_variable\u0022: \u0022customer_name\u0022,\n      \u0022value_path\u0022: \u0022customer.name\u0022\n    }\n  ]\n}\n\n## Responses\n# 200\n# Description: Update a tool\n# Content-Type: application/json\n# 404\n# Description: Not found\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "patchV1AgentsToolsByTool_id",
+      "Setup": null
+    },
+    {
+      "Order": 3,
+      "Title": "Create a tool",
+      "Slug": "postv1agentstools",
+      "Description": "Creates a shared webhook or client tool that can be attached to agents",
+      "Language": "csharp",
+      "Code": "using var client = new CartesiaClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Cartesia.ManagedToolDefinitionV1\u003E(\n    @\u0022{\n  \u0022\u0022type\u0022\u0022: \u0022\u0022webhook\u0022\u0022,\n  \u0022\u0022name\u0022\u0022: \u0022\u0022lookup_customer\u0022\u0022,\n  \u0022\u0022description\u0022\u0022: \u0022\u0022Look up the caller to find their customer details.\u0022\u0022,\n  \u0022\u0022pre_tool_speech\u0022\u0022: \u0022\u0022auto\u0022\u0022,\n  \u0022\u0022execution_mode\u0022\u0022: \u0022\u0022immediate\u0022\u0022,\n  \u0022\u0022api_schema\u0022\u0022: {\n    \u0022\u0022url\u0022\u0022: \u0022\u0022https://api.example.com/customers/lookup\u0022\u0022,\n    \u0022\u0022method\u0022\u0022: \u0022\u0022GET\u0022\u0022,\n    \u0022\u0022query_params_schema\u0022\u0022: {\n      \u0022\u0022properties\u0022\u0022: {\n        \u0022\u0022phone_number\u0022\u0022: {\n          \u0022\u0022type\u0022\u0022: \u0022\u0022string\u0022\u0022,\n          \u0022\u0022dynamic_variable\u0022\u0022: \u0022\u0022system__caller_id\u0022\u0022\n        }\n      }\n    }\n  },\n  \u0022\u0022assignments\u0022\u0022: [\n    {\n      \u0022\u0022dynamic_variable\u0022\u0022: \u0022\u0022customer_name\u0022\u0022,\n      \u0022\u0022value_path\u0022\u0022: \u0022\u0022customer.name\u0022\u0022\n    }\n  ]\n}\u0022)!;\n\nvar response = await client.AgentTools.PostV1AgentsToolsAsync(\n    request: request\n);\n\n// Example response:\n// {\n//   \u0022type\u0022: \u0022webhook\u0022,\n//   \u0022name\u0022: \u0022lookup_customer\u0022,\n//   \u0022description\u0022: \u0022Look up the caller to find their customer details.\u0022,\n//   \u0022pre_tool_speech\u0022: \u0022auto\u0022,\n//   \u0022execution_mode\u0022: \u0022immediate\u0022,\n//   \u0022api_schema\u0022: {\n//     \u0022url\u0022: \u0022https://api.example.com/customers/lookup\u0022,\n//     \u0022method\u0022: \u0022GET\u0022,\n//     \u0022query_params_schema\u0022: {\n//       \u0022properties\u0022: {\n//         \u0022phone_number\u0022: {\n//           \u0022type\u0022: \u0022string\u0022,\n//           \u0022dynamic_variable\u0022: \u0022system__caller_id\u0022\n//         }\n//       }\n//     }\n//   },\n//   \u0022assignments\u0022: [\n//     {\n//       \u0022dynamic_variable\u0022: \u0022customer_name\u0022,\n//       \u0022value_path\u0022: \u0022customer.name\u0022\n//     }\n//   ],\n//   \u0022id\u0022: \u0022agent_tool_5RkP2wZmQ8xTnLc4vB7dHy\u0022,\n//   \u0022response_timeout_secs\u0022: 20,\n//   \u0022created_at\u0022: \u00222026-09-15T12:00:00Z\u0022,\n//   \u0022updated_at\u0022: \u00222026-09-15T12:00:00Z\u0022\n// }",
+      "Format": "sdk",
+      "OperationId": "postV1AgentsTools",
+      "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 4,
       "Title": "Delete Call",
       "Slug": "agents-delete-call",
       "Description": "Deletes the sensitive data for a call, including the transcript, audio recordings, and logs. The call record is retained with non-sensitive operational metadata; deleted fields are omitted from subsequent API responses, and \u0060redacted_at\u0060 marks when deletion occurred. Deletion cannot be undone.\n\nOnly completed or failed calls can be deleted. Cancel an active call first via \u0060POST /agents/calls/{call_id}/cancel\u0060.",
@@ -12,7 +45,7 @@
       "Setup": null
     },
     {
-      "Order": 2,
+      "Order": 5,
       "Title": "List Calls",
       "Slug": "agents-list-calls",
       "Description": "Lists an agent\u0027s calls, or the calls placed for one outbound call batch. One of \u0060agent_id\u0060 or \u0060batch_id\u0060 is required.",
@@ -23,7 +56,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 3,
+      "Order": 6,
       "Title": "Get API Key",
       "Slug": "api-keys-get",
       "Description": "Returns metadata for a single API key.",
@@ -34,7 +67,7 @@
       "Setup": null
     },
     {
-      "Order": 4,
+      "Order": 7,
       "Title": "List API Keys",
       "Slug": "api-keys-list",
       "Description": "Returns a paginated list of standard API keys owned by the authenticating organization. Only metadata is returned, not the keys themselves. Admin API keys are not included.",
@@ -45,7 +78,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 5,
+      "Order": 8,
       "Title": "List Invites",
       "Slug": "getorganizationsinvites",
       "Description": "Lists organization invites, filtered by status",
@@ -56,7 +89,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 6,
+      "Order": 9,
       "Title": "Get Invite",
       "Slug": "getorganizationsinvitesbyid",
       "Description": "Generated from OpenAPI examples.",
@@ -67,7 +100,7 @@
       "Setup": null
     },
     {
-      "Order": 7,
+      "Order": 10,
       "Title": "List Users",
       "Slug": "getorganizationsusers",
       "Description": "Lists users in the organization, ordered by when they joined (newest first)",
@@ -78,7 +111,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 8,
+      "Order": 11,
       "Title": "Get User",
       "Slug": "getorganizationsusersbyid",
       "Description": "Generated from OpenAPI examples.",
@@ -89,7 +122,7 @@
       "Setup": null
     },
     {
-      "Order": 9,
+      "Order": 12,
       "Title": "Create Invites",
       "Slug": "postorganizationsinvites",
       "Description": "Invites email addresses to the organization as members. If any email is rejected, the whole request fails and no invites are created. Rate limited to 10 requests per hour.",
@@ -100,7 +133,7 @@
       "Setup": null
     },
     {
-      "Order": 10,
+      "Order": 13,
       "Title": "Provision Cartesia Number",
       "Slug": "phone-numbers-provision",
       "Description": "Provision a new Cartesia-managed US phone number",
@@ -111,7 +144,7 @@
       "Setup": null
     },
     {
-      "Order": 11,
+      "Order": 14,
       "Title": "Create a new pronunciation dictionary",
       "Slug": "pronunciationdicts-create",
       "Description": "Create a new pronunciation dictionary",
@@ -122,7 +155,7 @@
       "Setup": null
     },
     {
-      "Order": 12,
+      "Order": 15,
       "Title": "Retrieve a specific pronunciation dictionary by ID",
       "Slug": "pronunciationdicts-get",
       "Description": "Retrieve a specific pronunciation dictionary by ID",
@@ -133,7 +166,7 @@
       "Setup": null
     },
     {
-      "Order": 13,
+      "Order": 16,
       "Title": "Update a pronunciation dictionary",
       "Slug": "pronunciationdicts-update",
       "Description": "Update a pronunciation dictionary",
@@ -144,7 +177,7 @@
       "Setup": null
     },
     {
-      "Order": 14,
+      "Order": 17,
       "Title": "Get Agent Usage",
       "Slug": "usage-agents",
       "Description": "Returns your agent usage over time, bucketed by the requested interval.",
@@ -155,7 +188,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 15,
+      "Order": 18,
       "Title": "Get Credit Usage",
       "Slug": "usage-credits",
       "Description": "Returns your credit usage over time, bucketed by the requested interval.",
@@ -166,7 +199,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 16,
+      "Order": 19,
       "Title": "List Accents",
       "Slug": "accents-list",
       "Description": "Retrieve all supported accents, including which ones you can localize a voice into. Filter with \u0060is_localizable\u0060, \u0060language\u0060, and \u0060locale\u0060. If you pass more than one, every filter has to match.",
@@ -177,7 +210,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 17,
+      "Order": 20,
       "Title": "Add Voice Accents",
       "Slug": "voices-add-accents",
       "Description": "Add accents to an instant voice clone you own so a single \u0060voice_id\u0060 can speak multiple accents natively.",
@@ -188,7 +221,7 @@
       "Setup": null
     },
     {
-      "Order": 18,
+      "Order": 21,
       "Title": "Clone Voice",
       "Slug": "voices-clone",
       "Description": "Generated from OpenAPI examples.",
@@ -199,7 +232,7 @@
       "Setup": null
     },
     {
-      "Order": 19,
+      "Order": 22,
       "Title": "Delete Voice Accent",
       "Slug": "voices-delete-accent",
       "Description": "Remove an accent your instant voice clone supports.",
@@ -210,7 +243,7 @@
       "Setup": null
     },
     {
-      "Order": 20,
+      "Order": 23,
       "Title": "Get Voice",
       "Slug": "voices-get",
       "Description": "Generated from OpenAPI examples.",
@@ -221,7 +254,7 @@
       "Setup": null
     },
     {
-      "Order": 21,
+      "Order": 24,
       "Title": "Localize Voice",
       "Slug": "voices-localize",
       "Description": "Localize a voice to sound native in another accent. This creates a new voice with its own voice ID.",
@@ -232,7 +265,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 22,
+      "Order": 25,
       "Title": "Update Voice",
       "Slug": "voices-update",
       "Description": "Update the name, description, gender, and accent of a voice. To set the gender back to the default, set the gender to \u0060null\u0060. If gender is not specified, the gender will not be updated.",

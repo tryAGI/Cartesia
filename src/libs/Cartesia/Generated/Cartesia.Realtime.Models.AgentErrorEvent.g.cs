@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime
 {
     /// <summary>
-    /// Reports a problem with the session or an event you sent. When `fatal` is `false`, the offending event was dropped and the stream stays open. When `fatal` is `true`, the server closes the connection: code 1008 for client and protocol errors, 1011 for agent pipeline failures.
+    /// Reports a problem with the session or an event you sent. When `fatal` is `false`, the server ignores that event and keeps the connection open. When `fatal` is `true`, it closes the connection with code 1008 for client or protocol errors, or 1011 if the agent fails.
     /// </summary>
     public sealed partial class AgentErrorEvent
     {
@@ -16,7 +16,10 @@ namespace Cartesia.Realtime
         public global::Cartesia.Realtime.AgentErrorEventType Type { get; set; }
 
         /// <summary>
-        /// `invalid_event` for a rejected client event, `agent_failed` for an agent pipeline failure.
+        /// `invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:<br/>
+        /// - `missing_dynamic_variables`: a value needed by the welcome message is missing.<br/>
+        /// - `invalid_dynamic_variables`: the supplied names or values are invalid.<br/>
+        /// - `dynamic_variables_not_allowed`: a browser access token was used to supply custom values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.JsonConverters.AgentErrorEventCodeJsonConverter))]
@@ -47,7 +50,10 @@ namespace Cartesia.Realtime
         /// Initializes a new instance of the <see cref="AgentErrorEvent" /> class.
         /// </summary>
         /// <param name="code">
-        /// `invalid_event` for a rejected client event, `agent_failed` for an agent pipeline failure.
+        /// `invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:<br/>
+        /// - `missing_dynamic_variables`: a value needed by the welcome message is missing.<br/>
+        /// - `invalid_dynamic_variables`: the supplied names or values are invalid.<br/>
+        /// - `dynamic_variables_not_allowed`: a browser access token was used to supply custom values.
         /// </param>
         /// <param name="message">
         /// Human-readable explanation.
