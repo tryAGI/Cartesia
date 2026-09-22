@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Cartesia
@@ -44,11 +46,18 @@ namespace Cartesia
         public global::Cartesia.VoiceAccent? Accent { get; set; }
 
         /// <summary>
-        /// Base model that was used to create this fine-tune
+        /// Deprecated. Use [`supported_model_ids`](/api-reference/fine-tunes/get#response-supported-model-ids) instead for models compatible with this fine tune.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? ModelId { get; set; }
+
+        /// <summary>
+        /// Model IDs compatible with this fine-tune
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supported_model_ids")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
+        public required global::System.Collections.Generic.IList<string> SupportedModelIds { get; set; }
 
         /// <summary>
         /// ID of the dataset used for fine-tuning
@@ -92,8 +101,8 @@ namespace Cartesia
         /// <param name="language">
         /// Language code of the fine-tune
         /// </param>
-        /// <param name="modelId">
-        /// Base model that was used to create this fine-tune
+        /// <param name="supportedModelIds">
+        /// Model IDs compatible with this fine-tune
         /// </param>
         /// <param name="dataset">
         /// ID of the dataset used for fine-tuning
@@ -115,7 +124,7 @@ namespace Cartesia
             string name,
             string description,
             string language,
-            string modelId,
+            global::System.Collections.Generic.IList<string> supportedModelIds,
             string dataset,
             global::Cartesia.FineTuneStatus status,
             global::Cartesia.VoiceAccent? accent,
@@ -126,7 +135,7 @@ namespace Cartesia
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Accent = accent;
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
+            this.SupportedModelIds = supportedModelIds ?? throw new global::System.ArgumentNullException(nameof(supportedModelIds));
             this.Dataset = dataset ?? throw new global::System.ArgumentNullException(nameof(dataset));
             this.Status = status;
             this.UserErrors = userErrors;

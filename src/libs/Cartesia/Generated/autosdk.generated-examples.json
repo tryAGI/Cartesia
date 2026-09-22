@@ -79,6 +79,17 @@
     },
     {
       "Order": 8,
+      "Title": "Create a new fine-tune",
+      "Slug": "finetunes-create",
+      "Description": "Create a new fine-tune",
+      "Language": "csharp",
+      "Code": "using var client = new CartesiaClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Cartesia.CreateFineTuneRequest\u003E(\n    @\u0022{\n  \u0022\u0022name\u0022\u0022: \u0022\u0022My voice\u0022\u0022,\n  \u0022\u0022description\u0022\u0022: \u0022\u0022A fine-tuned voice\u0022\u0022,\n  \u0022\u0022language\u0022\u0022: \u0022\u0022en\u0022\u0022,\n  \u0022\u0022dataset\u0022\u0022: \u0022\u0022dataset_abc123\u0022\u0022\n}\u0022)!;\n\nvar response = await client.FineTunes.FineTunesCreateAsync(\n    request: request\n);",
+      "Format": "sdk",
+      "OperationId": "fineTunes_create",
+      "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 9,
       "Title": "List Invites",
       "Slug": "getorganizationsinvites",
       "Description": "Lists organization invites, filtered by status",
@@ -89,7 +100,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 9,
+      "Order": 10,
       "Title": "Get Invite",
       "Slug": "getorganizationsinvitesbyid",
       "Description": "Generated from OpenAPI examples.",
@@ -100,7 +111,7 @@
       "Setup": null
     },
     {
-      "Order": 10,
+      "Order": 11,
       "Title": "List Users",
       "Slug": "getorganizationsusers",
       "Description": "Lists users in the organization, ordered by when they joined (newest first)",
@@ -111,7 +122,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 11,
+      "Order": 12,
       "Title": "Get User",
       "Slug": "getorganizationsusersbyid",
       "Description": "Generated from OpenAPI examples.",
@@ -122,7 +133,7 @@
       "Setup": null
     },
     {
-      "Order": 12,
+      "Order": 13,
       "Title": "Create Invites",
       "Slug": "postorganizationsinvites",
       "Description": "Invites email addresses to the organization as members. If any email is rejected, the whole request fails and no invites are created. Rate limited to 10 requests per hour.",
@@ -133,7 +144,7 @@
       "Setup": null
     },
     {
-      "Order": 13,
+      "Order": 14,
       "Title": "Provision Cartesia Number",
       "Slug": "phone-numbers-provision",
       "Description": "Provision a new Cartesia-managed US phone number",
@@ -144,7 +155,7 @@
       "Setup": null
     },
     {
-      "Order": 14,
+      "Order": 15,
       "Title": "Create a new pronunciation dictionary",
       "Slug": "pronunciationdicts-create",
       "Description": "Create a new pronunciation dictionary",
@@ -155,7 +166,7 @@
       "Setup": null
     },
     {
-      "Order": 15,
+      "Order": 16,
       "Title": "Retrieve a specific pronunciation dictionary by ID",
       "Slug": "pronunciationdicts-get",
       "Description": "Retrieve a specific pronunciation dictionary by ID",
@@ -166,7 +177,7 @@
       "Setup": null
     },
     {
-      "Order": 16,
+      "Order": 17,
       "Title": "Update a pronunciation dictionary",
       "Slug": "pronunciationdicts-update",
       "Description": "Update a pronunciation dictionary",
@@ -177,7 +188,7 @@
       "Setup": null
     },
     {
-      "Order": 17,
+      "Order": 18,
       "Title": "Get Agent Usage",
       "Slug": "usage-agents",
       "Description": "Returns your agent usage over time, bucketed by the requested interval.",
@@ -188,7 +199,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 18,
+      "Order": 19,
       "Title": "Get Credit Usage",
       "Slug": "usage-credits",
       "Description": "Returns your credit usage over time, bucketed by the requested interval.",
@@ -199,7 +210,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 19,
+      "Order": 20,
       "Title": "List Accents",
       "Slug": "accents-list",
       "Description": "Retrieve all supported accents, including which ones you can localize a voice into. Filter with \u0060is_localizable\u0060, \u0060language\u0060, and \u0060locale\u0060. If you pass more than one, every filter has to match.",
@@ -210,7 +221,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 20,
+      "Order": 21,
       "Title": "Add Voice Accents",
       "Slug": "voices-add-accents",
       "Description": "Add accents to an instant voice clone you own so a single \u0060voice_id\u0060 can speak multiple accents natively.",
@@ -221,7 +232,7 @@
       "Setup": null
     },
     {
-      "Order": 21,
+      "Order": 22,
       "Title": "Clone Voice",
       "Slug": "voices-clone",
       "Description": "Generated from OpenAPI examples.",
@@ -232,7 +243,7 @@
       "Setup": null
     },
     {
-      "Order": 22,
+      "Order": 23,
       "Title": "Delete Voice Accent",
       "Slug": "voices-delete-accent",
       "Description": "Remove an accent your instant voice clone supports.",
@@ -243,7 +254,7 @@
       "Setup": null
     },
     {
-      "Order": 23,
+      "Order": 24,
       "Title": "Get Voice",
       "Slug": "voices-get",
       "Description": "Generated from OpenAPI examples.",
@@ -254,7 +265,7 @@
       "Setup": null
     },
     {
-      "Order": 24,
+      "Order": 25,
       "Title": "Localize Voice",
       "Slug": "voices-localize",
       "Description": "Localize a voice to sound native in another accent. This creates a new voice with its own voice ID.",
@@ -265,7 +276,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 25,
+      "Order": 26,
       "Title": "Update Voice",
       "Slug": "voices-update",
       "Description": "Update the name, description, gender, and accent of a voice. To set the gender back to the default, set the gender to \u0060null\u0060. If gender is not specified, the gender will not be updated.",

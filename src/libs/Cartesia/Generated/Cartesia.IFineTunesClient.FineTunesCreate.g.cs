@@ -1,5 +1,7 @@
 #nullable enable
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace Cartesia
 {
     public partial interface IFineTunesClient
@@ -57,10 +59,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of this fine-tune. See [GET /accents](/api-reference/accents/list) for values valid for each language. Cannot be changed after training starts or completes.
         /// </param>
-        /// <param name="modelId">
-        /// Base model ID to fine-tune from<br/>
-        /// Example: sonic-3.6-2026-08-27
-        /// </param>
         /// <param name="dataset">
         /// Dataset ID containing training files
         /// </param>
@@ -74,7 +72,6 @@ namespace Cartesia
             string dataset,
             global::Cartesia.FineTunesCreateCartesiaVersion cartesiaVersion = global::Cartesia.FineTunesCreateCartesiaVersion.x20260814,
             global::Cartesia.VoiceAccent? accent = default,
-            global::Cartesia.CreateFineTuneRequestModelId modelId = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
