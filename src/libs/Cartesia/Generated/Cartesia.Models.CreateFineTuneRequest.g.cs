@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Cartesia
@@ -37,13 +39,11 @@ namespace Cartesia
         public global::Cartesia.VoiceAccent? Accent { get; set; }
 
         /// <summary>
-        /// Base model ID to fine-tune from<br/>
-        /// Example: sonic-3.6-2026-08-27
+        /// Deprecated. Fine tunes are now trained on all [supported models](/build-with-cartesia/capability-guides/clone-voices-pro#supported-models).
         /// </summary>
-        /// <example>sonic-3.6-2026-08-27</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdJsonConverter))]
-        public global::Cartesia.CreateFineTuneRequestModelId ModelId { get; set; }
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? ModelId { get; set; }
 
         /// <summary>
         /// Dataset ID containing training files
@@ -76,10 +76,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of this fine-tune. See [GET /accents](/api-reference/accents/list) for values valid for each language. Cannot be changed after training starts or completes.
         /// </param>
-        /// <param name="modelId">
-        /// Base model ID to fine-tune from<br/>
-        /// Example: sonic-3.6-2026-08-27
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -88,14 +84,12 @@ namespace Cartesia
             string description,
             string language,
             string dataset,
-            global::Cartesia.VoiceAccent? accent,
-            global::Cartesia.CreateFineTuneRequestModelId modelId)
+            global::Cartesia.VoiceAccent? accent)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Accent = accent;
-            this.ModelId = modelId;
             this.Dataset = dataset ?? throw new global::System.ArgumentNullException(nameof(dataset));
         }
 

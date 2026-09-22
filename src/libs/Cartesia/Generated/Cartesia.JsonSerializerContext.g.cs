@@ -388,7 +388,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.FineTuneUserError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneUserError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequestModelId), TypeInfoPropertyName = "CreateFineTuneRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedVoices))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatContainer), TypeInfoPropertyName = "OutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageInterval), TypeInfoPropertyName = "UsageInterval2")]
@@ -514,6 +513,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeRequestModel), TypeInfoPropertyName = "SttTranscribeRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeRequestLanguage), TypeInfoPropertyName = "SttTranscribeRequestLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.TimestampGranularity>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneRequest))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,7 +526,6 @@ namespace Cartesia
         Converters = new global::System.Type[]
         {
         })]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneRequestAccess), TypeInfoPropertyName = "VoicesCloneRequestAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.DatasetsUploadFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FilesUploadRequest))]
@@ -799,7 +798,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnumType?), TypeInfoPropertyName = "NullableUpdatePronunciationDictRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FilePurpose?), TypeInfoPropertyName = "NullableFilePurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneStatus?), TypeInfoPropertyName = "NullableFineTuneStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequestModelId?), TypeInfoPropertyName = "NullableCreateFineTuneRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormatContainer?), TypeInfoPropertyName = "NullableOutputFormatContainer2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageInterval?), TypeInfoPropertyName = "NullableUsageInterval2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsGroupBy?), TypeInfoPropertyName = "NullableUsageCreditsGroupBy2")]
@@ -1585,10 +1583,6 @@ namespace Cartesia
                     || typeToConvert == typeof(global::Cartesia.FineTuneStatus)
 
                     || typeToConvert == typeof(global::Cartesia.FineTuneStatus?)
-
-                    || typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId)
-
-                    || typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId?)
 
                     || typeToConvert == typeof(global::Cartesia.OutputFormatContainer)
 
@@ -3361,16 +3355,6 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.FineTuneStatus?))
                 {
                     return new global::Cartesia.JsonConverters.FineTuneStatusNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId))
-                {
-                    return new global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId?))
-                {
-                    return new global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.OutputFormatContainer))

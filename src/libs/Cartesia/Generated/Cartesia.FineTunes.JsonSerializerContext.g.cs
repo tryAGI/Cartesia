@@ -22,6 +22,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenderPresentation), TypeInfoPropertyName = "GenderPresentation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Voice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Voice))]
@@ -38,7 +39,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.FineTuneUserError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneUserError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequestModelId), TypeInfoPropertyName = "CreateFineTuneRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PaginatedVoices))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesListCartesiaVersion), TypeInfoPropertyName = "FineTunesListCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesCreateCartesiaVersion), TypeInfoPropertyName = "FineTunesCreateCartesiaVersion2")]
@@ -54,12 +54,12 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceVisibility?), TypeInfoPropertyName = "NullableVoiceVisibility2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceAccent?), TypeInfoPropertyName = "NullableVoiceAccent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTuneStatus?), TypeInfoPropertyName = "NullableFineTuneStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateFineTuneRequestModelId?), TypeInfoPropertyName = "NullableCreateFineTuneRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesListCartesiaVersion?), TypeInfoPropertyName = "NullableFineTunesListCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesCreateCartesiaVersion?), TypeInfoPropertyName = "NullableFineTunesCreateCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesGetCartesiaVersion?), TypeInfoPropertyName = "NullableFineTunesGetCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesDeleteCartesiaVersion?), TypeInfoPropertyName = "NullableFineTunesDeleteCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.FineTunesListVoicesCartesiaVersion?), TypeInfoPropertyName = "NullableFineTunesListVoicesCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Voice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.VoiceAccentsItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.FineTune>))]
@@ -165,10 +165,6 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.FineTuneStatus?)
 
-                    || typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId)
-
-                    || typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId?)
-
                     || typeToConvert == typeof(global::Cartesia.FineTunesListCartesiaVersion)
 
                     || typeToConvert == typeof(global::Cartesia.FineTunesListCartesiaVersion?)
@@ -252,16 +248,6 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.FineTuneStatus?))
                 {
                     return new global::Cartesia.JsonConverters.FineTuneStatusNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId))
-                {
-                    return new global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Cartesia.CreateFineTuneRequestModelId?))
-                {
-                    return new global::Cartesia.JsonConverters.CreateFineTuneRequestModelIdNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.FineTunesListCartesiaVersion))

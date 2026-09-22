@@ -3151,6 +3151,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateFineTuneRequest'
+            example:
+              name: My voice
+              description: A fine-tuned voice
+              language: en
+              dataset: dataset_abc123
       responses:
         '200':
           description: ''
@@ -10014,7 +10019,16 @@ components:
           description: Accent metadata for the voice.
         model_id:
           type: string
-          description: Base model that was used to create this fine-tune
+          deprecated: true
+          description: >-
+            Deprecated. Use
+            [`supported_model_ids`](/api-reference/fine-tunes/get#response-supported-model-ids)
+            instead for models compatible with this fine tune.
+        supported_model_ids:
+          type: array
+          description: Model IDs compatible with this fine-tune
+          items:
+            type: string
         dataset:
           type: string
           description: ID of the dataset used for fine-tuning
@@ -10039,7 +10053,7 @@ components:
         - name
         - description
         - language
-        - model_id
+        - supported_model_ids
         - dataset
         - status
     FineTuneStatus:
@@ -10077,10 +10091,10 @@ components:
             language. Cannot be changed after training starts or completes.
         model_id:
           type: string
-          description: Base model ID to fine-tune from
-          enum:
-            - sonic-3.6-2026-08-27
-          example: sonic-3.6-2026-08-27
+          deprecated: true
+          description: >-
+            Deprecated. Fine tunes are now trained on all [supported
+            models](/build-with-cartesia/capability-guides/clone-voices-pro#supported-models).
         dataset:
           type: string
           description: Dataset ID containing training files
@@ -10088,7 +10102,6 @@ components:
         - name
         - description
         - language
-        - model_id
         - dataset
     PaginatedVoices:
       title: PaginatedVoices
