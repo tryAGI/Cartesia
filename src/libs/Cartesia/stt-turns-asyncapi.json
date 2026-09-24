@@ -3,7 +3,7 @@
   "info": {
     "title": "Cartesia Turn-Detecting Speech-to-Text WebSocket API",
     "version": "2026-08-14",
-    "description": "Realtime speech transcription with built-in turn detection\n\n<Note>\n`ink-2` supports English only. For English, French, Hindi, Japanese, and Spanish, use `ink-preview`;\nit detects the language automatically.\n</Note>\n"
+    "description": "Realtime speech transcription with built-in turn detection\n\n<Note>\n`ink-2` and `ink-preview` support English, French, Hindi, Japanese, and Spanish,\nand detect the language automatically.\n</Note>\n"
   },
   "servers": {
     "production": {
@@ -94,17 +94,17 @@
               },
               "turn_eager_end_threshold": {
                 "type": "number",
-                "default": 0.4,
+                "default": 0.6,
                 "minimum": 0.3,
-                "maximum": 0.6,
-                "description": "Threshold below which to eager end the turn. Default: 0.4. Range: 0.3\u20130.6. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "maximum": 0.8,
+                "description": "Threshold below which to eager end the turn. Default: 0.6. Range: 0.3\u20130.8. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "turn_end_threshold": {
                 "type": "number",
-                "default": 0.2,
+                "default": 0.3,
                 "minimum": 0.05,
                 "maximum": 0.5,
-                "description": "Threshold below which to end the turn. Default: 0.2. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold below which to end the turn. Default: 0.3. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "turn_end_timeout_ms": {
                 "type": "number",
@@ -391,13 +391,13 @@
               },
               "eager_end_threshold": {
                 "type": "number",
-                "default": 0.4,
-                "description": "Threshold below which to eager end the turn. Default: 0.4. Range: 0.3\u20130.6. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "default": 0.6,
+                "description": "Threshold below which to eager end the turn. Default: 0.6. Range: 0.3\u20130.8. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "end_threshold": {
                 "type": "number",
-                "default": 0.2,
-                "description": "Threshold below which to end the turn. Default: 0.2. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "default": 0.3,
+                "description": "Threshold below which to end the turn. Default: 0.3. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "end_timeout_ms": {
                 "type": "number",
