@@ -6,8 +6,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
     /// <summary>
     /// Realtime speech transcription with built-in turn detection<br/>
     /// &lt;Note&gt;<br/>
-    /// `ink-2` supports English only. For English, French, Hindi, Japanese, and Spanish, use `ink-preview`;<br/>
-    /// it detects the language automatically.<br/>
+    /// `ink-2` and `ink-preview` support English, French, Hindi, Japanese, and Spanish,<br/>
+    /// and detect the language automatically.<br/>
     /// &lt;/Note&gt;
     /// </summary>
     public sealed partial class CartesiaSpeechToTextTurnsRealtimeClient : global::System.IDisposable, global::System.IAsyncDisposable
@@ -634,8 +634,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <param name="model">ID of the model to use for transcription: `ink-2`, `ink-preview`.  See [Models](/build-with-cartesia/stt/latest) for details.</param>
         /// <param name="sampleRate">The sample rate of the audio in Hz.</param>
         /// <param name="keyterm">Key terms to improve the recall of specific words and phrases.  Repeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.  Example: `?keyterm=Ink%202&amp;keyterm=Cartesia`  See [Keyterm prompting](/use-the-api/stt/keyterms) for details.</param>
-        /// <param name="turnEagerEndThreshold">Threshold below which to eager end the turn. Default: 0.4. Range: 0.3–0.6. Must stay between the end and start thresholds.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
-        /// <param name="turnEndThreshold">Threshold below which to end the turn. Default: 0.2. Range: 0.05–0.5. Must stay below the eager end threshold.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="turnEagerEndThreshold">Threshold below which to eager end the turn. Default: 0.6. Range: 0.3–0.8. Must stay between the end and start thresholds.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="turnEndThreshold">Threshold below which to end the turn. Default: 0.3. Range: 0.05–0.5. Must stay below the eager end threshold.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
         /// <param name="turnEndTimeoutMs">Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640–11200.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
         /// <param name="turnStartThreshold">Threshold above which to start the turn. Default: 0.8. Range: 0.5–0.9. Must stay above the eager end threshold.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
         /// <param name="uri">Optional WebSocket endpoint override.</param>
