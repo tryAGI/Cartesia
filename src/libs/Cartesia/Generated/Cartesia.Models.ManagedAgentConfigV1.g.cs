@@ -75,6 +75,13 @@ namespace Cartesia
         public required global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1> Tools { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("turn")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.ManagedAgentConfigV1Turn Turn { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -102,6 +109,7 @@ namespace Cartesia
         /// <param name="tools">
         /// Tools available to the agent.
         /// </param>
+        /// <param name="turn"></param>
         /// <param name="initialMessage">
         /// Message the agent says when the conversation begins. Set to `null` to wait for the user to speak first.
         /// </param>
@@ -117,6 +125,7 @@ namespace Cartesia
             global::Cartesia.ManagedAgentSystemToolsV1 systemTools,
             string timezone,
             global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1> tools,
+            global::Cartesia.ManagedAgentConfigV1Turn turn,
             string? initialMessage)
         {
             this.Audio = audio ?? throw new global::System.ArgumentNullException(nameof(audio));
@@ -128,6 +137,7 @@ namespace Cartesia
             this.SystemTools = systemTools ?? throw new global::System.ArgumentNullException(nameof(systemTools));
             this.Timezone = timezone ?? throw new global::System.ArgumentNullException(nameof(timezone));
             this.Tools = tools ?? throw new global::System.ArgumentNullException(nameof(tools));
+            this.Turn = turn ?? throw new global::System.ArgumentNullException(nameof(turn));
         }
 
         /// <summary>
