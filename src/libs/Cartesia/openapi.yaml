@@ -6458,7 +6458,8 @@ components:
           description: >-
             Maximum time to wait for the client application to return a result.
             Defaults to 20 seconds. Applies only when `expects_response` is
-            `true`.
+            `true`. If no result arrives before the deadline, Cartesia supplies
+            `Tool call timed out`.
           type: integer
           default: 20
           maximum: 120
@@ -6588,7 +6589,8 @@ components:
           description: >-
             Maximum time to wait for the client application to return a result.
             Defaults to 20 seconds. Applies only when `expects_response` is
-            `true`.
+            `true`. If no result arrives before the deadline, Cartesia supplies
+            `Tool call timed out`.
           type: integer
           default: 20
           maximum: 120
@@ -7326,7 +7328,8 @@ components:
               description: >-
                 Maximum time to wait for the client application to return a
                 result. Defaults to 20 seconds. Applies only when
-                `expects_response` is `true`.
+                `expects_response` is `true`. If no result arrives before the
+                deadline, Cartesia supplies `Tool call timed out`.
               type: integer
               maximum: 120
               minimum: 1

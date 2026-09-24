@@ -47,7 +47,7 @@ namespace Cartesia
         public global::Cartesia.UpdateManagedToolV1RequestClientToolUpdatePreToolSpeech? PreToolSpeech { get; set; }
 
         /// <summary>
-        /// Maximum time to wait for the client application to return a result. Defaults to 20 seconds. Applies only when `expects_response` is `true`.
+        /// Maximum time to wait for the client application to return a result. Defaults to 20 seconds. Applies only when `expects_response` is `true`. If no result arrives before the deadline, Cartesia supplies `Tool call timed out`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_timeout_secs")]
         public int? ResponseTimeoutSecs { get; set; }
@@ -78,7 +78,7 @@ namespace Cartesia
         /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
         /// </param>
         /// <param name="responseTimeoutSecs">
-        /// Maximum time to wait for the client application to return a result. Defaults to 20 seconds. Applies only when `expects_response` is `true`.
+        /// Maximum time to wait for the client application to return a result. Defaults to 20 seconds. Applies only when `expects_response` is `true`. If no result arrives before the deadline, Cartesia supplies `Tool call timed out`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
