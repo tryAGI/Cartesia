@@ -67,6 +67,12 @@ namespace Cartesia
         public global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1>? Tools { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("turn")]
+        public global::Cartesia.CreateManagedAgentV1RequestConfigTurn? Turn { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -99,6 +105,7 @@ namespace Cartesia
         /// <param name="tools">
         /// Tools available to the agent.
         /// </param>
+        /// <param name="turn"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -111,7 +118,8 @@ namespace Cartesia
             global::Cartesia.CreateManagedAgentV1RequestConfigModel? model,
             global::Cartesia.CreateManagedAgentV1RequestConfigSystemTools? systemTools,
             string? timezone,
-            global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1>? tools)
+            global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1>? tools,
+            global::Cartesia.CreateManagedAgentV1RequestConfigTurn? turn)
         {
             this.Audio = audio;
             this.DynamicVariablePlaceholders = dynamicVariablePlaceholders;
@@ -122,6 +130,7 @@ namespace Cartesia
             this.SystemTools = systemTools;
             this.Timezone = timezone;
             this.Tools = tools;
+            this.Turn = turn;
         }
 
         /// <summary>

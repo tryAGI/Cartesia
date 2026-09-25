@@ -267,7 +267,7 @@
       "AgentClientToolResultEvent": {
         "name": "AgentClientToolResultEvent",
         "title": "Client Tool Result",
-        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n",
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4096 bytes; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/AgentClientToolResultEvent"
@@ -487,20 +487,19 @@
           },
           "result": {
             "type": "string",
-            "description": "The tool's result, as a string the model can read. At most 4 KiB decoded."
+            "description": "The tool's result, as a string the model can read. At most 4096 bytes decoded."
           },
           "is_error": {
             "type": "boolean",
             "default": false,
-            "description": "Set to `true` when the tool failed. The agent sees the result as an error."
+            "description": "Set to `true` when the tool failed. The LLM receives `result` as a normal string; Cartesia logs the failure and uses a generic message if `result` is empty."
           },
           "error_type": {
             "type": "string",
-            "maxLength": 256,
-            "description": "Optional machine-readable category for a failure, such as `timeout`."
+            "description": "Optional free-form string, at most 256 UTF-8 bytes. Cartesia logs this; the LLM does not see it."
           }
         },
-        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n"
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4096 bytes; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n"
       },
       "AgentSessionReadyEvent": {
         "type": "object",

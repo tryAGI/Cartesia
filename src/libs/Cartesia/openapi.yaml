@@ -5344,6 +5344,28 @@ components:
                 $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
               maxItems: 32
               uniqueItems: true
+            turn:
+              type: object
+              additionalProperties: false
+              properties:
+                inactivity_end_call_secs:
+                  description: >-
+                    Seconds of inactivity before the agent says a farewell
+                    message and ends the call, from `20` to `240`. Defaults to
+                    `240`; cannot be `null`.
+                  type: integer
+                  minimum: 20
+                  maximum: 240
+                inactivity_check_in_secs:
+                  description: >-
+                    Seconds of inactivity before the agent checks in, from `5`
+                    to `60`. Defaults to `8`. Set to `null` to disable
+                    check-ins. When enabled, it must be less than
+                    `inactivity_end_call_secs`.
+                  nullable: true
+                  type: integer
+                  minimum: 5
+                  maximum: 60
         description:
           description: Description of the agent.
           nullable: true
@@ -5654,6 +5676,30 @@ components:
             $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
           maxItems: 32
           uniqueItems: true
+        turn:
+          type: object
+          additionalProperties: false
+          properties:
+            inactivity_end_call_secs:
+              description: >-
+                Seconds of inactivity before the agent says a farewell message
+                and ends the call, from `20` to `240`. Defaults to `240`; cannot
+                be `null`.
+              type: integer
+              minimum: 20
+              maximum: 240
+            inactivity_check_in_secs:
+              description: >-
+                Seconds of inactivity before the agent checks in, from `5` to
+                `60`. Defaults to `8`. Set to `null` to disable check-ins. When
+                enabled, it must be less than `inactivity_end_call_secs`.
+              nullable: true
+              type: integer
+              minimum: 5
+              maximum: 60
+          required:
+            - inactivity_end_call_secs
+            - inactivity_check_in_secs
       required:
         - instructions
         - initial_message
@@ -5662,6 +5708,7 @@ components:
         - audio
         - tools
         - system_tools
+        - turn
         - dynamic_variable_placeholders
         - timezone
       title: ManagedAgentConfig
@@ -6125,6 +6172,28 @@ components:
                 $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
               maxItems: 32
               uniqueItems: true
+            turn:
+              type: object
+              additionalProperties: false
+              properties:
+                inactivity_end_call_secs:
+                  description: >-
+                    Seconds of inactivity before the agent says a farewell
+                    message and ends the call, from `20` to `240`. Defaults to
+                    `240`; cannot be `null`.
+                  type: integer
+                  minimum: 20
+                  maximum: 240
+                inactivity_check_in_secs:
+                  description: >-
+                    Seconds of inactivity before the agent checks in, from `5`
+                    to `60`. Defaults to `8`. Set to `null` to disable
+                    check-ins. When enabled, it must be less than
+                    `inactivity_end_call_secs`.
+                  nullable: true
+                  type: integer
+                  minimum: 5
+                  maximum: 60
         description:
           description: Description of the agent.
           nullable: true
@@ -6458,7 +6527,8 @@ components:
           description: >-
             Maximum time to wait for the client application to return a result.
             Defaults to 20 seconds. Applies only when `expects_response` is
-            `true`.
+            `true`. If no result arrives before the deadline, Cartesia supplies
+            `Tool call timed out`.
           type: integer
           default: 20
           maximum: 120
@@ -6588,7 +6658,8 @@ components:
           description: >-
             Maximum time to wait for the client application to return a result.
             Defaults to 20 seconds. Applies only when `expects_response` is
-            `true`.
+            `true`. If no result arrives before the deadline, Cartesia supplies
+            `Tool call timed out`.
           type: integer
           default: 20
           maximum: 120
@@ -7326,7 +7397,8 @@ components:
               description: >-
                 Maximum time to wait for the client application to return a
                 result. Defaults to 20 seconds. Applies only when
-                `expects_response` is `true`.
+                `expects_response` is `true`. If no result arrives before the
+                deadline, Cartesia supplies `Tool call timed out`.
               type: integer
               maximum: 120
               minimum: 1
