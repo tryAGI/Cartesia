@@ -71,6 +71,10 @@ namespace Cartesia.Realtime.TextToSpeech
         /// <summary>
         ///
         /// </summary>
+        EnCa,
+        /// <summary>
+        ///
+        /// </summary>
         EnGb,
         /// <summary>
         ///
@@ -433,6 +437,7 @@ namespace Cartesia.Realtime.TextToSpeech
                 GenerationRequestLocale.ElGr => "el-GR",
                 GenerationRequestLocale.En => "en",
                 GenerationRequestLocale.EnAu => "en-AU",
+                GenerationRequestLocale.EnCa => "en-CA",
                 GenerationRequestLocale.EnGb => "en-GB",
                 GenerationRequestLocale.EnIe => "en-IE",
                 GenerationRequestLocale.EnIn => "en-IN",
@@ -542,6 +547,7 @@ namespace Cartesia.Realtime.TextToSpeech
                 "el-GR" => GenerationRequestLocale.ElGr,
                 "en" => GenerationRequestLocale.En,
                 "en-AU" => GenerationRequestLocale.EnAu,
+                "en-CA" => GenerationRequestLocale.EnCa,
                 "en-GB" => GenerationRequestLocale.EnGb,
                 "en-IE" => GenerationRequestLocale.EnIe,
                 "en-IN" => GenerationRequestLocale.EnIn,
