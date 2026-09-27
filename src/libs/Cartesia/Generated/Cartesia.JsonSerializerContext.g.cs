@@ -1029,6 +1029,9 @@ namespace Cartesia
     {
         private static readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver Resolver = new LazyChunkResolver();
 
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        internal static global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver TypeInfoResolver => Resolver;
+
 
         private static readonly global::System.Text.Json.JsonSerializerOptions DefaultOptions = CreateDefaultOptions();
 
@@ -1051,7 +1054,7 @@ namespace Cartesia
             return Resolver.GetTypeInfo(type, Options);
         }
 
-         static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
+                internal static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierJsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.OutputFormatJsonConverter());
