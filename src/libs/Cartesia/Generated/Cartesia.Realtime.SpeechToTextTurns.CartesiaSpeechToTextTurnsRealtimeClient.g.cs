@@ -675,7 +675,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
                 .AddRequiredParameter("cartesia_version", cartesiaVersion.ToValueString())
                 .AddRequiredParameter("encoding", encoding.ToValueString())
                 .AddRequiredParameter("model", model)
-                .AddRequiredParameter("sample_rate", sampleRate.ToString()!)
+                .AddRequiredParameter("sample_rate", sampleRate.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                 .AddOptionalParameter("keyterm", keyterm, delimiter: ",", explode: true)
                 .AddOptionalParameter("turn_eager_end_threshold", turnEagerEndThreshold?.ToString())
                 .AddOptionalParameter("turn_end_threshold", turnEndThreshold?.ToString())

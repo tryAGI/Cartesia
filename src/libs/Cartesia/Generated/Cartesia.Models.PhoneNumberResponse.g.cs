@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.PhoneNumberBaseResponse PickPhoneNumberBaseResponse() => IsPhoneNumberBaseResponse
-            ? PhoneNumberBaseResponse!
+        public global::Cartesia.PhoneNumberBaseResponse PickPhoneNumberBaseResponse() => PhoneNumberBaseResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PhoneNumberBaseResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.PhoneNumberResponseVariant2 PickPhoneNumberResponseVariant2() => IsPhoneNumberResponseVariant2
-            ? PhoneNumberResponseVariant2!
+        public global::Cartesia.PhoneNumberResponseVariant2 PickPhoneNumberResponseVariant2() => PhoneNumberResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PhoneNumberResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse && phoneNumberBaseResponse != null)
+            if (PhoneNumberBaseResponse is { } __value0 && phoneNumberBaseResponse != null)
             {
-                return phoneNumberBaseResponse(PhoneNumberBaseResponse!);
+                return phoneNumberBaseResponse(__value0);
             }
-            else if (IsPhoneNumberResponseVariant2 && phoneNumberResponseVariant2 != null)
+            else if (PhoneNumberResponseVariant2 is { } __value1 && phoneNumberResponseVariant2 != null)
             {
-                return phoneNumberResponseVariant2(PhoneNumberResponseVariant2!);
+                return phoneNumberResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse)
+            if (PhoneNumberBaseResponse is { } __value0)
             {
-                phoneNumberBaseResponse?.Invoke(PhoneNumberBaseResponse!);
+                phoneNumberBaseResponse?.Invoke(__value0);
             }
-            else if (IsPhoneNumberResponseVariant2)
+            else if (PhoneNumberResponseVariant2 is { } __value1)
             {
-                phoneNumberResponseVariant2?.Invoke(PhoneNumberResponseVariant2!);
+                phoneNumberResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse)
+            if (PhoneNumberBaseResponse is { } __value0)
             {
-                phoneNumberBaseResponse?.Invoke(PhoneNumberBaseResponse!);
+                phoneNumberBaseResponse?.Invoke(__value0);
             }
-            else if (IsPhoneNumberResponseVariant2)
+            else if (PhoneNumberResponseVariant2 is { } __value1)
             {
-                phoneNumberResponseVariant2?.Invoke(PhoneNumberResponseVariant2!);
+                phoneNumberResponseVariant2?.Invoke(__value1);
             }
         }
 

@@ -247,25 +247,25 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LocalizeEnglishDialect), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LocalizeEnglishDialect> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LocalizeEnglishDialect).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LocalizeEnglishDialect!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLocalizeEnglishDialect(), typeInfo);
             }
             else if (value.IsLocalizeSpanishDialect)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LocalizeSpanishDialect), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LocalizeSpanishDialect> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LocalizeSpanishDialect).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LocalizeSpanishDialect!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLocalizeSpanishDialect(), typeInfo);
             }
             else if (value.IsLocalizePortugueseDialect)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LocalizePortugueseDialect), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LocalizePortugueseDialect> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LocalizePortugueseDialect).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LocalizePortugueseDialect!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLocalizePortugueseDialect(), typeInfo);
             }
             else if (value.IsLocalizeFrenchDialect)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LocalizeFrenchDialect), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LocalizeFrenchDialect> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LocalizeFrenchDialect).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LocalizeFrenchDialect!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLocalizeFrenchDialect(), typeInfo);
             }
         }
     }

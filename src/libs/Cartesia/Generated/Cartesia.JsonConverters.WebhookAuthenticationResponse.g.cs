@@ -142,13 +142,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookAuthenticationResponseVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookAuthenticationResponseVariant1(), typeInfo);
             }
             else if (value.IsWebhookAuthenticationResponseVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookAuthenticationResponseVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookAuthenticationResponseVariant2(), typeInfo);
             }
         }
     }

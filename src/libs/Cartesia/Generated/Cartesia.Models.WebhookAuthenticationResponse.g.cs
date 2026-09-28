@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.WebhookAuthenticationResponseVariant1 PickWebhookAuthenticationResponseVariant1() => IsWebhookAuthenticationResponseVariant1
-            ? WebhookAuthenticationResponseVariant1!
+        public global::Cartesia.WebhookAuthenticationResponseVariant1 PickWebhookAuthenticationResponseVariant1() => WebhookAuthenticationResponseVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookAuthenticationResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.WebhookAuthenticationResponseVariant2 PickWebhookAuthenticationResponseVariant2() => IsWebhookAuthenticationResponseVariant2
-            ? WebhookAuthenticationResponseVariant2!
+        public global::Cartesia.WebhookAuthenticationResponseVariant2 PickWebhookAuthenticationResponseVariant2() => WebhookAuthenticationResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookAuthenticationResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookAuthenticationResponseVariant1 && webhookAuthenticationResponseVariant1 != null)
+            if (WebhookAuthenticationResponseVariant1 is { } __value0 && webhookAuthenticationResponseVariant1 != null)
             {
-                return webhookAuthenticationResponseVariant1(WebhookAuthenticationResponseVariant1!);
+                return webhookAuthenticationResponseVariant1(__value0);
             }
-            else if (IsWebhookAuthenticationResponseVariant2 && webhookAuthenticationResponseVariant2 != null)
+            else if (WebhookAuthenticationResponseVariant2 is { } __value1 && webhookAuthenticationResponseVariant2 != null)
             {
-                return webhookAuthenticationResponseVariant2(WebhookAuthenticationResponseVariant2!);
+                return webhookAuthenticationResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookAuthenticationResponseVariant1)
+            if (WebhookAuthenticationResponseVariant1 is { } __value0)
             {
-                webhookAuthenticationResponseVariant1?.Invoke(WebhookAuthenticationResponseVariant1!);
+                webhookAuthenticationResponseVariant1?.Invoke(__value0);
             }
-            else if (IsWebhookAuthenticationResponseVariant2)
+            else if (WebhookAuthenticationResponseVariant2 is { } __value1)
             {
-                webhookAuthenticationResponseVariant2?.Invoke(WebhookAuthenticationResponseVariant2!);
+                webhookAuthenticationResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookAuthenticationResponseVariant1)
+            if (WebhookAuthenticationResponseVariant1 is { } __value0)
             {
-                webhookAuthenticationResponseVariant1?.Invoke(WebhookAuthenticationResponseVariant1!);
+                webhookAuthenticationResponseVariant1?.Invoke(__value0);
             }
-            else if (IsWebhookAuthenticationResponseVariant2)
+            else if (WebhookAuthenticationResponseVariant2 is { } __value1)
             {
-                webhookAuthenticationResponseVariant2?.Invoke(WebhookAuthenticationResponseVariant2!);
+                webhookAuthenticationResponseVariant2?.Invoke(__value1);
             }
         }
 

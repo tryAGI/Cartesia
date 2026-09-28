@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdate PickWebhookToolUpdate() => IsWebhookToolUpdate
-            ? WebhookToolUpdate!
+        public global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdate PickWebhookToolUpdate() => WebhookToolUpdate is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookToolUpdate' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.UpdateManagedToolV1RequestClientToolUpdate PickClientToolUpdate() => IsClientToolUpdate
-            ? ClientToolUpdate!
+        public global::Cartesia.UpdateManagedToolV1RequestClientToolUpdate PickClientToolUpdate() => ClientToolUpdate is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClientToolUpdate' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookToolUpdate && webhookToolUpdate != null)
+            if (WebhookToolUpdate is { } __value0 && webhookToolUpdate != null)
             {
-                return webhookToolUpdate(WebhookToolUpdate!);
+                return webhookToolUpdate(__value0);
             }
-            else if (IsClientToolUpdate && clientToolUpdate != null)
+            else if (ClientToolUpdate is { } __value1 && clientToolUpdate != null)
             {
-                return clientToolUpdate(ClientToolUpdate!);
+                return clientToolUpdate(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookToolUpdate)
+            if (WebhookToolUpdate is { } __value0)
             {
-                webhookToolUpdate?.Invoke(WebhookToolUpdate!);
+                webhookToolUpdate?.Invoke(__value0);
             }
-            else if (IsClientToolUpdate)
+            else if (ClientToolUpdate is { } __value1)
             {
-                clientToolUpdate?.Invoke(ClientToolUpdate!);
+                clientToolUpdate?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhookToolUpdate)
+            if (WebhookToolUpdate is { } __value0)
             {
-                webhookToolUpdate?.Invoke(WebhookToolUpdate!);
+                webhookToolUpdate?.Invoke(__value0);
             }
-            else if (IsClientToolUpdate)
+            else if (ClientToolUpdate is { } __value1)
             {
-                clientToolUpdate?.Invoke(ClientToolUpdate!);
+                clientToolUpdate?.Invoke(__value1);
             }
         }
 

@@ -172,19 +172,19 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WAVOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WAVOutputFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WAVOutputFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WAVOutputFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWAVOutputFormat(), typeInfo);
             }
             else if (value.IsMP3OutputFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.MP3OutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.MP3OutputFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.MP3OutputFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MP3OutputFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMP3OutputFormat(), typeInfo);
             }
             else if (value.IsRawOutputFormat)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.RawOutputFormat), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.RawOutputFormat?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.RawOutputFormat).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RawOutputFormat!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRawOutputFormat(), typeInfo);
             }
         }
     }

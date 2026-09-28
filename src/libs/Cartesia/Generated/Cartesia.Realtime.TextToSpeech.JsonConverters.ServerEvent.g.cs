@@ -95,37 +95,37 @@ namespace Cartesia.Realtime.TextToSpeech.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.ChunkResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.ChunkResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.ChunkResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Chunk!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChunk(), typeInfo);
             }
             else if (value.IsFlushDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.FlushDoneResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.FlushDoneResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.FlushDoneResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlushDone!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFlushDone(), typeInfo);
             }
             else if (value.IsDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.GenerationDoneResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.GenerationDoneResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.GenerationDoneResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDone(), typeInfo);
             }
             else if (value.IsTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.TimestampsResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.TimestampsResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.TimestampsResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Timestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTimestamps(), typeInfo);
             }
             else if (value.IsPhonemeTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.PhonemeTimestampsResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.PhonemeTimestampsResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.PhonemeTimestampsResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PhonemeTimestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPhonemeTimestamps(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.TextToSpeech.TTSErrorResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.TextToSpeech.TTSErrorResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.TextToSpeech.TTSErrorResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

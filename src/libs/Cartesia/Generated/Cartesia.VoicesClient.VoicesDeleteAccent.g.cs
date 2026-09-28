@@ -180,9 +180,9 @@ namespace Cartesia
                 PrepareVoicesDeleteAccentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion!,
-                    id: id!,
-                    accentId: accentId!);
+                    cartesiaVersion: cartesiaVersion,
+                    id: id,
+                    accentId: accentId);
 
                 global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
 
@@ -206,7 +206,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/voices/{id}/accents/{accentId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -240,7 +240,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/voices/{id}/accents/{accentId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -281,7 +281,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/voices/{id}/accents/{accentId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -329,7 +329,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/voices/{id}/accents/{accentId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -351,7 +351,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/voices/{id}/accents/{accentId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

@@ -59,13 +59,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.UpdateTwilioProviderBody), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.UpdateTwilioProviderBody?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.UpdateTwilioProviderBody).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Twilio!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTwilio(), typeInfo);
             }
             else if (value.IsSipTrunk)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.UpdateSIPTrunkProviderBody), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.UpdateSIPTrunkProviderBody?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.UpdateSIPTrunkProviderBody).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SipTrunk!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSipTrunk(), typeInfo);
             }
         }
     }

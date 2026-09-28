@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.WAVOutputFormat PickWAVOutputFormat() => IsWAVOutputFormat
-            ? WAVOutputFormat!
+        public global::Cartesia.WAVOutputFormat PickWAVOutputFormat() => WAVOutputFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WAVOutputFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.MP3OutputFormat PickMP3OutputFormat() => IsMP3OutputFormat
-            ? MP3OutputFormat!
+        public global::Cartesia.MP3OutputFormat PickMP3OutputFormat() => MP3OutputFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MP3OutputFormat' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.RawOutputFormat PickRawOutputFormat() => IsRawOutputFormat
-            ? RawOutputFormat!
+        public global::Cartesia.RawOutputFormat PickRawOutputFormat() => RawOutputFormat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RawOutputFormat' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWAVOutputFormat && wAVOutputFormat != null)
+            if (WAVOutputFormat is { } __value0 && wAVOutputFormat != null)
             {
-                return wAVOutputFormat(WAVOutputFormat!);
+                return wAVOutputFormat(__value0);
             }
-            else if (IsMP3OutputFormat && mP3OutputFormat != null)
+            else if (MP3OutputFormat is { } __value1 && mP3OutputFormat != null)
             {
-                return mP3OutputFormat(MP3OutputFormat!);
+                return mP3OutputFormat(__value1);
             }
-            else if (IsRawOutputFormat && rawOutputFormat != null)
+            else if (RawOutputFormat is { } __value2 && rawOutputFormat != null)
             {
-                return rawOutputFormat(RawOutputFormat!);
+                return rawOutputFormat(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWAVOutputFormat)
+            if (WAVOutputFormat is { } __value0)
             {
-                wAVOutputFormat?.Invoke(WAVOutputFormat!);
+                wAVOutputFormat?.Invoke(__value0);
             }
-            else if (IsMP3OutputFormat)
+            else if (MP3OutputFormat is { } __value1)
             {
-                mP3OutputFormat?.Invoke(MP3OutputFormat!);
+                mP3OutputFormat?.Invoke(__value1);
             }
-            else if (IsRawOutputFormat)
+            else if (RawOutputFormat is { } __value2)
             {
-                rawOutputFormat?.Invoke(RawOutputFormat!);
+                rawOutputFormat?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWAVOutputFormat)
+            if (WAVOutputFormat is { } __value0)
             {
-                wAVOutputFormat?.Invoke(WAVOutputFormat!);
+                wAVOutputFormat?.Invoke(__value0);
             }
-            else if (IsMP3OutputFormat)
+            else if (MP3OutputFormat is { } __value1)
             {
-                mP3OutputFormat?.Invoke(MP3OutputFormat!);
+                mP3OutputFormat?.Invoke(__value1);
             }
-            else if (IsRawOutputFormat)
+            else if (RawOutputFormat is { } __value2)
             {
-                rawOutputFormat?.Invoke(RawOutputFormat!);
+                rawOutputFormat?.Invoke(__value2);
             }
         }
 

@@ -43,8 +43,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.STTAutoFinalizeCloseCommand PickSTTAutoFinalizeCloseCommand() => IsSTTAutoFinalizeCloseCommand
-            ? STTAutoFinalizeCloseCommand!
+        public global::Cartesia.STTAutoFinalizeCloseCommand PickSTTAutoFinalizeCloseCommand() => STTAutoFinalizeCloseCommand is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'STTAutoFinalizeCloseCommand' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -103,9 +103,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsSTTAutoFinalizeCloseCommand && sTTAutoFinalizeCloseCommand != null)
+            if (STTAutoFinalizeCloseCommand is { } __value0 && sTTAutoFinalizeCloseCommand != null)
             {
-                return sTTAutoFinalizeCloseCommand(STTAutoFinalizeCloseCommand!);
+                return sTTAutoFinalizeCloseCommand(__value0);
             }
 
             return default(TResult);
@@ -123,9 +123,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsSTTAutoFinalizeCloseCommand)
+            if (STTAutoFinalizeCloseCommand is { } __value0)
             {
-                sTTAutoFinalizeCloseCommand?.Invoke(STTAutoFinalizeCloseCommand!);
+                sTTAutoFinalizeCloseCommand?.Invoke(__value0);
             }
         }
 
@@ -141,9 +141,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsSTTAutoFinalizeCloseCommand)
+            if (STTAutoFinalizeCloseCommand is { } __value0)
             {
-                sTTAutoFinalizeCloseCommand?.Invoke(STTAutoFinalizeCloseCommand!);
+                sTTAutoFinalizeCloseCommand?.Invoke(__value0);
             }
         }
 

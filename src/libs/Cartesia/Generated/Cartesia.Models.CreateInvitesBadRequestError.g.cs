@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.PublicErrorResponse PickPublicErrorResponse() => IsPublicErrorResponse
-            ? PublicErrorResponse!
+        public global::Cartesia.PublicErrorResponse PickPublicErrorResponse() => PublicErrorResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PublicErrorResponse' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPublicErrorResponse && publicErrorResponse != null)
+            if (PublicErrorResponse is { } __value0 && publicErrorResponse != null)
             {
-                return publicErrorResponse(PublicErrorResponse!);
+                return publicErrorResponse(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPublicErrorResponse)
+            if (PublicErrorResponse is { } __value0)
             {
-                publicErrorResponse?.Invoke(PublicErrorResponse!);
+                publicErrorResponse?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPublicErrorResponse)
+            if (PublicErrorResponse is { } __value0)
             {
-                publicErrorResponse?.Invoke(PublicErrorResponse!);
+                publicErrorResponse?.Invoke(__value0);
             }
         }
 

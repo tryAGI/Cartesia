@@ -127,13 +127,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(string), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<string?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(string).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TTSRequestVoiceId!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTTSRequestVoiceId(), typeInfo);
             }
             else if (value.IsTTSRequestVoiceObject)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSRequestVoiceSpecifierTTSRequestVoiceObject), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSRequestVoiceSpecifierTTSRequestVoiceObject?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSRequestVoiceSpecifierTTSRequestVoiceObject).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TTSRequestVoiceObject!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTTSRequestVoiceObject(), typeInfo);
             }
         }
     }

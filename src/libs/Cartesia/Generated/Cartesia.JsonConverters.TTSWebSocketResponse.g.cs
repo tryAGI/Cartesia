@@ -95,37 +95,37 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Chunk!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChunk(), typeInfo);
             }
             else if (value.IsFlushDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlushDone!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFlushDone(), typeInfo);
             }
             else if (value.IsDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDone(), typeInfo);
             }
             else if (value.IsTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant4?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant4).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Timestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTimestamps(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant5?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant5).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
             else if (value.IsPhonemeTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSWebSocketResponseVariant6), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSWebSocketResponseVariant6?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSWebSocketResponseVariant6).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PhonemeTimestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPhonemeTimestamps(), typeInfo);
             }
         }
     }

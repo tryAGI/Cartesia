@@ -660,7 +660,7 @@ namespace Cartesia.Realtime.SpeechToText
                 .AddRequiredParameter("cartesia_version", cartesiaVersion.ToValueString())
                 .AddRequiredParameter("encoding", encoding.ToValueString())
                 .AddRequiredParameter("model", model.ToValueString())
-                .AddRequiredParameter("sample_rate", sampleRate.ToString()!)
+                .AddRequiredParameter("sample_rate", sampleRate.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                 .AddOptionalParameter("keyterm", keyterm, delimiter: ",", explode: true)
                 .AddOptionalParameter("language", language)
                 .AddOptionalParameter("max_silence_duration_secs", maxSilenceDurationSecs?.ToString())

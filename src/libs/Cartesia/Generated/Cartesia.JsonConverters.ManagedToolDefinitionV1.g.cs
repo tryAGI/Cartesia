@@ -59,13 +59,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.ManagedWebhookToolDefinitionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.ManagedWebhookToolDefinitionV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.ManagedWebhookToolDefinitionV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Webhook!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhook(), typeInfo);
             }
             else if (value.IsClient)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.ManagedClientToolDefinitionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.ManagedClientToolDefinitionV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.ManagedClientToolDefinitionV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Client!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClient(), typeInfo);
             }
         }
     }

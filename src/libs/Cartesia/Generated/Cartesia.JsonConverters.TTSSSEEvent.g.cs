@@ -86,31 +86,31 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSSSEChunkEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSSSEChunkEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSSSEChunkEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Chunk!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChunk(), typeInfo);
             }
             else if (value.IsTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSSSETimestampsEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSSSETimestampsEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSSSETimestampsEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Timestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTimestamps(), typeInfo);
             }
             else if (value.IsPhonemeTimestamps)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSSSEPhonemeTimestampsEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSSSEPhonemeTimestampsEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSSSEPhonemeTimestampsEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PhonemeTimestamps!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPhonemeTimestamps(), typeInfo);
             }
             else if (value.IsDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSSSEDoneEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSSSEDoneEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSSSEDoneEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDone(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.TTSSSEErrorEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.TTSSSEErrorEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.TTSSSEErrorEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

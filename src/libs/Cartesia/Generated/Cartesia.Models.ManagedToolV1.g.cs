@@ -47,8 +47,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.ManagedWebhookToolV1 PickWebhook() => IsWebhook
-            ? Webhook!
+        public global::Cartesia.ManagedWebhookToolV1 PickWebhook() => Webhook is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Webhook' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.ManagedClientToolV1 PickClient() => IsClient
-            ? Client!
+        public global::Cartesia.ManagedClientToolV1 PickClient() => Client is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Client' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhook && webhook != null)
+            if (Webhook is { } __value0 && webhook != null)
             {
-                return webhook(Webhook!);
+                return webhook(__value0);
             }
-            else if (IsClient && client != null)
+            else if (Client is { } __value1 && client != null)
             {
-                return client(Client!);
+                return client(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhook)
+            if (Webhook is { } __value0)
             {
-                webhook?.Invoke(Webhook!);
+                webhook?.Invoke(__value0);
             }
-            else if (IsClient)
+            else if (Client is { } __value1)
             {
-                client?.Invoke(Client!);
+                client?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsWebhook)
+            if (Webhook is { } __value0)
             {
-                webhook?.Invoke(Webhook!);
+                webhook?.Invoke(__value0);
             }
-            else if (IsClient)
+            else if (Client is { } __value1)
             {
-                client?.Invoke(Client!);
+                client?.Invoke(__value1);
             }
         }
 
