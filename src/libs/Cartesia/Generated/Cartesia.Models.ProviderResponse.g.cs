@@ -47,8 +47,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TwilioProviderResponse PickTwilio() => IsTwilio
-            ? Twilio!
+        public global::Cartesia.TwilioProviderResponse PickTwilio() => Twilio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Twilio' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.CartesiaProviderResponse PickCartesia() => IsCartesia
-            ? Cartesia!
+        public global::Cartesia.CartesiaProviderResponse PickCartesia() => Cartesia is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cartesia' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.SIPTrunkEmbeddedResponse PickSipTrunk() => IsSipTrunk
-            ? SipTrunk!
+        public global::Cartesia.SIPTrunkEmbeddedResponse PickSipTrunk() => SipTrunk is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SipTrunk' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -250,17 +250,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio && twilio != null)
+            if (Twilio is { } __value0 && twilio != null)
             {
-                return twilio(Twilio!);
+                return twilio(__value0);
             }
-            else if (IsCartesia && cartesia != null)
+            else if (Cartesia is { } __value1 && cartesia != null)
             {
-                return cartesia(Cartesia!);
+                return cartesia(__value1);
             }
-            else if (IsSipTrunk && sipTrunk != null)
+            else if (SipTrunk is { } __value2 && sipTrunk != null)
             {
-                return sipTrunk(SipTrunk!);
+                return sipTrunk(__value2);
             }
 
             return default(TResult);
@@ -282,17 +282,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio)
+            if (Twilio is { } __value0)
             {
-                twilio?.Invoke(Twilio!);
+                twilio?.Invoke(__value0);
             }
-            else if (IsCartesia)
+            else if (Cartesia is { } __value1)
             {
-                cartesia?.Invoke(Cartesia!);
+                cartesia?.Invoke(__value1);
             }
-            else if (IsSipTrunk)
+            else if (SipTrunk is { } __value2)
             {
-                sipTrunk?.Invoke(SipTrunk!);
+                sipTrunk?.Invoke(__value2);
             }
         }
 
@@ -310,17 +310,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio)
+            if (Twilio is { } __value0)
             {
-                twilio?.Invoke(Twilio!);
+                twilio?.Invoke(__value0);
             }
-            else if (IsCartesia)
+            else if (Cartesia is { } __value1)
             {
-                cartesia?.Invoke(Cartesia!);
+                cartesia?.Invoke(__value1);
             }
-            else if (IsSipTrunk)
+            else if (SipTrunk is { } __value2)
             {
-                sipTrunk?.Invoke(SipTrunk!);
+                sipTrunk?.Invoke(__value2);
             }
         }
 

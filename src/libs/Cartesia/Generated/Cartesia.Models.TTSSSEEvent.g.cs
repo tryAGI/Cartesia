@@ -48,8 +48,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSSSEChunkEvent PickChunk() => IsChunk
-            ? Chunk!
+        public global::Cartesia.TTSSSEChunkEvent PickChunk() => Chunk is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Chunk' but the value was {ToString()}.");
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSSSETimestampsEvent PickTimestamps() => IsTimestamps
-            ? Timestamps!
+        public global::Cartesia.TTSSSETimestampsEvent PickTimestamps() => Timestamps is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Timestamps' but the value was {ToString()}.");
 
         /// <summary>
@@ -124,8 +124,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSSSEPhonemeTimestampsEvent PickPhonemeTimestamps() => IsPhonemeTimestamps
-            ? PhonemeTimestamps!
+        public global::Cartesia.TTSSSEPhonemeTimestampsEvent PickPhonemeTimestamps() => PhonemeTimestamps is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PhonemeTimestamps' but the value was {ToString()}.");
 
         /// <summary>
@@ -162,8 +162,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSSSEDoneEvent PickDone() => IsDone
-            ? Done!
+        public global::Cartesia.TTSSSEDoneEvent PickDone() => Done is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
 
         /// <summary>
@@ -200,8 +200,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSSSEErrorEvent PickError() => IsError
-            ? Error!
+        public global::Cartesia.TTSSSEErrorEvent PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -385,25 +385,25 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsChunk && chunk != null)
+            if (Chunk is { } __value0 && chunk != null)
             {
-                return chunk(Chunk!);
+                return chunk(__value0);
             }
-            else if (IsTimestamps && timestamps != null)
+            else if (Timestamps is { } __value1 && timestamps != null)
             {
-                return timestamps(Timestamps!);
+                return timestamps(__value1);
             }
-            else if (IsPhonemeTimestamps && phonemeTimestamps != null)
+            else if (PhonemeTimestamps is { } __value2 && phonemeTimestamps != null)
             {
-                return phonemeTimestamps(PhonemeTimestamps!);
+                return phonemeTimestamps(__value2);
             }
-            else if (IsDone && done != null)
+            else if (Done is { } __value3 && done != null)
             {
-                return done(Done!);
+                return done(__value3);
             }
-            else if (IsError && error != null)
+            else if (Error is { } __value4 && error != null)
             {
-                return error(Error!);
+                return error(__value4);
             }
 
             return default(TResult);
@@ -429,25 +429,25 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsChunk)
+            if (Chunk is { } __value0)
             {
-                chunk?.Invoke(Chunk!);
+                chunk?.Invoke(__value0);
             }
-            else if (IsTimestamps)
+            else if (Timestamps is { } __value1)
             {
-                timestamps?.Invoke(Timestamps!);
+                timestamps?.Invoke(__value1);
             }
-            else if (IsPhonemeTimestamps)
+            else if (PhonemeTimestamps is { } __value2)
             {
-                phonemeTimestamps?.Invoke(PhonemeTimestamps!);
+                phonemeTimestamps?.Invoke(__value2);
             }
-            else if (IsDone)
+            else if (Done is { } __value3)
             {
-                done?.Invoke(Done!);
+                done?.Invoke(__value3);
             }
-            else if (IsError)
+            else if (Error is { } __value4)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value4);
             }
         }
 
@@ -467,25 +467,25 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsChunk)
+            if (Chunk is { } __value0)
             {
-                chunk?.Invoke(Chunk!);
+                chunk?.Invoke(__value0);
             }
-            else if (IsTimestamps)
+            else if (Timestamps is { } __value1)
             {
-                timestamps?.Invoke(Timestamps!);
+                timestamps?.Invoke(__value1);
             }
-            else if (IsPhonemeTimestamps)
+            else if (PhonemeTimestamps is { } __value2)
             {
-                phonemeTimestamps?.Invoke(PhonemeTimestamps!);
+                phonemeTimestamps?.Invoke(__value2);
             }
-            else if (IsDone)
+            else if (Done is { } __value3)
             {
-                done?.Invoke(Done!);
+                done?.Invoke(__value3);
             }
-            else if (IsError)
+            else if (Error is { } __value4)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value4);
             }
         }
 

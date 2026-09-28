@@ -49,8 +49,8 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse PickTranscript() => IsTranscript
-            ? Transcript!
+        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse PickTranscript() => Transcript is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Transcript' but the value was {ToString()}.");
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponse PickFlushDone() => IsFlushDone
-            ? FlushDone!
+        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponse PickFlushDone() => FlushDone is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FlushDone' but the value was {ToString()}.");
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTDoneResponse PickDone() => IsDone
-            ? Done!
+        public global::Cartesia.Realtime.SpeechToText.STTDoneResponse PickDone() => Done is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
 
         /// <summary>
@@ -160,8 +160,8 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTErrorResponse PickError() => IsError
-            ? Error!
+        public global::Cartesia.Realtime.SpeechToText.STTErrorResponse PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -317,21 +317,21 @@ namespace Cartesia.Realtime.SpeechToText
                 Validate();
             }
 
-            if (IsTranscript && transcript != null)
+            if (Transcript is { } __value0 && transcript != null)
             {
-                return transcript(Transcript!);
+                return transcript(__value0);
             }
-            else if (IsFlushDone && flushDone != null)
+            else if (FlushDone is { } __value1 && flushDone != null)
             {
-                return flushDone(FlushDone!);
+                return flushDone(__value1);
             }
-            else if (IsDone && done != null)
+            else if (Done is { } __value2 && done != null)
             {
-                return done(Done!);
+                return done(__value2);
             }
-            else if (IsError && error != null)
+            else if (Error is { } __value3 && error != null)
             {
-                return error(Error!);
+                return error(__value3);
             }
 
             return default(TResult);
@@ -355,21 +355,21 @@ namespace Cartesia.Realtime.SpeechToText
                 Validate();
             }
 
-            if (IsTranscript)
+            if (Transcript is { } __value0)
             {
-                transcript?.Invoke(Transcript!);
+                transcript?.Invoke(__value0);
             }
-            else if (IsFlushDone)
+            else if (FlushDone is { } __value1)
             {
-                flushDone?.Invoke(FlushDone!);
+                flushDone?.Invoke(__value1);
             }
-            else if (IsDone)
+            else if (Done is { } __value2)
             {
-                done?.Invoke(Done!);
+                done?.Invoke(__value2);
             }
-            else if (IsError)
+            else if (Error is { } __value3)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value3);
             }
         }
 
@@ -388,21 +388,21 @@ namespace Cartesia.Realtime.SpeechToText
                 Validate();
             }
 
-            if (IsTranscript)
+            if (Transcript is { } __value0)
             {
-                transcript?.Invoke(Transcript!);
+                transcript?.Invoke(__value0);
             }
-            else if (IsFlushDone)
+            else if (FlushDone is { } __value1)
             {
-                flushDone?.Invoke(FlushDone!);
+                flushDone?.Invoke(__value1);
             }
-            else if (IsDone)
+            else if (Done is { } __value2)
             {
-                done?.Invoke(Done!);
+                done?.Invoke(__value2);
             }
-            else if (IsError)
+            else if (Error is { } __value3)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value3);
             }
         }
 

@@ -122,55 +122,55 @@ namespace Cartesia.Realtime.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentSessionReadyEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentSessionReadyEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentSessionReadyEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SessionReady!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSessionReady(), typeInfo);
             }
             else if (value.IsAudioOutput)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentAudioOutputEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentAudioOutputEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentAudioOutputEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AudioOutput!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAudioOutput(), typeInfo);
             }
             else if (value.IsAudioOutputClear)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentAudioOutputClearEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentAudioOutputClearEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentAudioOutputClearEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AudioOutputClear!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAudioOutputClear(), typeInfo);
             }
             else if (value.IsDtmfOutput)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentDtmfOutputEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentDtmfOutputEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentDtmfOutputEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.DtmfOutput!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDtmfOutput(), typeInfo);
             }
             else if (value.IsClientToolCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentClientToolCallEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentClientToolCallEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentClientToolCallEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ClientToolCall!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClientToolCall(), typeInfo);
             }
             else if (value.IsTurnStarted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentTurnStartedEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentTurnStartedEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentTurnStartedEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnStarted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnStarted(), typeInfo);
             }
             else if (value.IsTurnOutputTextDelta)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnOutputTextDelta!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnOutputTextDelta(), typeInfo);
             }
             else if (value.IsTurnEnded)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentTurnEndedEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentTurnEndedEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentTurnEndedEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnEnded!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnEnded(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.AgentErrorEvent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.AgentErrorEvent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.AgentErrorEvent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

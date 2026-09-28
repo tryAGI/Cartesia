@@ -164,8 +164,8 @@ namespace Cartesia
                 PreparePhoneNumbersGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cartesiaVersion: cartesiaVersion!,
-                    id: id!);
+                    cartesiaVersion: cartesiaVersion,
+                    id: id);
 
                 global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
 
@@ -189,7 +189,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/agents/phone-numbers/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -223,7 +223,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/agents/phone-numbers/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -264,7 +264,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/agents/phone-numbers/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -312,7 +312,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/agents/phone-numbers/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -334,7 +334,7 @@ namespace Cartesia
                                 pathTemplate: "$\"/agents/phone-numbers/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

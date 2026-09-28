@@ -43,8 +43,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public string PickTTSRequestVoiceId() => IsTTSRequestVoiceId
-            ? TTSRequestVoiceId!
+        public string PickTTSRequestVoiceId() => TTSRequestVoiceId is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TTSRequestVoiceId' but the value was {ToString()}.");
 
         /// <summary>
@@ -80,8 +80,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.TTSRequestVoiceSpecifierTTSRequestVoiceObject PickTTSRequestVoiceObject() => IsTTSRequestVoiceObject
-            ? TTSRequestVoiceObject!
+        public global::Cartesia.TTSRequestVoiceSpecifierTTSRequestVoiceObject PickTTSRequestVoiceObject() => TTSRequestVoiceObject is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TTSRequestVoiceObject' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -178,13 +178,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTTSRequestVoiceId && tTSRequestVoiceId != null)
+            if (TTSRequestVoiceId is { } __value0 && tTSRequestVoiceId != null)
             {
-                return tTSRequestVoiceId(TTSRequestVoiceId!);
+                return tTSRequestVoiceId(__value0);
             }
-            else if (IsTTSRequestVoiceObject && tTSRequestVoiceObject != null)
+            else if (TTSRequestVoiceObject is { } __value1 && tTSRequestVoiceObject != null)
             {
-                return tTSRequestVoiceObject(TTSRequestVoiceObject!);
+                return tTSRequestVoiceObject(__value1);
             }
 
             return default(TResult);
@@ -204,13 +204,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTTSRequestVoiceId)
+            if (TTSRequestVoiceId is { } __value0)
             {
-                tTSRequestVoiceId?.Invoke(TTSRequestVoiceId!);
+                tTSRequestVoiceId?.Invoke(__value0);
             }
-            else if (IsTTSRequestVoiceObject)
+            else if (TTSRequestVoiceObject is { } __value1)
             {
-                tTSRequestVoiceObject?.Invoke(TTSRequestVoiceObject!);
+                tTSRequestVoiceObject?.Invoke(__value1);
             }
         }
 
@@ -227,13 +227,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTTSRequestVoiceId)
+            if (TTSRequestVoiceId is { } __value0)
             {
-                tTSRequestVoiceId?.Invoke(TTSRequestVoiceId!);
+                tTSRequestVoiceId?.Invoke(__value0);
             }
-            else if (IsTTSRequestVoiceObject)
+            else if (TTSRequestVoiceObject is { } __value1)
             {
-                tTSRequestVoiceObject?.Invoke(TTSRequestVoiceObject!);
+                tTSRequestVoiceObject?.Invoke(__value1);
             }
         }
 

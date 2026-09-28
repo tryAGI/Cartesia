@@ -90,7 +90,7 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeCloseCommand), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeCloseCommand?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeCloseCommand).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.STTAutoFinalizeCloseCommand!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSTTAutoFinalizeCloseCommand(), typeInfo);
             }
         }
     }

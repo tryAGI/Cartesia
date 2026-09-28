@@ -104,43 +104,43 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeConnected), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeConnected?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeConnected).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Connected!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConnected(), typeInfo);
             }
             else if (value.IsTurnStart)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeTurnStart), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeTurnStart?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeTurnStart).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnStart!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnStart(), typeInfo);
             }
             else if (value.IsTurnUpdate)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeTurnUpdate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeTurnUpdate?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeTurnUpdate).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnUpdate!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnUpdate(), typeInfo);
             }
             else if (value.IsTurnEagerEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeTurnEagerEnd), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeTurnEagerEnd?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeTurnEagerEnd).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnEagerEnd!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnEagerEnd(), typeInfo);
             }
             else if (value.IsTurnResume)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeTurnResume), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeTurnResume?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeTurnResume).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnResume!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnResume(), typeInfo);
             }
             else if (value.IsTurnEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTAutoFinalizeTurnEnd), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTAutoFinalizeTurnEnd?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTAutoFinalizeTurnEnd).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnEnd!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnEnd(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTErrorResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTErrorResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTErrorResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

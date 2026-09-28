@@ -50,8 +50,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.CreateTwilioProviderBody PickTwilio() => IsTwilio
-            ? Twilio!
+        public global::Cartesia.CreateTwilioProviderBody PickTwilio() => Twilio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Twilio' but the value was {ToString()}.");
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.CreateSIPProviderBody PickSipTrunk() => IsSipTrunk
-            ? SipTrunk!
+        public global::Cartesia.CreateSIPProviderBody PickSipTrunk() => SipTrunk is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SipTrunk' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -188,13 +188,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio && twilio != null)
+            if (Twilio is { } __value0 && twilio != null)
             {
-                return twilio(Twilio!);
+                return twilio(__value0);
             }
-            else if (IsSipTrunk && sipTrunk != null)
+            else if (SipTrunk is { } __value1 && sipTrunk != null)
             {
-                return sipTrunk(SipTrunk!);
+                return sipTrunk(__value1);
             }
 
             return default(TResult);
@@ -214,13 +214,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio)
+            if (Twilio is { } __value0)
             {
-                twilio?.Invoke(Twilio!);
+                twilio?.Invoke(__value0);
             }
-            else if (IsSipTrunk)
+            else if (SipTrunk is { } __value1)
             {
-                sipTrunk?.Invoke(SipTrunk!);
+                sipTrunk?.Invoke(__value1);
             }
         }
 
@@ -237,13 +237,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsTwilio)
+            if (Twilio is { } __value0)
             {
-                twilio?.Invoke(Twilio!);
+                twilio?.Invoke(__value0);
             }
-            else if (IsSipTrunk)
+            else if (SipTrunk is { } __value1)
             {
-                sipTrunk?.Invoke(SipTrunk!);
+                sipTrunk?.Invoke(__value1);
             }
         }
 

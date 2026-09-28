@@ -104,43 +104,43 @@ namespace Cartesia.Realtime.SpeechToTextTurns.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Connected!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConnected(), typeInfo);
             }
             else if (value.IsTurnStart)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnStart!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnStart(), typeInfo);
             }
             else if (value.IsTurnUpdate)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnUpdate!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnUpdate(), typeInfo);
             }
             else if (value.IsTurnEagerEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnEagerEnd!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnEagerEnd(), typeInfo);
             }
             else if (value.IsTurnResume)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnResume!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnResume(), typeInfo);
             }
             else if (value.IsTurnEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TurnEnd!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTurnEnd(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

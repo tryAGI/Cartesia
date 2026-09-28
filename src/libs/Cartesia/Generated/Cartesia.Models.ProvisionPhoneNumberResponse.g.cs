@@ -42,8 +42,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.PhoneNumberBaseResponse PickPhoneNumberBaseResponse() => IsPhoneNumberBaseResponse
-            ? PhoneNumberBaseResponse!
+        public global::Cartesia.PhoneNumberBaseResponse PickPhoneNumberBaseResponse() => PhoneNumberBaseResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PhoneNumberBaseResponse' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse && phoneNumberBaseResponse != null)
+            if (PhoneNumberBaseResponse is { } __value0 && phoneNumberBaseResponse != null)
             {
-                return phoneNumberBaseResponse(PhoneNumberBaseResponse!);
+                return phoneNumberBaseResponse(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse)
+            if (PhoneNumberBaseResponse is { } __value0)
             {
-                phoneNumberBaseResponse?.Invoke(PhoneNumberBaseResponse!);
+                phoneNumberBaseResponse?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsPhoneNumberBaseResponse)
+            if (PhoneNumberBaseResponse is { } __value0)
             {
-                phoneNumberBaseResponse?.Invoke(PhoneNumberBaseResponse!);
+                phoneNumberBaseResponse?.Invoke(__value0);
             }
         }
 

@@ -178,19 +178,19 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEChunk), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEChunk?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEChunk).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VoiceChangerSSEChunk!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVoiceChangerSSEChunk(), typeInfo);
             }
             else if (value.IsVoiceChangerSSEDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEDone), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEDone?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEDone).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VoiceChangerSSEDone!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVoiceChangerSSEDone(), typeInfo);
             }
             else if (value.IsVoiceChangerSSEError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.VoiceChangerSSEError), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.VoiceChangerSSEError?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.VoiceChangerSSEError).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VoiceChangerSSEError!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVoiceChangerSSEError(), typeInfo);
             }
         }
     }

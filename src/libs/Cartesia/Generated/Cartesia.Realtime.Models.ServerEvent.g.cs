@@ -47,8 +47,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentSessionReadyEvent PickSessionReady() => IsSessionReady
-            ? SessionReady!
+        public global::Cartesia.Realtime.AgentSessionReadyEvent PickSessionReady() => SessionReady is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SessionReady' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputEvent PickAudioOutput() => IsAudioOutput
-            ? AudioOutput!
+        public global::Cartesia.Realtime.AgentAudioOutputEvent PickAudioOutput() => AudioOutput is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AudioOutput' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentAudioOutputClearEvent PickAudioOutputClear() => IsAudioOutputClear
-            ? AudioOutputClear!
+        public global::Cartesia.Realtime.AgentAudioOutputClearEvent PickAudioOutputClear() => AudioOutputClear is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AudioOutputClear' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentDtmfOutputEvent PickDtmfOutput() => IsDtmfOutput
-            ? DtmfOutput!
+        public global::Cartesia.Realtime.AgentDtmfOutputEvent PickDtmfOutput() => DtmfOutput is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'DtmfOutput' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentClientToolCallEvent PickClientToolCall() => IsClientToolCall
-            ? ClientToolCall!
+        public global::Cartesia.Realtime.AgentClientToolCallEvent PickClientToolCall() => ClientToolCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClientToolCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnStartedEvent PickTurnStarted() => IsTurnStarted
-            ? TurnStarted!
+        public global::Cartesia.Realtime.AgentTurnStartedEvent PickTurnStarted() => TurnStarted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnStarted' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent PickTurnOutputTextDelta() => IsTurnOutputTextDelta
-            ? TurnOutputTextDelta!
+        public global::Cartesia.Realtime.AgentTurnOutputTextDeltaEvent PickTurnOutputTextDelta() => TurnOutputTextDelta is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnOutputTextDelta' but the value was {ToString()}.");
 
         /// <summary>
@@ -306,8 +306,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentTurnEndedEvent PickTurnEnded() => IsTurnEnded
-            ? TurnEnded!
+        public global::Cartesia.Realtime.AgentTurnEndedEvent PickTurnEnded() => TurnEnded is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnEnded' but the value was {ToString()}.");
 
         /// <summary>
@@ -343,8 +343,8 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEvent PickError() => IsError
-            ? Error!
+        public global::Cartesia.Realtime.AgentErrorEvent PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -640,41 +640,41 @@ namespace Cartesia.Realtime
                 Validate();
             }
 
-            if (IsSessionReady && sessionReady != null)
+            if (SessionReady is { } __value0 && sessionReady != null)
             {
-                return sessionReady(SessionReady!);
+                return sessionReady(__value0);
             }
-            else if (IsAudioOutput && audioOutput != null)
+            else if (AudioOutput is { } __value1 && audioOutput != null)
             {
-                return audioOutput(AudioOutput!);
+                return audioOutput(__value1);
             }
-            else if (IsAudioOutputClear && audioOutputClear != null)
+            else if (AudioOutputClear is { } __value2 && audioOutputClear != null)
             {
-                return audioOutputClear(AudioOutputClear!);
+                return audioOutputClear(__value2);
             }
-            else if (IsDtmfOutput && dtmfOutput != null)
+            else if (DtmfOutput is { } __value3 && dtmfOutput != null)
             {
-                return dtmfOutput(DtmfOutput!);
+                return dtmfOutput(__value3);
             }
-            else if (IsClientToolCall && clientToolCall != null)
+            else if (ClientToolCall is { } __value4 && clientToolCall != null)
             {
-                return clientToolCall(ClientToolCall!);
+                return clientToolCall(__value4);
             }
-            else if (IsTurnStarted && turnStarted != null)
+            else if (TurnStarted is { } __value5 && turnStarted != null)
             {
-                return turnStarted(TurnStarted!);
+                return turnStarted(__value5);
             }
-            else if (IsTurnOutputTextDelta && turnOutputTextDelta != null)
+            else if (TurnOutputTextDelta is { } __value6 && turnOutputTextDelta != null)
             {
-                return turnOutputTextDelta(TurnOutputTextDelta!);
+                return turnOutputTextDelta(__value6);
             }
-            else if (IsTurnEnded && turnEnded != null)
+            else if (TurnEnded is { } __value7 && turnEnded != null)
             {
-                return turnEnded(TurnEnded!);
+                return turnEnded(__value7);
             }
-            else if (IsError && error != null)
+            else if (Error is { } __value8 && error != null)
             {
-                return error(Error!);
+                return error(__value8);
             }
 
             return default(TResult);
@@ -708,41 +708,41 @@ namespace Cartesia.Realtime
                 Validate();
             }
 
-            if (IsSessionReady)
+            if (SessionReady is { } __value0)
             {
-                sessionReady?.Invoke(SessionReady!);
+                sessionReady?.Invoke(__value0);
             }
-            else if (IsAudioOutput)
+            else if (AudioOutput is { } __value1)
             {
-                audioOutput?.Invoke(AudioOutput!);
+                audioOutput?.Invoke(__value1);
             }
-            else if (IsAudioOutputClear)
+            else if (AudioOutputClear is { } __value2)
             {
-                audioOutputClear?.Invoke(AudioOutputClear!);
+                audioOutputClear?.Invoke(__value2);
             }
-            else if (IsDtmfOutput)
+            else if (DtmfOutput is { } __value3)
             {
-                dtmfOutput?.Invoke(DtmfOutput!);
+                dtmfOutput?.Invoke(__value3);
             }
-            else if (IsClientToolCall)
+            else if (ClientToolCall is { } __value4)
             {
-                clientToolCall?.Invoke(ClientToolCall!);
+                clientToolCall?.Invoke(__value4);
             }
-            else if (IsTurnStarted)
+            else if (TurnStarted is { } __value5)
             {
-                turnStarted?.Invoke(TurnStarted!);
+                turnStarted?.Invoke(__value5);
             }
-            else if (IsTurnOutputTextDelta)
+            else if (TurnOutputTextDelta is { } __value6)
             {
-                turnOutputTextDelta?.Invoke(TurnOutputTextDelta!);
+                turnOutputTextDelta?.Invoke(__value6);
             }
-            else if (IsTurnEnded)
+            else if (TurnEnded is { } __value7)
             {
-                turnEnded?.Invoke(TurnEnded!);
+                turnEnded?.Invoke(__value7);
             }
-            else if (IsError)
+            else if (Error is { } __value8)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value8);
             }
         }
 
@@ -766,41 +766,41 @@ namespace Cartesia.Realtime
                 Validate();
             }
 
-            if (IsSessionReady)
+            if (SessionReady is { } __value0)
             {
-                sessionReady?.Invoke(SessionReady!);
+                sessionReady?.Invoke(__value0);
             }
-            else if (IsAudioOutput)
+            else if (AudioOutput is { } __value1)
             {
-                audioOutput?.Invoke(AudioOutput!);
+                audioOutput?.Invoke(__value1);
             }
-            else if (IsAudioOutputClear)
+            else if (AudioOutputClear is { } __value2)
             {
-                audioOutputClear?.Invoke(AudioOutputClear!);
+                audioOutputClear?.Invoke(__value2);
             }
-            else if (IsDtmfOutput)
+            else if (DtmfOutput is { } __value3)
             {
-                dtmfOutput?.Invoke(DtmfOutput!);
+                dtmfOutput?.Invoke(__value3);
             }
-            else if (IsClientToolCall)
+            else if (ClientToolCall is { } __value4)
             {
-                clientToolCall?.Invoke(ClientToolCall!);
+                clientToolCall?.Invoke(__value4);
             }
-            else if (IsTurnStarted)
+            else if (TurnStarted is { } __value5)
             {
-                turnStarted?.Invoke(TurnStarted!);
+                turnStarted?.Invoke(__value5);
             }
-            else if (IsTurnOutputTextDelta)
+            else if (TurnOutputTextDelta is { } __value6)
             {
-                turnOutputTextDelta?.Invoke(TurnOutputTextDelta!);
+                turnOutputTextDelta?.Invoke(__value6);
             }
-            else if (IsTurnEnded)
+            else if (TurnEnded is { } __value7)
             {
-                turnEnded?.Invoke(TurnEnded!);
+                turnEnded?.Invoke(__value7);
             }
-            else if (IsError)
+            else if (Error is { } __value8)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value8);
             }
         }
 

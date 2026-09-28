@@ -157,13 +157,13 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdate?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.UpdateManagedToolV1RequestWebhookToolUpdate).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookToolUpdate!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookToolUpdate(), typeInfo);
             }
             else if (value.IsClientToolUpdate)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.UpdateManagedToolV1RequestClientToolUpdate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.UpdateManagedToolV1RequestClientToolUpdate?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.UpdateManagedToolV1RequestClientToolUpdate).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ClientToolUpdate!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClientToolUpdate(), typeInfo);
             }
         }
     }

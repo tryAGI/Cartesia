@@ -48,8 +48,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected PickConnected() => IsConnected
-            ? Connected!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected PickConnected() => Connected is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Connected' but the value was {ToString()}.");
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart PickTurnStart() => IsTurnStart
-            ? TurnStart!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart PickTurnStart() => TurnStart is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnStart' but the value was {ToString()}.");
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate PickTurnUpdate() => IsTurnUpdate
-            ? TurnUpdate!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate PickTurnUpdate() => TurnUpdate is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnUpdate' but the value was {ToString()}.");
 
         /// <summary>
@@ -160,8 +160,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd PickTurnEagerEnd() => IsTurnEagerEnd
-            ? TurnEagerEnd!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd PickTurnEagerEnd() => TurnEagerEnd is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnEagerEnd' but the value was {ToString()}.");
 
         /// <summary>
@@ -197,8 +197,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume PickTurnResume() => IsTurnResume
-            ? TurnResume!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume PickTurnResume() => TurnResume is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnResume' but the value was {ToString()}.");
 
         /// <summary>
@@ -234,8 +234,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd PickTurnEnd() => IsTurnEnd
-            ? TurnEnd!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd PickTurnEnd() => TurnEnd is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnEnd' but the value was {ToString()}.");
 
         /// <summary>
@@ -271,8 +271,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse PickError() => IsError
-            ? Error!
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse PickError() => Error is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Error' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -512,33 +512,33 @@ namespace Cartesia.Realtime.SpeechToTextTurns
                 Validate();
             }
 
-            if (IsConnected && connected != null)
+            if (Connected is { } __value0 && connected != null)
             {
-                return connected(Connected!);
+                return connected(__value0);
             }
-            else if (IsTurnStart && turnStart != null)
+            else if (TurnStart is { } __value1 && turnStart != null)
             {
-                return turnStart(TurnStart!);
+                return turnStart(__value1);
             }
-            else if (IsTurnUpdate && turnUpdate != null)
+            else if (TurnUpdate is { } __value2 && turnUpdate != null)
             {
-                return turnUpdate(TurnUpdate!);
+                return turnUpdate(__value2);
             }
-            else if (IsTurnEagerEnd && turnEagerEnd != null)
+            else if (TurnEagerEnd is { } __value3 && turnEagerEnd != null)
             {
-                return turnEagerEnd(TurnEagerEnd!);
+                return turnEagerEnd(__value3);
             }
-            else if (IsTurnResume && turnResume != null)
+            else if (TurnResume is { } __value4 && turnResume != null)
             {
-                return turnResume(TurnResume!);
+                return turnResume(__value4);
             }
-            else if (IsTurnEnd && turnEnd != null)
+            else if (TurnEnd is { } __value5 && turnEnd != null)
             {
-                return turnEnd(TurnEnd!);
+                return turnEnd(__value5);
             }
-            else if (IsError && error != null)
+            else if (Error is { } __value6 && error != null)
             {
-                return error(Error!);
+                return error(__value6);
             }
 
             return default(TResult);
@@ -568,33 +568,33 @@ namespace Cartesia.Realtime.SpeechToTextTurns
                 Validate();
             }
 
-            if (IsConnected)
+            if (Connected is { } __value0)
             {
-                connected?.Invoke(Connected!);
+                connected?.Invoke(__value0);
             }
-            else if (IsTurnStart)
+            else if (TurnStart is { } __value1)
             {
-                turnStart?.Invoke(TurnStart!);
+                turnStart?.Invoke(__value1);
             }
-            else if (IsTurnUpdate)
+            else if (TurnUpdate is { } __value2)
             {
-                turnUpdate?.Invoke(TurnUpdate!);
+                turnUpdate?.Invoke(__value2);
             }
-            else if (IsTurnEagerEnd)
+            else if (TurnEagerEnd is { } __value3)
             {
-                turnEagerEnd?.Invoke(TurnEagerEnd!);
+                turnEagerEnd?.Invoke(__value3);
             }
-            else if (IsTurnResume)
+            else if (TurnResume is { } __value4)
             {
-                turnResume?.Invoke(TurnResume!);
+                turnResume?.Invoke(__value4);
             }
-            else if (IsTurnEnd)
+            else if (TurnEnd is { } __value5)
             {
-                turnEnd?.Invoke(TurnEnd!);
+                turnEnd?.Invoke(__value5);
             }
-            else if (IsError)
+            else if (Error is { } __value6)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value6);
             }
         }
 
@@ -616,33 +616,33 @@ namespace Cartesia.Realtime.SpeechToTextTurns
                 Validate();
             }
 
-            if (IsConnected)
+            if (Connected is { } __value0)
             {
-                connected?.Invoke(Connected!);
+                connected?.Invoke(__value0);
             }
-            else if (IsTurnStart)
+            else if (TurnStart is { } __value1)
             {
-                turnStart?.Invoke(TurnStart!);
+                turnStart?.Invoke(__value1);
             }
-            else if (IsTurnUpdate)
+            else if (TurnUpdate is { } __value2)
             {
-                turnUpdate?.Invoke(TurnUpdate!);
+                turnUpdate?.Invoke(__value2);
             }
-            else if (IsTurnEagerEnd)
+            else if (TurnEagerEnd is { } __value3)
             {
-                turnEagerEnd?.Invoke(TurnEagerEnd!);
+                turnEagerEnd?.Invoke(__value3);
             }
-            else if (IsTurnResume)
+            else if (TurnResume is { } __value4)
             {
-                turnResume?.Invoke(TurnResume!);
+                turnResume?.Invoke(__value4);
             }
-            else if (IsTurnEnd)
+            else if (TurnEnd is { } __value5)
             {
-                turnEnd?.Invoke(TurnEnd!);
+                turnEnd?.Invoke(__value5);
             }
-            else if (IsError)
+            else if (Error is { } __value6)
             {
-                error?.Invoke(Error!);
+                error?.Invoke(__value6);
             }
         }
 

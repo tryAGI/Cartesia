@@ -77,25 +77,25 @@ namespace Cartesia.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTManualFinalizeTranscriptResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTManualFinalizeTranscriptResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTManualFinalizeTranscriptResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Transcript!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTranscript(), typeInfo);
             }
             else if (value.IsFlushDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTManualFinalizeFlushDoneResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlushDone!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFlushDone(), typeInfo);
             }
             else if (value.IsDone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTManualFinalizeDoneResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTManualFinalizeDoneResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTManualFinalizeDoneResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Done!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDone(), typeInfo);
             }
             else if (value.IsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.STTErrorResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.STTErrorResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.STTErrorResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Error!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickError(), typeInfo);
             }
         }
     }

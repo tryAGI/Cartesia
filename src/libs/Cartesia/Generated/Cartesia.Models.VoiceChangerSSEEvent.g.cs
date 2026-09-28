@@ -43,8 +43,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEChunk PickVoiceChangerSSEChunk() => IsVoiceChangerSSEChunk
-            ? VoiceChangerSSEChunk!
+        public global::Cartesia.VoiceChangerSSEChunk PickVoiceChangerSSEChunk() => VoiceChangerSSEChunk is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEChunk' but the value was {ToString()}.");
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEDone PickVoiceChangerSSEDone() => IsVoiceChangerSSEDone
-            ? VoiceChangerSSEDone!
+        public global::Cartesia.VoiceChangerSSEDone PickVoiceChangerSSEDone() => VoiceChangerSSEDone is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEDone' but the value was {ToString()}.");
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.VoiceChangerSSEError PickVoiceChangerSSEError() => IsVoiceChangerSSEError
-            ? VoiceChangerSSEError!
+        public global::Cartesia.VoiceChangerSSEError PickVoiceChangerSSEError() => VoiceChangerSSEError is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceChangerSSEError' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -245,17 +245,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsVoiceChangerSSEChunk && voiceChangerSSEChunk != null)
+            if (VoiceChangerSSEChunk is { } __value0 && voiceChangerSSEChunk != null)
             {
-                return voiceChangerSSEChunk(VoiceChangerSSEChunk!);
+                return voiceChangerSSEChunk(__value0);
             }
-            else if (IsVoiceChangerSSEDone && voiceChangerSSEDone != null)
+            else if (VoiceChangerSSEDone is { } __value1 && voiceChangerSSEDone != null)
             {
-                return voiceChangerSSEDone(VoiceChangerSSEDone!);
+                return voiceChangerSSEDone(__value1);
             }
-            else if (IsVoiceChangerSSEError && voiceChangerSSEError != null)
+            else if (VoiceChangerSSEError is { } __value2 && voiceChangerSSEError != null)
             {
-                return voiceChangerSSEError(VoiceChangerSSEError!);
+                return voiceChangerSSEError(__value2);
             }
 
             return default(TResult);
@@ -277,17 +277,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsVoiceChangerSSEChunk)
+            if (VoiceChangerSSEChunk is { } __value0)
             {
-                voiceChangerSSEChunk?.Invoke(VoiceChangerSSEChunk!);
+                voiceChangerSSEChunk?.Invoke(__value0);
             }
-            else if (IsVoiceChangerSSEDone)
+            else if (VoiceChangerSSEDone is { } __value1)
             {
-                voiceChangerSSEDone?.Invoke(VoiceChangerSSEDone!);
+                voiceChangerSSEDone?.Invoke(__value1);
             }
-            else if (IsVoiceChangerSSEError)
+            else if (VoiceChangerSSEError is { } __value2)
             {
-                voiceChangerSSEError?.Invoke(VoiceChangerSSEError!);
+                voiceChangerSSEError?.Invoke(__value2);
             }
         }
 
@@ -305,17 +305,17 @@ namespace Cartesia
                 Validate();
             }
 
-            if (IsVoiceChangerSSEChunk)
+            if (VoiceChangerSSEChunk is { } __value0)
             {
-                voiceChangerSSEChunk?.Invoke(VoiceChangerSSEChunk!);
+                voiceChangerSSEChunk?.Invoke(__value0);
             }
-            else if (IsVoiceChangerSSEDone)
+            else if (VoiceChangerSSEDone is { } __value1)
             {
-                voiceChangerSSEDone?.Invoke(VoiceChangerSSEDone!);
+                voiceChangerSSEDone?.Invoke(__value1);
             }
-            else if (IsVoiceChangerSSEError)
+            else if (VoiceChangerSSEError is { } __value2)
             {
-                voiceChangerSSEError?.Invoke(VoiceChangerSSEError!);
+                voiceChangerSSEError?.Invoke(__value2);
             }
         }
 
