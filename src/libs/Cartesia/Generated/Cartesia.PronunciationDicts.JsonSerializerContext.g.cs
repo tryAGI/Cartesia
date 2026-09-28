@@ -1,19 +1,14 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-#pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
-
 namespace Cartesia
 {
     /// <summary>
     ///
     /// </summary>
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-        Converters = new global::System.Type[]
-        {
-        })]
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
@@ -29,14 +24,22 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictVisibility), TypeInfoPropertyName = "PronunciationDictVisibility2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequest))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.CreatePronunciationDictRequestAccessEnum?, global::Cartesia.CreatePronunciationDictRequestAccessEnum2>), TypeInfoPropertyName = "OneOfCreatePronunciationDictRequestAccessEnumCreatePronunciationDictRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequestAccessEnum), TypeInfoPropertyName = "CreatePronunciationDictRequestAccessEnum2_3")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequestAccessEnum2))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequestAccessEnumType), TypeInfoPropertyName = "CreatePronunciationDictRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequest))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.UpdatePronunciationDictRequestAccessEnum?, global::Cartesia.UpdatePronunciationDictRequestAccessEnum2>), TypeInfoPropertyName = "OneOfUpdatePronunciationDictRequestAccessEnumUpdatePronunciationDictRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnum), TypeInfoPropertyName = "UpdatePronunciationDictRequestAccessEnum2_3")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnum2))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnumType), TypeInfoPropertyName = "UpdatePronunciationDictRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsListCartesiaVersion), TypeInfoPropertyName = "PronunciationDictsListCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsCreateCartesiaVersion), TypeInfoPropertyName = "PronunciationDictsCreateCartesiaVersion2")]
@@ -47,10 +50,14 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictAccess?), TypeInfoPropertyName = "NullablePronunciationDictAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictVisibility?), TypeInfoPropertyName = "NullablePronunciationDictVisibility2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.CreatePronunciationDictRequestAccessEnum?, global::Cartesia.CreatePronunciationDictRequestAccessEnum2>?), TypeInfoPropertyName = "NullableOneOfCreatePronunciationDictRequestAccessEnumCreatePronunciationDictRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequestAccessEnum?), TypeInfoPropertyName = "NullableCreatePronunciationDictRequestAccessEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreatePronunciationDictRequestAccessEnumType?), TypeInfoPropertyName = "NullableCreatePronunciationDictRequestAccessEnumType2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.UpdatePronunciationDictRequestAccessEnum?, global::Cartesia.UpdatePronunciationDictRequestAccessEnum2>?), TypeInfoPropertyName = "NullableOneOfUpdatePronunciationDictRequestAccessEnumUpdatePronunciationDictRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnum?), TypeInfoPropertyName = "NullableUpdatePronunciationDictRequestAccessEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePronunciationDictRequestAccessEnumType?), TypeInfoPropertyName = "NullableUpdatePronunciationDictRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PronunciationDictsListCartesiaVersion?), TypeInfoPropertyName = "NullablePronunciationDictsListCartesiaVersion2")]
@@ -118,8 +125,12 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
+            #pragma warning disable CS0618 // Converter references a deprecated API model.
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.CreatePronunciationDictRequestAccessEnum?, global::Cartesia.CreatePronunciationDictRequestAccessEnum2>());
+            #pragma warning restore CS0618
+            #pragma warning disable CS0618 // Converter references a deprecated API model.
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.UpdatePronunciationDictRequestAccessEnum?, global::Cartesia.UpdatePronunciationDictRequestAccessEnum2>());
+            #pragma warning restore CS0618
             options.Converters.Add(new global::Cartesia.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }

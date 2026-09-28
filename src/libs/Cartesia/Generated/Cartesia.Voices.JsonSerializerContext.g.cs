@@ -1,19 +1,14 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-#pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
-
 namespace Cartesia
 {
     /// <summary>
     ///
     /// </summary>
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-        Converters = new global::System.Type[]
-        {
-        })]
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
@@ -41,15 +36,23 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceMetadataAccess), TypeInfoPropertyName = "VoiceMetadataAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceMetadataVisibility), TypeInfoPropertyName = "VoiceMetadataVisibility2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequest))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.UpdateVoiceRequestAccessEnum?, global::Cartesia.UpdateVoiceRequestAccessEnum2>), TypeInfoPropertyName = "OneOfUpdateVoiceRequestAccessEnumUpdateVoiceRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequestAccessEnum), TypeInfoPropertyName = "UpdateVoiceRequestAccessEnum2_3")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequestAccessEnum2))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequestAccessEnumType), TypeInfoPropertyName = "UpdateVoiceRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceAccent), TypeInfoPropertyName = "LocalizeVoiceAccent2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>), TypeInfoPropertyName = "OneOfLocalizeVoiceRequestAccessEnumLocalizeVoiceRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequestAccessEnum), TypeInfoPropertyName = "LocalizeVoiceRequestAccessEnum2_3")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequestAccessEnum2))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequestAccessEnumType), TypeInfoPropertyName = "LocalizeVoiceRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AddVoiceAccentsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AttachVoiceAccent>))]
@@ -79,11 +82,15 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SupportedLanguage?), TypeInfoPropertyName = "NullableSupportedLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceMetadataAccess?), TypeInfoPropertyName = "NullableVoiceMetadataAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceMetadataVisibility?), TypeInfoPropertyName = "NullableVoiceMetadataVisibility2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.UpdateVoiceRequestAccessEnum?, global::Cartesia.UpdateVoiceRequestAccessEnum2>?), TypeInfoPropertyName = "NullableOneOfUpdateVoiceRequestAccessEnumUpdateVoiceRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequestAccessEnum?), TypeInfoPropertyName = "NullableUpdateVoiceRequestAccessEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateVoiceRequestAccessEnumType?), TypeInfoPropertyName = "NullableUpdateVoiceRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceAccent?), TypeInfoPropertyName = "NullableLocalizeVoiceAccent2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>?), TypeInfoPropertyName = "NullableOneOfLocalizeVoiceRequestAccessEnumLocalizeVoiceRequestAccessEnum22")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequestAccessEnum?), TypeInfoPropertyName = "NullableLocalizeVoiceRequestAccessEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeVoiceRequestAccessEnumType?), TypeInfoPropertyName = "NullableLocalizeVoiceRequestAccessEnumType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AttachVoiceAccent?), TypeInfoPropertyName = "NullableAttachVoiceAccent2")]
@@ -160,8 +167,12 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
+            #pragma warning disable CS0618 // Converter references a deprecated API model.
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.UpdateVoiceRequestAccessEnum?, global::Cartesia.UpdateVoiceRequestAccessEnum2>());
+            #pragma warning restore CS0618
+            #pragma warning disable CS0618 // Converter references a deprecated API model.
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.LocalizeVoiceRequestAccessEnum?, global::Cartesia.LocalizeVoiceRequestAccessEnum2>());
+            #pragma warning restore CS0618
             options.Converters.Add(new global::Cartesia.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
