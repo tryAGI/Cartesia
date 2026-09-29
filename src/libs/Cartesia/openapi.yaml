@@ -8405,7 +8405,12 @@ components:
       properties:
         address:
           type: string
-          description: SIP server hostname or address used for outbound signaling.
+          description: >-
+            Carrier host that receives Cartesia's SIP INVITE, as `host` or
+            `host:port`.
+
+            When the port is omitted, Cartesia uses 5060 for `tcp` and 5061 for
+            `tls`.
         destination_country:
           type: string
           description: >-
@@ -8548,7 +8553,13 @@ components:
         address:
           type: string
           minLength: 1
-          description: SIP server hostname or address used for outbound signaling.
+          description: >-
+            Carrier host that receives Cartesia's SIP INVITE, as `host` or
+            `host:port`, without a `sip:` prefix.
+
+            When the port is omitted, Cartesia uses 5060 for `tcp` and 5061 for
+            `tls`. Set `host:port` if your carrier listens elsewhere, for
+            example `sip.example.com:5067`.
         transport:
           $ref: '#/components/schemas/SIPTrunkTransport'
         destination_country:
