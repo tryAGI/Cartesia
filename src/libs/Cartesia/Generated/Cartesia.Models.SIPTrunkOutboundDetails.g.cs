@@ -9,7 +9,8 @@ namespace Cartesia
     public sealed partial class SIPTrunkOutboundDetails
     {
         /// <summary>
-        /// SIP server hostname or address used for outbound signaling.
+        /// Carrier host that receives Cartesia's SIP INVITE, as `host` or `host:port`.<br/>
+        /// When the port is omitted, Cartesia uses 5060 for `tcp` and 5061 for `tls`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("address")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -54,7 +55,8 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="SIPTrunkOutboundDetails" /> class.
         /// </summary>
         /// <param name="address">
-        /// SIP server hostname or address used for outbound signaling.
+        /// Carrier host that receives Cartesia's SIP INVITE, as `host` or `host:port`.<br/>
+        /// When the port is omitted, Cartesia uses 5060 for `tcp` and 5061 for `tls`.
         /// </param>
         /// <param name="transport">
         /// Transport for outbound SIP signaling.
