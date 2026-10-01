@@ -8,7 +8,7 @@ namespace Cartesia.Realtime.TextToSpeech
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class JsonSerializerContextTypes
+    public sealed partial class TextToSpeechSourceGenerationContextTypes
     {
         /// <summary>
         ///

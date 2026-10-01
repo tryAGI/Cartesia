@@ -68,7 +68,7 @@ namespace Cartesia.Realtime.TextToSpeech
             typeof(global::Cartesia.Realtime.TextToSpeech.JsonConverters.OneOfJsonConverter<string, global::Cartesia.Realtime.TextToSpeech.GenerationRequestVoice>),
         })]
     #pragma warning restore CS3016
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.TextToSpeechSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.GenerationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.GenerationRequestModelId), TypeInfoPropertyName = "GenerationRequestModelId2")]
