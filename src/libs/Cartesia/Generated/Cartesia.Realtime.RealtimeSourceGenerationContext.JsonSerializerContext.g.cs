@@ -100,7 +100,7 @@ namespace Cartesia.Realtime
             typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
         })]
     #pragma warning restore CS3016
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.RealtimeSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentSessionCreateEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentSessionCreateEventType), TypeInfoPropertyName = "AgentSessionCreateEventType2")]
