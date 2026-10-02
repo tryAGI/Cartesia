@@ -29,6 +29,19 @@ namespace Cartesia
         public string? AgentName { get; set; }
 
         /// <summary>
+        /// The [agent version](/api-reference/agents/versions/get) used for the call, which is the version published when the call started.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_version_id")]
+        public string? AgentVersionId { get; set; }
+
+        /// <summary>
+        /// Whether [Zero Data Retention](/enterprise/zero-data-retention) was on for the call. When `true`, the transcript, recording, summary, and logs are not retained.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("zdr_enabled")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool ZdrEnabled { get; set; }
+
+        /// <summary>
         /// The start time of the agent call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_time")]
@@ -113,11 +126,17 @@ namespace Cartesia
         /// <param name="agentId">
         /// The identifier of the agent associated with the call.
         /// </param>
+        /// <param name="zdrEnabled">
+        /// Whether [Zero Data Retention](/enterprise/zero-data-retention) was on for the call. When `true`, the transcript, recording, summary, and logs are not retained.
+        /// </param>
         /// <param name="status">
         /// The status of an agent call.
         /// </param>
         /// <param name="agentName">
         /// The name of the agent associated with the call.
+        /// </param>
+        /// <param name="agentVersionId">
+        /// The [agent version](/api-reference/agents/versions/get) used for the call, which is the version published when the call started.
         /// </param>
         /// <param name="startTime">
         /// The start time of the agent call.
@@ -155,8 +174,10 @@ namespace Cartesia
         public AgentCall(
             string id,
             string agentId,
+            bool zdrEnabled,
             global::Cartesia.AgentCallStatus status,
             string? agentName,
+            string? agentVersionId,
             global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             global::System.DateTime? redactedAt,
@@ -171,6 +192,8 @@ namespace Cartesia
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.AgentName = agentName;
+            this.AgentVersionId = agentVersionId;
+            this.ZdrEnabled = zdrEnabled;
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.RedactedAt = redactedAt;

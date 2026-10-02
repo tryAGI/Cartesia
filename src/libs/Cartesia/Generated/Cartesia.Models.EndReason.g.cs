@@ -11,6 +11,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        AgentError,
+        /// <summary>
+        ///
+        /// </summary>
         AgentHangup,
         /// <summary>
         ///
@@ -19,11 +23,27 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        CallInactivity,
+        /// <summary>
+        ///
+        /// </summary>
         ClientDisconnected,
         /// <summary>
         ///
         /// </summary>
         ClientHangup,
+        /// <summary>
+        ///
+        /// </summary>
+        ClientInactivity,
+        /// <summary>
+        ///
+        /// </summary>
+        ConcurrencyLimit,
+        /// <summary>
+        ///
+        /// </summary>
+        ConfigError,
         /// <summary>
         ///
         /// </summary>
@@ -39,15 +59,23 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        DialTimeout,
+        /// <summary>
+        ///
+        /// </summary>
         Error,
         /// <summary>
         ///
         /// </summary>
-        Inactivity,
+        MaxDuration,
         /// <summary>
         ///
         /// </summary>
-        MaxDuration,
+        NetworkError,
+        /// <summary>
+        ///
+        /// </summary>
+        VoicemailDetected,
     }
 
     /// <summary>
@@ -62,16 +90,23 @@ namespace Cartesia
         {
             return value switch
             {
+                EndReason.AgentError => "agent_error",
                 EndReason.AgentHangup => "agent_hangup",
                 EndReason.ApiCancelled => "api_cancelled",
+                EndReason.CallInactivity => "call_inactivity",
                 EndReason.ClientDisconnected => "client_disconnected",
                 EndReason.ClientHangup => "client_hangup",
+                EndReason.ClientInactivity => "client_inactivity",
+                EndReason.ConcurrencyLimit => "concurrency_limit",
+                EndReason.ConfigError => "config_error",
                 EndReason.DialBusy => "dial_busy",
                 EndReason.DialFailed => "dial_failed",
                 EndReason.DialNoAnswer => "dial_no_answer",
+                EndReason.DialTimeout => "dial_timeout",
                 EndReason.Error => "error",
-                EndReason.Inactivity => "inactivity",
                 EndReason.MaxDuration => "max_duration",
+                EndReason.NetworkError => "network_error",
+                EndReason.VoicemailDetected => "voicemail_detected",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -82,16 +117,23 @@ namespace Cartesia
         {
             return value switch
             {
+                "agent_error" => EndReason.AgentError,
                 "agent_hangup" => EndReason.AgentHangup,
                 "api_cancelled" => EndReason.ApiCancelled,
+                "call_inactivity" => EndReason.CallInactivity,
                 "client_disconnected" => EndReason.ClientDisconnected,
                 "client_hangup" => EndReason.ClientHangup,
+                "client_inactivity" => EndReason.ClientInactivity,
+                "concurrency_limit" => EndReason.ConcurrencyLimit,
+                "config_error" => EndReason.ConfigError,
                 "dial_busy" => EndReason.DialBusy,
                 "dial_failed" => EndReason.DialFailed,
                 "dial_no_answer" => EndReason.DialNoAnswer,
+                "dial_timeout" => EndReason.DialTimeout,
                 "error" => EndReason.Error,
-                "inactivity" => EndReason.Inactivity,
                 "max_duration" => EndReason.MaxDuration,
+                "network_error" => EndReason.NetworkError,
+                "voicemail_detected" => EndReason.VoicemailDetected,
                 _ => null,
             };
         }
