@@ -955,6 +955,8 @@ paths:
                 id: ac_abc123
                 agent_id: agent_abc123
                 agent_name: Customer support
+                agent_version_id: av_abc123
+                zdr_enabled: false
                 redacted_at: '2026-03-01T12:30:00Z'
                 start_time: '2026-03-01T12:00:00Z'
                 end_time: '2026-03-01T12:05:00Z'
@@ -7437,6 +7439,18 @@ components:
         agent_name:
           type: string
           description: The name of the agent associated with the call.
+        agent_version_id:
+          type: string
+          nullable: true
+          description: >-
+            The [agent version](/api-reference/agents/versions/get) used for the
+            call, which is the version published when the call started.
+        zdr_enabled:
+          type: boolean
+          description: >-
+            Whether [Zero Data Retention](/enterprise/zero-data-retention) was
+            on for the call. When `true`, the transcript, recording, summary,
+            and logs are not retained.
         start_time:
           type: string
           format: date-time
@@ -7510,6 +7524,8 @@ components:
       required:
         - id
         - agent_id
+        - agent_version_id
+        - zdr_enabled
         - status
     AgentTranscript:
       title: AgentTranscript
@@ -7608,14 +7624,21 @@ components:
       type: string
       enum:
         - agent_hangup
+        - voicemail_detected
         - client_hangup
         - api_cancelled
         - max_duration
-        - inactivity
+        - call_inactivity
+        - client_inactivity
         - client_disconnected
+        - dial_no_answer
         - dial_busy
         - dial_failed
-        - dial_no_answer
+        - dial_timeout
+        - concurrency_limit
+        - agent_error
+        - network_error
+        - config_error
         - error
       description: A machine-readable enum indicating why a call ended.
     ToolCall:
