@@ -36,11 +36,10 @@ namespace Cartesia
         public string? MetricDisplayName { get; set; }
 
         /// <summary>
-        /// A summary of the transcript of the call.
+        /// A summary of the transcript of the call. Null when no summary was generated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Summary { get; set; }
+        public string? Summary { get; set; }
 
         /// <summary>
         /// The transcript of the call.
@@ -120,9 +119,6 @@ namespace Cartesia
         /// <param name="metricName">
         /// The name of the metric being measured.
         /// </param>
-        /// <param name="summary">
-        /// A summary of the transcript of the call.
-        /// </param>
         /// <param name="agentId">
         /// The identifier of the agent associated with the metric result.
         /// </param>
@@ -140,6 +136,9 @@ namespace Cartesia
         /// </param>
         /// <param name="metricDisplayName">
         /// The display name of the metric, if available.
+        /// </param>
+        /// <param name="summary">
+        /// A summary of the transcript of the call. Null when no summary was generated.
         /// </param>
         /// <param name="transcript">
         /// The transcript of the call.
@@ -160,13 +159,13 @@ namespace Cartesia
             string id,
             string metricId,
             string metricName,
-            string summary,
             string agentId,
             string callId,
             string result,
             global::Cartesia.AgentMetricResultStatus status,
             global::System.DateTime createdAt,
             string? metricDisplayName,
+            string? summary,
             global::System.Collections.Generic.IList<global::Cartesia.AgentTranscript>? transcript,
             object? jsonResult,
             object? value,
@@ -176,7 +175,7 @@ namespace Cartesia
             this.MetricId = metricId ?? throw new global::System.ArgumentNullException(nameof(metricId));
             this.MetricName = metricName ?? throw new global::System.ArgumentNullException(nameof(metricName));
             this.MetricDisplayName = metricDisplayName;
-            this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
+            this.Summary = summary;
             this.Transcript = transcript;
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
