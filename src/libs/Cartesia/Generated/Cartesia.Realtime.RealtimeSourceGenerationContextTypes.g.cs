@@ -197,31 +197,27 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AnyOf<string, double?, bool?, object>? Type41 { get; set; }
+        public global::Cartesia.Realtime.AgentErrorEvent? Type41 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEvent? Type42 { get; set; }
+        public global::Cartesia.Realtime.AgentErrorEventType? Type42 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEventType? Type43 { get; set; }
+        public global::Cartesia.Realtime.AgentErrorEventCode? Type43 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AgentErrorEventCode? Type44 { get; set; }
+        public global::Cartesia.Realtime.ServerEvent? Type44 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.ServerEvent? Type45 { get; set; }
+        public global::Cartesia.Realtime.ServerEventDiscriminator? Type45 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.ServerEventDiscriminator? Type46 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Cartesia.Realtime.ServerEventDiscriminatorType? Type47 { get; set; }
+        public global::Cartesia.Realtime.ServerEventDiscriminatorType? Type46 { get; set; }
 
         /// <summary>
         ///
