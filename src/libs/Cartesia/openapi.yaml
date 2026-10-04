@@ -4717,16 +4717,11 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          chunk:
-            $ref: '#/components/schemas/TTSSSEChunkEvent'
-          timestamps:
-            $ref: '#/components/schemas/TTSSSETimestampsEvent'
-          phoneme_timestamps:
-            $ref: '#/components/schemas/TTSSSEPhonemeTimestampsEvent'
-          done:
-            $ref: '#/components/schemas/TTSSSEDoneEvent'
-          error:
-            $ref: '#/components/schemas/TTSSSEErrorEvent'
+          chunk: '#/components/schemas/TTSSSEChunkEvent'
+          timestamps: '#/components/schemas/TTSSSETimestampsEvent'
+          phoneme_timestamps: '#/components/schemas/TTSSSEPhonemeTimestampsEvent'
+          done: '#/components/schemas/TTSSSEDoneEvent'
+          error: '#/components/schemas/TTSSSEErrorEvent'
     SSEOutputFormat:
       title: SSEOutputFormat
       type: object
@@ -6362,10 +6357,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          webhook:
-            $ref: '#/components/schemas/ManagedWebhookToolV1'
-          client:
-            $ref: '#/components/schemas/ManagedClientToolV1'
+          webhook: '#/components/schemas/ManagedWebhookToolV1'
+          client: '#/components/schemas/ManagedClientToolV1'
       oneOf:
         - $ref: '#/components/schemas/ManagedWebhookToolV1'
         - $ref: '#/components/schemas/ManagedClientToolV1'
@@ -6375,10 +6368,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          webhook:
-            $ref: '#/components/schemas/ManagedWebhookToolDefinitionV1'
-          client:
-            $ref: '#/components/schemas/ManagedClientToolDefinitionV1'
+          webhook: '#/components/schemas/ManagedWebhookToolDefinitionV1'
+          client: '#/components/schemas/ManagedClientToolDefinitionV1'
       oneOf:
         - $ref: '#/components/schemas/ManagedWebhookToolDefinitionV1'
         - $ref: '#/components/schemas/ManagedClientToolDefinitionV1'
@@ -8151,12 +8142,9 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          twilio:
-            $ref: '#/components/schemas/TwilioProviderResponse'
-          cartesia:
-            $ref: '#/components/schemas/CartesiaProviderResponse'
-          sip_trunk:
-            $ref: '#/components/schemas/SIPTrunkEmbeddedResponse'
+          twilio: '#/components/schemas/TwilioProviderResponse'
+          cartesia: '#/components/schemas/CartesiaProviderResponse'
+          sip_trunk: '#/components/schemas/SIPTrunkEmbeddedResponse'
     TwilioProviderResponse:
       title: Twilio
       type: object
@@ -8359,10 +8347,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          twilio:
-            $ref: '#/components/schemas/TwilioProviderResponse'
-          sip_trunk:
-            $ref: '#/components/schemas/SIPTrunkProviderResponse'
+          twilio: '#/components/schemas/TwilioProviderResponse'
+          sip_trunk: '#/components/schemas/SIPTrunkProviderResponse'
     SIPTrunkProviderResponse:
       title: SIP Trunk
       type: object
@@ -8485,10 +8471,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          twilio:
-            $ref: '#/components/schemas/CreateTwilioProviderBody'
-          sip_trunk:
-            $ref: '#/components/schemas/CreateSIPProviderBody'
+          twilio: '#/components/schemas/CreateTwilioProviderBody'
+          sip_trunk: '#/components/schemas/CreateSIPProviderBody'
     CreateTwilioProviderBody:
       title: Twilio
       type: object
@@ -8631,10 +8615,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          twilio:
-            $ref: '#/components/schemas/UpdateTwilioProviderBody'
-          sip_trunk:
-            $ref: '#/components/schemas/UpdateSIPTrunkProviderBody'
+          twilio: '#/components/schemas/UpdateTwilioProviderBody'
+          sip_trunk: '#/components/schemas/UpdateSIPTrunkProviderBody'
     UpdateTwilioProviderBody:
       title: Twilio
       type: object
