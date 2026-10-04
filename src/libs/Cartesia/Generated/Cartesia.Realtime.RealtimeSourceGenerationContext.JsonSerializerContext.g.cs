@@ -95,7 +95,7 @@ namespace Cartesia.Realtime
 
             typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
 
-            typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?, object>),
+            typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
 
             typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
         })]
@@ -143,7 +143,6 @@ namespace Cartesia.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentTurnEndedEventToolCall))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentTurnEndedEventToolCallDynamicVariableUpdate))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AnyOf<string, double?, bool?, object>), TypeInfoPropertyName = "AnyOfStringDoubleBooleanObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentErrorEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentErrorEventType), TypeInfoPropertyName = "AgentErrorEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.AgentErrorEventCode), TypeInfoPropertyName = "AgentErrorEventCode2")]

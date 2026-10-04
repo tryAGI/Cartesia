@@ -19,9 +19,8 @@ namespace Cartesia.Realtime
         /// Previous value, or null if the variable had no value
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("old_value")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?, object>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Cartesia.Realtime.AnyOf<string, double?, bool?, object> OldValue { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.JsonConverters.AnyOfJsonConverter<string, double?, bool?>))]
+        public global::Cartesia.Realtime.AnyOf<string, double?, bool?>? OldValue { get; set; }
 
         /// <summary>
         /// Assigned value
@@ -64,9 +63,6 @@ namespace Cartesia.Realtime
         /// <param name="variableName">
         /// Custom variable that changed
         /// </param>
-        /// <param name="oldValue">
-        /// Previous value, or null if the variable had no value
-        /// </param>
         /// <param name="newValue">
         /// Assigned value
         /// </param>
@@ -79,16 +75,19 @@ namespace Cartesia.Realtime
         /// <param name="toolCallId">
         /// ID of the tool call that assigned the value, matching `tool_calls[].id`
         /// </param>
+        /// <param name="oldValue">
+        /// Previous value, or null if the variable had no value
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentTurnEndedEventToolCallDynamicVariableUpdate(
             string variableName,
-            global::Cartesia.Realtime.AnyOf<string, double?, bool?, object> oldValue,
             global::Cartesia.Realtime.AnyOf<string, double?, bool?> newValue,
             double updatedAt,
             string toolId,
-            string toolCallId)
+            string toolCallId,
+            global::Cartesia.Realtime.AnyOf<string, double?, bool?>? oldValue)
         {
             this.VariableName = variableName ?? throw new global::System.ArgumentNullException(nameof(variableName));
             this.OldValue = oldValue;
