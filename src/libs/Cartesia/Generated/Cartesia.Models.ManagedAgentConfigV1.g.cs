@@ -52,6 +52,13 @@ namespace Cartesia
         public required global::Cartesia.ManagedAgentConfigV1Model Model { get; set; }
 
         /// <summary>
+        /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speculative_generation")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SpeculativeGeneration { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("system_tools")]
@@ -101,6 +108,9 @@ namespace Cartesia
         /// </param>
         /// <param name="language"></param>
         /// <param name="model"></param>
+        /// <param name="speculativeGeneration">
+        /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency
+        /// </param>
         /// <param name="systemTools"></param>
         /// <param name="timezone">
         /// IANA time zone for `{{system__time}}`. Defaults to `UTC`.<br/>
@@ -122,6 +132,7 @@ namespace Cartesia
             string instructions,
             global::Cartesia.ManagedAgentConfigV1Language language,
             global::Cartesia.ManagedAgentConfigV1Model model,
+            bool speculativeGeneration,
             global::Cartesia.ManagedAgentSystemToolsV1 systemTools,
             string timezone,
             global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1> tools,
@@ -134,6 +145,7 @@ namespace Cartesia
             this.Instructions = instructions ?? throw new global::System.ArgumentNullException(nameof(instructions));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.SpeculativeGeneration = speculativeGeneration;
             this.SystemTools = systemTools ?? throw new global::System.ArgumentNullException(nameof(systemTools));
             this.Timezone = timezone ?? throw new global::System.ArgumentNullException(nameof(timezone));
             this.Tools = tools ?? throw new global::System.ArgumentNullException(nameof(tools));

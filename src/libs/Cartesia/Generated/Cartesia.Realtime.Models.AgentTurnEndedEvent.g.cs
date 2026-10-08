@@ -59,6 +59,12 @@ namespace Cartesia.Realtime
         public required double EndTime { get; set; }
 
         /// <summary>
+        /// Seconds since session start when the speech-to-text model last predicted the caller had finished speaking. Included on user turns when available, even if speculative generation is disabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("eager_end_timestamp")]
+        public double? EagerEndTimestamp { get; set; }
+
+        /// <summary>
         /// Tools called during this turn.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_calls")]
@@ -98,6 +104,9 @@ namespace Cartesia.Realtime
         /// <param name="type">
         /// Event type identifier.
         /// </param>
+        /// <param name="eagerEndTimestamp">
+        /// Seconds since session start when the speech-to-text model last predicted the caller had finished speaking. Included on user turns when available, even if speculative generation is disabled.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -109,7 +118,8 @@ namespace Cartesia.Realtime
             double startTime,
             double endTime,
             global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCall> toolCalls,
-            global::Cartesia.Realtime.AgentTurnEndedEventType type)
+            global::Cartesia.Realtime.AgentTurnEndedEventType type,
+            double? eagerEndTimestamp)
         {
             this.Type = type;
             this.Turn = turn;
@@ -118,6 +128,7 @@ namespace Cartesia.Realtime
             this.Interrupted = interrupted;
             this.StartTime = startTime;
             this.EndTime = endTime;
+            this.EagerEndTimestamp = eagerEndTimestamp;
             this.ToolCalls = toolCalls ?? throw new global::System.ArgumentNullException(nameof(toolCalls));
         }
 

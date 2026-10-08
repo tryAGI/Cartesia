@@ -760,6 +760,10 @@
             "type": "number",
             "description": "Seconds since the start of the session."
           },
+          "eager_end_timestamp": {
+            "type": "number",
+            "description": "Seconds since session start when the speech-to-text model last predicted the caller had finished speaking. Included on user turns when available, even if speculative generation is disabled.\n"
+          },
           "tool_calls": {
             "type": "array",
             "description": "Tools called during this turn.",
