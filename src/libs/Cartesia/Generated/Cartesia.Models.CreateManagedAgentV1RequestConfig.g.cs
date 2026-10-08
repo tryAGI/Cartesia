@@ -47,6 +47,12 @@ namespace Cartesia
         public global::Cartesia.CreateManagedAgentV1RequestConfigModel? Model { get; set; }
 
         /// <summary>
+        /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speculative_generation")]
+        public bool? SpeculativeGeneration { get; set; }
+
+        /// <summary>
         /// Built-in tools available to the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("system_tools")]
@@ -95,6 +101,9 @@ namespace Cartesia
         /// </param>
         /// <param name="language"></param>
         /// <param name="model"></param>
+        /// <param name="speculativeGeneration">
+        /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency. Defaults to `true`.
+        /// </param>
         /// <param name="systemTools">
         /// Built-in tools available to the agent.
         /// </param>
@@ -116,6 +125,7 @@ namespace Cartesia
             string? instructions,
             global::Cartesia.CreateManagedAgentV1RequestConfigLanguage? language,
             global::Cartesia.CreateManagedAgentV1RequestConfigModel? model,
+            bool? speculativeGeneration,
             global::Cartesia.CreateManagedAgentV1RequestConfigSystemTools? systemTools,
             string? timezone,
             global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentToolReferenceV1>? tools,
@@ -127,6 +137,7 @@ namespace Cartesia
             this.Instructions = instructions;
             this.Language = language;
             this.Model = model;
+            this.SpeculativeGeneration = speculativeGeneration;
             this.SystemTools = systemTools;
             this.Timezone = timezone;
             this.Tools = tools;

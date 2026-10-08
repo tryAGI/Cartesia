@@ -5211,6 +5211,11 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+            speculative_generation:
+              description: >-
+                Starts LLM generation on an eager end-of-turn prediction to
+                reduce response latency. Defaults to `true`.
+              type: boolean
             system_tools:
               description: Built-in tools available to the agent.
               type: object
@@ -5658,6 +5663,11 @@ components:
             - id
             - temperature
             - max_output_tokens
+        speculative_generation:
+          description: >-
+            Starts LLM generation on an eager end-of-turn prediction to reduce
+            response latency
+          type: boolean
         system_tools:
           $ref: '#/components/schemas/ManagedAgentSystemToolsV1'
           description: Built-in tools available to the agent.
@@ -5708,6 +5718,7 @@ components:
         - turn
         - dynamic_variable_placeholders
         - timezone
+        - speculative_generation
       title: ManagedAgentConfig
     ManagedAgentSystemToolsV1:
       type: object
@@ -6041,6 +6052,12 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+            speculative_generation:
+              description: >-
+                Starts LLM generation on an eager end-of-turn prediction to
+                reduce response latency. Omit from an update to preserve the
+                current setting.
+              type: boolean
             system_tools:
               description: Built-in tools available to the agent.
               type: object
