@@ -15,7 +15,7 @@ namespace Cartesia
         public string? Description { get; set; }
 
         /// <summary>
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pre_tool_speech")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeechJsonConverter))]
@@ -39,7 +39,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="ManagedAgentSystemToolsV1TransferToNumber" /> class.
         /// </summary>
         /// <param name="preToolSpeech">
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </param>
         /// <param name="transfers">
         /// Phone numbers the agent can transfer a call to.
