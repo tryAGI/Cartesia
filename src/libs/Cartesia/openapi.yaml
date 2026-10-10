@@ -5239,12 +5239,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                 send_dtmf:
                   description: >-
                     Configuration for sending DTMF tones. Omit or set to `null`
@@ -5264,12 +5265,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                 transfer_to_number:
                   description: >-
                     Configuration for transferring the call. Omit or set to
@@ -5289,12 +5291,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                     transfers:
                       description: Phone numbers the agent can transfer a call to.
                       type: array
@@ -5741,12 +5744,13 @@ components:
             pre_tool_speech:
               description: >-
                 Controls whether the agent speaks before using the tool. `auto`
-                lets the agent decide, while `force` asks the agent to speak
-                first.
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
               type: string
               enum:
                 - auto
                 - force
+                - 'off'
           required:
             - description
             - pre_tool_speech
@@ -5768,12 +5772,13 @@ components:
             pre_tool_speech:
               description: >-
                 Controls whether the agent speaks before using the tool. `auto`
-                lets the agent decide, while `force` asks the agent to speak
-                first.
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
               type: string
               enum:
                 - auto
                 - force
+                - 'off'
           required:
             - description
             - pre_tool_speech
@@ -5795,12 +5800,13 @@ components:
             pre_tool_speech:
               description: >-
                 Controls whether the agent speaks before using the tool. `auto`
-                lets the agent decide, while `force` asks the agent to speak
-                first.
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
               type: string
               enum:
                 - auto
                 - force
+                - 'off'
             transfers:
               description: Phone numbers the agent can transfer a call to.
               type: array
@@ -6081,12 +6087,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                 send_dtmf:
                   description: >-
                     Configuration for sending DTMF tones. Omit to keep the
@@ -6106,12 +6113,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                 transfer_to_number:
                   description: >-
                     Configuration for transferring the call. Omit to keep the
@@ -6131,12 +6139,13 @@ components:
                     pre_tool_speech:
                       description: >-
                         Controls whether the agent speaks before using the tool.
-                        `auto` lets the agent decide, while `force` asks the
-                        agent to speak first.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
                       type: string
                       enum:
                         - auto
                         - force
+                        - 'off'
                     transfers:
                       description: Phone numbers the agent can transfer a call to.
                       type: array
@@ -6442,11 +6451,13 @@ components:
         pre_tool_speech:
           description: >-
             Controls whether the agent speaks before using the tool. `auto` lets
-            the agent decide, while `force` asks the agent to speak first.
+            the agent decide, `force` asks the agent to speak first, and `off`
+            doesn't ask it to.
           type: string
           enum:
             - auto
             - force
+            - 'off'
         response_timeout_secs:
           description: >-
             Maximum time to wait for the endpoint to respond. Defaults to 20
@@ -6528,11 +6539,13 @@ components:
         pre_tool_speech:
           description: >-
             Controls whether the agent speaks before using the tool. `auto` lets
-            the agent decide, while `force` asks the agent to speak first.
+            the agent decide, `force` asks the agent to speak first, and `off`
+            doesn't ask it to.
           type: string
           enum:
             - auto
             - force
+            - 'off'
         response_timeout_secs:
           description: >-
             Maximum time to wait for the client application to return a result.
@@ -6601,11 +6614,13 @@ components:
         pre_tool_speech:
           description: >-
             Controls whether the agent speaks before using the tool. `auto` lets
-            the agent decide, while `force` asks the agent to speak first.
+            the agent decide, `force` asks the agent to speak first, and `off`
+            doesn't ask it to.
           type: string
           enum:
             - auto
             - force
+            - 'off'
         response_timeout_secs:
           description: >-
             Maximum time to wait for the endpoint to respond. Defaults to 20
@@ -6659,11 +6674,13 @@ components:
         pre_tool_speech:
           description: >-
             Controls whether the agent speaks before using the tool. `auto` lets
-            the agent decide, while `force` asks the agent to speak first.
+            the agent decide, `force` asks the agent to speak first, and `off`
+            doesn't ask it to.
           type: string
           enum:
             - auto
             - force
+            - 'off'
         response_timeout_secs:
           description: >-
             Maximum time to wait for the client application to return a result.
@@ -7350,12 +7367,13 @@ components:
             pre_tool_speech:
               description: >-
                 Controls whether the agent speaks before using the tool. `auto`
-                lets the agent decide, while `force` asks the agent to speak
-                first.
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
               type: string
               enum:
                 - auto
                 - force
+                - 'off'
             response_timeout_secs:
               description: >-
                 Maximum time to wait for the endpoint to respond. Defaults to 20
@@ -7397,12 +7415,13 @@ components:
             pre_tool_speech:
               description: >-
                 Controls whether the agent speaks before using the tool. `auto`
-                lets the agent decide, while `force` asks the agent to speak
-                first.
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
               type: string
               enum:
                 - auto
                 - force
+                - 'off'
             response_timeout_secs:
               description: >-
                 Maximum time to wait for the client application to return a

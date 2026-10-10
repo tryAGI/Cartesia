@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+    /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
     /// </summary>
     public enum CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech
     {
@@ -16,6 +16,10 @@ namespace Cartesia
         ///
         /// </summary>
         Force,
+        /// <summary>
+        ///
+        /// </summary>
+        Off,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace Cartesia
             {
                 CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Auto => "auto",
                 CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Force => "force",
+                CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Off => "off",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace Cartesia
             {
                 "auto" => CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Auto,
                 "force" => CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Force,
+                "off" => CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech.Off,
                 _ => null,
             };
         }

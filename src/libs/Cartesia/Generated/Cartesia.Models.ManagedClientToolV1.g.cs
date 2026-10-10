@@ -65,7 +65,7 @@ namespace Cartesia
         public required global::Cartesia.ManagedClientToolParametersV1 Parameters { get; set; }
 
         /// <summary>
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pre_tool_speech")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedClientToolV1PreToolSpeechJsonConverter))]
@@ -123,7 +123,7 @@ namespace Cartesia
         /// </param>
         /// <param name="parameters"></param>
         /// <param name="preToolSpeech">
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </param>
         /// <param name="responseTimeoutSecs">
         /// Maximum time to wait for the client application to return a result. Defaults to 20 seconds. Applies only when `expects_response` is `true`. If no result arrives before the deadline, Cartesia supplies `Tool call timed out`.<br/>

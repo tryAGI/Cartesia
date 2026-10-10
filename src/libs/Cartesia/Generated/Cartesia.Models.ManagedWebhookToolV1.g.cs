@@ -65,7 +65,7 @@ namespace Cartesia
         public required string Name { get; set; }
 
         /// <summary>
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pre_tool_speech")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedWebhookToolV1PreToolSpeechJsonConverter))]
@@ -123,7 +123,7 @@ namespace Cartesia
         /// Name the agent uses to call the tool. Names are case-sensitive.
         /// </param>
         /// <param name="preToolSpeech">
-        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, while `force` asks the agent to speak first.
+        /// Controls whether the agent speaks before using the tool. `auto` lets the agent decide, `force` asks the agent to speak first, and `off` doesn't ask it to.
         /// </param>
         /// <param name="responseTimeoutSecs">
         /// Maximum time to wait for the endpoint to respond. Defaults to 20 seconds.<br/>
