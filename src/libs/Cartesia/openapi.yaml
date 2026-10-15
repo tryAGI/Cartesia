@@ -10217,12 +10217,6 @@ components:
             Metadata for labeling the accent of this fine-tune. See [GET
             /accents](/api-reference/accents/list) for values valid for each
             language. Cannot be changed after training starts or completes.
-        model_id:
-          type: string
-          deprecated: true
-          description: >-
-            Deprecated. Fine tunes are now trained on all [supported
-            models](/build-with-cartesia/capability-guides/clone-voices-pro#supported-models).
         dataset:
           type: string
           description: Dataset ID containing training files

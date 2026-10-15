@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Cartesia
@@ -37,13 +35,6 @@ namespace Cartesia
         [global::System.Text.Json.Serialization.JsonPropertyName("accent")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.VoiceAccentJsonConverter))]
         public global::Cartesia.VoiceAccent? Accent { get; set; }
-
-        /// <summary>
-        /// Deprecated. Fine tunes are now trained on all [supported models](/build-with-cartesia/capability-guides/clone-voices-pro#supported-models).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? ModelId { get; set; }
 
         /// <summary>
         /// Dataset ID containing training files
