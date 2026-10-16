@@ -9674,31 +9674,44 @@ components:
         - australian
         - brazilian-portuguese
         - british
+        - bulgarian
         - canadian-french
         - castilian
         - central-tamil
         - central-thai
         - czech
+        - danish
         - european-portuguese
         - general-american
         - indian-english
+        - indian-urdu
         - israeli
         - istanbul
+        - konkani
         - korean
         - mandarin
+        - manila
         - mexican
         - modern-standard-arabic
+        - north-kerala
+        - odia
+        - oslo
         - parisian
+        - parsi
         - polish
+        - powadhi
         - randstad
         - russian
         - slovak
+        - southern-karnataka
         - southern-us
         - standard-german
         - standard-hindi
+        - standard-indonesian
         - standard-italian
         - standard-japanese
         - stockholm
+        - taiwanese-mandarin
         - telangana
     PaginatedPronunciationDicts:
       title: PaginatedPronunciationDicts
