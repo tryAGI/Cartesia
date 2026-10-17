@@ -27,11 +27,23 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        Argentinian,
+        /// <summary>
+        ///
+        /// </summary>
         Australian,
         /// <summary>
         ///
         /// </summary>
+        AustrianGerman,
+        /// <summary>
+        ///
+        /// </summary>
         Bagheli,
+        /// <summary>
+        ///
+        /// </summary>
+        BelgianDutch,
         /// <summary>
         ///
         /// </summary>
@@ -107,6 +119,14 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        Dominican,
+        /// <summary>
+        ///
+        /// </summary>
+        EmiratiArabic,
+        /// <summary>
+        ///
+        /// </summary>
         EuropeanPortuguese,
         /// <summary>
         ///
@@ -116,6 +136,10 @@ namespace Cartesia
         ///
         /// </summary>
         GeneralAmerican,
+        /// <summary>
+        ///
+        /// </summary>
+        IndianBengali,
         /// <summary>
         ///
         /// </summary>
@@ -211,6 +235,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        Panamanian,
+        /// <summary>
+        ///
+        /// </summary>
         Parisian,
         /// <summary>
         ///
@@ -232,6 +260,10 @@ namespace Cartesia
         ///
         /// </summary>
         Powadhi,
+        /// <summary>
+        ///
+        /// </summary>
+        PuertoRican,
         /// <summary>
         ///
         /// </summary>
@@ -315,6 +347,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        UnitedStatesSpanish,
+        /// <summary>
+        ///
+        /// </summary>
         Urdu,
         /// <summary>
         ///
@@ -338,8 +374,11 @@ namespace Cartesia
                 VoiceAccent.AfricanAmerican => "african-american",
                 VoiceAccent.AfricanFrench => "african-french",
                 VoiceAccent.ArabicEnglish => "arabic-english",
+                VoiceAccent.Argentinian => "argentinian",
                 VoiceAccent.Australian => "australian",
+                VoiceAccent.AustrianGerman => "austrian-german",
                 VoiceAccent.Bagheli => "bagheli",
+                VoiceAccent.BelgianDutch => "belgian-dutch",
                 VoiceAccent.BelgianFrench => "belgian-french",
                 VoiceAccent.BrazilianPortuguese => "brazilian-portuguese",
                 VoiceAccent.British => "british",
@@ -358,9 +397,12 @@ namespace Cartesia
                 VoiceAccent.Colombian => "colombian",
                 VoiceAccent.Czech => "czech",
                 VoiceAccent.Danish => "danish",
+                VoiceAccent.Dominican => "dominican",
+                VoiceAccent.EmiratiArabic => "emirati-arabic",
                 VoiceAccent.EuropeanPortuguese => "european-portuguese",
                 VoiceAccent.Finnish => "finnish",
                 VoiceAccent.GeneralAmerican => "general-american",
+                VoiceAccent.IndianBengali => "indian-bengali",
                 VoiceAccent.IndianEnglish => "indian-english",
                 VoiceAccent.IndianUrdu => "indian-urdu",
                 VoiceAccent.Irish => "irish",
@@ -384,12 +426,14 @@ namespace Cartesia
                 VoiceAccent.NorthKerala => "north-kerala",
                 VoiceAccent.Odia => "odia",
                 VoiceAccent.Oslo => "oslo",
+                VoiceAccent.Panamanian => "panamanian",
                 VoiceAccent.Parisian => "parisian",
                 VoiceAccent.Parsi => "parsi",
                 VoiceAccent.Peruvian => "peruvian",
                 VoiceAccent.PhilippineEnglish => "philippine-english",
                 VoiceAccent.Polish => "polish",
                 VoiceAccent.Powadhi => "powadhi",
+                VoiceAccent.PuertoRican => "puerto-rican",
                 VoiceAccent.Randstad => "randstad",
                 VoiceAccent.Romanian => "romanian",
                 VoiceAccent.Russian => "russian",
@@ -410,6 +454,7 @@ namespace Cartesia
                 VoiceAccent.Tbilisi => "tbilisi",
                 VoiceAccent.Telangana => "telangana",
                 VoiceAccent.Thessaloniki => "thessaloniki",
+                VoiceAccent.UnitedStatesSpanish => "united-states-spanish",
                 VoiceAccent.Urdu => "urdu",
                 VoiceAccent.Zagreb => "zagreb",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -426,8 +471,11 @@ namespace Cartesia
                 "african-american" => VoiceAccent.AfricanAmerican,
                 "african-french" => VoiceAccent.AfricanFrench,
                 "arabic-english" => VoiceAccent.ArabicEnglish,
+                "argentinian" => VoiceAccent.Argentinian,
                 "australian" => VoiceAccent.Australian,
+                "austrian-german" => VoiceAccent.AustrianGerman,
                 "bagheli" => VoiceAccent.Bagheli,
+                "belgian-dutch" => VoiceAccent.BelgianDutch,
                 "belgian-french" => VoiceAccent.BelgianFrench,
                 "brazilian-portuguese" => VoiceAccent.BrazilianPortuguese,
                 "british" => VoiceAccent.British,
@@ -446,9 +494,12 @@ namespace Cartesia
                 "colombian" => VoiceAccent.Colombian,
                 "czech" => VoiceAccent.Czech,
                 "danish" => VoiceAccent.Danish,
+                "dominican" => VoiceAccent.Dominican,
+                "emirati-arabic" => VoiceAccent.EmiratiArabic,
                 "european-portuguese" => VoiceAccent.EuropeanPortuguese,
                 "finnish" => VoiceAccent.Finnish,
                 "general-american" => VoiceAccent.GeneralAmerican,
+                "indian-bengali" => VoiceAccent.IndianBengali,
                 "indian-english" => VoiceAccent.IndianEnglish,
                 "indian-urdu" => VoiceAccent.IndianUrdu,
                 "irish" => VoiceAccent.Irish,
@@ -472,12 +523,14 @@ namespace Cartesia
                 "north-kerala" => VoiceAccent.NorthKerala,
                 "odia" => VoiceAccent.Odia,
                 "oslo" => VoiceAccent.Oslo,
+                "panamanian" => VoiceAccent.Panamanian,
                 "parisian" => VoiceAccent.Parisian,
                 "parsi" => VoiceAccent.Parsi,
                 "peruvian" => VoiceAccent.Peruvian,
                 "philippine-english" => VoiceAccent.PhilippineEnglish,
                 "polish" => VoiceAccent.Polish,
                 "powadhi" => VoiceAccent.Powadhi,
+                "puerto-rican" => VoiceAccent.PuertoRican,
                 "randstad" => VoiceAccent.Randstad,
                 "romanian" => VoiceAccent.Romanian,
                 "russian" => VoiceAccent.Russian,
@@ -498,6 +551,7 @@ namespace Cartesia
                 "tbilisi" => VoiceAccent.Tbilisi,
                 "telangana" => VoiceAccent.Telangana,
                 "thessaloniki" => VoiceAccent.Thessaloniki,
+                "united-states-spanish" => VoiceAccent.UnitedStatesSpanish,
                 "urdu" => VoiceAccent.Urdu,
                 "zagreb" => VoiceAccent.Zagreb,
                 _ => null,

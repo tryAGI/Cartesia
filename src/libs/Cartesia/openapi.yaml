@@ -9224,9 +9224,11 @@ components:
       type: string
       description: Accent id from GET /accents, valid for the selected language.
       enum:
+        - emirati-arabic
         - khaleeji
         - middle-eastern-arabic
         - modern-standard-arabic
+        - indian-bengali
         - jessore
         - bulgarian
         - mandarin
@@ -9234,6 +9236,7 @@ components:
         - zagreb
         - czech
         - danish
+        - belgian-dutch
         - randstad
         - african-american
         - arabic-english
@@ -9257,6 +9260,7 @@ components:
         - canadian-french
         - parisian
         - tbilisi
+        - austrian-german
         - standard-german
         - swiss-standard
         - thessaloniki
@@ -9285,12 +9289,17 @@ components:
         - romanian
         - russian
         - slovak
+        - argentinian
         - camba
         - castilian
         - chilean
         - colombian
+        - dominican
         - mexican
+        - panamanian
         - peruvian
+        - puerto-rican
+        - united-states-spanish
         - stockholm
         - manila
         - central-tamil
@@ -9614,8 +9623,11 @@ components:
       description: Accent id from GET /accents, valid for the selected language.
       enum:
         - modern-standard-arabic
+        - bulgarian
         - mandarin
+        - taiwanese-mandarin
         - czech
+        - danish
         - randstad
         - australian
         - british
@@ -9625,23 +9637,33 @@ components:
         - canadian-french
         - parisian
         - standard-german
+        - parsi
         - israeli
         - standard-hindi
+        - standard-indonesian
         - standard-italian
         - standard-japanese
+        - southern-karnataka
         - korean
+        - north-kerala
+        - konkani
+        - oslo
+        - odia
         - polish
         - brazilian-portuguese
         - european-portuguese
+        - powadhi
         - russian
         - slovak
         - castilian
         - mexican
         - stockholm
+        - manila
         - central-tamil
         - telangana
         - central-thai
         - istanbul
+        - indian-urdu
     AddVoiceAccentsRequest:
       title: AddVoiceAccentsRequest
       type: object
