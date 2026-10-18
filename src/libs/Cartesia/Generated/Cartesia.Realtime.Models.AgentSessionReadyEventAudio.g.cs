@@ -21,6 +21,12 @@ namespace Cartesia.Realtime
         public string? OutputDelivery { get; set; }
 
         /// <summary>
+        /// Echoed from `session_create` when `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuous_input")]
+        public bool? ContinuousInput { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,15 +41,20 @@ namespace Cartesia.Realtime
         /// <param name="outputDelivery">
         /// The resolved output delivery mode.
         /// </param>
+        /// <param name="continuousInput">
+        /// Echoed from `session_create` when `true`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentSessionReadyEventAudio(
             string? inputFormat,
-            string? outputDelivery)
+            string? outputDelivery,
+            bool? continuousInput)
         {
             this.InputFormat = inputFormat;
             this.OutputDelivery = outputDelivery;
+            this.ContinuousInput = continuousInput;
         }
 
         /// <summary>

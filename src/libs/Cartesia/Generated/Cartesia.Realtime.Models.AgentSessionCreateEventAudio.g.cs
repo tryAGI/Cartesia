@@ -25,6 +25,13 @@ namespace Cartesia.Realtime
         public global::Cartesia.Realtime.AgentSessionCreateEventAudioOutputDelivery? OutputDelivery { get; set; }
 
         /// <summary>
+        /// Set to `true` if you stream audio continuously, including silence, such as from a phone line or an always-on microphone. The agent then waits for delayed audio instead of treating it as silence.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("continuous_input")]
+        public bool? ContinuousInput { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -40,15 +47,21 @@ namespace Cartesia.Realtime
         /// How the server delivers agent audio. `speaking_pace` paces audio to playback speed. `as_available` sends it as fast as the model produces it, so a client that buffers locally can play it back on its own clock for lower latency. Not supported when the agent uses a background sound.<br/>
         /// Default Value: speaking_pace
         /// </param>
+        /// <param name="continuousInput">
+        /// Set to `true` if you stream audio continuously, including silence, such as from a phone line or an always-on microphone. The agent then waits for delayed audio instead of treating it as silence.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentSessionCreateEventAudio(
             global::Cartesia.Realtime.AgentSessionCreateEventAudioInputFormat inputFormat,
-            global::Cartesia.Realtime.AgentSessionCreateEventAudioOutputDelivery? outputDelivery)
+            global::Cartesia.Realtime.AgentSessionCreateEventAudioOutputDelivery? outputDelivery,
+            bool? continuousInput)
         {
             this.InputFormat = inputFormat;
             this.OutputDelivery = outputDelivery;
+            this.ContinuousInput = continuousInput;
         }
 
         /// <summary>

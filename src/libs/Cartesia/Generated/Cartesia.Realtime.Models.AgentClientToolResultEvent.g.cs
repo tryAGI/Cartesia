@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime
 {
     /// <summary>
-    /// Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4096 bytes; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.
+    /// Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 16 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.
     /// </summary>
     public sealed partial class AgentClientToolResultEvent
     {
@@ -23,7 +23,7 @@ namespace Cartesia.Realtime
         public required string ToolCallId { get; set; }
 
         /// <summary>
-        /// The tool's result, as a string the model can read. At most 4096 bytes decoded.
+        /// The tool's result, as a string the model can read. At most 16 KiB decoded.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -55,7 +55,7 @@ namespace Cartesia.Realtime
         /// The `tool_call_id` from the `client_tool_call` being answered.
         /// </param>
         /// <param name="result">
-        /// The tool's result, as a string the model can read. At most 4096 bytes decoded.
+        /// The tool's result, as a string the model can read. At most 16 KiB decoded.
         /// </param>
         /// <param name="type">
         /// Event type identifier.

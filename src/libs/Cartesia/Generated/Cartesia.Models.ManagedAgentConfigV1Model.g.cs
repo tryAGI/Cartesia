@@ -18,6 +18,14 @@ namespace Cartesia
         public required string Id { get; set; }
 
         /// <summary>
+        /// Models to fall back to when the primary model fails before it starts responding. `auto` uses Cartesia-managed fallback models. `explicit` uses up to three model IDs from `GET /v1/agents/models`, in order. Set to `null` to disable fallback. Defaults to `auto`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallback_strategy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.ManagedAgentFallbackStrategyV1 FallbackStrategy { get; set; }
+
+        /// <summary>
         /// Maximum number of tokens the model can generate, from `1` to `4096`. Set to `null` for no limit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_tokens")]
@@ -42,6 +50,9 @@ namespace Cartesia
         /// Model ID from `GET /v1/agents/models`.<br/>
         /// Example: gpt-5.4-mini
         /// </param>
+        /// <param name="fallbackStrategy">
+        /// Models to fall back to when the primary model fails before it starts responding. `auto` uses Cartesia-managed fallback models. `explicit` uses up to three model IDs from `GET /v1/agents/models`, in order. Set to `null` to disable fallback. Defaults to `auto`.
+        /// </param>
         /// <param name="maxOutputTokens">
         /// Maximum number of tokens the model can generate, from `1` to `4096`. Set to `null` for no limit.
         /// </param>
@@ -53,10 +64,12 @@ namespace Cartesia
 #endif
         public ManagedAgentConfigV1Model(
             string id,
+            global::Cartesia.ManagedAgentFallbackStrategyV1 fallbackStrategy,
             int? maxOutputTokens,
             double? temperature)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.FallbackStrategy = fallbackStrategy;
             this.MaxOutputTokens = maxOutputTokens;
             this.Temperature = temperature;
         }
