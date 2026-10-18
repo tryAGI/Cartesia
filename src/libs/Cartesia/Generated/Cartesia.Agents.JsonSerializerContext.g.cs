@@ -30,6 +30,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigLanguage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1), TypeInfoPropertyName = "ManagedAgentPrimaryLanguageV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigModel))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1), TypeInfoPropertyName = "ManagedAgentFallbackStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemTools))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCall))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
@@ -48,6 +49,11 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentV1Version))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AnyOf<string, double?, bool?>), TypeInfoPropertyName = "AnyOfStringDoubleBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1Auto))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType), TypeInfoPropertyName = "ManagedAgentFallbackStrategyV1AutoType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1Explicit))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType), TypeInfoPropertyName = "ManagedAgentFallbackStrategyV1ExplicitType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1Audio))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression), TypeInfoPropertyName = "ManagedAgentConfigV1AudioInputNoiseSuppression2")]
@@ -101,7 +107,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentModelV1Pricing))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentModelV1PricingCurrency), TypeInfoPropertyName = "ManagedAgentModelV1PricingCurrency2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GetCallsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.AgentCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentCall))]
@@ -198,11 +203,14 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigAudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigAudioInputNoiseSuppression2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?), TypeInfoPropertyName = "NullableManagedAgentPrimaryLanguageV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AnyOf<string, double?, bool?>?), TypeInfoPropertyName = "NullableAnyOfStringDoubleBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV1AutoType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV1ExplicitType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableManagedAgentConfigV1AudioInputNoiseSuppression2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1EndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1SendDtmfPreToolSpeech2")]
@@ -329,6 +337,7 @@ namespace Cartesia
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
+            options.Converters.Add(new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1JsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
@@ -385,6 +394,14 @@ namespace Cartesia
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType?)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType?)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression)
 
@@ -665,6 +682,26 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?))
                 {
                     return new global::Cartesia.JsonConverters.ManagedAgentPrimaryLanguageV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1AutoTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType?))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1AutoTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1ExplicitTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType?))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1ExplicitTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression))

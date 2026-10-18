@@ -267,7 +267,7 @@
       "AgentClientToolResultEvent": {
         "name": "AgentClientToolResultEvent",
         "title": "Client Tool Result",
-        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4096 bytes; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n",
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 16 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/AgentClientToolResultEvent"
@@ -396,6 +396,11 @@
                 ],
                 "default": "speaking_pace",
                 "description": "How the server delivers agent audio. `speaking_pace` paces audio to playback speed. `as_available` sends it as fast as the model produces it, so a client that buffers locally can play it back on its own clock for lower latency. Not supported when the agent uses a background sound."
+              },
+              "continuous_input": {
+                "type": "boolean",
+                "default": false,
+                "description": "Set to `true` if you stream audio continuously, including silence, such as from a phone line or an always-on microphone. The agent then waits for delayed audio instead of treating it as silence."
               }
             }
           },
@@ -487,7 +492,7 @@
           },
           "result": {
             "type": "string",
-            "description": "The tool's result, as a string the model can read. At most 4096 bytes decoded."
+            "description": "The tool's result, as a string the model can read. At most 16 KiB decoded."
           },
           "is_error": {
             "type": "boolean",
@@ -499,7 +504,7 @@
             "description": "Optional free-form string, at most 256 UTF-8 bytes. Cartesia logs this; the LLM does not see it."
           }
         },
-        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 4096 bytes; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n"
+        "description": "Answers a `client_tool_call` whose `expects_response` is `true`. `tool_call_id` must match the call being answered. The decoded `result` may be at most 16 KiB; larger results are replaced with a `result_too_large` error result. Late, duplicate, or mismatched results are ignored.\n"
       },
       "AgentSessionReadyEvent": {
         "type": "object",
@@ -540,6 +545,10 @@
               "output_delivery": {
                 "type": "string",
                 "description": "The resolved output delivery mode."
+              },
+              "continuous_input": {
+                "type": "boolean",
+                "description": "Echoed from `session_create` when `true`."
               }
             }
           }

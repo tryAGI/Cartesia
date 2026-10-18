@@ -53,23 +53,23 @@ namespace Cartesia.Realtime
         /// <summary>
         ///
         /// </summary>
-        public object? Type5 { get; set; }
+        public bool? Type5 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.AnyOf<string, double?, bool?>? Type6 { get; set; }
+        public object? Type6 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public string? Type7 { get; set; }
+        public global::Cartesia.Realtime.AnyOf<string, double?, bool?>? Type7 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public double? Type8 { get; set; }
+        public string? Type8 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public bool? Type9 { get; set; }
+        public double? Type9 { get; set; }
         /// <summary>
         ///
         /// </summary>

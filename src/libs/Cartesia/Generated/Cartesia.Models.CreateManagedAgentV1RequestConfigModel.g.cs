@@ -15,6 +15,13 @@ namespace Cartesia
         public string? Id { get; set; }
 
         /// <summary>
+        /// Models to fall back to when the primary model fails before it starts responding. `auto` uses Cartesia-managed fallback models. `explicit` uses up to three model IDs from `GET /v1/agents/models`, in order. Set to `null` to disable fallback. Defaults to `auto`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallback_strategy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1JsonConverter))]
+        public global::Cartesia.ManagedAgentFallbackStrategyV1? FallbackStrategy { get; set; }
+
+        /// <summary>
         /// Maximum number of tokens the model can generate, from `1` to `4096`. Set to `null` for no limit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_tokens")]
@@ -38,6 +45,9 @@ namespace Cartesia
         /// <param name="id">
         /// Model ID from `GET /v1/agents/models`.
         /// </param>
+        /// <param name="fallbackStrategy">
+        /// Models to fall back to when the primary model fails before it starts responding. `auto` uses Cartesia-managed fallback models. `explicit` uses up to three model IDs from `GET /v1/agents/models`, in order. Set to `null` to disable fallback. Defaults to `auto`.
+        /// </param>
         /// <param name="maxOutputTokens">
         /// Maximum number of tokens the model can generate, from `1` to `4096`. Set to `null` for no limit.
         /// </param>
@@ -49,10 +59,12 @@ namespace Cartesia
 #endif
         public CreateManagedAgentV1RequestConfigModel(
             string? id,
+            global::Cartesia.ManagedAgentFallbackStrategyV1? fallbackStrategy,
             int? maxOutputTokens,
             double? temperature)
         {
             this.Id = id;
+            this.FallbackStrategy = fallbackStrategy;
             this.MaxOutputTokens = maxOutputTokens;
             this.Temperature = temperature;
         }

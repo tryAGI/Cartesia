@@ -5183,7 +5183,9 @@ components:
               nullable: true
               type: string
             instructions:
-              description: Instructions that define the agent's behavior.
+              description: >-
+                Instructions that define the agent's behavior. Supports dynamic
+                variables such as `{{name}}`.
               type: string
             language:
               type: object
@@ -5197,6 +5199,8 @@ components:
                   description: Model ID from `GET /v1/agents/models`.
                   type: string
                   minLength: 1
+                fallback_strategy:
+                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
                 max_output_tokens:
                   description: >-
                     Maximum number of tokens the model can generate, from `1` to
@@ -5211,6 +5215,11 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+            prompt_optimization:
+              description: >-
+                Optimizes the system prompt with guidelines for natural and
+                realistic speech. Defaults to `true`.
+              type: boolean
             speculative_generation:
               description: >-
                 Starts LLM generation on an eager end-of-turn prediction to
@@ -5347,7 +5356,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
-              maxItems: 32
+              maxItems: 64
               uniqueItems: true
             turn:
               type: object
@@ -5519,6 +5528,48 @@ components:
         - or
         - ur
       title: ManagedAgentPrimaryLanguageV1
+    ManagedAgentFallbackStrategyV1:
+      title: Fallback strategy
+      description: >-
+        Models to fall back to when the primary model fails before it starts
+        responding. `auto` uses Cartesia-managed fallback models. `explicit`
+        uses up to three model IDs from `GET /v1/agents/models`, in order. Set
+        to `null` to disable fallback. Defaults to `auto`.
+      oneOf:
+        - title: Auto
+          type: object
+          additionalProperties: false
+          properties:
+            type:
+              type: string
+              enum:
+                - auto
+          required:
+            - type
+        - title: Explicit
+          type: object
+          additionalProperties: false
+          properties:
+            type:
+              type: string
+              enum:
+                - explicit
+            ids:
+              description: Model IDs to fall back to, in order.
+              type: array
+              items:
+                type: string
+                minLength: 1
+              maxItems: 3
+              uniqueItems: true
+          required:
+            - type
+            - ids
+        - title: Disabled
+          type: object
+          nullable: true
+          enum:
+            - null
     ManagedAgentToolReferenceV1:
       type: object
       properties:
@@ -5631,7 +5682,9 @@ components:
           nullable: true
           type: string
         instructions:
-          description: Instructions that define the agent's behavior.
+          description: >-
+            Instructions that define the agent's behavior. Supports dynamic
+            variables such as `{{name}}`.
           type: string
         language:
           type: object
@@ -5648,6 +5701,8 @@ components:
               type: string
               example: gpt-5.4-mini
               minLength: 1
+            fallback_strategy:
+              $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
             max_output_tokens:
               description: >-
                 Maximum number of tokens the model can generate, from `1` to
@@ -5664,8 +5719,14 @@ components:
               description: Controls the randomness of model responses, from `0` to `1`.
           required:
             - id
+            - fallback_strategy
             - temperature
             - max_output_tokens
+        prompt_optimization:
+          description: >-
+            Optimizes the system prompt with guidelines for natural and
+            realistic speech. Defaults to `true`.
+          type: boolean
         speculative_generation:
           description: >-
             Starts LLM generation on an eager end-of-turn prediction to reduce
@@ -5684,7 +5745,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
-          maxItems: 32
+          maxItems: 64
           uniqueItems: true
         turn:
           type: object
@@ -5722,6 +5783,7 @@ components:
         - dynamic_variable_placeholders
         - timezone
         - speculative_generation
+        - prompt_optimization
       title: ManagedAgentConfig
     ManagedAgentSystemToolsV1:
       type: object
@@ -6030,7 +6092,9 @@ components:
               nullable: true
               type: string
             instructions:
-              description: Instructions that define the agent's behavior.
+              description: >-
+                Instructions that define the agent's behavior. Supports dynamic
+                variables such as `{{name}}`.
               type: string
             language:
               type: object
@@ -6044,6 +6108,8 @@ components:
                   description: Model ID from `GET /v1/agents/models`.
                   type: string
                   minLength: 1
+                fallback_strategy:
+                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
                 max_output_tokens:
                   description: >-
                     Maximum number of tokens the model can generate, from `1` to
@@ -6058,6 +6124,11 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+            prompt_optimization:
+              description: >-
+                Optimizes the system prompt with guidelines for natural and
+                realistic speech. Defaults to `true`.
+              type: boolean
             speculative_generation:
               description: >-
                 Starts LLM generation on an eager end-of-turn prediction to
@@ -6193,7 +6264,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ManagedAgentToolReferenceV1'
-              maxItems: 32
+              maxItems: 64
               uniqueItems: true
             turn:
               type: object

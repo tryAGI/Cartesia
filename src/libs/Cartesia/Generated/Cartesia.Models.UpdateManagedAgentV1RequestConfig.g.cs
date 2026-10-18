@@ -29,7 +29,7 @@ namespace Cartesia
         public string? InitialMessage { get; set; }
 
         /// <summary>
-        /// Instructions that define the agent's behavior.
+        /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instructions")]
         public string? Instructions { get; set; }
@@ -45,6 +45,12 @@ namespace Cartesia
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public global::Cartesia.UpdateManagedAgentV1RequestConfigModel? Model { get; set; }
+
+        /// <summary>
+        /// Optimizes the system prompt with guidelines for natural and realistic speech. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt_optimization")]
+        public bool? PromptOptimization { get; set; }
 
         /// <summary>
         /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency. Omit from an update to preserve the current setting.
@@ -97,10 +103,13 @@ namespace Cartesia
         /// Message the agent says when the conversation begins. Set to `null` to wait for the user to speak first.
         /// </param>
         /// <param name="instructions">
-        /// Instructions that define the agent's behavior.
+        /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </param>
         /// <param name="language"></param>
         /// <param name="model"></param>
+        /// <param name="promptOptimization">
+        /// Optimizes the system prompt with guidelines for natural and realistic speech. Defaults to `true`.
+        /// </param>
         /// <param name="speculativeGeneration">
         /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency. Omit from an update to preserve the current setting.
         /// </param>
@@ -125,6 +134,7 @@ namespace Cartesia
             string? instructions,
             global::Cartesia.UpdateManagedAgentV1RequestConfigLanguage? language,
             global::Cartesia.UpdateManagedAgentV1RequestConfigModel? model,
+            bool? promptOptimization,
             bool? speculativeGeneration,
             global::Cartesia.UpdateManagedAgentV1RequestConfigSystemTools? systemTools,
             string? timezone,
@@ -137,6 +147,7 @@ namespace Cartesia
             this.Instructions = instructions;
             this.Language = language;
             this.Model = model;
+            this.PromptOptimization = promptOptimization;
             this.SpeculativeGeneration = speculativeGeneration;
             this.SystemTools = systemTools;
             this.Timezone = timezone;

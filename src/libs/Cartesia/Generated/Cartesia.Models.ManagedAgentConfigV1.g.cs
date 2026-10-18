@@ -31,7 +31,7 @@ namespace Cartesia
         public string? InitialMessage { get; set; }
 
         /// <summary>
-        /// Instructions that define the agent's behavior.
+        /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instructions")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -50,6 +50,13 @@ namespace Cartesia
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Cartesia.ManagedAgentConfigV1Model Model { get; set; }
+
+        /// <summary>
+        /// Optimizes the system prompt with guidelines for natural and realistic speech. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt_optimization")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool PromptOptimization { get; set; }
 
         /// <summary>
         /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency
@@ -104,10 +111,13 @@ namespace Cartesia
         /// Variable names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. Start with a letter or underscore; `system__` and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
         /// </param>
         /// <param name="instructions">
-        /// Instructions that define the agent's behavior.
+        /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </param>
         /// <param name="language"></param>
         /// <param name="model"></param>
+        /// <param name="promptOptimization">
+        /// Optimizes the system prompt with guidelines for natural and realistic speech. Defaults to `true`.
+        /// </param>
         /// <param name="speculativeGeneration">
         /// Starts LLM generation on an eager end-of-turn prediction to reduce response latency
         /// </param>
@@ -132,6 +142,7 @@ namespace Cartesia
             string instructions,
             global::Cartesia.ManagedAgentConfigV1Language language,
             global::Cartesia.ManagedAgentConfigV1Model model,
+            bool promptOptimization,
             bool speculativeGeneration,
             global::Cartesia.ManagedAgentSystemToolsV1 systemTools,
             string timezone,
@@ -145,6 +156,7 @@ namespace Cartesia
             this.Instructions = instructions ?? throw new global::System.ArgumentNullException(nameof(instructions));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.PromptOptimization = promptOptimization;
             this.SpeculativeGeneration = speculativeGeneration;
             this.SystemTools = systemTools ?? throw new global::System.ArgumentNullException(nameof(systemTools));
             this.Timezone = timezone ?? throw new global::System.ArgumentNullException(nameof(timezone));
