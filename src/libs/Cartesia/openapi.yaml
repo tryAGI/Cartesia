@@ -45,6 +45,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListModelsResponse'
+      security:
+        - APIKeyAuth: []
   /tts/bytes:
     post:
       tags:

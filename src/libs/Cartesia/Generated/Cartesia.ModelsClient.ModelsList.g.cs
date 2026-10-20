@@ -5,6 +5,26 @@ namespace Cartesia
 {
     public partial class ModelsClient
     {
+
+
+        private static readonly global::Cartesia.EndPointSecurityRequirement s_ModelsListSecurityRequirement0 =
+            new global::Cartesia.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Cartesia.EndPointAuthorizationRequirement[]
+                {                    new global::Cartesia.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        SchemeId = "APIKeyAuth",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Cartesia.EndPointSecurityRequirement[] s_ModelsListSecurityRequirements =
+            new global::Cartesia.EndPointSecurityRequirement[]
+            {                s_ModelsListSecurityRequirement0,
+            };
         partial void PrepareModelsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Cartesia.ModelsListCapability? capability,
@@ -75,6 +95,12 @@ namespace Cartesia
                 capability: ref capability,
                 cartesiaVersion: ref cartesiaVersion);
 
+
+            var __authorizations = global::Cartesia.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelsListSecurityRequirements,
+                operationName: "ModelsListAsync");
+
             using var __timeoutCancellationTokenSource = global::Cartesia.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
                 requestOptions: requestOptions,
@@ -111,6 +137,23 @@ namespace Cartesia
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
+            foreach (var __authorization in __authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                }
+            }
+
                 __httpRequest.Headers.TryAddWithoutValidation("Cartesia-Version", cartesiaVersion.ToValueString());
 
                 global::Cartesia.AutoSDKRequestOptionsSupport.ApplyHeaders(
@@ -126,6 +169,8 @@ namespace Cartesia
                     httpRequestMessage: __httpRequest,
                     capability: capability,
                     cartesiaVersion: cartesiaVersion);
+
+                global::Cartesia.AutoSDKHttpRequestOptions.StampAuthorizationOverride(__httpRequest);
 
                 return __httpRequest;
             }
