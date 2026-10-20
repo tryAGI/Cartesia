@@ -20,6 +20,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIInfo'
+  /models:
+    get:
+      tags:
+        - Models
+      summary: List Models
+      description: List callable Sonic (TTS) and Ink (STT) model ids.
+      operationId: models_list
+      parameters:
+        - name: capability
+          in: query
+          description: Filter to `tts` or `stt`. Omit to return both.
+          required: false
+          schema:
+            type: string
+            enum:
+              - tts
+              - stt
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      responses:
+        '200':
+          description: Public speech model catalog.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
   /tts/bytes:
     post:
       tags:
@@ -4307,6 +4332,48 @@ components:
       required:
         - ok
         - version
+    ListModelsResponse:
+      title: ListModelsResponse
+      type: object
+      properties:
+        data:
+          type: array
+          description: Callable public model ids for TTS and STT.
+          items:
+            $ref: '#/components/schemas/ModelCatalogEntry'
+      required:
+        - data
+    ModelCatalogEntry:
+      title: ModelCatalogEntry
+      type: object
+      properties:
+        id:
+          type: string
+          description: Value clients send as TTS `model_id` or STT `model`.
+        capability:
+          $ref: '#/components/schemas/ModelCapability'
+        modes:
+          type: array
+          description: STT transport paths. Omitted on TTS rows.
+          items:
+            $ref: '#/components/schemas/STTMode'
+      required:
+        - id
+        - capability
+    ModelCapability:
+      title: ModelCapability
+      type: string
+      enum:
+        - tts
+        - stt
+      description: Which speech API family the model belongs to.
+    STTMode:
+      title: STTMode
+      type: string
+      enum:
+        - batch
+        - stream
+      description: STT transport path (`batch` file upload or `stream` websocket).
     TTSRequest:
       title: TTSRequest
       type: object

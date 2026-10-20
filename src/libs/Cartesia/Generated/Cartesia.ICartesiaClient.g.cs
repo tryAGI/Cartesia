@@ -92,6 +92,11 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        public ModelsClient Models { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public OrganizationsClient Organizations { get; }
 
         /// <summary>
