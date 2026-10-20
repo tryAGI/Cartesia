@@ -4,7 +4,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// One accent this voice can speak. `accent` is an accent id from [GET /accents](/api-reference/accents/list).
+    /// One accent this voice sounds native in. `accent` is an accent id from [GET /accents](/api-reference/accents/list).
     /// </summary>
     public sealed partial class VoiceAccentsItem
     {
@@ -24,7 +24,7 @@ namespace Cartesia
         public required string Locale { get; set; }
 
         /// <summary>
-        /// Whether this is the voice's native/source accent.
+        /// Whether this is the accent the voice was originally recorded in. It's the accent the voice falls back to when it speaks a language it has no matching accent for.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_native")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -46,7 +46,7 @@ namespace Cartesia
         /// The accent's BCP-47 language-region tag (e.g. `en-US`).
         /// </param>
         /// <param name="isNative">
-        /// Whether this is the voice's native/source accent.
+        /// Whether this is the accent the voice was originally recorded in. It's the accent the voice falls back to when it speaks a language it has no matching accent for.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

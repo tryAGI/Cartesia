@@ -89,7 +89,7 @@ namespace Cartesia
         public required string Language { get; set; }
 
         /// <summary>
-        /// Accents supported by this voice. The accent with `is_native: true` is the voice's original accent. Only available for voices with known accent information.<br/>
+        /// Accents the voice sounds native in, with the original accent marked `is_native: true`. In any other [supported language](/build-with-cartesia/tts-models/latest#language-support), the voice speaks with that original accent. Only available for voices with known accent information.<br/>
         /// Example: [{"accent":"general-american","locale":"en-US","is_native":true}, {"accent":"mexican","locale":"es-MX","is_native":false}]
         /// </summary>
         /// <example>[{"accent":"general-american","locale":"en-US","is_native":true}, {"accent":"mexican","locale":"es-MX","is_native":false}]</example>
@@ -163,7 +163,7 @@ namespace Cartesia
         /// A URL to download a preview audio file for this voice. Useful to avoid consuming credits when looking for the right voice. The URL requires the same Authorization header. Voice previews may be changed, moved, or deleted so you should avoid storing the URL permanently. This property will be null if there's no preview available. Only included when `expand[]` includes `preview_file_url`.
         /// </param>
         /// <param name="accents">
-        /// Accents supported by this voice. The accent with `is_native: true` is the voice's original accent. Only available for voices with known accent information.<br/>
+        /// Accents the voice sounds native in, with the original accent marked `is_native: true`. In any other [supported language](/build-with-cartesia/tts-models/latest#language-support), the voice speaks with that original accent. Only available for voices with known accent information.<br/>
         /// Example: [{"accent":"general-american","locale":"en-US","is_native":true}, {"accent":"mexican","locale":"es-MX","is_native":false}]
         /// </param>
         /// <param name="country">

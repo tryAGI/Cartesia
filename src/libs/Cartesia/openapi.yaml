@@ -2407,7 +2407,8 @@ paths:
       summary: Localize Voice
       description: >-
         Localize a voice to sound native in another accent. This creates a new
-        voice with its own voice ID.
+        voice with its own voice ID. The voice usually still sounds like the
+        same speaker, though how closely it matches varies by voice and accent.
       operationId: voices_localize
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
@@ -2433,7 +2434,8 @@ paths:
       summary: Add Voice Accents
       description: >-
         Add accents to an instant voice clone you own so a single `voice_id` can
-        speak multiple accents natively.
+        speak multiple accents natively. The voice usually still sounds like the
+        same speaker, though how closely it matches varies by voice and accent.
       operationId: voices_add_accents
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
@@ -9235,9 +9237,11 @@ components:
         accents:
           type: array
           description: >-
-            Accents supported by this voice. The accent with `is_native: true`
-            is the voice's original accent. Only available for voices with known
-            accent information.
+            Accents the voice sounds native in, with the original accent marked
+            `is_native: true`. In any other [supported
+            language](/build-with-cartesia/tts-models/latest#language-support),
+            the voice speaks with that original accent. Only available for
+            voices with known accent information.
           items:
             $ref: '#/components/schemas/VoiceAccentsItem'
           example:
@@ -9330,8 +9334,8 @@ components:
       title: VoiceAccentsItem
       type: object
       description: >-
-        One accent this voice can speak. `accent` is an accent id from [GET
-        /accents](/api-reference/accents/list).
+        One accent this voice sounds native in. `accent` is an accent id from
+        [GET /accents](/api-reference/accents/list).
       properties:
         accent:
           allOf:
@@ -9345,7 +9349,10 @@ components:
           description: The accent's BCP-47 language-region tag (e.g. `en-US`).
         is_native:
           type: boolean
-          description: Whether this is the voice's native/source accent.
+          description: >-
+            Whether this is the accent the voice was originally recorded in.
+            It's the accent the voice falls back to when it speaks a language it
+            has no matching accent for.
       required:
         - accent
         - locale
