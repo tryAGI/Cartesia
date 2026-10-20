@@ -16,9 +16,15 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.APIInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ListModelsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.ModelCatalogEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelCatalogEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelCapability), TypeInfoPropertyName = "ModelCapability2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.STTMode>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTMode), TypeInfoPropertyName = "STTMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSModelID), TypeInfoPropertyName = "TTSModelID2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifier), TypeInfoPropertyName = "TTSRequestVoiceSpecifier2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormat), TypeInfoPropertyName = "OutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.GenerationConfig))]
@@ -521,12 +527,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEChunk))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEDone))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEErrorType), TypeInfoPropertyName = "VoiceChangerSSEErrorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceLocale))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeTargetLanguage), TypeInfoPropertyName = "LocalizeTargetLanguage2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeEnglishDialect), TypeInfoPropertyName = "LocalizeEnglishDialect2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeFrenchDialect), TypeInfoPropertyName = "LocalizeFrenchDialect2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeSpanishDialect), TypeInfoPropertyName = "LocalizeSpanishDialect2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -537,6 +537,12 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEErrorType), TypeInfoPropertyName = "VoiceChangerSSEErrorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceLocale))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeTargetLanguage), TypeInfoPropertyName = "LocalizeTargetLanguage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeEnglishDialect), TypeInfoPropertyName = "LocalizeEnglishDialect2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeFrenchDialect), TypeInfoPropertyName = "LocalizeFrenchDialect2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeSpanishDialect), TypeInfoPropertyName = "LocalizeSpanishDialect2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizePortugueseDialect), TypeInfoPropertyName = "LocalizePortugueseDialect2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeDialect), TypeInfoPropertyName = "LocalizeDialect2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Gender), TypeInfoPropertyName = "Gender2")]
@@ -552,6 +558,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.InfillBytesRequestModelId), TypeInfoPropertyName = "InfillBytesRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerBytesRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSseRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelsListCapability), TypeInfoPropertyName = "ModelsListCapability2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelsListCartesiaVersion), TypeInfoPropertyName = "ModelsListCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsBytesCartesiaVersion), TypeInfoPropertyName = "TtsBytesCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsSseCartesiaVersion), TypeInfoPropertyName = "TtsSseCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeCartesiaVersion), TypeInfoPropertyName = "SttTranscribeCartesiaVersion2")]
@@ -674,6 +682,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Deployment>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelCapability?), TypeInfoPropertyName = "NullableModelCapability2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTMode?), TypeInfoPropertyName = "NullableSTTMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSModelID?), TypeInfoPropertyName = "NullableTTSModelID2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TTSRequestVoiceSpecifier?), TypeInfoPropertyName = "NullableTTSRequestVoiceSpecifier2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OutputFormat?), TypeInfoPropertyName = "NullableOutputFormat2")]
@@ -890,6 +900,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeRequestLanguage?), TypeInfoPropertyName = "NullableSttTranscribeRequestLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoicesCloneRequestAccess?), TypeInfoPropertyName = "NullableVoicesCloneRequestAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.InfillBytesRequestModelId?), TypeInfoPropertyName = "NullableInfillBytesRequestModelId2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelsListCapability?), TypeInfoPropertyName = "NullableModelsListCapability2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ModelsListCartesiaVersion?), TypeInfoPropertyName = "NullableModelsListCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsBytesCartesiaVersion?), TypeInfoPropertyName = "NullableTtsBytesCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TtsSseCartesiaVersion?), TypeInfoPropertyName = "NullableTtsSseCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.SttTranscribeCartesiaVersion?), TypeInfoPropertyName = "NullableSttTranscribeCartesiaVersion2")]
@@ -997,6 +1009,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AgentsGetDeploymentCartesiaVersion?), TypeInfoPropertyName = "NullableAgentsGetDeploymentCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerBytesCartesiaVersion?), TypeInfoPropertyName = "NullableVoiceChangerBytesCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSseCartesiaVersion?), TypeInfoPropertyName = "NullableVoiceChangerSseCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ModelCatalogEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.STTMode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TranscriptionWord>))]
@@ -1033,6 +1047,16 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.FineTuneUserError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.OneOf<global::Cartesia.UsageCreditsBucket, global::Cartesia.UsageCreditsBreakdownSeries>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageCreditsBucket>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageAgentsBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ApiKey>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumberSummary>))]
@@ -1047,16 +1071,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.OrganizationUser>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.OrganizationInvite>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumber>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Deployment>))]
     internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -1174,7 +1188,15 @@ namespace Cartesia
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Cartesia.TTSModelID)
+                    typeToConvert == typeof(global::Cartesia.ModelCapability)
+
+                    || typeToConvert == typeof(global::Cartesia.ModelCapability?)
+
+                    || typeToConvert == typeof(global::Cartesia.STTMode)
+
+                    || typeToConvert == typeof(global::Cartesia.STTMode?)
+
+                    || typeToConvert == typeof(global::Cartesia.TTSModelID)
 
                     || typeToConvert == typeof(global::Cartesia.TTSModelID?)
 
@@ -1830,6 +1852,14 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.InfillBytesRequestModelId?)
 
+                    || typeToConvert == typeof(global::Cartesia.ModelsListCapability)
+
+                    || typeToConvert == typeof(global::Cartesia.ModelsListCapability?)
+
+                    || typeToConvert == typeof(global::Cartesia.ModelsListCartesiaVersion)
+
+                    || typeToConvert == typeof(global::Cartesia.ModelsListCartesiaVersion?)
+
                     || typeToConvert == typeof(global::Cartesia.TtsBytesCartesiaVersion)
 
                     || typeToConvert == typeof(global::Cartesia.TtsBytesCartesiaVersion?)
@@ -2259,6 +2289,26 @@ namespace Cartesia
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
+                if (typeToConvert == typeof(global::Cartesia.ModelCapability))
+                {
+                    return new global::Cartesia.JsonConverters.ModelCapabilityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ModelCapability?))
+                {
+                    return new global::Cartesia.JsonConverters.ModelCapabilityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.STTMode))
+                {
+                    return new global::Cartesia.JsonConverters.STTModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.STTMode?))
+                {
+                    return new global::Cartesia.JsonConverters.STTModeNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Cartesia.TTSModelID))
                 {
                     return new global::Cartesia.JsonConverters.TTSModelIDJsonConverter();
@@ -3897,6 +3947,26 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.InfillBytesRequestModelId?))
                 {
                     return new global::Cartesia.JsonConverters.InfillBytesRequestModelIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ModelsListCapability))
+                {
+                    return new global::Cartesia.JsonConverters.ModelsListCapabilityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ModelsListCapability?))
+                {
+                    return new global::Cartesia.JsonConverters.ModelsListCapabilityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ModelsListCartesiaVersion))
+                {
+                    return new global::Cartesia.JsonConverters.ModelsListCartesiaVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ModelsListCartesiaVersion?))
+                {
+                    return new global::Cartesia.JsonConverters.ModelsListCartesiaVersionNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.TtsBytesCartesiaVersion))
