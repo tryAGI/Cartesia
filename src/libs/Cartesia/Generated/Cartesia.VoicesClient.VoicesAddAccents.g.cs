@@ -47,7 +47,7 @@ namespace Cartesia
 
         /// <summary>
         /// Add Voice Accents<br/>
-        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively.
+        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -81,7 +81,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Add Voice Accents<br/>
-        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively.
+        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -468,7 +468,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Add Voice Accents<br/>
-        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively.
+        /// Add accents to an instant voice clone you own so a single `voice_id` can speak multiple accents natively. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
