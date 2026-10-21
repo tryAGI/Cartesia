@@ -47,7 +47,7 @@ namespace Cartesia
 
         /// <summary>
         /// Localize Voice<br/>
-        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent. Localizing a Pro Voice Clone creates an Instant Voice Clone, not a new Pro Voice Clone.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -76,7 +76,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Localize Voice<br/>
-        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent. Localizing a Pro Voice Clone creates an Instant Voice Clone, not a new Pro Voice Clone.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
@@ -457,7 +457,7 @@ namespace Cartesia
         }
         /// <summary>
         /// Localize Voice<br/>
-        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.
+        /// Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent. Localizing a Pro Voice Clone creates an Instant Voice Clone, not a new Pro Voice Clone.
         /// </summary>
         /// <param name="cartesiaVersion">
         /// Default Value: 2026-08-14<br/>
