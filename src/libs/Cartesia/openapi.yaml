@@ -2411,6 +2411,8 @@ paths:
         Localize a voice to sound native in another accent. This creates a new
         voice with its own voice ID. The voice usually still sounds like the
         same speaker, though how closely it matches varies by voice and accent.
+        Localizing a Pro Voice Clone creates an Instant Voice Clone, not a new
+        Pro Voice Clone.
       operationId: voices_localize
       parameters:
         - $ref: '#/components/parameters/CartesiaVersionHeader'
