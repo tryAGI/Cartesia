@@ -5354,6 +5354,77 @@ components:
                         - auto
                         - force
                         - 'off'
+                skip_turn:
+                  description: >-
+                    Configuration for skipping the agent's turn. Omit or set to
+                    `null` to disable this tool.
+                  nullable: true
+                  type: object
+                  properties:
+                    description:
+                      description: >-
+                        What the tool does and when the agent should use it. Set
+                        to `null` to use the default system-optimized
+                        description.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 2000
+                    pre_tool_speech:
+                      description: >-
+                        Controls whether the agent speaks before using the tool.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
+                      type: string
+                      enum:
+                        - auto
+                        - force
+                        - 'off'
+                    wait_timeout_secs:
+                      description: >-
+                        Temporary check-in timeout in seconds after skipping a
+                        turn. Set a longer timeout to give the caller more time,
+                        `-1` to disable check-ins, or `null` to keep normal
+                        timing. User speech or DTMF restores the original
+                        timeout. Requires check-ins to be enabled. The
+                        inactivity end-call timer keeps running.
+                      nullable: true
+                      type: integer
+                voicemail_detection:
+                  description: >-
+                    Configuration for detecting voicemail. Omit or set to `null`
+                    to disable this tool.
+                  nullable: true
+                  type: object
+                  properties:
+                    description:
+                      description: >-
+                        What the tool does and when the agent should use it. Set
+                        to `null` to use the default system-optimized
+                        description.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 2000
+                    pre_tool_speech:
+                      description: >-
+                        Controls whether the agent speaks before using the tool.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
+                      type: string
+                      enum:
+                        - auto
+                        - force
+                        - 'off'
+                    message:
+                      description: >-
+                        Message spoken without interruption before hangup, even
+                        when `pre_tool_speech` is `off`. Set to `null` for no
+                        message.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 1000
                 transfer_to_number:
                   description: >-
                     Configuration for transferring the call. Omit or set to
@@ -5917,6 +5988,80 @@ components:
           required:
             - description
             - pre_tool_speech
+        skip_turn:
+          description: >-
+            Configuration for skipping the agent's turn. Set to `null` to
+            disable this tool.
+          nullable: true
+          type: object
+          properties:
+            description:
+              description: >-
+                What the tool does and when the agent should use it. Set to
+                `null` to use the default system-optimized description.
+              nullable: true
+              type: string
+              minLength: 1
+              maxLength: 2000
+            pre_tool_speech:
+              description: >-
+                Controls whether the agent speaks before using the tool. `auto`
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
+              type: string
+              enum:
+                - auto
+                - force
+                - 'off'
+            wait_timeout_secs:
+              description: >-
+                Temporary check-in timeout in seconds after skipping a turn. Set
+                a longer timeout to give the caller more time, `-1` to disable
+                check-ins, or `null` to keep normal timing. User speech or DTMF
+                restores the original timeout. Requires check-ins to be enabled.
+                The inactivity end-call timer keeps running.
+              nullable: true
+              type: integer
+          required:
+            - description
+            - pre_tool_speech
+        voicemail_detection:
+          description: >-
+            Configuration for detecting voicemail. Set to `null` to disable this
+            tool.
+          nullable: true
+          type: object
+          properties:
+            description:
+              description: >-
+                What the tool does and when the agent should use it. Set to
+                `null` to use the default system-optimized description.
+              nullable: true
+              type: string
+              minLength: 1
+              maxLength: 2000
+            pre_tool_speech:
+              description: >-
+                Controls whether the agent speaks before using the tool. `auto`
+                lets the agent decide, `force` asks the agent to speak first,
+                and `off` doesn't ask it to.
+              type: string
+              enum:
+                - auto
+                - force
+                - 'off'
+            message:
+              description: >-
+                Message spoken without interruption before hangup, even when
+                `pre_tool_speech` is `off`. Set to `null` for no message.
+              nullable: true
+              type: string
+              minLength: 1
+              maxLength: 1000
+          required:
+            - description
+            - pre_tool_speech
+            - message
         transfer_to_number:
           description: >-
             Configuration for transferring the call. Set to `null` to disable
@@ -5986,6 +6131,8 @@ components:
       required:
         - end_call
         - send_dtmf
+        - skip_turn
+        - voicemail_detection
         - transfer_to_number
       title: ManagedAgentSystemTools
     ListManagedAgentsV1Response:
@@ -6264,6 +6411,78 @@ components:
                         - auto
                         - force
                         - 'off'
+                skip_turn:
+                  description: >-
+                    Configuration for skipping the agent's turn. Omit to keep
+                    the current setting or set to `null` to disable this tool.
+                  nullable: true
+                  type: object
+                  properties:
+                    description:
+                      description: >-
+                        What the tool does and when the agent should use it. Set
+                        to `null` to use the default system-optimized
+                        description.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 2000
+                    pre_tool_speech:
+                      description: >-
+                        Controls whether the agent speaks before using the tool.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
+                      type: string
+                      enum:
+                        - auto
+                        - force
+                        - 'off'
+                    wait_timeout_secs:
+                      description: >-
+                        Temporary check-in timeout in seconds after skipping a
+                        turn. Set a longer timeout to give the caller more time,
+                        `-1` to disable check-ins, or `null` to keep normal
+                        timing. User speech or DTMF restores the original
+                        timeout. Requires check-ins to be enabled. The
+                        inactivity end-call timer keeps running. Omit to keep
+                        the current setting.
+                      nullable: true
+                      type: integer
+                voicemail_detection:
+                  description: >-
+                    Configuration for detecting voicemail. Omit to keep the
+                    current setting or set to `null` to disable this tool.
+                  nullable: true
+                  type: object
+                  properties:
+                    description:
+                      description: >-
+                        What the tool does and when the agent should use it. Set
+                        to `null` to use the default system-optimized
+                        description.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 2000
+                    pre_tool_speech:
+                      description: >-
+                        Controls whether the agent speaks before using the tool.
+                        `auto` lets the agent decide, `force` asks the agent to
+                        speak first, and `off` doesn't ask it to.
+                      type: string
+                      enum:
+                        - auto
+                        - force
+                        - 'off'
+                    message:
+                      description: >-
+                        Message spoken without interruption before hangup, even
+                        when `pre_tool_speech` is `off`. Omit to keep the
+                        current message or set to `null` to clear it.
+                      nullable: true
+                      type: string
+                      minLength: 1
+                      maxLength: 1000
                 transfer_to_number:
                   description: >-
                     Configuration for transferring the call. Omit to keep the

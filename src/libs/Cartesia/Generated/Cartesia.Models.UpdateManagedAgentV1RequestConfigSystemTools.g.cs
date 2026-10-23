@@ -21,6 +21,18 @@ namespace Cartesia
         public global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmf? SendDtmf { get; set; }
 
         /// <summary>
+        /// Configuration for skipping the agent's turn. Omit to keep the current setting or set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skip_turn")]
+        public global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurn? SkipTurn { get; set; }
+
+        /// <summary>
+        /// Configuration for detecting voicemail. Omit to keep the current setting or set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voicemail_detection")]
+        public global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetection? VoicemailDetection { get; set; }
+
+        /// <summary>
         /// Configuration for transferring the call. Omit to keep the current setting or set to `null` to disable this tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_to_number")]
@@ -41,6 +53,12 @@ namespace Cartesia
         /// <param name="sendDtmf">
         /// Configuration for sending DTMF tones. Omit to keep the current setting or set to `null` to disable this tool.
         /// </param>
+        /// <param name="skipTurn">
+        /// Configuration for skipping the agent's turn. Omit to keep the current setting or set to `null` to disable this tool.
+        /// </param>
+        /// <param name="voicemailDetection">
+        /// Configuration for detecting voicemail. Omit to keep the current setting or set to `null` to disable this tool.
+        /// </param>
         /// <param name="transferToNumber">
         /// Configuration for transferring the call. Omit to keep the current setting or set to `null` to disable this tool.
         /// </param>
@@ -50,10 +68,14 @@ namespace Cartesia
         public UpdateManagedAgentV1RequestConfigSystemTools(
             global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsEndCall? endCall,
             global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmf? sendDtmf,
+            global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurn? skipTurn,
+            global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetection? voicemailDetection,
             global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber? transferToNumber)
         {
             this.EndCall = endCall;
             this.SendDtmf = sendDtmf;
+            this.SkipTurn = skipTurn;
+            this.VoicemailDetection = voicemailDetection;
             this.TransferToNumber = transferToNumber;
         }
 
