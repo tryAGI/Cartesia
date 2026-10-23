@@ -21,6 +21,18 @@ namespace Cartesia
         public global::Cartesia.ManagedAgentSystemToolsV1SendDtmf? SendDtmf { get; set; }
 
         /// <summary>
+        /// Configuration for skipping the agent's turn. Set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skip_turn")]
+        public global::Cartesia.ManagedAgentSystemToolsV1SkipTurn? SkipTurn { get; set; }
+
+        /// <summary>
+        /// Configuration for detecting voicemail. Set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voicemail_detection")]
+        public global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetection? VoicemailDetection { get; set; }
+
+        /// <summary>
         /// Configuration for transferring the call. Set to `null` to disable this tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_to_number")]
@@ -41,6 +53,12 @@ namespace Cartesia
         /// <param name="sendDtmf">
         /// Configuration for sending DTMF tones. Set to `null` to disable this tool.
         /// </param>
+        /// <param name="skipTurn">
+        /// Configuration for skipping the agent's turn. Set to `null` to disable this tool.
+        /// </param>
+        /// <param name="voicemailDetection">
+        /// Configuration for detecting voicemail. Set to `null` to disable this tool.
+        /// </param>
         /// <param name="transferToNumber">
         /// Configuration for transferring the call. Set to `null` to disable this tool.
         /// </param>
@@ -50,10 +68,14 @@ namespace Cartesia
         public ManagedAgentSystemToolsV1(
             global::Cartesia.ManagedAgentSystemToolsV1EndCall? endCall,
             global::Cartesia.ManagedAgentSystemToolsV1SendDtmf? sendDtmf,
+            global::Cartesia.ManagedAgentSystemToolsV1SkipTurn? skipTurn,
+            global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetection? voicemailDetection,
             global::Cartesia.ManagedAgentSystemToolsV1TransferToNumber? transferToNumber)
         {
             this.EndCall = endCall;
             this.SendDtmf = sendDtmf;
+            this.SkipTurn = skipTurn;
+            this.VoicemailDetection = voicemailDetection;
             this.TransferToNumber = transferToNumber;
         }
 

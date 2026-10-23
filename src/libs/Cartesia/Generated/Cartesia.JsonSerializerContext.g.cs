@@ -82,6 +82,10 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmf))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurn))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetection))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumber))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech), TypeInfoPropertyName = "CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>))]
@@ -113,6 +117,10 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1EndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmf))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmfPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1SendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurn))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1SkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetection))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumber))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberTransfer>))]
@@ -137,6 +145,10 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech), TypeInfoPropertyName = "UpdateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmf))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech), TypeInfoPropertyName = "UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurn))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech), TypeInfoPropertyName = "UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetection))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech), TypeInfoPropertyName = "UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumber))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech), TypeInfoPropertyName = "UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>))]
@@ -515,6 +527,16 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeFlushDoneResponseType2")]
+    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeDoneResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketResponse), TypeInfoPropertyName = "STTManualFinalizeWebSocketResponse2")]
@@ -527,16 +549,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEChunk))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEDone))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEError))]
-    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceChangerSSEErrorType), TypeInfoPropertyName = "VoiceChangerSSEErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.VoiceLocale))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LocalizeTargetLanguage), TypeInfoPropertyName = "LocalizeTargetLanguage2")]
@@ -710,6 +722,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AnyOf<string, double?, bool?>?), TypeInfoPropertyName = "NullableAnyOfStringDoubleBoolean2")]
@@ -718,11 +732,15 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableManagedAgentConfigV1AudioInputNoiseSuppression2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1EndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1SendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1SkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1TransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberTransferDestinationType?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1TransferToNumberTransferDestinationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigAudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigAudioInputNoiseSuppression2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType?), TypeInfoPropertyName = "NullableUpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
@@ -1029,6 +1047,16 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.DynamicVariableUpdate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItem>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItemResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCallBatchRecipient>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCallBatch>))]
@@ -1047,16 +1075,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.FineTuneUserError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.OneOf<global::Cartesia.UsageCreditsBucket, global::Cartesia.UsageCreditsBreakdownSeries>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageCreditsBucket>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageAgentsBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ApiKey>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumberSummary>))]
@@ -1272,6 +1290,14 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?)
 
+                    || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?)
+
+                    || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?)
+
                     || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech)
 
                     || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech?)
@@ -1304,6 +1330,14 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmfPreToolSpeech?)
 
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech?)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech?)
+
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech?)
@@ -1323,6 +1357,14 @@ namespace Cartesia
                     || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech)
 
                     || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?)
+
+                    || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?)
+
+                    || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech)
+
+                    || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?)
 
                     || typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech)
 
@@ -2499,6 +2541,26 @@ namespace Cartesia
                     return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeechNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeechNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeechNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech))
                 {
                     return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeechJsonConverter();
@@ -2579,6 +2641,26 @@ namespace Cartesia
                     return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1SendDtmfPreToolSpeechNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1SkipTurnPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1SkipTurnPreToolSpeechNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1VoicemailDetectionPreToolSpeechNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeech))
                 {
                     return new global::Cartesia.JsonConverters.ManagedAgentSystemToolsV1TransferToNumberPreToolSpeechJsonConverter();
@@ -2627,6 +2709,26 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?))
                 {
                     return new global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeechNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsSkipTurnPreToolSpeechNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech))
+                {
+                    return new global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeechJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeech?))
+                {
+                    return new global::Cartesia.JsonConverters.UpdateManagedAgentV1RequestConfigSystemToolsVoicemailDetectionPreToolSpeechNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech))

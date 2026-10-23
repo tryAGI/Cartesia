@@ -21,6 +21,18 @@ namespace Cartesia
         public global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmf? SendDtmf { get; set; }
 
         /// <summary>
+        /// Configuration for skipping the agent's turn. Omit or set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skip_turn")]
+        public global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurn? SkipTurn { get; set; }
+
+        /// <summary>
+        /// Configuration for detecting voicemail. Omit or set to `null` to disable this tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voicemail_detection")]
+        public global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetection? VoicemailDetection { get; set; }
+
+        /// <summary>
         /// Configuration for transferring the call. Omit or set to `null` to disable this tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_to_number")]
@@ -41,6 +53,12 @@ namespace Cartesia
         /// <param name="sendDtmf">
         /// Configuration for sending DTMF tones. Omit or set to `null` to disable this tool.
         /// </param>
+        /// <param name="skipTurn">
+        /// Configuration for skipping the agent's turn. Omit or set to `null` to disable this tool.
+        /// </param>
+        /// <param name="voicemailDetection">
+        /// Configuration for detecting voicemail. Omit or set to `null` to disable this tool.
+        /// </param>
         /// <param name="transferToNumber">
         /// Configuration for transferring the call. Omit or set to `null` to disable this tool.
         /// </param>
@@ -50,10 +68,14 @@ namespace Cartesia
         public CreateManagedAgentV1RequestConfigSystemTools(
             global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCall? endCall,
             global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmf? sendDtmf,
+            global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSkipTurn? skipTurn,
+            global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsVoicemailDetection? voicemailDetection,
             global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumber? transferToNumber)
         {
             this.EndCall = endCall;
             this.SendDtmf = sendDtmf;
+            this.SkipTurn = skipTurn;
+            this.VoicemailDetection = voicemailDetection;
             this.TransferToNumber = transferToNumber;
         }
 
