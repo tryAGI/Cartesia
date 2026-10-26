@@ -64,6 +64,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
     #pragma warning restore CS3016
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToTextTurns.SpeechToTextTurnsSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsCloseCommand))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsCloseCommandType), TypeInfoPropertyName = "STTTurnsCloseCommandType2")]

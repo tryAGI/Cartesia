@@ -70,6 +70,7 @@ namespace Cartesia.Realtime.TextToSpeech
     #pragma warning restore CS3016
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.TextToSpeechSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.GenerationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.TextToSpeech.GenerationRequestModelId), TypeInfoPropertyName = "GenerationRequestModelId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]

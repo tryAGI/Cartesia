@@ -56,6 +56,7 @@ namespace Cartesia.Realtime.SpeechToText
     #pragma warning restore CS3016
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.SpeechToTextSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTFinalizeCommand), TypeInfoPropertyName = "STTFinalizeCommand2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTCloseCommand), TypeInfoPropertyName = "STTCloseCommand2")]
