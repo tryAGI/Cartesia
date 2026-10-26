@@ -12,6 +12,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.APIInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
@@ -526,7 +527,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeTranscriptResponseType), TypeInfoPropertyName = "STTManualFinalizeTranscriptResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeFlushDoneResponseType2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -537,6 +537,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeFlushDoneResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeDoneResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketResponse), TypeInfoPropertyName = "STTManualFinalizeWebSocketResponse2")]
@@ -1046,7 +1047,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentTranscript>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.DynamicVariableUpdate>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItem>))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1057,6 +1057,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItemResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCallBatchRecipient>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCallBatch>))]
