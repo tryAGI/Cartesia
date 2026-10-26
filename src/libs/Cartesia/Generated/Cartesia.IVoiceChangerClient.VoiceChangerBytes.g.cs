@@ -55,6 +55,27 @@ namespace Cartesia
         /// Example: 2026-08-14
         /// </param>
         /// <param name="request"></param>
+        /// <returns>The response metadata and an unbuffered body stream. The caller must dispose Body to release the HTTP response.</returns>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Cartesia.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Cartesia.AutoSDKHttpResponse<global::System.IO.Stream>> VoiceChangerBytesAsStreamAsResponseAsync(
+
+            global::Cartesia.VoiceChangerBytesRequest request,
+            global::Cartesia.VoiceChangerBytesCartesiaVersion cartesiaVersion = global::Cartesia.VoiceChangerBytesCartesiaVersion.x20260814,
+            global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Voice Changer (Bytes)<br/>
+        /// Voice Changer (Bytes).<br/>
+        /// Takes an audio file of speech, and returns an audio file of speech spoken with the same intonation, but with a different voice.<br/>
+        /// This endpoint is priced at 15 characters per second of input audio.
+        /// </summary>
+        /// <param name="cartesiaVersion">
+        /// Default Value: 2026-08-14<br/>
+        /// Example: 2026-08-14
+        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Cartesia.ApiException"></exception>
