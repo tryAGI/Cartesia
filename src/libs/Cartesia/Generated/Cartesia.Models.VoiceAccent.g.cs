@@ -279,6 +279,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        Scottish,
+        /// <summary>
+        ///
+        /// </summary>
         Singaporean,
         /// <summary>
         ///
@@ -437,6 +441,7 @@ namespace Cartesia
                 VoiceAccent.Randstad => "randstad",
                 VoiceAccent.Romanian => "romanian",
                 VoiceAccent.Russian => "russian",
+                VoiceAccent.Scottish => "scottish",
                 VoiceAccent.Singaporean => "singaporean",
                 VoiceAccent.Slovak => "slovak",
                 VoiceAccent.SouthAfrican => "south-african",
@@ -534,6 +539,7 @@ namespace Cartesia
                 "randstad" => VoiceAccent.Randstad,
                 "romanian" => VoiceAccent.Romanian,
                 "russian" => VoiceAccent.Russian,
+                "scottish" => VoiceAccent.Scottish,
                 "singaporean" => VoiceAccent.Singaporean,
                 "slovak" => VoiceAccent.Slovak,
                 "south-african" => VoiceAccent.SouthAfrican,
