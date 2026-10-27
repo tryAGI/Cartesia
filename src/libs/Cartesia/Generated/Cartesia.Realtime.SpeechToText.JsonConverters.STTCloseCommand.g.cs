@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.SpeechToText.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.SpeechToText.STTCloseCommandExtensions.ToEnum(stringValue) ?? default;
+                        return global::Cartesia.Realtime.SpeechToText.STTCloseCommandExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.SpeechToText.STTCloseCommand.");
                     }
 
                     break;

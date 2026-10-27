@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConfigCommandTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConfigCommandTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConfigCommandType.");
                     }
 
                     break;
