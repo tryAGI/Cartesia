@@ -3,10 +3,10 @@
 namespace Cartesia.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ManagedAgentPrimaryLanguageV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.ManagedAgentPrimaryLanguageV1?>
+    public sealed class NullableLanguageOrLocaleEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.NullableLanguageOrLocaleEnum?>
     {
         /// <inheritdoc />
-        public override global::Cartesia.ManagedAgentPrimaryLanguageV1? Read(
+        public override global::Cartesia.NullableLanguageOrLocaleEnum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Cartesia.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.ManagedAgentPrimaryLanguageV1Extensions.ToEnum(stringValue);
+                        return global::Cartesia.NullableLanguageOrLocaleEnumExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Cartesia.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Cartesia.ManagedAgentPrimaryLanguageV1)numValue;
+                    return (global::Cartesia.NullableLanguageOrLocaleEnum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Cartesia.ManagedAgentPrimaryLanguageV1?);
+                    return default(global::Cartesia.NullableLanguageOrLocaleEnum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Cartesia.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Cartesia.ManagedAgentPrimaryLanguageV1? value,
+            global::Cartesia.NullableLanguageOrLocaleEnum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Cartesia.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Cartesia.ManagedAgentPrimaryLanguageV1Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Cartesia.NullableLanguageOrLocaleEnumExtensions.ToValueString(value.Value));
             }
         }
     }

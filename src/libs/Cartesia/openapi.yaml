@@ -2294,12 +2294,6 @@ paths:
                     Accents](/api-reference/voices/add-accents). See [GET
                     /accents](/api-reference/accents/list) for values valid for
                     each language.
-                base_voice_id:
-                  $ref: '#/components/schemas/VoiceId'
-                  description: >-
-                    Optional base voice ID that the cloned voice is derived
-                    from.
-                  nullable: true
                 access:
                   type: string
                   enum:
@@ -5264,7 +5258,45 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit or set to `null` to use `en`. See [supported languages
+                    and
+                    locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+                  allOf:
+                    - $ref: '#/components/schemas/NullableLanguageOrLocale'
+                additional:
+                  description: >-
+                    Additional languages, each as `{ code, presets }`. Each code
+                    is a language, such as `fr`, or a locale, such as `es-MX`.
+                    Omit or send `[]` for a single-language agent.
+
+
+                    - When this list is nonempty, the primary and additional
+                    languages must be English (`en`), Spanish (`es`), French
+                    (`fr`), Hindi (`hi`), or Japanese (`ja`), or supported
+                    locales of these languages.
+
+                    - Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    Speech recognition listens for all configured languages. The
+                    agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 4
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentAdditionalLanguageInputV1'
+                  example:
+                    - code: es-MX
+                      presets:
+                        voice_id: <spanish_voice_id>
+                    - code: fr
             model:
               type: object
               properties:
@@ -5621,57 +5653,36 @@ components:
         Variable names are case-sensitive, up to 64 characters, and use letters,
         digits, or underscores. Start with a letter or underscore; `system__`
         and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
-    ManagedAgentPrimaryLanguageV1:
-      description: >-
-        ISO 639-1 language code used for speech recognition, agent responses,
-        and speech synthesis.
-      type: string
-      enum:
-        - en
-        - de
-        - pt
-        - zh
-        - ja
-        - fr
-        - es
-        - hi
-        - it
-        - ko
-        - nl
-        - pl
-        - ru
-        - sv
-        - tr
-        - tl
-        - bg
-        - ro
-        - ar
-        - cs
-        - el
-        - fi
-        - hr
-        - ms
-        - sk
-        - da
-        - ta
-        - uk
-        - hu
-        - 'no'
-        - vi
-        - bn
-        - th
-        - he
-        - ka
-        - id
-        - te
-        - gu
-        - kn
-        - ml
-        - mr
-        - pa
-        - or
-        - ur
-      title: ManagedAgentPrimaryLanguageV1
+    NullableLanguageOrLocale:
+      oneOf:
+        - $ref: '#/components/schemas/LanguageOrLocale'
+        - title: 'Null'
+          type: string
+          nullable: true
+          enum:
+            - null
+    ManagedAgentAdditionalLanguageInputV1:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          description: >-
+            A language code (`en`, `es`, `fr`, `hi`, or `ja`) or a supported
+            locale of one of these languages, such as `es-MX`. A locale selects
+            a regional accent. See [supported
+            locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+          allOf:
+            - $ref: '#/components/schemas/MultilingualAgentLanguageOrLocale'
+          example: es-MX
+        presets:
+          description: >-
+            Settings the agent uses while speaking this language. Omit to use
+            the agent's own.
+          allOf:
+            - $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+      required:
+        - code
+      title: ManagedAgentAdditionalLanguageInputV1
     ManagedAgentFallbackStrategyV1:
       title: Fallback strategy
       description: >-
@@ -5835,8 +5846,24 @@ components:
           properties:
             primary:
               $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+            additional:
+              description: >-
+                Other languages the caller can switch to, in order. Each code is
+                a language, such as `fr`, or a locale, such as `es-MX`. A
+                language's `presets.voice_id` is the voice the agent speaks it
+                with. Returns `[]` when none are configured. Codes are returned
+                as saved: a locale such as `es-MX` is not reduced to `es`.
+              type: array
+              items:
+                $ref: '#/components/schemas/ManagedAgentAdditionalLanguageV1'
+              example:
+                - code: es-MX
+                  presets:
+                    voice_id: <spanish_voice_id>
+                - code: fr
           required:
             - primary
+            - additional
         model:
           type: object
           properties:
@@ -5929,6 +5956,176 @@ components:
         - speculative_generation
         - prompt_optimization
       title: ManagedAgentConfig
+    LanguageOrLocale:
+      type: string
+      enum:
+        - en
+        - fr
+        - de
+        - es
+        - pt
+        - zh
+        - ja
+        - hi
+        - it
+        - ko
+        - nl
+        - pl
+        - ru
+        - sv
+        - tr
+        - tl
+        - bg
+        - ro
+        - ar
+        - cs
+        - el
+        - fi
+        - hr
+        - ms
+        - sk
+        - da
+        - ta
+        - uk
+        - hu
+        - 'no'
+        - vi
+        - bn
+        - th
+        - he
+        - ka
+        - id
+        - te
+        - gu
+        - kn
+        - ml
+        - mr
+        - pa
+        - or
+        - ur
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-ES
+        - es-MX
+        - es-US
+        - fi-FI
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hr-HR
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - ml-IN
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - or-IN
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
+    MultilingualAgentLanguageOrLocale:
+      type: string
+      enum:
+        - en
+        - fr
+        - es
+        - ja
+        - hi
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-ES
+        - es-MX
+        - es-US
+        - fr-CA
+        - fr-FR
+        - hi-IN
+        - ja-JP
+    ManagedAgentLanguagePresetsV1:
+      type: object
+      additionalProperties: false
+      properties:
+        voice_id:
+          description: >-
+            ID of the voice the agent speaks this language with, instead of
+            `audio.output.voice_id`.
+          type: string
+          minLength: 1
+      required:
+        - voice_id
+      title: ManagedAgentLanguagePresetsV1
+    ManagedAgentPrimaryLanguageV1:
+      description: >-
+        The language the agent starts each call in: a language, such as `en`, or
+        a locale, such as `en-US`. See [supported languages and
+        locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+      allOf:
+        - $ref: '#/components/schemas/LanguageOrLocale'
+      title: ManagedAgentPrimaryLanguageV1
+    ManagedAgentAdditionalLanguageV1:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          description: >-
+            A language code (`en`, `es`, `fr`, `hi`, or `ja`) or a supported
+            locale of one of these languages, such as `es-MX`. A locale selects
+            a regional accent. See [supported
+            locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+          allOf:
+            - $ref: '#/components/schemas/MultilingualAgentLanguageOrLocale'
+          example: es-MX
+        presets:
+          description: >-
+            Settings the agent uses while speaking this language. Absent when it
+            uses the agent's own.
+          allOf:
+            - $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+      required:
+        - code
+      title: ManagedAgentAdditionalLanguageV1
     ManagedAgentSystemToolsV1:
       type: object
       properties:
@@ -6320,7 +6517,52 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit to keep the current primary language; set to `null` to
+                    use `en`. See [supported languages and
+                    locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+                  allOf:
+                    - $ref: '#/components/schemas/NullableLanguageOrLocale'
+                additional:
+                  description: >-
+                    Additional languages, each as `{ code, presets }`. Each code
+                    is a language, such as `fr`, or a locale, such as `es-MX`.
+                    Omit to preserve the current list; `[]` clears it. A list
+                    you send replaces the current one; entries are not appended
+                    or merged.
+
+
+                    - When this list is nonempty, the primary and additional
+                    languages must be English (`en`), Spanish (`es`), French
+                    (`fr`), Hindi (`hi`), or Japanese (`ja`), or supported
+                    locales of these languages.
+
+                    - Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    If the new primary language is already in the additional
+                    list, remove it from that list in the same request. Changes
+                    apply to new calls; calls in progress keep their starting
+                    configuration.
+
+
+                    The agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 4
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentAdditionalLanguageInputV1'
+                  example:
+                    - code: es-MX
+                      presets:
+                        voice_id: <spanish_voice_id>
+                    - code: fr
             model:
               type: object
               properties:
