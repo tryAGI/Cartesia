@@ -9,6 +9,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocale), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_NullableLanguageOrLocale")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LanguageOrLocale?), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_LanguageOrLocale")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
@@ -75,7 +77,8 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigAudioOutputBackgroundSound))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentDynamicVariablePlaceholdersV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigLanguage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1), TypeInfoPropertyName = "ManagedAgentPrimaryLanguageV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentAdditionalLanguageInputV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentAdditionalLanguageInputV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigModel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1), TypeInfoPropertyName = "ManagedAgentFallbackStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemTools))]
@@ -100,6 +103,10 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentV1Version))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AnyOf<string, double?, bool?>), TypeInfoPropertyName = "AnyOfStringDoubleBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LanguageOrLocale), TypeInfoPropertyName = "LanguageOrLocale2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocaleEnum), TypeInfoPropertyName = "NullableLanguageOrLocaleEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MultilingualAgentLanguageOrLocale), TypeInfoPropertyName = "MultilingualAgentLanguageOrLocale2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentLanguagePresetsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1Auto))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType), TypeInfoPropertyName = "ManagedAgentFallbackStrategyV1AutoType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1Explicit))]
@@ -111,9 +118,12 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioOutput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioOutputBackgroundSound))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1Language))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.ManagedAgentAdditionalLanguageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentAdditionalLanguageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1Model))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1Turn))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1), TypeInfoPropertyName = "ManagedAgentPrimaryLanguageV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCall))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech), TypeInfoPropertyName = "ManagedAgentSystemToolsV1EndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmf))]
@@ -517,16 +527,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeTurnEndType), TypeInfoPropertyName = "STTAutoFinalizeTurnEndType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTErrorResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTErrorResponseType), TypeInfoPropertyName = "STTErrorResponseType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponse), TypeInfoPropertyName = "STTAutoFinalizeWebSocketResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "STTAutoFinalizeWebSocketResponseDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketQueryParams))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketQueryParamsLanguage), TypeInfoPropertyName = "STTManualFinalizeWebSocketQueryParamsLanguage2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketRequest), TypeInfoPropertyName = "STTManualFinalizeWebSocketRequest2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeTranscriptResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeTranscriptResponseType), TypeInfoPropertyName = "STTManualFinalizeTranscriptResponseType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -537,6 +537,18 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocale), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_NullableLanguageOrLocale")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LanguageOrLocale?), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_LanguageOrLocale")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponse), TypeInfoPropertyName = "STTAutoFinalizeWebSocketResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTAutoFinalizeWebSocketResponseDiscriminatorType), TypeInfoPropertyName = "STTAutoFinalizeWebSocketResponseDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketQueryParams))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketQueryParamsLanguage), TypeInfoPropertyName = "STTManualFinalizeWebSocketQueryParamsLanguage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeWebSocketRequest), TypeInfoPropertyName = "STTManualFinalizeWebSocketRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeTranscriptResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeTranscriptResponseType), TypeInfoPropertyName = "STTManualFinalizeTranscriptResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.WordTimestamps>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeFlushDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeFlushDoneResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.STTManualFinalizeDoneResponseType), TypeInfoPropertyName = "STTManualFinalizeDoneResponseType2")]
@@ -719,7 +731,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TimestampGranularity?), TypeInfoPropertyName = "NullableTimestampGranularity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.TranscriptionResponseType?), TypeInfoPropertyName = "NullableTranscriptionResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigAudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigAudioInputNoiseSuppression2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?), TypeInfoPropertyName = "NullableManagedAgentPrimaryLanguageV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocale?), TypeInfoPropertyName = "NullableNullableLanguageOrLocale2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsEndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsSendDtmfPreToolSpeech2")]
@@ -728,9 +740,12 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType?), TypeInfoPropertyName = "NullableCreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.AnyOf<string, double?, bool?>?), TypeInfoPropertyName = "NullableAnyOfStringDoubleBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocaleEnum?), TypeInfoPropertyName = "NullableNullableLanguageOrLocaleEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.MultilingualAgentLanguageOrLocale?), TypeInfoPropertyName = "NullableMultilingualAgentLanguageOrLocale2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV1AutoType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType?), TypeInfoPropertyName = "NullableManagedAgentFallbackStrategyV1ExplicitType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression?), TypeInfoPropertyName = "NullableManagedAgentConfigV1AudioInputNoiseSuppression2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?), TypeInfoPropertyName = "NullableManagedAgentPrimaryLanguageV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1EndCallPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SendDtmfPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1SendDtmfPreToolSpeech2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ManagedAgentSystemToolsV1SkipTurnPreToolSpeech?), TypeInfoPropertyName = "NullableManagedAgentSystemToolsV1SkipTurnPreToolSpeech2")]
@@ -1032,9 +1047,23 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.STTMode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.NullableLanguageOrLocale), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_NullableLanguageOrLocale")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LanguageOrLocale?), TypeInfoPropertyName = "NullableLanguageOrLocale_Cartesia_LanguageOrLocale")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.TranscriptionWord>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ManagedAgentAdditionalLanguageInputV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ManagedAgentToolReferenceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ManagedAgentAdditionalLanguageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ManagedAgentSystemToolsV1TransferToNumberTransfer>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ManagedAgentSummaryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UpdateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransfer>))]
@@ -1047,16 +1076,6 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentTranscript>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.ToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.DynamicVariableUpdate>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentOutboundCallItemResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.AgentCallBatchRecipient>))]
@@ -1131,7 +1150,9 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.TTSRequestVoiceSpecifierJsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.OutputFormatJsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.TTSSSEEventJsonConverter());
+            options.Converters.Add(new global::Cartesia.JsonConverters.NullableLanguageOrLocaleJsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.ManagedAgentFallbackStrategyV1JsonConverter());
+            options.Converters.Add(new global::Cartesia.JsonConverters.ManagedAgentPrimaryLanguageV1JsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.ManagedToolV1JsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.ManagedToolDefinitionV1JsonConverter());
             options.Converters.Add(new global::Cartesia.JsonConverters.WebhookAuthenticationResponseJsonConverter());
@@ -1307,9 +1328,9 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationType?)
 
-                    || typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1)
+                    || typeToConvert == typeof(global::Cartesia.NullableLanguageOrLocaleEnum)
 
-                    || typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?)
+                    || typeToConvert == typeof(global::Cartesia.NullableLanguageOrLocaleEnum?)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType)
 
@@ -1322,6 +1343,14 @@ namespace Cartesia
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression?)
+
+                    || typeToConvert == typeof(global::Cartesia.LanguageOrLocale)
+
+                    || typeToConvert == typeof(global::Cartesia.LanguageOrLocale?)
+
+                    || typeToConvert == typeof(global::Cartesia.MultilingualAgentLanguageOrLocale)
+
+                    || typeToConvert == typeof(global::Cartesia.MultilingualAgentLanguageOrLocale?)
 
                     || typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech)
 
@@ -2582,14 +2611,14 @@ namespace Cartesia
                     return new global::Cartesia.JsonConverters.CreateManagedAgentV1RequestConfigSystemToolsTransferToNumberTransferDestinationTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1))
+                if (typeToConvert == typeof(global::Cartesia.NullableLanguageOrLocaleEnum))
                 {
-                    return new global::Cartesia.JsonConverters.ManagedAgentPrimaryLanguageV1JsonConverter();
+                    return new global::Cartesia.JsonConverters.NullableLanguageOrLocaleEnumJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Cartesia.ManagedAgentPrimaryLanguageV1?))
+                if (typeToConvert == typeof(global::Cartesia.NullableLanguageOrLocaleEnum?))
                 {
-                    return new global::Cartesia.JsonConverters.ManagedAgentPrimaryLanguageV1NullableJsonConverter();
+                    return new global::Cartesia.JsonConverters.NullableLanguageOrLocaleEnumNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentFallbackStrategyV1AutoType))
@@ -2620,6 +2649,26 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentConfigV1AudioInputNoiseSuppression?))
                 {
                     return new global::Cartesia.JsonConverters.ManagedAgentConfigV1AudioInputNoiseSuppressionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.LanguageOrLocale))
+                {
+                    return new global::Cartesia.JsonConverters.LanguageOrLocaleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.LanguageOrLocale?))
+                {
+                    return new global::Cartesia.JsonConverters.LanguageOrLocaleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.MultilingualAgentLanguageOrLocale))
+                {
+                    return new global::Cartesia.JsonConverters.MultilingualAgentLanguageOrLocaleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.MultilingualAgentLanguageOrLocale?))
+                {
+                    return new global::Cartesia.JsonConverters.MultilingualAgentLanguageOrLocaleNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.ManagedAgentSystemToolsV1EndCallPreToolSpeech))
