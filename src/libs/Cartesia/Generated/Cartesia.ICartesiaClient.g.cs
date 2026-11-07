@@ -139,5 +139,10 @@ namespace Cartesia
         /// </summary>
         public VoicesClient Voices { get; }
 
+        /// <summary>
+        ///
+        /// </summary>
+        public WatermarkingClient Watermarking { get; }
+
     }
 }

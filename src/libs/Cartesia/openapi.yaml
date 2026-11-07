@@ -275,6 +275,48 @@ paths:
       security:
         - APIKeyAuth: []
         - AccessTokenAuth: []
+  /v1/watermark/detect:
+    post:
+      tags:
+        - Watermarking
+      summary: Detect watermark
+      description: Check audio for a Cartesia watermark. Requires a paid plan.
+      operationId: detectWatermark
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    Audio file to check, between 5 seconds and 5 minutes long,
+                    up to 32 MiB. Supported formats are FLAC, M4A, MP3, MP4,
+                    MPEG, MPGA, OGA, OGG, WAV, and WebM.
+      responses:
+        '200':
+          description: Watermark detection result
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - detected
+                properties:
+                  detected:
+                    type: boolean
+                    description: Whether a Cartesia watermark was detected in the audio
+              example:
+                detected: true
+      security:
+        - APIKeyAuth: []
   /v1/agents:
     post:
       tags:
@@ -1667,6 +1709,124 @@ paths:
             provider before deleting it.
       security:
         - APIKeyAuth: []
+  /v1/agents/webrtc/{agent_id}/sessions:
+    post:
+      tags:
+        - Agents
+      summary: Create a WebRTC session
+      description: >-
+        Creates a WebRTC session on your trusted server and returns credentials
+        for the browser to join. Authenticate this request with an API key;
+        access tokens, including returned session tokens, cannot create
+        sessions.
+      operationId: createAgentWebrtcSession
+      parameters:
+        - name: agent_id
+          in: path
+          description: Unique identifier for the agent.
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentWebSessionRequest'
+      responses:
+        '200':
+          description: The pre-created call and its browser WebRTC credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAgentWebrtcSessionResponse'
+        '400':
+          description: Invalid session configuration or missing required dynamic variables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '404':
+          description: Agent not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '429':
+          description: Agent concurrency limit reached.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      security:
+        - APIKeyAuth: []
+  /v1/agents/websocket/{agent_id}/sessions:
+    post:
+      tags:
+        - Agents
+      summary: Create a WebSocket session
+      description: >-
+        Creates a call-bound WebSocket session on your trusted server and
+        returns a session token for the browser to connect. Authenticate this
+        request with an API key; access tokens, including returned session
+        tokens, cannot create sessions.
+      operationId: createAgentWebsocketSession
+      parameters:
+        - name: agent_id
+          in: path
+          description: Unique identifier for the agent.
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentWebSessionRequest'
+      responses:
+        '200':
+          description: The pre-created call and its browser session token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAgentWebsocketSessionResponse'
+        '400':
+          description: Invalid session configuration or missing required dynamic variables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '404':
+          description: Agent not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '429':
+          description: Agent concurrency limit reached.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      security:
+        - APIKeyAuth: []
   /agents/metrics:
     get:
       tags:
@@ -2294,12 +2454,6 @@ paths:
                     Accents](/api-reference/voices/add-accents). See [GET
                     /accents](/api-reference/accents/list) for values valid for
                     each language.
-                base_voice_id:
-                  $ref: '#/components/schemas/VoiceId'
-                  description: >-
-                    Optional base voice ID that the cloned voice is derived
-                    from.
-                  nullable: true
                 access:
                   type: string
                   enum:
@@ -4363,6 +4517,24 @@ components:
           description: STT transport paths. Omitted on TTS rows.
           items:
             $ref: '#/components/schemas/STTMode'
+        supported_languages:
+          type: array
+          description: >-
+            Sorted synthesis language codes supported by this TTS model. Omitted
+            on STT rows.
+          items:
+            type: string
+          example:
+            - de
+            - en
+            - es
+            - fr
+            - ja
+            - ko
+            - or
+            - pt
+            - ur
+            - zh
       required:
         - id
         - capability
@@ -5264,7 +5436,44 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit or set to `null` to use `en`.
+                  allOf:
+                    - $ref: >-
+                        #/components/schemas/NullableManagedAgentLanguageOrLocale
+                additional:
+                  description: >-
+                    Additional languages, each as `{ code, presets }`. Each code
+                    is a language, such as `fr`, or a locale, such as `es-MX`.
+                    Omit or send `[]` for a single-language agent.
+
+
+                    - When this list is nonempty, the primary and additional
+                    languages must be English (`en`), Spanish (`es`), French
+                    (`fr`), Hindi (`hi`), or Japanese (`ja`), or supported
+                    locales of these languages.
+
+                    - Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    Speech recognition listens for all configured languages. The
+                    agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 4
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentAdditionalLanguageInputV1'
+                  example:
+                    - code: es-MX
+                      presets:
+                        voice_id: <spanish_voice_id>
+                    - code: fr
             model:
               type: object
               properties:
@@ -5621,57 +5830,36 @@ components:
         Variable names are case-sensitive, up to 64 characters, and use letters,
         digits, or underscores. Start with a letter or underscore; `system__`
         and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
-    ManagedAgentPrimaryLanguageV1:
-      description: >-
-        ISO 639-1 language code used for speech recognition, agent responses,
-        and speech synthesis.
-      type: string
-      enum:
-        - en
-        - de
-        - pt
-        - zh
-        - ja
-        - fr
-        - es
-        - hi
-        - it
-        - ko
-        - nl
-        - pl
-        - ru
-        - sv
-        - tr
-        - tl
-        - bg
-        - ro
-        - ar
-        - cs
-        - el
-        - fi
-        - hr
-        - ms
-        - sk
-        - da
-        - ta
-        - uk
-        - hu
-        - 'no'
-        - vi
-        - bn
-        - th
-        - he
-        - ka
-        - id
-        - te
-        - gu
-        - kn
-        - ml
-        - mr
-        - pa
-        - or
-        - ur
-      title: ManagedAgentPrimaryLanguageV1
+    NullableManagedAgentLanguageOrLocale:
+      oneOf:
+        - $ref: '#/components/schemas/ManagedAgentLanguageOrLocale'
+        - title: 'Null'
+          type: string
+          nullable: true
+          enum:
+            - null
+    ManagedAgentAdditionalLanguageInputV1:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          description: >-
+            A language code (`en`, `es`, `fr`, `hi`, or `ja`) or a supported
+            locale of one of these languages, such as `es-MX`. A locale selects
+            a regional accent. See [supported
+            locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+          allOf:
+            - $ref: '#/components/schemas/MultilingualAgentLanguageOrLocale'
+          example: es-MX
+        presets:
+          description: >-
+            Settings the agent uses while speaking this language. Omit to use
+            the agent's own.
+          allOf:
+            - $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+      required:
+        - code
+      title: ManagedAgentAdditionalLanguageInputV1
     ManagedAgentFallbackStrategyV1:
       title: Fallback strategy
       description: >-
@@ -5835,8 +6023,24 @@ components:
           properties:
             primary:
               $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+            additional:
+              description: >-
+                Other languages the caller can switch to, in order. Each code is
+                a language, such as `fr`, or a locale, such as `es-MX`. A
+                language's `presets.voice_id` is the voice the agent speaks it
+                with. Returns `[]` when none are configured. Codes are returned
+                as saved: a locale such as `es-MX` is not reduced to `es`.
+              type: array
+              items:
+                $ref: '#/components/schemas/ManagedAgentAdditionalLanguageV1'
+              example:
+                - code: es-MX
+                  presets:
+                    voice_id: <spanish_voice_id>
+                - code: fr
           required:
             - primary
+            - additional
         model:
           type: object
           properties:
@@ -5929,6 +6133,192 @@ components:
         - speculative_generation
         - prompt_optimization
       title: ManagedAgentConfig
+    ManagedAgentLanguageOrLocale:
+      type: string
+      enum:
+        - ar
+        - bg
+        - bn
+        - cs
+        - da
+        - de
+        - el
+        - en
+        - es
+        - fi
+        - fr
+        - gu
+        - he
+        - hi
+        - hu
+        - id
+        - it
+        - ja
+        - ka
+        - kn
+        - ko
+        - mr
+        - ms
+        - nl
+        - 'no'
+        - pa
+        - pl
+        - pt
+        - ro
+        - ru
+        - sk
+        - sv
+        - ta
+        - te
+        - th
+        - tl
+        - tr
+        - uk
+        - ur
+        - vi
+        - zh
+        - ar-AE
+        - ar-SA
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-AT
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-AR
+        - es-BO
+        - es-CL
+        - es-CO
+        - es-DO
+        - es-ES
+        - es-MX
+        - es-PA
+        - es-PE
+        - es-PR
+        - es-US
+        - fi-FI
+        - fr-BE
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
+        - zh-TW
+    MultilingualAgentLanguageOrLocale:
+      type: string
+      enum:
+        - en
+        - es
+        - fr
+        - hi
+        - ja
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-AR
+        - es-BO
+        - es-CL
+        - es-CO
+        - es-DO
+        - es-ES
+        - es-MX
+        - es-PA
+        - es-PE
+        - es-PR
+        - es-US
+        - fr-BE
+        - fr-CA
+        - fr-FR
+        - hi-IN
+        - ja-JP
+    ManagedAgentLanguagePresetsV1:
+      type: object
+      additionalProperties: false
+      properties:
+        voice_id:
+          description: >-
+            ID of the voice the agent speaks this language with, instead of
+            `audio.output.voice_id`.
+          type: string
+          minLength: 1
+      required:
+        - voice_id
+      title: ManagedAgentLanguagePresetsV1
+    ManagedAgentPrimaryLanguageV1:
+      description: >-
+        The language the agent starts each call in: a language, such as `en`, or
+        a locale, such as `en-US`. See [supported languages and
+        locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+      allOf:
+        - $ref: '#/components/schemas/LanguageOrLocale'
+      title: ManagedAgentPrimaryLanguageV1
+    ManagedAgentAdditionalLanguageV1:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          description: >-
+            A language code (`en`, `es`, `fr`, `hi`, or `ja`) or a supported
+            locale of one of these languages, such as `es-MX`. A locale selects
+            a regional accent. See [supported
+            locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+          allOf:
+            - $ref: '#/components/schemas/MultilingualAgentLanguageOrLocale'
+          example: es-MX
+        presets:
+          description: >-
+            Settings the agent uses while speaking this language. Absent when it
+            uses the agent's own.
+          allOf:
+            - $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+      required:
+        - code
+      title: ManagedAgentAdditionalLanguageV1
     ManagedAgentSystemToolsV1:
       type: object
       properties:
@@ -6135,6 +6525,109 @@ components:
         - voicemail_detection
         - transfer_to_number
       title: ManagedAgentSystemTools
+    LanguageOrLocale:
+      type: string
+      enum:
+        - en
+        - fr
+        - de
+        - es
+        - pt
+        - zh
+        - ja
+        - hi
+        - it
+        - ko
+        - nl
+        - pl
+        - ru
+        - sv
+        - tr
+        - tl
+        - bg
+        - ro
+        - ar
+        - cs
+        - el
+        - fi
+        - hr
+        - ms
+        - sk
+        - da
+        - ta
+        - uk
+        - hu
+        - 'no'
+        - vi
+        - bn
+        - th
+        - he
+        - ka
+        - id
+        - te
+        - gu
+        - kn
+        - ml
+        - mr
+        - pa
+        - or
+        - ur
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-ES
+        - es-MX
+        - es-US
+        - fi-FI
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hr-HR
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - ml-IN
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - or-IN
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
     ListManagedAgentsV1Response:
       type: object
       properties:
@@ -6320,7 +6813,52 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit to keep the current primary language; set to `null` to
+                    use `en`.
+                  allOf:
+                    - $ref: >-
+                        #/components/schemas/NullableManagedAgentLanguageOrLocale
+                additional:
+                  description: >-
+                    Additional languages, each as `{ code, presets }`. Each code
+                    is a language, such as `fr`, or a locale, such as `es-MX`.
+                    Omit to preserve the current list; `[]` clears it. A list
+                    you send replaces the current one; entries are not appended
+                    or merged.
+
+
+                    - When this list is nonempty, the primary and additional
+                    languages must be English (`en`), Spanish (`es`), French
+                    (`fr`), Hindi (`hi`), or Japanese (`ja`), or supported
+                    locales of these languages.
+
+                    - Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    If the new primary language is already in the additional
+                    list, remove it from that list in the same request. Changes
+                    apply to new calls; calls in progress keep their starting
+                    configuration.
+
+
+                    The agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 4
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentAdditionalLanguageInputV1'
+                  example:
+                    - code: es-MX
+                      presets:
+                        voice_id: <spanish_voice_id>
+                    - code: fr
             model:
               type: object
               properties:
@@ -9138,6 +9676,138 @@ components:
           format: password
       required:
         - username
+    CreateAgentWebSessionRequest:
+      type: object
+      properties:
+        dynamic_variables:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: number
+              - type: boolean
+          description: >-
+            Trusted values that Cartesia stores on the call and supplies to the
+            agent.
+        config_overrides:
+          $ref: '#/components/schemas/AgentSessionConfig'
+    CreateAgentWebrtcSessionResponse:
+      type: object
+      required:
+        - call_id
+        - url
+        - token
+        - room
+        - expires_at
+      properties:
+        call_id:
+          type: string
+          description: ID of the pre-created call.
+        url:
+          type: string
+          format: uri
+          description: LiveKit server URL the browser connects to.
+        token:
+          type: string
+          description: >-
+            Short-lived LiveKit participant token for the browser connection. Do
+            not log it.
+        room:
+          type: string
+          description: LiveKit room the browser joins.
+        expires_at:
+          type: string
+          format: date-time
+          description: >-
+            Connection deadline. Create a new session if the browser does not
+            join before this time.
+    AgentSessionConfig:
+      type: object
+      additionalProperties: false
+      description: >-
+        Per-call overrides using the same field structure as agent
+        configuration. Omitted fields use the agent's published configuration.
+      properties:
+        instructions:
+          type: string
+          minLength: 1
+          maxLength: 200000
+          description: Instructions that define the agent's behavior for this call.
+        initial_message:
+          nullable: true
+          type: string
+          maxLength: 1000
+          description: >-
+            Message spoken when the call begins. Set to `null` to wait for the
+            caller to speak first.
+        language:
+          type: object
+          additionalProperties: false
+          properties:
+            primary:
+              allOf:
+                - $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+              nullable: true
+              description: >-
+                Primary language used for this call. Omit to inherit the
+                published language or set to `null` to use English (`en`).
+        audio:
+          type: object
+          additionalProperties: false
+          properties:
+            output:
+              type: object
+              additionalProperties: false
+              properties:
+                voice_id:
+                  type: string
+                  minLength: 1
+                  description: ID of the voice used for agent speech during this call.
+                speed:
+                  nullable: true
+                  type: number
+                  minimum: 0.6
+                  maximum: 1.5
+                  description: >-
+                    Speech speed multiplier from `0.6` to `1.5`. Set to `null`
+                    to use the default speed.
+                emotion:
+                  allOf:
+                    - $ref: '#/components/schemas/Emotion'
+                  nullable: true
+                  description: >-
+                    Text-to-speech emotion. Set to `null` to let the model infer
+                    the emotion from the transcript.
+    CreateAgentWebsocketSessionResponse:
+      type: object
+      required:
+        - call_id
+        - url
+        - token
+        - expires_at
+      properties:
+        call_id:
+          type: string
+          description: >-
+            ID of the pre-created call. The `session_ready` event returns the
+            same value.
+        url:
+          type: string
+          format: uri
+          description: >-
+            WebSocket URL for this agent. Append the returned session token as
+            the `access_token` query parameter.
+        token:
+          type: string
+          description: >-
+            Opaque, short-lived, single-use session token. Do not inspect or log
+            it.
+        expires_at:
+          type: string
+          format: date-time
+          description: >-
+            Connection deadline, currently four minutes after creation. Use this
+            timestamp rather than calculating the deadline.
     ListMetricsResponse:
       title: ListMetricsResponse
       type: object
