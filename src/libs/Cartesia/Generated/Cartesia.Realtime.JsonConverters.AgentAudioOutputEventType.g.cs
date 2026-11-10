@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.AgentAudioOutputEventTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.AgentAudioOutputEventType.");
+                        return global::Cartesia.Realtime.AgentAudioOutputEventTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Cartesia.Realtime.AgentAudioOutputEventType.");
                     }
 
                     break;

@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndType.");
+                        return global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndType.");
                     }
 
                     break;

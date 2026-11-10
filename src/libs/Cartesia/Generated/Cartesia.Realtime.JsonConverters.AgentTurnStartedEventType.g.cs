@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.AgentTurnStartedEventTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.AgentTurnStartedEventType.");
+                        return global::Cartesia.Realtime.AgentTurnStartedEventTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Cartesia.Realtime.AgentTurnStartedEventType.");
                     }
 
                     break;

@@ -18,7 +18,7 @@ namespace Cartesia.Realtime.TextToSpeech.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Cartesia.Realtime.TextToSpeech.ChunkResponseTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Cartesia.Realtime.TextToSpeech.ChunkResponseType.");
+                        return global::Cartesia.Realtime.TextToSpeech.ChunkResponseTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Cartesia.Realtime.TextToSpeech.ChunkResponseType.");
                     }
 
                     break;
