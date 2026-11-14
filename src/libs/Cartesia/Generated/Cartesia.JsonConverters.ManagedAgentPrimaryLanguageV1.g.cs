@@ -1,9 +1,10 @@
 #nullable enable
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace Cartesia.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ManagedAgentPrimaryLanguageV1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.ManagedAgentPrimaryLanguageV1>
+    public class ManagedAgentPrimaryLanguageV1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Cartesia.ManagedAgentPrimaryLanguageV1>
     {
         /// <inheritdoc />
         public override global::Cartesia.ManagedAgentPrimaryLanguageV1 Read(
@@ -11,32 +12,34 @@ namespace Cartesia.JsonConverters
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
         {
-            switch (reader.TokenType)
+            options = options ?? throw new global::System.ArgumentNullException(nameof(options));
+            var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
+
+            using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
+            var __rawJson = __jsonDocument.RootElement.GetRawText();
+
+            global::Cartesia.LanguageOrLocale? orLocale = default;
+            try
             {
-                case global::System.Text.Json.JsonTokenType.String:
-                {
-                    var stringValue = reader.GetString();
-                    if (stringValue != null)
-                    {
-                        return global::Cartesia.ManagedAgentPrimaryLanguageV1Extensions.ToEnum(stringValue) ?? default;
-                    }
-
-                    break;
-                }
-                case global::System.Text.Json.JsonTokenType.Number:
-                {
-                    var numValue = reader.GetInt32();
-                    return (global::Cartesia.ManagedAgentPrimaryLanguageV1)numValue;
-                }
-                case global::System.Text.Json.JsonTokenType.Null:
-                {
-                    return default(global::Cartesia.ManagedAgentPrimaryLanguageV1);
-                }
-                default:
-                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LanguageOrLocale), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LanguageOrLocale> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LanguageOrLocale).Name}");
+                orLocale = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
             }
+            catch (global::System.Text.Json.JsonException)
+            {
+            }
+            catch (global::System.InvalidOperationException)
+            {
+            }
+            catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+            {
+                // Legacy enum converters signal an incompatible JSON token with this exception.
+            }
+            var __value = new global::Cartesia.ManagedAgentPrimaryLanguageV1(
+                orLocale
+                );
 
-            return default;
+            return __value;
         }
 
         /// <inheritdoc />
@@ -45,9 +48,31 @@ namespace Cartesia.JsonConverters
             global::Cartesia.ManagedAgentPrimaryLanguageV1 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
-            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+            options = options ?? throw new global::System.ArgumentNullException(nameof(options));
+            var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            writer.WriteStringValue(global::Cartesia.ManagedAgentPrimaryLanguageV1Extensions.ToValueString(value));
+
+            writer.WriteStartObject();
+            var __writtenPropertyNames = new global::System.Collections.Generic.HashSet<string>(global::System.StringComparer.Ordinal);
+            if (value.IsOrLocale)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.LanguageOrLocale), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.LanguageOrLocale> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.LanguageOrLocale).Name}");
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickOrLocale(), typeInfo);
+                if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element0.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
+            }
+            writer.WriteEndObject();
         }
     }
 }

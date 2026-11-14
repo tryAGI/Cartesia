@@ -61,12 +61,6 @@ namespace Cartesia
         public global::Cartesia.VoiceAccent? Accent { get; set; }
 
         /// <summary>
-        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("base_voice_id")]
-        public string? BaseVoiceId { get; set; }
-
-        /// <summary>
         /// Who can use the cloned voice. Prefer `"public"` | `"private"`. Deprecated form field `access[type]` is still accepted.<br/>
         /// Default Value: private
         /// </summary>
@@ -108,9 +102,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of the voice you're cloning, and a prerequisite for [Add Voice Accents](/api-reference/voices/add-accents). See [GET /accents](/api-reference/accents/list) for values valid for each language.
         /// </param>
-        /// <param name="baseVoiceId">
-        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
-        /// </param>
         /// <param name="access">
         /// Who can use the cloned voice. Prefer `"public"` | `"private"`. Deprecated form field `access[type]` is still accepted.<br/>
         /// Default Value: private
@@ -126,7 +117,6 @@ namespace Cartesia
             string? tagline,
             string? description,
             global::Cartesia.VoiceAccent? accent,
-            string? baseVoiceId,
             global::Cartesia.VoicesCloneRequestAccess? access)
         {
             this.Clip = clip ?? throw new global::System.ArgumentNullException(nameof(clip));
@@ -136,7 +126,6 @@ namespace Cartesia
             this.Description = description;
             this.Language = language;
             this.Accent = accent;
-            this.BaseVoiceId = baseVoiceId;
             this.Access = access;
         }
 

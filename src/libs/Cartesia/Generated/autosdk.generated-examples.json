@@ -237,7 +237,7 @@
       "Slug": "voices-clone",
       "Description": "Generated from OpenAPI examples.",
       "Language": "http",
-      "Code": "### Clone Voice\n# @name voices_clone\nPOST {{host}}/voices/clone\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022clip\u0022; filename=\u0022clip.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./clip.bin\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022name\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022tagline\u0022\n\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022description\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022language\u0022\n\nen\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022accent\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022base_voice_id\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022access\u0022\n\nprivate\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Content-Type: application/json",
+      "Code": "### Clone Voice\n# @name voices_clone\nPOST {{host}}/voices/clone\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022clip\u0022; filename=\u0022clip.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./clip.bin\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022name\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022tagline\u0022\n\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022description\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022language\u0022\n\nen\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022accent\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022access\u0022\n\nprivate\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "voices_clone",
       "Setup": null
@@ -284,6 +284,17 @@
       "Code": "### Update Voice\n# @name voices_update\nPATCH {{host}}/voices/{{id}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022string\u0022,\n  \u0022tagline\u0022: \u0022string\u0022,\n  \u0022description\u0022: \u0022string\u0022,\n  \u0022gender\u0022: \u0022masculine\u0022,\n  \u0022accent\u0022: {},\n  \u0022access\u0022: \u0022private\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "voices_update",
+      "Setup": null
+    },
+    {
+      "Order": 27,
+      "Title": "Detect watermark",
+      "Slug": "detectwatermark",
+      "Description": "Check audio for a Cartesia watermark. Requires a paid plan.",
+      "Language": "http",
+      "Code": "### Detect watermark\n# @name detectWatermark\nPOST {{host}}/v1/watermark/detect\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022file\u0022; filename=\u0022file.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./file.bin\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Description: Watermark detection result\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "detectWatermark",
       "Setup": null
     }
   ]
