@@ -17,7 +17,7 @@ namespace Cartesia.Realtime
 
         /// <summary>
         /// `invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:<br/>
-        /// - `missing_dynamic_variables`: a value needed by the welcome message is missing.<br/>
+        /// - `missing_dynamic_variables`: a value needed by the initial message is missing.<br/>
         /// - `invalid_dynamic_variables`: the supplied names or values are invalid.<br/>
         /// - `dynamic_variables_not_allowed`: a browser access token was used to supply custom values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Cartesia.Realtime
         /// </summary>
         /// <param name="code">
         /// `invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:<br/>
-        /// - `missing_dynamic_variables`: a value needed by the welcome message is missing.<br/>
+        /// - `missing_dynamic_variables`: a value needed by the initial message is missing.<br/>
         /// - `invalid_dynamic_variables`: the supplied names or values are invalid.<br/>
         /// - `dynamic_variables_not_allowed`: a browser access token was used to supply custom values.
         /// </param>

@@ -22,6 +22,12 @@ namespace Cartesia
         public string? Text { get; set; }
 
         /// <summary>
+        /// Present and `true` on a `user` turn that ended while the agent's `initial_message` was playing with `initial_message_interruptions` set to `ignore`. The turn is in the LLM context, but the agent didn't answer it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignored")]
+        public bool? Ignored { get; set; }
+
+        /// <summary>
         /// The start timestamp in seconds relative to the start of the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_timestamp")]
@@ -74,6 +80,9 @@ namespace Cartesia
         /// <param name="text">
         /// The text content of the transcript. This is the text that was spoken by the user or the agent.
         /// </param>
+        /// <param name="ignored">
+        /// Present and `true` on a `user` turn that ended while the agent's `initial_message` was playing with `initial_message_interruptions` set to `ignore`. The turn is in the LLM context, but the agent didn't answer it.
+        /// </param>
         /// <param name="toolCalls">
         /// The tool calls made during the turn.
         /// </param>
@@ -91,12 +100,14 @@ namespace Cartesia
             float startTimestamp,
             float endTimestamp,
             string? text,
+            bool? ignored,
             global::System.Collections.Generic.IList<global::Cartesia.ToolCall>? toolCalls,
             float? sttTtfb,
             float? ttsTtfb)
         {
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
             this.Text = text;
+            this.Ignored = ignored;
             this.StartTimestamp = startTimestamp;
             this.EndTimestamp = endTimestamp;
             this.ToolCalls = toolCalls;

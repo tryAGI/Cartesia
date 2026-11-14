@@ -143,6 +143,7 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.ImportPhoneNumberBodyProviderById, global::Cartesia.ImportPhoneNumberBodyProviderByTwilioAccount>());
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.UpdatePhoneNumberBodyProviderById, global::Cartesia.UpdatePhoneNumberBodyProviderByTwilioAccount>());
+            options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }

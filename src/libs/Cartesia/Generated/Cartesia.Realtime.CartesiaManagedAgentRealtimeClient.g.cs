@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime
 {
     /// <summary>
-    /// Stream audio and events between an application and a Managed Agent. Server applications authenticate with `X-API-Key`; browser and mobile applications pass an `access_token` query parameter. See the [WebSocket guide](/line/integrations/websocket-api) for setup, limits, and audio handling.
+    /// Stream audio and events between an application and a Managed Agent. Server applications authenticate with `X-API-Key`. Browser and mobile applications should create a trusted session on their server and pass the returned single-use token in the `access_token` query parameter. That parameter also accepts existing generic agent tokens, but only the call-bound session credential carries trusted session values. See the [WebSocket guide](/line/integrations/websocket-api) for setup, limits, and audio handling.
     /// </summary>
     public sealed partial class CartesiaManagedAgentRealtimeClient : global::System.IDisposable, global::System.IAsyncDisposable
     {

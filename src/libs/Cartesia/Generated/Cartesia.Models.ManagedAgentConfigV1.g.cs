@@ -31,6 +31,14 @@ namespace Cartesia
         public string? InitialMessage { get; set; }
 
         /// <summary>
+        /// Controls how the agent handles interruptions while `initial_message` plays. `allow` lets the caller interrupt it, `ignore` plays it in full and adds what the caller says meanwhile to the LLM context without answering it, and `respond_after` plays it in full, then replies. Defaults to `allow`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initial_message_interruptions")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.JsonConverters.ManagedAgentInitialMessageInterruptionsV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Cartesia.ManagedAgentInitialMessageInterruptionsV1 InitialMessageInterruptions { get; set; }
+
+        /// <summary>
         /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instructions")]
@@ -110,6 +118,9 @@ namespace Cartesia
         /// Replaces saved samples on update. Omit to keep them, or send `{}` to clear them.<br/>
         /// Variable names are case-sensitive, up to 64 characters, and use letters, digits, or underscores. Start with a letter or underscore; `system__` and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
         /// </param>
+        /// <param name="initialMessageInterruptions">
+        /// Controls how the agent handles interruptions while `initial_message` plays. `allow` lets the caller interrupt it, `ignore` plays it in full and adds what the caller says meanwhile to the LLM context without answering it, and `respond_after` plays it in full, then replies. Defaults to `allow`.
+        /// </param>
         /// <param name="instructions">
         /// Instructions that define the agent's behavior. Supports dynamic variables such as `{{name}}`.
         /// </param>
@@ -139,6 +150,7 @@ namespace Cartesia
         public ManagedAgentConfigV1(
             global::Cartesia.ManagedAgentConfigV1Audio audio,
             global::Cartesia.ManagedAgentDynamicVariablePlaceholdersV1 dynamicVariablePlaceholders,
+            global::Cartesia.ManagedAgentInitialMessageInterruptionsV1 initialMessageInterruptions,
             string instructions,
             global::Cartesia.ManagedAgentConfigV1Language language,
             global::Cartesia.ManagedAgentConfigV1Model model,
@@ -153,6 +165,7 @@ namespace Cartesia
             this.Audio = audio ?? throw new global::System.ArgumentNullException(nameof(audio));
             this.DynamicVariablePlaceholders = dynamicVariablePlaceholders ?? throw new global::System.ArgumentNullException(nameof(dynamicVariablePlaceholders));
             this.InitialMessage = initialMessage;
+            this.InitialMessageInterruptions = initialMessageInterruptions;
             this.Instructions = instructions ?? throw new global::System.ArgumentNullException(nameof(instructions));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
