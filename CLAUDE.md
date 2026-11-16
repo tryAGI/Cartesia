@@ -55,9 +55,23 @@ the wrong conclusion that the realtime surface is unspecified. It is not.
 **`Extensions/CartesiaClient.RealtimeSpeechToText.cs` (711 lines) is superseded.** It was last
 touched 2026-08-08; the generated realtime clients arrived 2026-09-11 in "feat(cartesia): generate
 realtime speech clients" and the hand-written one was never removed. Nothing references it but
-itself and a test helper. Removing it is an API break for anyone who adopted
-`ConnectRealtimeSttAutoAsync`, so it wants a deliberate decision rather than a cleanup commit —
-Inworld went through the same transition and recorded it the same way.
+itself and a test helper.
+
+Two things checked before calling it removable, because neither is obvious:
+
+- **MEAI does not depend on it.** `ISpeechToTextClient.GetStreamingTextAsync` calls `GetTextAsync`
+  and chunks the REST result — it never opens a WebSocket — so removing the hand-written client does
+  not touch the MEAI surface.
+- **The `Cartesia-Version` header is the one thing lost.** The hand-written client sets it on the
+  upgrade request; nothing generated mentions it, because the fetched AsyncAPI contracts do not
+  declare it. The generated `ConnectAsync` takes `additionalHeaders`, so a caller can supply it —
+  but it stops being automatic, and every Cartesia endpoint requires it.
+
+So the sequence is: get the version header onto the generated path (declare it in the contract, or
+document passing it), then `[Obsolete]` the hand-written entry points pointing at
+`CartesiaSpeechToTextRealtimeClient` / `CartesiaSpeechToTextTurnsRealtimeClient`, then remove in a
+major. Removing it today is an API break for anyone who adopted `ConnectRealtimeSttAutoAsync` and
+silently drops the header. Inworld went through the same transition and recorded it the same way.
 
 - MEAI: `ISpeechToTextClient` implemented in `Extensions/CartesiaClient.SpeechToTextClient.cs`
   - Synchronous transcription via `POST /stt` — no polling needed
