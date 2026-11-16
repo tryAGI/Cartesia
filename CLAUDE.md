@@ -34,21 +34,30 @@ var client = new CartesiaClient(apiKey); // CARTESIA_API_KEY env var
 - Every endpoint requires `Cartesia-Version` header (e.g., `2025-04-16`)
 ### The WebSocket vocabulary is in the spec but unreachable from it
 
-The document declares `STTAutoFinalize*`, `STTManualFinalize*`, `STTBatchModel` and
+The OpenAPI document declares `STTAutoFinalize*`, `STTManualFinalize*`, `STTBatchModel` and
 `PhonemeTimestamps` as components, and **no `$ref` reaches any of them** — OpenAPI cannot express a
-WebSocket channel, so no path points at them. They are not dead: `Extensions/CartesiaClient.Realtime
-SpeechToText.cs` (711 lines) and `Extensions/CartesiaTtsSseExtensions.cs` (282 lines) use ten of
-them by hand.
+WebSocket channel, so no path points at them. They are not dead, and an "unreferenced components"
+audit should not talk you into deleting them:
+`scripts/audit_orphan_type_usage.py --sdk Cartesia` in the workspace repo lists the ten that
+hand-written code uses.
 
-So don't let an "unreferenced components" audit talk you into deleting them —
-`scripts/audit_orphan_type_usage.py --sdk Cartesia` in the workspace repo lists exactly which ten,
-and that check belongs before any such removal.
+### The realtime clients ARE generated — from four fetched AsyncAPI contracts
 
-What this actually signals is a **missing `asyncapi.yaml`**. Twelve SDKs here ship a handcrafted one
-(AssemblyAI, Deepgram, ElevenLabs, Inworld, Mistral, NariLabs, OpenAI, Simli, SmallestAI, Soniox,
-Ultravox, Xai) and have their realtime clients generated instead of written. Cartesia's component
-vocabulary already exists, which is the hard part; the 711 hand-written lines are what an AsyncAPI
-document would replace.
+`generate.sh` runs `fetch-asyncapi.py` for `agents`, `tts`, `stt` and `stt-turns`, producing
+`managed-agents-asyncapi.json`, `tts-asyncapi.json`, `stt-asyncapi.json` and
+`stt-turns-asyncapi.json`, and generates a client from each:
+`CartesiaManagedAgentRealtimeClient`, `CartesiaTextToSpeechRealtimeClient`,
+`CartesiaSpeechToTextRealtimeClient`, `CartesiaSpeechToTextTurnsRealtimeClient`.
+
+Note the filenames: there is no `asyncapi.yaml` here, so a `ls asyncapi.*` finds nothing and invites
+the wrong conclusion that the realtime surface is unspecified. It is not.
+
+**`Extensions/CartesiaClient.RealtimeSpeechToText.cs` (711 lines) is superseded.** It was last
+touched 2026-08-08; the generated realtime clients arrived 2026-09-11 in "feat(cartesia): generate
+realtime speech clients" and the hand-written one was never removed. Nothing references it but
+itself and a test helper. Removing it is an API break for anyone who adopted
+`ConnectRealtimeSttAutoAsync`, so it wants a deliberate decision rather than a cleanup commit —
+Inworld went through the same transition and recorded it the same way.
 
 - MEAI: `ISpeechToTextClient` implemented in `Extensions/CartesiaClient.SpeechToTextClient.cs`
   - Synchronous transcription via `POST /stt` — no polling needed
