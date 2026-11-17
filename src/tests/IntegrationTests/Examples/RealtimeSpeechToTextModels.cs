@@ -57,6 +57,10 @@ public partial class Tests
         var tooManyKeyterms = Enumerable.Repeat("Cartesia", 101).ToArray();
         string[] tooLongKeyterms = [new('x', 1201)];
 
+        // These entry points are [Obsolete] in favour of the generated realtime clients, but
+        // this test is about the keyterm limits the hand-written client enforces, so it has to
+        // keep calling them until the client itself goes.
+#pragma warning disable CS0618 // Type or member is obsolete
         var tooManyAct = () => api.ConnectRealtimeSttAutoAsync(
             STTEncoding.PcmS16le,
             sampleRate: 16000,
@@ -65,6 +69,7 @@ public partial class Tests
             STTEncoding.PcmS16le,
             sampleRate: 16000,
             keyterms: tooLongKeyterms);
+#pragma warning restore CS0618
 
         await Assert.ThrowsExactlyAsync<ArgumentException>(tooManyAct);
         await Assert.ThrowsExactlyAsync<ArgumentException>(tooLongAct);

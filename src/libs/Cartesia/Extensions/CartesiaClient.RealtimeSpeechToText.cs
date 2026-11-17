@@ -25,7 +25,15 @@ public sealed partial class CartesiaClient
     /// <param name="queryParams">Connection query parameters.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public async Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public async Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
         STTAutoFinalizeWebSocketQueryParams queryParams,
         string cartesiaVersion = DefaultRealtimeSttCartesiaVersion,
         CancellationToken cancellationToken = default)
@@ -60,7 +68,15 @@ public sealed partial class CartesiaClient
     /// <param name="model">Realtime STT auto-finalize model.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
         STTEncoding encoding,
         int sampleRate,
         STTAutoFinalizeModel model = STTAutoFinalizeModel.Ink2,
@@ -86,7 +102,15 @@ public sealed partial class CartesiaClient
     /// <param name="model">Realtime STT auto-finalize model.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public Task<CartesiaRealtimeSttAutoSession> ConnectRealtimeSttAutoAsync(
         STTEncoding encoding,
         int sampleRate,
         IReadOnlyList<string> keyterms,
@@ -113,7 +137,15 @@ public sealed partial class CartesiaClient
     /// <param name="queryParams">Connection query parameters.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public async Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public async Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
         STTManualFinalizeWebSocketQueryParams queryParams,
         string cartesiaVersion = DefaultRealtimeSttCartesiaVersion,
         CancellationToken cancellationToken = default)
@@ -151,7 +183,15 @@ public sealed partial class CartesiaClient
     /// <param name="maxSilenceDurationSecs">Optional silence duration for Ink Whisper models.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
         STTEncoding encoding,
         int sampleRate,
         STTManualFinalizeModel model = STTManualFinalizeModel.Ink2,
@@ -186,7 +226,15 @@ public sealed partial class CartesiaClient
     /// <param name="maxSilenceDurationSecs">Optional silence duration for Ink Whisper models.</param>
     /// <param name="cartesiaVersion">Cartesia API version to use for the WebSocket connection.</param>
     /// <param name="cancellationToken">The token to cancel the operation with.</param>
-    public Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
+    [global::System.Obsolete(
+        "Superseded by the generated realtime clients: use "
+        + "Cartesia.Realtime.SpeechToTextTurns.CartesiaSpeechToTextTurnsRealtimeClient for "
+        + "automatic turn finalization and "
+        + "Cartesia.Realtime.SpeechToText.CartesiaSpeechToTextRealtimeClient for manual "
+        + "finalization. Both are generated from Cartesia's own AsyncAPI contracts and take "
+        + "the API version as a required parameter. This hand-written client will be removed "
+        + "in a future major version.")]
+        public Task<CartesiaRealtimeSttManualSession> ConnectRealtimeSttManualAsync(
         STTEncoding encoding,
         int sampleRate,
         IReadOnlyList<string> keyterms,
