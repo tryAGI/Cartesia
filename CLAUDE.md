@@ -62,16 +62,17 @@ Two things checked before calling it removable, because neither is obvious:
 - **MEAI does not depend on it.** `ISpeechToTextClient.GetStreamingTextAsync` calls `GetTextAsync`
   and chunks the REST result — it never opens a WebSocket — so removing the hand-written client does
   not touch the MEAI surface.
-- **The `Cartesia-Version` header is the one thing lost.** The hand-written client sets it on the
-  upgrade request; nothing generated mentions it, because the fetched AsyncAPI contracts do not
-  declare it. The generated `ConnectAsync` takes `additionalHeaders`, so a caller can supply it —
-  but it stops being automatic, and every Cartesia endpoint requires it.
+- **The API version is not lost.** The hand-written client sends it as a `Cartesia-Version` header;
+  the fetched contracts declare `cartesia_version` as a **required query parameter**, so
+  `ConnectSessionAsync` takes a typed, mandatory `SpeechToTextApiVersion` on both channels. Grepping
+  the generated files for `Cartesia-Version` finds nothing and invites the opposite conclusion —
+  check the contract, not the header list.
 
-So the sequence is: get the version header onto the generated path (declare it in the contract, or
-document passing it), then `[Obsolete]` the hand-written entry points pointing at
-`CartesiaSpeechToTextRealtimeClient` / `CartesiaSpeechToTextTurnsRealtimeClient`, then remove in a
-major. Removing it today is an API break for anyone who adopted `ConnectRealtimeSttAutoAsync` and
-silently drops the header. Inworld went through the same transition and recorded it the same way.
+So nothing functional blocks removal: both channels are generated, the version is handled more
+strictly than by hand, and MEAI is uninvolved. What remains is the API break for anyone who adopted
+`ConnectRealtimeSttAutoAsync`, which is a deprecation question - `[Obsolete]` pointing at
+`CartesiaSpeechToTextRealtimeClient` / `CartesiaSpeechToTextTurnsRealtimeClient`, then removal in a
+major. Inworld went through the same transition and recorded it the same way.
 
 - MEAI: `ISpeechToTextClient` implemented in `Extensions/CartesiaClient.SpeechToTextClient.cs`
   - Synchronous transcription via `POST /stt` — no polling needed
