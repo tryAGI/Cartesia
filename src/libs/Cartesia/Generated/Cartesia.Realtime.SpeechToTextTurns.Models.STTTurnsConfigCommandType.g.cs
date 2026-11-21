@@ -4,7 +4,8 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Command type. Send this as a JSON encoded WebSocket text message to update model settings.
+    /// Command type. Send this as a JSON formatted WebSocket text message to update model settings.<br/>
+    /// Changes take effect right away, including for words not returned yet. There's no reply on success. An invalid message returns an `error` event, changes nothing, and leaves the connection open.
     /// </summary>
     public enum STTTurnsConfigCommandType
     {

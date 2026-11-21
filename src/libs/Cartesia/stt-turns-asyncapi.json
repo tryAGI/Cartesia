@@ -3,7 +3,7 @@
   "info": {
     "title": "Cartesia Turn-Detecting Speech-to-Text WebSocket API",
     "version": "2026-08-14",
-    "description": "Realtime speech transcription with built-in turn detection\n\n<Note>\n`ink-2` and `ink-preview` support English, French, Hindi, Japanese, and Spanish,\nand detect the language automatically.\n</Note>\n"
+    "description": "Realtime speech transcription with built-in turn detection\n\n<Note>\n`ink-2` supports English, French, Hindi, Japanese, and Spanish. `ink-preview` supports [44 languages](/use-the-api/stt/languages).\nBoth detect the language automatically.\n</Note>\n"
   },
   "servers": {
     "production": {
@@ -71,7 +71,7 @@
               "model": {
                 "type": "string",
                 "example": "ink-2",
-                "description": "ID of the model to use for transcription: `ink-2`, `ink-preview`.\n\nSee [Models](/build-with-cartesia/stt/latest) for details.\n"
+                "description": "ID of the model to use for transcription: `ink-2` or `ink-preview`.\n\nSee [Models](/build-with-cartesia/stt/latest) for details.\n"
               },
               "encoding": {
                 "$ref": "#/components/schemas/SpeechToTextTurnsEncoding"
@@ -80,42 +80,47 @@
                 "type": "integer",
                 "format": "int32",
                 "example": 16000,
-                "description": "The sample rate of the audio in Hz.\n"
+                "description": "The sample rate of the audio in Hz, from 8000 to 48000\n"
               },
               "cartesia_version": {
                 "$ref": "#/components/schemas/SpeechToTextTurnsApiVersion"
+              },
+              "language_hint": {
+                "type": "string",
+                "example": "hi",
+                "description": "Used by `ink-preview` only. `ink-2` returns an error.\n\nA language to steer transcription toward. Hints don't stop the model from transcribing other languages.\n\nTo pass several, repeat the `language_hint` query parameter. You can pass up to 6. Use base codes from [Languages](/use-the-api/stt/languages), such as `pt`, not `pt-BR`. `language_hints` is also accepted as an alias.\n\nExample: `?language_hint=hi&language_hint=en`\n\nSee [Languages](/use-the-api/stt/languages#language-hints) for details.\n"
               },
               "turn_start_threshold": {
                 "type": "number",
                 "default": 0.8,
                 "minimum": 0.5,
                 "maximum": 0.9,
-                "description": "Threshold above which to start the turn. Default: 0.8. Range: 0.5\u20130.9. Must stay above the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold above which the turn starts. Default: 0.8. Range: 0.5\u20130.9. Must stay above `turn_eager_end_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "turn_eager_end_threshold": {
                 "type": "number",
                 "default": 0.6,
                 "minimum": 0.3,
                 "maximum": 0.8,
-                "description": "Threshold below which to eager end the turn. Default: 0.6. Range: 0.3\u20130.8. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold below which `turn.eager_end` fires. Default: 0.6. Range: 0.3\u20130.8. Must stay between `turn_end_threshold` and `turn_start_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "turn_end_threshold": {
                 "type": "number",
                 "default": 0.3,
                 "minimum": 0.05,
                 "maximum": 0.5,
-                "description": "Threshold below which to end the turn. Default: 0.3. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold below which the turn ends. Default: 0.3. Range: 0.05\u20130.5. Must stay below `turn_eager_end_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "turn_end_timeout_ms": {
                 "type": "number",
                 "default": 5600,
                 "minimum": 640,
                 "maximum": 11200,
-                "description": "Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "The longest the model waits after the user stops speaking before it ends the turn, in milliseconds. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "keyterm": {
                 "type": "array",
-                "description": "Key terms to improve the recall of specific words and phrases.\n\nRepeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.\n\nExample: `?keyterm=Ink%202&keyterm=Cartesia`\n\nSee [Keyterm prompting](/use-the-api/stt/keyterms) for details.\n",
+                "description": "Key terms that help the model recognize specific words and phrases.\n\nTo pass several, repeat the `keyterm` query parameter. `ink-preview` accepts up to 500 keyterms totaling 5,000 characters. `ink-2` accepts up to 100 totaling 1,200. To boost one multi-word phrase, join the words with `%20`. `keyterms` is accepted as an alias.\n\nURLs longer than about 8 KB are rejected with HTTP 414. With `ink-preview`, send long lists in a `config` message after you connect.\n\nExample: `?keyterm=Ink%202&keyterm=Cartesia`\n\nSee [Keyterm prompting](/use-the-api/stt/keyterms) for details.\n",
                 "items": {
                   "type": "string"
                 }
@@ -257,7 +262,7 @@
       "STTTurnsAudioData": {
         "name": "STTTurnsAudioData",
         "title": "Send Audio Data",
-        "description": "Send WebSocket binary messages containing raw audio data as specified by the `encoding` and `sample_rate` query parameters.\n\nAudio Requirements:\n- Send audio in small chunks, e.g. 100 ms\n- Audio format must match the `encoding` and `sample_rate` parameters\n",
+        "description": "Send raw audio as binary WebSocket messages, in small chunks such as 100 ms.\n\nThe audio must match the `encoding` and `sample_rate` query parameters.\n",
         "contentType": "application/octet-stream",
         "payload": {
           "$ref": "#/components/schemas/STTTurnsAudioData"
@@ -266,7 +271,7 @@
       "STTTurnsCloseCommand": {
         "name": "STTTurnsCloseCommand",
         "title": "Close Command",
-        "description": "Send a JSON encoded close command as WebSocket text message to close the session cleanly. All buffered audio will be processed by the model into events.",
+        "description": "Send a JSON formatted `close` command as a WebSocket text message to close the session cleanly. The model processes all buffered audio into events.\n",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/STTTurnsCloseCommand"
@@ -275,7 +280,7 @@
       "STTTurnsConfigCommand": {
         "name": "STTTurnsConfigCommand",
         "title": "Config Command",
-        "description": "Send a JSON encoded config command as a WebSocket text message to update model settings.",
+        "description": "Change turn detection settings, keyterms, or language hints mid-stream",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/STTTurnsConfigCommand"
@@ -284,7 +289,7 @@
       "STTTurnsConnected": {
         "name": "STTTurnsConnected",
         "title": "Connected",
-        "description": "Fires once when the WebSocket connection is established.\n\nYou do not need to wait for this event before sending audio.\n",
+        "description": "Fires once when the WebSocket connection opens.\n\nYou don't need to wait for this event before sending audio.\n",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/STTTurnsConnected"
@@ -293,7 +298,7 @@
       "STTTurnsTurnStart": {
         "name": "STTTurnsTurnStart",
         "title": "Turn Start",
-        "description": "Marks the start of a user turn. Fires quickly after the user begins speaking.\n\nThis event can be used to interrupt your agent to avoid talking over the user.\n",
+        "description": "Marks the start of a user turn. Fires soon after the user starts speaking.\n\nUse this event to interrupt your agent so it doesn't talk over the user.\n",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/STTTurnsTurnStart"
@@ -338,7 +343,7 @@
       "STTErrorResponse": {
         "name": "STTErrorResponse",
         "title": "Error Response",
-        "description": "Error information for STT WebSocket connections.",
+        "description": "Error information for STT WebSocket connections",
         "contentType": "application/json",
         "payload": {
           "$ref": "#/components/schemas/STTErrorResponse"
@@ -349,7 +354,7 @@
       "STTTurnsAudioData": {
         "type": "string",
         "format": "binary",
-        "description": "Raw audio data as a binary message in the format specified by the `encoding` parameter. Send audio in small chunks, e.g. 100 ms."
+        "description": "Raw audio as a binary message, in the format set by the `encoding` parameter. Send it in small chunks, such as 100 ms.\n"
       },
       "STTTurnsCloseCommand": {
         "type": "object",
@@ -362,10 +367,10 @@
             "enum": [
               "close"
             ],
-            "description": "Command type. Send this as a JSON encoded WebSocket text message to close the session."
+            "description": "Command type. Send this as a JSON formatted WebSocket text message to close the session."
           }
         },
-        "description": "Send a JSON encoded close command as WebSocket text message to close the session cleanly. All buffered audio will be processed by the model into events."
+        "description": "Send a JSON formatted `close` command as a WebSocket text message to close the session cleanly. The model processes all buffered audio into events.\n"
       },
       "STTTurnsConfigCommand": {
         "type": "object",
@@ -378,36 +383,50 @@
             "enum": [
               "config"
             ],
-            "description": "Command type. Send this as a JSON encoded WebSocket text message to update model settings."
+            "description": "Command type. Send this as a JSON formatted WebSocket text message to update model settings.\n\nChanges take effect right away, including for words not returned yet. There's no reply on success. An invalid message returns an `error` event, changes nothing, and leaves the connection open.\n"
           },
           "turn": {
             "type": "object",
-            "description": "Turn detection settings.",
+            "description": "Turn detection settings",
             "properties": {
               "start_threshold": {
                 "type": "number",
                 "default": 0.8,
-                "description": "Threshold above which to start the turn. Default: 0.8. Range: 0.5\u20130.9. Must stay above the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold above which the turn starts. Default: 0.8. Range: 0.5\u20130.9. Must stay above `eager_end_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "eager_end_threshold": {
                 "type": "number",
                 "default": 0.6,
-                "description": "Threshold below which to eager end the turn. Default: 0.6. Range: 0.3\u20130.8. Must stay between the end and start thresholds.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold below which `turn.eager_end` fires. Default: 0.6. Range: 0.3\u20130.8. Must stay between `end_threshold` and `start_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "end_threshold": {
                 "type": "number",
                 "default": 0.3,
-                "description": "Threshold below which to end the turn. Default: 0.3. Range: 0.05\u20130.5. Must stay below the eager end threshold.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "Threshold below which the turn ends. Default: 0.3. Range: 0.05\u20130.5. Must stay below `eager_end_threshold`.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               },
               "end_timeout_ms": {
                 "type": "number",
                 "default": 5600,
-                "description": "Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
+                "description": "The longest the model waits after the user stops speaking before it ends the turn, in milliseconds. Default: 5600. Range: 640\u201311200.\n\nSee [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.\n"
               }
             }
+          },
+          "keyterms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "`ink-preview` only. Replaces the session's keyterms. `[]` clears them, and leaving the field out keeps them. The limits are the same as at connect time.\n\nSee [Change keyterms mid-stream](/use-the-api/stt/keyterms#change-keyterms-mid-stream).\n"
+          },
+          "language_hints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "`ink-preview` only. Replaces the session's language hints, up to 6. `[]` clears them, and leaving the field out keeps them.\n\nSee [Change hints mid-stream](/use-the-api/stt/languages#change-hints-mid-stream).\n"
           }
         },
-        "description": "Send a JSON encoded config command as a WebSocket text message to update model settings."
+        "description": "Change turn detection settings, keyterms, or language hints mid-stream"
       },
       "STTTurnsConnected": {
         "type": "object",
@@ -421,14 +440,14 @@
             "enum": [
               "connected"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "request_id": {
             "type": "string",
-            "description": "Unique identifier for this connection."
+            "description": "Unique identifier for this connection"
           }
         },
-        "description": "Fires once when the WebSocket connection is established.\n\nYou do not need to wait for this event before sending audio.\n"
+        "description": "Fires once when the WebSocket connection opens.\n\nYou don't need to wait for this event before sending audio.\n"
       },
       "STTTurnsTurnStart": {
         "type": "object",
@@ -442,14 +461,18 @@
             "enum": [
               "turn.start"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "request_id": {
             "type": "string",
             "description": "Unique identifier for this connection. Does not change between turns."
+          },
+          "turn_id": {
+            "type": "string",
+            "description": "Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one."
           }
         },
-        "description": "Marks the start of a user turn. Fires quickly after the user begins speaking.\n\nThis event can be used to interrupt your agent to avoid talking over the user.\n"
+        "description": "Marks the start of a user turn. Fires soon after the user starts speaking.\n\nUse this event to interrupt your agent so it doesn't talk over the user.\n"
       },
       "STTTurnsTurnUpdate": {
         "type": "object",
@@ -464,15 +487,45 @@
             "enum": [
               "turn.update"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "transcript": {
             "type": "string",
-            "description": "Cumulative text for the current turn, i.e. the full text transcribed so far in this turn, not a delta."
+            "description": "All text transcribed so far in the current turn, not just the new text"
+          },
+          "words": {
+            "type": "array",
+            "description": "`ink-preview` only. Every complete word in the turn so far, with timestamps. A word joins the list once the model has heard all of it, and it never changes after that. So during a turn, `words` can trail `transcript`. Left out when there are none.\n\nSee [Word timestamps](/use-the-api/stt/word-timestamps).\n",
+            "items": {
+              "type": "object",
+              "required": [
+                "word",
+                "start",
+                "end"
+              ],
+              "properties": {
+                "word": {
+                  "type": "string",
+                  "description": "The word with any punctuation attached. `ink-whisper` words can start with a space."
+                },
+                "start": {
+                  "type": "number",
+                  "description": "Start time in seconds, counted from the start of the audio sent on the connection"
+                },
+                "end": {
+                  "type": "number",
+                  "description": "End time in seconds, counted from the start of the audio sent on the connection"
+                }
+              }
+            }
           },
           "request_id": {
             "type": "string",
             "description": "Unique identifier for this connection. Does not change between turns."
+          },
+          "turn_id": {
+            "type": "string",
+            "description": "Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one."
           }
         },
         "description": "Fires repeatedly as the model transcribes the current user turn.\n"
@@ -490,15 +543,68 @@
             "enum": [
               "turn.eager_end"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "transcript": {
             "type": "string",
-            "description": "Cumulative text for the current turn."
+            "description": "All text transcribed so far in the current turn. It can be empty. Don't start a reply for an empty transcript. See [Turn detection](/use-the-api/stt/turns).\n"
+          },
+          "words": {
+            "type": "array",
+            "description": "`ink-preview` only. Every word in the turn, with timestamps. Left out when there are none.\n\nSee [Word timestamps](/use-the-api/stt/word-timestamps).\n",
+            "items": {
+              "type": "object",
+              "required": [
+                "word",
+                "start",
+                "end"
+              ],
+              "properties": {
+                "word": {
+                  "type": "string",
+                  "description": "The word with any punctuation attached. `ink-whisper` words can start with a space."
+                },
+                "start": {
+                  "type": "number",
+                  "description": "Start time in seconds, counted from the start of the audio sent on the connection"
+                },
+                "end": {
+                  "type": "number",
+                  "description": "End time in seconds, counted from the start of the audio sent on the connection"
+                }
+              }
+            }
+          },
+          "languages": {
+            "type": "array",
+            "description": "`ink-preview` only. The languages spoken in the turn, highest confidence first. It lists the languages the model is confident about, or only the most likely one if it isn't confident about any. If it's left out, treat the language as unknown.\n\nSee [Detected languages](/use-the-api/stt/languages#detected-languages).\n",
+            "items": {
+              "type": "object",
+              "required": [
+                "language",
+                "confidence"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string",
+                  "description": "Language code. See [Languages](/use-the-api/stt/languages)."
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "How confident the model is that this language was spoken, from 0 (not confident) to 1 (very confident).\n"
+                }
+              }
+            }
           },
           "request_id": {
             "type": "string",
             "description": "Unique identifier for this connection. Does not change between turns."
+          },
+          "turn_id": {
+            "type": "string",
+            "description": "Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one."
           }
         },
         "description": "Fires when the model predicts that the user might be done speaking.\n"
@@ -515,11 +621,15 @@
             "enum": [
               "turn.resume"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "request_id": {
             "type": "string",
             "description": "Unique identifier for this connection. Does not change between turns."
+          },
+          "turn_id": {
+            "type": "string",
+            "description": "Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one."
           }
         },
         "description": "Fires after `turn.eager_end` if the user turn has not actually ended.\n"
@@ -537,15 +647,68 @@
             "enum": [
               "turn.end"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "transcript": {
             "type": "string",
-            "description": "Definitive transcript for the completed turn."
+            "description": "The final transcript for the completed turn. It can be empty. Discard turns that end with an empty transcript. See [Turn detection](/use-the-api/stt/turns).\n"
+          },
+          "words": {
+            "type": "array",
+            "description": "`ink-preview` only. Every word in the turn, with timestamps. Left out when there are none.\n\nSee [Word timestamps](/use-the-api/stt/word-timestamps).\n",
+            "items": {
+              "type": "object",
+              "required": [
+                "word",
+                "start",
+                "end"
+              ],
+              "properties": {
+                "word": {
+                  "type": "string",
+                  "description": "The word with any punctuation attached. `ink-whisper` words can start with a space."
+                },
+                "start": {
+                  "type": "number",
+                  "description": "Start time in seconds, counted from the start of the audio sent on the connection"
+                },
+                "end": {
+                  "type": "number",
+                  "description": "End time in seconds, counted from the start of the audio sent on the connection"
+                }
+              }
+            }
+          },
+          "languages": {
+            "type": "array",
+            "description": "`ink-preview` only. The languages spoken in the turn, highest confidence first. It lists the languages the model is confident about, or only the most likely one if it isn't confident about any. If it's left out, treat the language as unknown.\n\nSee [Detected languages](/use-the-api/stt/languages#detected-languages).\n",
+            "items": {
+              "type": "object",
+              "required": [
+                "language",
+                "confidence"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string",
+                  "description": "Language code. See [Languages](/use-the-api/stt/languages)."
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "How confident the model is that this language was spoken, from 0 (not confident) to 1 (very confident).\n"
+                }
+              }
+            }
           },
           "request_id": {
             "type": "string",
             "description": "Unique identifier for this connection. Does not change between turns."
+          },
+          "turn_id": {
+            "type": "string",
+            "description": "Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one."
           }
         },
         "description": "Marks the end of a user turn.\n"
@@ -564,24 +727,24 @@
             "enum": [
               "error"
             ],
-            "description": "Event type identifier."
+            "description": "Event type identifier"
           },
           "error_code": {
             "type": "string",
-            "description": "Machine-readable error code."
+            "description": "Machine-readable error code"
           },
           "status_code": {
             "type": "number",
             "format": "integer",
-            "description": "An HTTP response status code."
+            "description": "An HTTP response status code"
           },
           "title": {
             "type": "string",
-            "description": "Human-readable error title."
+            "description": "Human-readable error title"
           },
           "message": {
             "type": "string",
-            "description": "Human-readable error message."
+            "description": "Human-readable error message"
           },
           "doc_url": {
             "type": "string",
@@ -589,10 +752,10 @@
           },
           "request_id": {
             "type": "string",
-            "description": "Unique identifier for this websocket connection"
+            "description": "Unique identifier for this WebSocket connection"
           }
         },
-        "description": "Error information for STT WebSocket connections."
+        "description": "Error information for STT WebSocket connections"
       },
       "SpeechToTextTurnsEncoding": {
         "type": "string",
@@ -604,7 +767,7 @@
           "pcm_mulaw",
           "pcm_alaw"
         ],
-        "description": "The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.\n\nFor guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).\n"
+        "description": "The encoding of the raw audio you send. The server uses it to read your audio.\n\nFor help choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).\n"
       },
       "SpeechToTextTurnsApiVersion": {
         "type": "string",
@@ -612,7 +775,7 @@
           "2026-08-14"
         ],
         "example": "2026-08-14",
-        "description": "API version."
+        "description": "API version"
       }
     }
   }

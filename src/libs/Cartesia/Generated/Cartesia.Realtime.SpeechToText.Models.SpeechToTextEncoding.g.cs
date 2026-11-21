@@ -4,8 +4,8 @@
 namespace Cartesia.Realtime.SpeechToText
 {
     /// <summary>
-    /// The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.<br/>
-    /// For guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).
+    /// The encoding of the raw audio you send. The server uses it to read your audio.<br/>
+    /// For help choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).
     /// </summary>
     public enum SpeechToTextEncoding
     {

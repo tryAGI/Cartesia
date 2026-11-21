@@ -91,6 +91,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        CentralCatalan,
+        /// <summary>
+        ///
+        /// </summary>
         CentralTamil,
         /// <summary>
         ///
@@ -123,6 +127,10 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        EgyptianArabic,
+        /// <summary>
+        ///
+        /// </summary>
         EmiratiArabic,
         /// <summary>
         ///
@@ -136,6 +144,10 @@ namespace Cartesia
         ///
         /// </summary>
         GeneralAmerican,
+        /// <summary>
+        ///
+        /// </summary>
+        HongKongCantonese,
         /// <summary>
         ///
         /// </summary>
@@ -307,6 +319,14 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        StandardBasque,
+        /// <summary>
+        ///
+        /// </summary>
+        StandardGalician,
+        /// <summary>
+        ///
+        /// </summary>
         StandardGerman,
         /// <summary>
         ///
@@ -359,6 +379,14 @@ namespace Cartesia
         /// <summary>
         ///
         /// </summary>
+        Valencian,
+        /// <summary>
+        ///
+        /// </summary>
+        Welsh,
+        /// <summary>
+        ///
+        /// </summary>
         Zagreb,
     }
 
@@ -394,6 +422,7 @@ namespace Cartesia
                 VoiceAccent.CanadianEnglish => "canadian-english",
                 VoiceAccent.CanadianFrench => "canadian-french",
                 VoiceAccent.Castilian => "castilian",
+                VoiceAccent.CentralCatalan => "central-catalan",
                 VoiceAccent.CentralTamil => "central-tamil",
                 VoiceAccent.CentralThai => "central-thai",
                 VoiceAccent.CentralVietnamese => "central-vietnamese",
@@ -402,10 +431,12 @@ namespace Cartesia
                 VoiceAccent.Czech => "czech",
                 VoiceAccent.Danish => "danish",
                 VoiceAccent.Dominican => "dominican",
+                VoiceAccent.EgyptianArabic => "egyptian-arabic",
                 VoiceAccent.EmiratiArabic => "emirati-arabic",
                 VoiceAccent.EuropeanPortuguese => "european-portuguese",
                 VoiceAccent.Finnish => "finnish",
                 VoiceAccent.GeneralAmerican => "general-american",
+                VoiceAccent.HongKongCantonese => "hong-kong-cantonese",
                 VoiceAccent.IndianBengali => "indian-bengali",
                 VoiceAccent.IndianEnglish => "indian-english",
                 VoiceAccent.IndianUrdu => "indian-urdu",
@@ -448,6 +479,8 @@ namespace Cartesia
                 VoiceAccent.SouthernKarnataka => "southern-karnataka",
                 VoiceAccent.SouthernUs => "southern-us",
                 VoiceAccent.SouthernVietnamese => "southern-vietnamese",
+                VoiceAccent.StandardBasque => "standard-basque",
+                VoiceAccent.StandardGalician => "standard-galician",
                 VoiceAccent.StandardGerman => "standard-german",
                 VoiceAccent.StandardHindi => "standard-hindi",
                 VoiceAccent.StandardIndonesian => "standard-indonesian",
@@ -461,6 +494,8 @@ namespace Cartesia
                 VoiceAccent.Thessaloniki => "thessaloniki",
                 VoiceAccent.UnitedStatesSpanish => "united-states-spanish",
                 VoiceAccent.Urdu => "urdu",
+                VoiceAccent.Valencian => "valencian",
+                VoiceAccent.Welsh => "welsh",
                 VoiceAccent.Zagreb => "zagreb",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -492,6 +527,7 @@ namespace Cartesia
                 "canadian-english" => VoiceAccent.CanadianEnglish,
                 "canadian-french" => VoiceAccent.CanadianFrench,
                 "castilian" => VoiceAccent.Castilian,
+                "central-catalan" => VoiceAccent.CentralCatalan,
                 "central-tamil" => VoiceAccent.CentralTamil,
                 "central-thai" => VoiceAccent.CentralThai,
                 "central-vietnamese" => VoiceAccent.CentralVietnamese,
@@ -500,10 +536,12 @@ namespace Cartesia
                 "czech" => VoiceAccent.Czech,
                 "danish" => VoiceAccent.Danish,
                 "dominican" => VoiceAccent.Dominican,
+                "egyptian-arabic" => VoiceAccent.EgyptianArabic,
                 "emirati-arabic" => VoiceAccent.EmiratiArabic,
                 "european-portuguese" => VoiceAccent.EuropeanPortuguese,
                 "finnish" => VoiceAccent.Finnish,
                 "general-american" => VoiceAccent.GeneralAmerican,
+                "hong-kong-cantonese" => VoiceAccent.HongKongCantonese,
                 "indian-bengali" => VoiceAccent.IndianBengali,
                 "indian-english" => VoiceAccent.IndianEnglish,
                 "indian-urdu" => VoiceAccent.IndianUrdu,
@@ -546,6 +584,8 @@ namespace Cartesia
                 "southern-karnataka" => VoiceAccent.SouthernKarnataka,
                 "southern-us" => VoiceAccent.SouthernUs,
                 "southern-vietnamese" => VoiceAccent.SouthernVietnamese,
+                "standard-basque" => VoiceAccent.StandardBasque,
+                "standard-galician" => VoiceAccent.StandardGalician,
                 "standard-german" => VoiceAccent.StandardGerman,
                 "standard-hindi" => VoiceAccent.StandardHindi,
                 "standard-indonesian" => VoiceAccent.StandardIndonesian,
@@ -559,6 +599,8 @@ namespace Cartesia
                 "thessaloniki" => VoiceAccent.Thessaloniki,
                 "united-states-spanish" => VoiceAccent.UnitedStatesSpanish,
                 "urdu" => VoiceAccent.Urdu,
+                "valencian" => VoiceAccent.Valencian,
+                "welsh" => VoiceAccent.Welsh,
                 "zagreb" => VoiceAccent.Zagreb,
                 _ => null,
             };

@@ -16,7 +16,7 @@ namespace Cartesia
         public global::Cartesia.TranscriptionResponseType Type { get; set; }
 
         /// <summary>
-        /// Unique identifier for this transcription request.
+        /// Unique identifier for this transcription request
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         public string? RequestId { get; set; }
@@ -29,19 +29,19 @@ namespace Cartesia
         public required string Text { get; set; }
 
         /// <summary>
-        /// The specified language of the input audio.
+        /// The specified language of the input audio
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         public string? Language { get; set; }
 
         /// <summary>
-        /// The duration of the input audio in seconds.
+        /// The duration of the input audio in seconds
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         public double? Duration { get; set; }
 
         /// <summary>
-        /// Word-level timestamps showing the start and end time of each word. Only included when `[word]` is passed into `timestamp_granularities[]`.
+        /// The start and end time of each word. Included only when you pass `[word]` in `timestamp_granularities[]`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         public global::System.Collections.Generic.IList<global::Cartesia.TranscriptionWord>? Words { get; set; }
@@ -62,16 +62,16 @@ namespace Cartesia
         /// The message type. Always `transcript` for a batch transcription response.
         /// </param>
         /// <param name="requestId">
-        /// Unique identifier for this transcription request.
+        /// Unique identifier for this transcription request
         /// </param>
         /// <param name="language">
-        /// The specified language of the input audio.
+        /// The specified language of the input audio
         /// </param>
         /// <param name="duration">
-        /// The duration of the input audio in seconds.
+        /// The duration of the input audio in seconds
         /// </param>
         /// <param name="words">
-        /// Word-level timestamps showing the start and end time of each word. Only included when `[word]` is passed into `timestamp_granularities[]`.
+        /// The start and end time of each word. Included only when you pass `[word]` in `timestamp_granularities[]`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -3,7 +3,7 @@
   "info": {
     "title": "Cartesia Managed Agents WebSocket API",
     "version": "2026-08-14",
-    "description": "Stream audio and events between an application and a Managed Agent. Server applications authenticate with `X-API-Key`; browser and mobile applications pass an `access_token` query parameter. See the [WebSocket guide](/line/integrations/websocket-api) for setup, limits, and audio handling.\n"
+    "description": "Stream audio and events between an application and a Managed Agent. Server applications authenticate with `X-API-Key`. Browser and mobile applications should create a trusted session on their server and pass the returned single-use token in the `access_token` query parameter. That parameter also accepts existing generic agent tokens, but only the call-bound session credential carries trusted session values. See the [WebSocket guide](/line/integrations/websocket-api) for setup, limits, and audio handling.\n"
   },
   "servers": {
     "production": {
@@ -761,6 +761,10 @@
             "type": "boolean",
             "description": "For assistant turns, `true` when the user interrupted the turn. For user turns, `true` only when the call ended mid-turn."
           },
+          "ignored": {
+            "type": "boolean",
+            "description": "Set to `true` on a user turn that ended while the agent's `initial_message` was playing with `initial_message_interruptions` set to `ignore`."
+          },
           "start_time": {
             "type": "number",
             "description": "Seconds since the start of the session."
@@ -894,7 +898,7 @@
               "invalid_dynamic_variables",
               "dynamic_variables_not_allowed"
             ],
-            "description": "`invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:\n\n- `missing_dynamic_variables`: a value needed by the welcome message is missing.\n- `invalid_dynamic_variables`: the supplied names or values are invalid.\n- `dynamic_variables_not_allowed`: a browser access token was used to supply custom values."
+            "description": "`invalid_event` means a client event was rejected; `agent_failed` means the agent failed. The following errors prevent the session from starting:\n\n- `missing_dynamic_variables`: a value needed by the initial message is missing.\n- `invalid_dynamic_variables`: the supplied names or values are invalid.\n- `dynamic_variables_not_allowed`: a browser access token was used to supply custom values."
           },
           "message": {
             "type": "string",

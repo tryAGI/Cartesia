@@ -4,12 +4,12 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Turn detection settings.
+    /// Turn detection settings
     /// </summary>
     public sealed partial class STTTurnsConfigCommandTurn
     {
         /// <summary>
-        /// Threshold above which to start the turn. Default: 0.8. Range: 0.5–0.9. Must stay above the eager end threshold.<br/>
+        /// Threshold above which the turn starts. Default: 0.8. Range: 0.5–0.9. Must stay above `eager_end_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.8F
         /// </summary>
@@ -17,7 +17,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         public double? StartThreshold { get; set; }
 
         /// <summary>
-        /// Threshold below which to eager end the turn. Default: 0.6. Range: 0.3–0.8. Must stay between the end and start thresholds.<br/>
+        /// Threshold below which `turn.eager_end` fires. Default: 0.6. Range: 0.3–0.8. Must stay between `end_threshold` and `start_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.6F
         /// </summary>
@@ -25,7 +25,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         public double? EagerEndThreshold { get; set; }
 
         /// <summary>
-        /// Threshold below which to end the turn. Default: 0.3. Range: 0.05–0.5. Must stay below the eager end threshold.<br/>
+        /// Threshold below which the turn ends. Default: 0.3. Range: 0.05–0.5. Must stay below `eager_end_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.3F
         /// </summary>
@@ -33,7 +33,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         public double? EndThreshold { get; set; }
 
         /// <summary>
-        /// Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640–11200.<br/>
+        /// The longest the model waits after the user stops speaking before it ends the turn, in milliseconds. Default: 5600. Range: 640–11200.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 5600
         /// </summary>
@@ -50,22 +50,22 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// Initializes a new instance of the <see cref="STTTurnsConfigCommandTurn" /> class.
         /// </summary>
         /// <param name="startThreshold">
-        /// Threshold above which to start the turn. Default: 0.8. Range: 0.5–0.9. Must stay above the eager end threshold.<br/>
+        /// Threshold above which the turn starts. Default: 0.8. Range: 0.5–0.9. Must stay above `eager_end_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.8F
         /// </param>
         /// <param name="eagerEndThreshold">
-        /// Threshold below which to eager end the turn. Default: 0.6. Range: 0.3–0.8. Must stay between the end and start thresholds.<br/>
+        /// Threshold below which `turn.eager_end` fires. Default: 0.6. Range: 0.3–0.8. Must stay between `end_threshold` and `start_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.6F
         /// </param>
         /// <param name="endThreshold">
-        /// Threshold below which to end the turn. Default: 0.3. Range: 0.05–0.5. Must stay below the eager end threshold.<br/>
+        /// Threshold below which the turn ends. Default: 0.3. Range: 0.05–0.5. Must stay below `eager_end_threshold`.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 0.3F
         /// </param>
         /// <param name="endTimeoutMs">
-        /// Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640–11200.<br/>
+        /// The longest the model waits after the user stops speaking before it ends the turn, in milliseconds. Default: 5600. Range: 640–11200.<br/>
         /// See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.<br/>
         /// Default Value: 5600
         /// </param>
