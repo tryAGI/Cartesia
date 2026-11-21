@@ -9,21 +9,21 @@ namespace Cartesia.Realtime.SpeechToText
     public sealed partial class STTTranscriptResponseWord
     {
         /// <summary>
-        /// The transcribed word
+        /// The word with any punctuation attached. `ink-whisper` words can start with a space.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Word { get; set; }
 
         /// <summary>
-        /// Start time in seconds
+        /// Start time in seconds, counted from the start of the audio sent on the connection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Start { get; set; }
 
         /// <summary>
-        /// End time in seconds
+        /// End time in seconds, counted from the start of the audio sent on the connection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -39,13 +39,13 @@ namespace Cartesia.Realtime.SpeechToText
         /// Initializes a new instance of the <see cref="STTTranscriptResponseWord" /> class.
         /// </summary>
         /// <param name="word">
-        /// The transcribed word
+        /// The word with any punctuation attached. `ink-whisper` words can start with a space.
         /// </param>
         /// <param name="start">
-        /// Start time in seconds
+        /// Start time in seconds, counted from the start of the audio sent on the connection
         /// </param>
         /// <param name="end">
-        /// End time in seconds
+        /// End time in seconds, counted from the start of the audio sent on the connection
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

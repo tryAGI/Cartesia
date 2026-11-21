@@ -4,20 +4,20 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Fires once when the WebSocket connection is established.<br/>
-    /// You do not need to wait for this event before sending audio.
+    /// Fires once when the WebSocket connection opens.<br/>
+    /// You don't need to wait for this event before sending audio.
     /// </summary>
     public sealed partial class STTTurnsConnected
     {
         /// <summary>
-        /// Event type identifier.
+        /// Event type identifier
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.SpeechToTextTurns.JsonConverters.STTTurnsConnectedTypeJsonConverter))]
         public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnectedType Type { get; set; }
 
         /// <summary>
-        /// Unique identifier for this connection.
+        /// Unique identifier for this connection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -33,10 +33,10 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// Initializes a new instance of the <see cref="STTTurnsConnected" /> class.
         /// </summary>
         /// <param name="requestId">
-        /// Unique identifier for this connection.
+        /// Unique identifier for this connection
         /// </param>
         /// <param name="type">
-        /// Event type identifier.
+        /// Event type identifier
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

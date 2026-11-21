@@ -66,83 +66,151 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected? Type7 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type7 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnectedType? Type8 { get; set; }
+        public string? Type8 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public string? Type9 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected? Type9 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart? Type10 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnectedType? Type10 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStartType? Type11 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart? Type11 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate? Type12 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStartType? Type12 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdateType? Type13 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdate? Type13 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd? Type14 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdateType? Type14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndType? Type15 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdateWord>? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume? Type16 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdateWord? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResumeType? Type17 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEnd? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd? Type18 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndType? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndType? Type19 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndWord>? Type19 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse? Type20 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndWord? Type20 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponseType? Type21 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndLanguage>? Type21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.SpeechToTextTurnsEncoding? Type22 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndLanguage? Type22 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.SpeechToTextTurnsApiVersion? Type23 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResume? Type23 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEvent? Type24 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResumeType? Type24 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEventDiscriminator? Type25 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEnd? Type25 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEventDiscriminatorType? Type26 { get; set; }
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndType? Type26 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndWord>? Type27 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndWord? Type28 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndLanguage>? Type29 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndLanguage? Type30 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse? Type31 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponseType? Type32 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.SpeechToTextTurnsEncoding? Type33 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.SpeechToTextTurnsApiVersion? Type34 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEvent? Type35 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEventDiscriminator? Type36 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToTextTurns.ServerEventDiscriminatorType? Type37 { get; set; }
 
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<string>? ListType0 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnUpdateWord>? ListType1 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndWord>? ListType2 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEagerEndLanguage>? ListType3 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndWord>? ListType4 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnEndLanguage>? ListType5 { get; set; }
     }
 }

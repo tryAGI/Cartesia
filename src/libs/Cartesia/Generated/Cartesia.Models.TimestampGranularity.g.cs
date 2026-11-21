@@ -5,7 +5,7 @@ namespace Cartesia
 {
     /// <summary>
     /// The granularity of timestamps to include in the response.<br/>
-    /// Currently only `word` level timestamps are supported, providing start and end times for each word.
+    /// Currently, only `word` is supported. It returns the start and end time of each word.
     /// </summary>
     public enum TimestampGranularity
     {

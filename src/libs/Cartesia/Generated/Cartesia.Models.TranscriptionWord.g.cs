@@ -9,21 +9,21 @@ namespace Cartesia
     public sealed partial class TranscriptionWord
     {
         /// <summary>
-        /// The transcribed word.
+        /// The transcribed word
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Word { get; set; }
 
         /// <summary>
-        /// Start time of the word in seconds.
+        /// Start time of the word in seconds
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Start { get; set; }
 
         /// <summary>
-        /// End time of the word in seconds.
+        /// End time of the word in seconds
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -39,13 +39,13 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="TranscriptionWord" /> class.
         /// </summary>
         /// <param name="word">
-        /// The transcribed word.
+        /// The transcribed word
         /// </param>
         /// <param name="start">
-        /// Start time of the word in seconds.
+        /// Start time of the word in seconds
         /// </param>
         /// <param name="end">
-        /// End time of the word in seconds.
+        /// End time of the word in seconds
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

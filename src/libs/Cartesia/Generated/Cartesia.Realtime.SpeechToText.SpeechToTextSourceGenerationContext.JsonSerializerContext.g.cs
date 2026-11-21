@@ -19,6 +19,10 @@ namespace Cartesia.Realtime.SpeechToText
 
             typeof(global::Cartesia.Realtime.SpeechToText.JsonConverters.STTCloseCommandNullableJsonConverter),
 
+            typeof(global::Cartesia.Realtime.SpeechToText.JsonConverters.STTConfigCommandTypeJsonConverter),
+
+            typeof(global::Cartesia.Realtime.SpeechToText.JsonConverters.STTConfigCommandTypeNullableJsonConverter),
+
             typeof(global::Cartesia.Realtime.SpeechToText.JsonConverters.STTTranscriptResponseTypeJsonConverter),
 
             typeof(global::Cartesia.Realtime.SpeechToText.JsonConverters.STTTranscriptResponseTypeNullableJsonConverter),
@@ -60,17 +64,24 @@ namespace Cartesia.Realtime.SpeechToText
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTFinalizeCommand), TypeInfoPropertyName = "STTFinalizeCommand2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTCloseCommand), TypeInfoPropertyName = "STTCloseCommand2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTConfigCommand))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTConfigCommandType), TypeInfoPropertyName = "STTConfigCommandType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseType), TypeInfoPropertyName = "STTTranscriptResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseType), TypeInfoPropertyName = "STTFlushDoneResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTDoneResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTDoneResponseType), TypeInfoPropertyName = "STTDoneResponseType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTErrorResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.STTErrorResponseType), TypeInfoPropertyName = "STTErrorResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.SpeechToTextModel), TypeInfoPropertyName = "SpeechToTextModel2")]
@@ -79,7 +90,10 @@ namespace Cartesia.Realtime.SpeechToText
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.ServerEvent), TypeInfoPropertyName = "ServerEvent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminatorType), TypeInfoPropertyName = "ServerEventDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage>))]
     public sealed partial class SpeechToTextSourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

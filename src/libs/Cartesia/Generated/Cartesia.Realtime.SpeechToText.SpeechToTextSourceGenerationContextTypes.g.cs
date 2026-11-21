@@ -50,15 +50,15 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse? Type3 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTConfigCommand? Type3 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseType? Type4 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTConfigCommandType? Type4 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public bool? Type5 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type5 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -66,67 +66,107 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         ///
         /// </summary>
-        public double? Type7 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse? Type7 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>? Type8 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseType? Type8 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord? Type9 { get; set; }
+        public bool? Type9 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponse? Type10 { get; set; }
+        public double? Type10 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseType? Type11 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>? Type11 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTDoneResponse? Type12 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord? Type12 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTDoneResponseType? Type13 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponse? Type13 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTErrorResponse? Type14 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseType? Type14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.STTErrorResponseType? Type15 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage>? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.SpeechToTextModel? Type16 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.SpeechToTextEncoding? Type17 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTDoneResponse? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.SpeechToTextApiVersion? Type18 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTDoneResponseType? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.ServerEvent? Type19 { get; set; }
+        public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage>? Type19 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminator? Type20 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage? Type20 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminatorType? Type21 { get; set; }
+        public global::Cartesia.Realtime.SpeechToText.STTErrorResponse? Type21 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.STTErrorResponseType? Type22 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.SpeechToTextModel? Type23 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.SpeechToTextEncoding? Type24 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.SpeechToTextApiVersion? Type25 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.ServerEvent? Type26 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminator? Type27 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Cartesia.Realtime.SpeechToText.ServerEventDiscriminatorType? Type28 { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>? ListType0 { get; set; }
+        public global::System.Collections.Generic.List<string>? ListType0 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>? ListType1 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTFlushDoneResponseLanguage>? ListType2 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Cartesia.Realtime.SpeechToText.STTDoneResponseLanguage>? ListType3 { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace Cartesia.Realtime.SpeechToText
     /// <summary>
     /// Realtime speech transcription without turn detection<br/>
     /// &lt;Note&gt;<br/>
-    ///   This endpoint relies on the `finalize` command to trigger transcription. See [Compare STT Endpoints](/use-the-api/stt/compare-endpoints) for details.<br/>
+    ///   Send the `finalize` command to trigger transcription. See [Compare STT Endpoints](/use-the-api/stt/compare-endpoints) for details.<br/>
     /// &lt;/Note&gt;
     /// </summary>
     public sealed partial class CartesiaSpeechToTextRealtimeClient : global::System.IDisposable, global::System.IAsyncDisposable
@@ -616,14 +616,15 @@ namespace Cartesia.Realtime.SpeechToText
         /// <summary>
         /// Connects to the WebSocket server with typed connection parameters.
         /// </summary>
-        /// <param name="cartesiaVersion">API version.</param>
-        /// <param name="encoding">The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.  For guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).</param>
+        /// <param name="cartesiaVersion">API version</param>
+        /// <param name="encoding">The encoding of the raw audio you send. The server uses it to read your audio.  For help choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).</param>
         /// <param name="model">ID of the model to use for transcription.  See [Models](/build-with-cartesia/stt/latest) for details.</param>
-        /// <param name="sampleRate">The sample rate of the audio in Hz.</param>
-        /// <param name="keyterm">Used by `ink-2` and `ink-preview` only.  Key terms to improve the recall of specific words and phrases.  Repeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.  Example: `?keyterm=Ink%202&amp;keyterm=Cartesia`  See [Keyterm prompting](/use-the-api/stt/keyterms) for details.</param>
-        /// <param name="language">Used by `ink-whisper` models only.  The language of the input audio in ISO-639-1 format. Defaults to `en`.  See [Older models](/build-with-cartesia/stt/older-models#ink-whisper) for all options.</param>
-        /// <param name="maxSilenceDurationSecs">Used by `ink-whisper` models only.  Maximum duration of silence (in seconds) before the API automatically finalizes the transcript.  Lower values will finalize transcripts more aggressively. Higher values allow for longer pauses within utterances.</param>
-        /// <param name="minVolume">Used by `ink-whisper` models only.  Controls what is considered silence for automatic transcript finalization. Range: 0.0-1.0.  Lower values will pick up quiet audio. Higher values lead to more filtering for noisy audio.</param>
+        /// <param name="sampleRate">The sample rate of the audio in Hz, from 8000 to 48000</param>
+        /// <param name="keyterm">Used by `ink-2` and `ink-preview` only.  Key terms that help the model recognize specific words and phrases.  To pass several, repeat the `keyterm` query parameter. `ink-preview` accepts up to 500 keyterms totaling 5,000 characters. `ink-2` accepts up to 100 totaling 1,200. To boost one multi-word phrase, join the words with `%20`. `keyterms` is accepted as an alias.  URLs longer than about 8 KB are rejected with HTTP 414. With `ink-preview`, send long lists in a `config` message after you connect.  Example: `?keyterm=Ink%202&amp;keyterm=Cartesia`  See [Keyterm prompting](/use-the-api/stt/keyterms) for details.</param>
+        /// <param name="language">Used by `ink-whisper` models only. Leave it out with `ink-2` and `ink-preview`, which detect the language automatically. To steer `ink-preview` toward a language, use `language_hint`.  With `ink-whisper`, set this to the language code of the audio. If you leave it out, it defaults to `en`, and speech in other languages can come back translated into English.  See [Older models](/build-with-cartesia/stt/older-models#ink-whisper) for all options.</param>
+        /// <param name="languageHint">Used by `ink-preview` only. `ink-2` returns an error.  A language to steer transcription toward. Hints don't stop the model from transcribing other languages.  To pass several, repeat the `language_hint` query parameter. You can pass up to 6. Use base codes from [Languages](/use-the-api/stt/languages), such as `pt`, not `pt-BR`. `language_hints` is also accepted as an alias.  Example: `?language_hint=hi&amp;language_hint=en`  See [Languages](/use-the-api/stt/languages#language-hints) for details.</param>
+        /// <param name="maxSilenceDurationSecs">Used by `ink-whisper` models only.  The longest silence, in seconds, before the API finalizes the transcript automatically.  Lower values finalize transcripts sooner. Higher values allow longer pauses within an utterance.</param>
+        /// <param name="minVolume">Used by `ink-whisper` models only.  Sets what counts as silence when the API finalizes transcripts automatically. Range: 0.0–1.0.  Lower values pick up quiet audio. Higher values filter noisy audio more.</param>
         /// <param name="uri">Optional WebSocket endpoint override.</param>
         /// <param name="additionalHeaders">Additional headers applied before connecting.</param>
         /// <param name="additionalSubProtocols">Additional WebSocket subprotocols applied before connecting.</param>
@@ -637,6 +638,7 @@ namespace Cartesia.Realtime.SpeechToText
             int sampleRate,
             global::System.Collections.Generic.IList<string>? keyterm = default,
             string? language = default,
+            string? languageHint = default,
             double? maxSilenceDurationSecs = default,
             double? minVolume = default,
             global::System.Uri? uri = null,
@@ -663,6 +665,7 @@ namespace Cartesia.Realtime.SpeechToText
                 .AddRequiredParameter("sample_rate", sampleRate.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                 .AddOptionalParameter("keyterm", keyterm, delimiter: ",", explode: true)
                 .AddOptionalParameter("language", language)
+                .AddOptionalParameter("language_hint", languageHint)
                 .AddOptionalParameter("max_silence_duration_secs", maxSilenceDurationSecs?.ToString())
                 .AddOptionalParameter("min_volume", minVolume?.ToString())
                 ;

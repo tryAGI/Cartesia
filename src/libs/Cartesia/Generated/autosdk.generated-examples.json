@@ -149,13 +149,24 @@
       "Slug": "phone-numbers-provision",
       "Description": "Provision a new Cartesia-managed US phone number",
       "Language": "http",
-      "Code": "### Provision Cartesia Number\n# @name phone_numbers_provision\nPOST {{host}}/agents/phone-numbers/provision\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022label\u0022: \u0022string\u0022,\n  \u0022agent_id\u0022: \u0022string\u0022\n}\n\n## Responses\n# 201\n# Description: Phone number provisioned.\n# Content-Type: application/json\n# 402\n# Description: Subscription phone number limit reached (\u0060error_code: quota_exceeded\u0060). Upgrade your plan or delete existing Cartesia numbers.\n# 404\n# Description: Agent not found.",
+      "Code": "### Provision Cartesia Number\n# @name phone_numbers_provision\nPOST {{host}}/agents/phone-numbers/provision\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022label\u0022: \u0022string\u0022,\n  \u0022agent_id\u0022: \u0022string\u0022\n}\n\n## Responses\n# 201\n# Description: Phone number provisioned.\n# Content-Type: application/json\n# 402\n# Description: Subscription phone number limit reached (\u0060error_code: quota_exceeded\u0060). Upgrade your plan or wait until the next month.\n# 404\n# Description: Agent not found.",
       "Format": "http",
       "OperationId": "phone_numbers_provision",
       "Setup": null
     },
     {
       "Order": 15,
+      "Title": "Get Phone Number Provisioning Usage",
+      "Slug": "phone-numbers-provisioning-usage",
+      "Description": "Returns Cartesia-managed phone number provisioning usage for the current month. Active numbers and numbers deleted during the current month count toward usage.",
+      "Language": "csharp",
+      "Code": "using var client = new CartesiaClient(apiKey);\nvar response = await client.PhoneNumbers.PhoneNumbersProvisioningUsageAsync();\n\n// Example response:\n// {\n//   \u0022monthly_usage\u0022: 2,\n//   \u0022monthly_limit\u0022: 3,\n//   \u0022remaining\u0022: 1\n// }",
+      "Format": "sdk",
+      "OperationId": "phone_numbers_provisioning_usage",
+      "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 16,
       "Title": "Create a new pronunciation dictionary",
       "Slug": "pronunciationdicts-create",
       "Description": "Create a new pronunciation dictionary",
@@ -166,7 +177,7 @@
       "Setup": null
     },
     {
-      "Order": 16,
+      "Order": 17,
       "Title": "Retrieve a specific pronunciation dictionary by ID",
       "Slug": "pronunciationdicts-get",
       "Description": "Retrieve a specific pronunciation dictionary by ID",
@@ -177,7 +188,7 @@
       "Setup": null
     },
     {
-      "Order": 17,
+      "Order": 18,
       "Title": "Update a pronunciation dictionary",
       "Slug": "pronunciationdicts-update",
       "Description": "Update a pronunciation dictionary",
@@ -188,7 +199,7 @@
       "Setup": null
     },
     {
-      "Order": 18,
+      "Order": 19,
       "Title": "Get Agent Usage",
       "Slug": "usage-agents",
       "Description": "Returns your agent usage over time, bucketed by the requested interval.",
@@ -199,7 +210,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 19,
+      "Order": 20,
       "Title": "Get Credit Usage",
       "Slug": "usage-credits",
       "Description": "Returns your credit usage over time, bucketed by the requested interval.",
@@ -210,7 +221,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 20,
+      "Order": 21,
       "Title": "List Accents",
       "Slug": "accents-list",
       "Description": "Retrieve all supported accents, including which ones you can localize a voice into. Filter with \u0060is_localizable\u0060, \u0060language\u0060, and \u0060locale\u0060. If you pass more than one, every filter has to match.",
@@ -221,7 +232,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 21,
+      "Order": 22,
       "Title": "Add Voice Accents",
       "Slug": "voices-add-accents",
       "Description": "Add accents to an instant voice clone you own so a single \u0060voice_id\u0060 can speak multiple accents natively. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent.",
@@ -232,18 +243,18 @@
       "Setup": null
     },
     {
-      "Order": 22,
+      "Order": 23,
       "Title": "Clone Voice",
       "Slug": "voices-clone",
       "Description": "Generated from OpenAPI examples.",
       "Language": "http",
-      "Code": "### Clone Voice\n# @name voices_clone\nPOST {{host}}/voices/clone\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022clip\u0022; filename=\u0022clip.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./clip.bin\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022name\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022tagline\u0022\n\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022description\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022language\u0022\n\nen\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022accent\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022base_voice_id\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022access\u0022\n\nprivate\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Content-Type: application/json",
+      "Code": "### Clone Voice\n# @name voices_clone\nPOST {{host}}/voices/clone\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022clip\u0022; filename=\u0022clip.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./clip.bin\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022name\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022tagline\u0022\n\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022description\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022language\u0022\n\nen\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022accent\u0022\n\nstring\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022access\u0022\n\nprivate\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "voices_clone",
       "Setup": null
     },
     {
-      "Order": 23,
+      "Order": 24,
       "Title": "Delete Voice Accent",
       "Slug": "voices-delete-accent",
       "Description": "Remove an accent your instant voice clone supports.",
@@ -254,7 +265,7 @@
       "Setup": null
     },
     {
-      "Order": 24,
+      "Order": 25,
       "Title": "Get Voice",
       "Slug": "voices-get",
       "Description": "Generated from OpenAPI examples.",
@@ -265,7 +276,7 @@
       "Setup": null
     },
     {
-      "Order": 25,
+      "Order": 26,
       "Title": "Localize Voice",
       "Slug": "voices-localize",
       "Description": "Localize a voice to sound native in another accent. This creates a new voice with its own voice ID. The voice usually still sounds like the same speaker, though how closely it matches varies by voice and accent. Localizing a Pro Voice Clone creates an Instant Voice Clone, not a new Pro Voice Clone.",
@@ -276,7 +287,7 @@
       "Setup": "This example assumes \u0060using Cartesia;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 26,
+      "Order": 27,
       "Title": "Update Voice",
       "Slug": "voices-update",
       "Description": "Update the name, description, gender, and accent of a voice. To set the gender back to the default, set the gender to \u0060null\u0060. If gender is not specified, the gender will not be updated.",
@@ -284,6 +295,17 @@
       "Code": "### Update Voice\n# @name voices_update\nPATCH {{host}}/voices/{{id}}\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022string\u0022,\n  \u0022tagline\u0022: \u0022string\u0022,\n  \u0022description\u0022: \u0022string\u0022,\n  \u0022gender\u0022: \u0022masculine\u0022,\n  \u0022accent\u0022: {},\n  \u0022access\u0022: \u0022private\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "voices_update",
+      "Setup": null
+    },
+    {
+      "Order": 28,
+      "Title": "Detect watermark",
+      "Slug": "detectwatermark",
+      "Description": "Check audio for a Cartesia watermark. Requires a paid plan.",
+      "Language": "http",
+      "Code": "### Detect watermark\n# @name detectWatermark\nPOST {{host}}/v1/watermark/detect\nAuthorization: Bearer {{token}}\nCartesia-Version: 2026-08-14\nContent-Type: multipart/form-data; boundary=AutoSDKBoundary\nAccept: application/json\n\n--AutoSDKBoundary\nContent-Disposition: form-data; name=\u0022file\u0022; filename=\u0022file.bin\u0022\nContent-Type: application/octet-stream\n\n\u003C ./file.bin\n--AutoSDKBoundary--\n\n## Responses\n# 200\n# Description: Watermark detection result\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "detectWatermark",
       "Setup": null
     }
   ]
