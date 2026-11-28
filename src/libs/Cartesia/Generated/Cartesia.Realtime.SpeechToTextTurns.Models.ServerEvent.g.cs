@@ -15,8 +15,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         public global::Cartesia.Realtime.SpeechToTextTurns.ServerEventDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// Fires once when the WebSocket connection is established.<br/>
-        /// You do not need to wait for this event before sending audio.
+        /// Fires once when the WebSocket connection opens.<br/>
+        /// You don't need to wait for this event before sending audio.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsConnected? Connected { get; init; }
@@ -53,8 +53,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
             : throw new global::System.InvalidOperationException($"Expected union variant 'Connected' but the value was {ToString()}.");
 
         /// <summary>
-        /// Marks the start of a user turn. Fires quickly after the user begins speaking.<br/>
-        /// This event can be used to interrupt your agent to avoid talking over the user.
+        /// Marks the start of a user turn. Fires soon after the user starts speaking.<br/>
+        /// Use this event to interrupt your agent so it doesn't talk over the user.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnStart? TurnStart { get; init; }
@@ -239,7 +239,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
             : throw new global::System.InvalidOperationException($"Expected union variant 'TurnEnd' but the value was {ToString()}.");
 
         /// <summary>
-        /// Error information for STT WebSocket connections.
+        /// Error information for STT WebSocket connections
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponse? Error { get; init; }

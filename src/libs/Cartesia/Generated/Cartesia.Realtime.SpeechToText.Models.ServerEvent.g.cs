@@ -16,8 +16,7 @@ namespace Cartesia.Realtime.SpeechToText
 
         /// <summary>
         /// Transcript chunks.<br/>
-        /// You should send the `finalize` command after the user is done speaking to make the API emit these transcript chunks;<br/>
-        /// although, the API may send transcript chunks even before you send the `finalize` command.
+        /// Send the `finalize` command when the user has finished speaking to get these chunks. The API can also send chunks before you send `finalize`.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponse? Transcript { get; init; }
@@ -128,7 +127,7 @@ namespace Cartesia.Realtime.SpeechToText
             : throw new global::System.InvalidOperationException($"Expected union variant 'Done' but the value was {ToString()}.");
 
         /// <summary>
-        /// Error information for STT WebSocket connections.
+        /// Error information for STT WebSocket connections
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Cartesia.Realtime.SpeechToText.STTErrorResponse? Error { get; init; }

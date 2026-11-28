@@ -4,12 +4,12 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Send a JSON encoded close command as WebSocket text message to close the session cleanly. All buffered audio will be processed by the model into events.
+    /// Send a JSON formatted `close` command as a WebSocket text message to close the session cleanly. The model processes all buffered audio into events.
     /// </summary>
     public sealed partial class STTTurnsCloseCommand
     {
         /// <summary>
-        /// Command type. Send this as a JSON encoded WebSocket text message to close the session.
+        /// Command type. Send this as a JSON formatted WebSocket text message to close the session.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.SpeechToTextTurns.JsonConverters.STTTurnsCloseCommandTypeJsonConverter))]
@@ -25,7 +25,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// Initializes a new instance of the <see cref="STTTurnsCloseCommand" /> class.
         /// </summary>
         /// <param name="type">
-        /// Command type. Send this as a JSON encoded WebSocket text message to close the session.
+        /// Command type. Send this as a JSON formatted WebSocket text message to close the session.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

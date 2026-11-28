@@ -16,7 +16,7 @@ namespace Cartesia
         public global::Cartesia.ManagedAgentFallbackStrategyV1ExplicitType Type { get; set; }
 
         /// <summary>
-        /// Model IDs to fall back to, in order.
+        /// Unique managed model IDs from `GET /v1/agents/models`, tried in order and excluding the primary model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ids")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,7 +32,7 @@ namespace Cartesia
         /// Initializes a new instance of the <see cref="ManagedAgentFallbackStrategyV1Explicit" /> class.
         /// </summary>
         /// <param name="ids">
-        /// Model IDs to fall back to, in order.
+        /// Unique managed model IDs from `GET /v1/agents/models`, tried in order and excluding the primary model
         /// </param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER

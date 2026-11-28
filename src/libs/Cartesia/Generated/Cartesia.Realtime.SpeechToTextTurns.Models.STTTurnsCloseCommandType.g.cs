@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Command type. Send this as a JSON encoded WebSocket text message to close the session.
+    /// Command type. Send this as a JSON formatted WebSocket text message to close the session.
     /// </summary>
     public enum STTTurnsCloseCommandType
     {

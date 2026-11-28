@@ -68,11 +68,11 @@ namespace Cartesia
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="file">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="filename">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="model">
@@ -80,7 +80,7 @@ namespace Cartesia
         /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format<br/>
+        /// The language code of the input audio. If you leave it out, it defaults to `en`, and speech in other languages can come back translated into English.<br/>
         /// Default Value: en
         /// </param>
         /// <param name="timestampGranularities"></param>
@@ -113,11 +113,11 @@ namespace Cartesia
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="file">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="filename">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="model">
@@ -125,7 +125,7 @@ namespace Cartesia
         /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format<br/>
+        /// The language code of the input audio. If you leave it out, it defaults to `en`, and speech in other languages can come back translated into English.<br/>
         /// Default Value: en
         /// </param>
         /// <param name="timestampGranularities"></param>
@@ -157,11 +157,11 @@ namespace Cartesia
         /// </param>
         /// <param name="sampleRate"></param>
         /// <param name="file">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="filename">
-        /// There's no need to break up your audio file. Long files are intelligently chunked by our server.<br/>
+        /// You don't need to split your audio file. The server splits long files into chunks for you.<br/>
         /// Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`, `mpeg`, `mpga`, `oga`, `ogg`, `wav`, `webm`
         /// </param>
         /// <param name="model">
@@ -169,7 +169,7 @@ namespace Cartesia
         /// Example: ink-whisper
         /// </param>
         /// <param name="language">
-        /// The language of the input audio in ISO-639-1 format<br/>
+        /// The language code of the input audio. If you leave it out, it defaults to `en`, and speech in other languages can come back translated into English.<br/>
         /// Default Value: en
         /// </param>
         /// <param name="timestampGranularities"></param>

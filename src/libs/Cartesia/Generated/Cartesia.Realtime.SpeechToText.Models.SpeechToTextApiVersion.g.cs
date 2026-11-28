@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime.SpeechToText
 {
     /// <summary>
-    /// API version.<br/>
+    /// API version<br/>
     /// Example: 2026-08-14
     /// </summary>
     public enum SpeechToTextApiVersion

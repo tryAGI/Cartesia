@@ -9,7 +9,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
     public sealed partial class STTTurnsTurnResume
     {
         /// <summary>
-        /// Event type identifier.
+        /// Event type identifier
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.SpeechToTextTurns.JsonConverters.STTTurnsTurnResumeTypeJsonConverter))]
@@ -21,6 +21,12 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string RequestId { get; set; }
+
+        /// <summary>
+        /// Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("turn_id")]
+        public string? TurnId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,17 +41,22 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// Unique identifier for this connection. Does not change between turns.
         /// </param>
         /// <param name="type">
-        /// Event type identifier.
+        /// Event type identifier
+        /// </param>
+        /// <param name="turnId">
+        /// Identifies the turn. Every event in a turn has the same `turn_id`, and each new turn gets a new one.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public STTTurnsTurnResume(
             string requestId,
-            global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResumeType type)
+            global::Cartesia.Realtime.SpeechToTextTurns.STTTurnsTurnResumeType type,
+            string? turnId)
         {
             this.Type = type;
             this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
+            this.TurnId = turnId;
         }
 
         /// <summary>

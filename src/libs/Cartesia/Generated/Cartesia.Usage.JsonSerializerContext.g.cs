@@ -18,6 +18,9 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.BalanceResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ConcurrencyResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.LiveConcurrencyCount))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageInterval), TypeInfoPropertyName = "UsageInterval2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsGroupBy), TypeInfoPropertyName = "UsageCreditsGroupBy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsResponse))]
@@ -29,21 +32,31 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageAgentsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.UsageAgentsBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageAgentsBucket))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageConcurrencyHistoryResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.UsageConcurrencyHistoryPoint>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageConcurrencyHistoryPoint))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.BalanceGetCartesiaVersion), TypeInfoPropertyName = "BalanceGetCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ConcurrencyGetCartesiaVersion), TypeInfoPropertyName = "ConcurrencyGetCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsCartesiaVersion), TypeInfoPropertyName = "UsageCreditsCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Guid))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageAgentsCartesiaVersion), TypeInfoPropertyName = "UsageAgentsCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageConcurrencyCartesiaVersion), TypeInfoPropertyName = "UsageConcurrencyCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageInterval?), TypeInfoPropertyName = "NullableUsageInterval2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsGroupBy?), TypeInfoPropertyName = "NullableUsageCreditsGroupBy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.OneOf<global::Cartesia.UsageCreditsBucket, global::Cartesia.UsageCreditsBreakdownSeries>?), TypeInfoPropertyName = "NullableOneOfUsageCreditsBucketUsageCreditsBreakdownSeries2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.BalanceGetCartesiaVersion?), TypeInfoPropertyName = "NullableBalanceGetCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ConcurrencyGetCartesiaVersion?), TypeInfoPropertyName = "NullableConcurrencyGetCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageCreditsCartesiaVersion?), TypeInfoPropertyName = "NullableUsageCreditsCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Guid?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageAgentsCartesiaVersion?), TypeInfoPropertyName = "NullableUsageAgentsCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UsageConcurrencyCartesiaVersion?), TypeInfoPropertyName = "NullableUsageConcurrencyCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.OneOf<global::Cartesia.UsageCreditsBucket, global::Cartesia.UsageCreditsBreakdownSeries>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageCreditsBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageAgentsBucket>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.UsageConcurrencyHistoryPoint>))]
     internal sealed partial class UsageSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -102,6 +115,7 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
+            options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.UsageCreditsBucket, global::Cartesia.UsageCreditsBreakdownSeries>());
             options.Converters.Add(new global::Cartesia.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
@@ -133,13 +147,25 @@ namespace Cartesia
 
                     || typeToConvert == typeof(global::Cartesia.UsageCreditsGroupBy?)
 
+                    || typeToConvert == typeof(global::Cartesia.BalanceGetCartesiaVersion)
+
+                    || typeToConvert == typeof(global::Cartesia.BalanceGetCartesiaVersion?)
+
+                    || typeToConvert == typeof(global::Cartesia.ConcurrencyGetCartesiaVersion)
+
+                    || typeToConvert == typeof(global::Cartesia.ConcurrencyGetCartesiaVersion?)
+
                     || typeToConvert == typeof(global::Cartesia.UsageCreditsCartesiaVersion)
 
                     || typeToConvert == typeof(global::Cartesia.UsageCreditsCartesiaVersion?)
 
                     || typeToConvert == typeof(global::Cartesia.UsageAgentsCartesiaVersion)
 
-                    || typeToConvert == typeof(global::Cartesia.UsageAgentsCartesiaVersion?);
+                    || typeToConvert == typeof(global::Cartesia.UsageAgentsCartesiaVersion?)
+
+                    || typeToConvert == typeof(global::Cartesia.UsageConcurrencyCartesiaVersion)
+
+                    || typeToConvert == typeof(global::Cartesia.UsageConcurrencyCartesiaVersion?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -166,6 +192,26 @@ namespace Cartesia
                     return new global::Cartesia.JsonConverters.UsageCreditsGroupByNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Cartesia.BalanceGetCartesiaVersion))
+                {
+                    return new global::Cartesia.JsonConverters.BalanceGetCartesiaVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.BalanceGetCartesiaVersion?))
+                {
+                    return new global::Cartesia.JsonConverters.BalanceGetCartesiaVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ConcurrencyGetCartesiaVersion))
+                {
+                    return new global::Cartesia.JsonConverters.ConcurrencyGetCartesiaVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.ConcurrencyGetCartesiaVersion?))
+                {
+                    return new global::Cartesia.JsonConverters.ConcurrencyGetCartesiaVersionNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Cartesia.UsageCreditsCartesiaVersion))
                 {
                     return new global::Cartesia.JsonConverters.UsageCreditsCartesiaVersionJsonConverter();
@@ -184,6 +230,16 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.UsageAgentsCartesiaVersion?))
                 {
                     return new global::Cartesia.JsonConverters.UsageAgentsCartesiaVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UsageConcurrencyCartesiaVersion))
+                {
+                    return new global::Cartesia.JsonConverters.UsageConcurrencyCartesiaVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.UsageConcurrencyCartesiaVersion?))
+                {
+                    return new global::Cartesia.JsonConverters.UsageConcurrencyCartesiaVersionNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

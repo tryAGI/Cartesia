@@ -228,14 +228,6 @@ namespace Cartesia
                                     name: "\"accent\"");
 
                             }
-                            if (request.BaseVoiceId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.BaseVoiceId ?? string.Empty),
-                                    name: "\"base_voice_id\"");
-
-                            }
                             if (request.Access != default)
                             {
 
@@ -474,7 +466,7 @@ namespace Cartesia
                                 {
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -519,7 +511,7 @@ namespace Cartesia
 
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -568,9 +560,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of the voice you're cloning, and a prerequisite for [Add Voice Accents](/api-reference/voices/add-accents). See [GET /accents](/api-reference/accents/list) for values valid for each language.
         /// </param>
-        /// <param name="baseVoiceId">
-        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
-        /// </param>
         /// <param name="access">
         /// Who can use the cloned voice. Prefer `"public"` | `"private"`. Deprecated form field `access[type]` is still accepted.<br/>
         /// Default Value: private
@@ -587,7 +576,6 @@ namespace Cartesia
             string? tagline = default,
             string? description = default,
             global::Cartesia.VoiceAccent? accent = default,
-            string? baseVoiceId = default,
             global::Cartesia.VoicesCloneRequestAccess? access = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -601,7 +589,6 @@ namespace Cartesia
                 Description = description,
                 Language = language,
                 Accent = accent,
-                BaseVoiceId = baseVoiceId,
                 Access = access,
             };
 
@@ -644,9 +631,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of the voice you're cloning, and a prerequisite for [Add Voice Accents](/api-reference/voices/add-accents). See [GET /accents](/api-reference/accents/list) for values valid for each language.
         /// </param>
-        /// <param name="baseVoiceId">
-        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
-        /// </param>
         /// <param name="access">
         /// Who can use the cloned voice. Prefer `"public"` | `"private"`. Deprecated form field `access[type]` is still accepted.<br/>
         /// Default Value: private
@@ -663,7 +647,6 @@ namespace Cartesia
             string? tagline = default,
             string? description = default,
             global::Cartesia.VoiceAccent? accent = default,
-            string? baseVoiceId = default,
             global::Cartesia.VoicesCloneRequestAccess? access = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -679,7 +662,6 @@ namespace Cartesia
                 Description = description,
                 Language = language,
                 Accent = accent,
-                BaseVoiceId = baseVoiceId,
                 Access = access,
             };
             PrepareArguments(
@@ -817,14 +799,6 @@ namespace Cartesia
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.Accent).HasValue ? (request.Accent).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"accent\"");
-
-                            }
-                            if (request.BaseVoiceId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.BaseVoiceId ?? string.Empty),
-                                    name: "\"base_voice_id\"");
 
                             }
                             if (request.Access != default)
@@ -1061,7 +1035,7 @@ namespace Cartesia
                                 {
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1102,7 +1076,7 @@ namespace Cartesia
 
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1151,9 +1125,6 @@ namespace Cartesia
         /// <param name="accent">
         /// Metadata for labeling the accent of the voice you're cloning, and a prerequisite for [Add Voice Accents](/api-reference/voices/add-accents). See [GET /accents](/api-reference/accents/list) for values valid for each language.
         /// </param>
-        /// <param name="baseVoiceId">
-        /// The ID of the voice. Find one in the [Voice Library](https://play.cartesia.ai/voices) or via [List Voices](/api-reference/voices/list).
-        /// </param>
         /// <param name="access">
         /// Who can use the cloned voice. Prefer `"public"` | `"private"`. Deprecated form field `access[type]` is still accepted.<br/>
         /// Default Value: private
@@ -1170,7 +1141,6 @@ namespace Cartesia
             string? tagline = default,
             string? description = default,
             global::Cartesia.VoiceAccent? accent = default,
-            string? baseVoiceId = default,
             global::Cartesia.VoicesCloneRequestAccess? access = default,
             global::Cartesia.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -1186,7 +1156,6 @@ namespace Cartesia
                 Description = description,
                 Language = language,
                 Accent = accent,
-                BaseVoiceId = baseVoiceId,
                 Access = access,
             };
             PrepareArguments(
@@ -1324,14 +1293,6 @@ namespace Cartesia
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.Accent).HasValue ? (request.Accent).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"accent\"");
-
-                            }
-                            if (request.BaseVoiceId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.BaseVoiceId ?? string.Empty),
-                                    name: "\"base_voice_id\"");
 
                             }
                             if (request.Access != default)
@@ -1572,7 +1533,7 @@ namespace Cartesia
                                 {
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1617,7 +1578,7 @@ namespace Cartesia
 
                                     throw global::Cartesia.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
