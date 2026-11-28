@@ -45,6 +45,12 @@ namespace Cartesia.Realtime
         public required bool Interrupted { get; set; }
 
         /// <summary>
+        /// Set to `true` on a user turn that ended while the agent's `initial_message` was playing with `initial_message_interruptions` set to `ignore`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignored")]
+        public bool? Ignored { get; set; }
+
+        /// <summary>
         /// Seconds since the start of the session.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_time")]
@@ -104,6 +110,9 @@ namespace Cartesia.Realtime
         /// <param name="type">
         /// Event type identifier.
         /// </param>
+        /// <param name="ignored">
+        /// Set to `true` on a user turn that ended while the agent's `initial_message` was playing with `initial_message_interruptions` set to `ignore`.
+        /// </param>
         /// <param name="eagerEndTimestamp">
         /// Seconds since session start when the speech-to-text model last predicted the caller had finished speaking. Included on user turns when available, even if speculative generation is disabled.
         /// </param>
@@ -119,6 +128,7 @@ namespace Cartesia.Realtime
             double endTime,
             global::System.Collections.Generic.IList<global::Cartesia.Realtime.AgentTurnEndedEventToolCall> toolCalls,
             global::Cartesia.Realtime.AgentTurnEndedEventType type,
+            bool? ignored,
             double? eagerEndTimestamp)
         {
             this.Type = type;
@@ -126,6 +136,7 @@ namespace Cartesia.Realtime
             this.Role = role;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Interrupted = interrupted;
+            this.Ignored = ignored;
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.EagerEndTimestamp = eagerEndTimestamp;

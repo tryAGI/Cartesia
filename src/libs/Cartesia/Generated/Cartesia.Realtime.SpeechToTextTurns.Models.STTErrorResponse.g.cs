@@ -4,39 +4,39 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Error information for STT WebSocket connections.
+    /// Error information for STT WebSocket connections
     /// </summary>
     public sealed partial class STTErrorResponse
     {
         /// <summary>
-        /// Event type identifier.
+        /// Event type identifier
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Cartesia.Realtime.SpeechToTextTurns.JsonConverters.STTErrorResponseTypeJsonConverter))]
         public global::Cartesia.Realtime.SpeechToTextTurns.STTErrorResponseType Type { get; set; }
 
         /// <summary>
-        /// Machine-readable error code.
+        /// Machine-readable error code
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_code")]
         public string? ErrorCode { get; set; }
 
         /// <summary>
-        /// An HTTP response status code.
+        /// An HTTP response status code
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status_code")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double StatusCode { get; set; }
 
         /// <summary>
-        /// Human-readable error title.
+        /// Human-readable error title
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Title { get; set; }
 
         /// <summary>
-        /// Human-readable error message.
+        /// Human-readable error message
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -49,7 +49,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         public string? DocUrl { get; set; }
 
         /// <summary>
-        /// Unique identifier for this websocket connection
+        /// Unique identifier for this WebSocket connection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         public string? RequestId { get; set; }
@@ -64,25 +64,25 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// Initializes a new instance of the <see cref="STTErrorResponse" /> class.
         /// </summary>
         /// <param name="statusCode">
-        /// An HTTP response status code.
+        /// An HTTP response status code
         /// </param>
         /// <param name="title">
-        /// Human-readable error title.
+        /// Human-readable error title
         /// </param>
         /// <param name="message">
-        /// Human-readable error message.
+        /// Human-readable error message
         /// </param>
         /// <param name="type">
-        /// Event type identifier.
+        /// Event type identifier
         /// </param>
         /// <param name="errorCode">
-        /// Machine-readable error code.
+        /// Machine-readable error code
         /// </param>
         /// <param name="docUrl">
         /// URL to relevant documentation
         /// </param>
         /// <param name="requestId">
-        /// Unique identifier for this websocket connection
+        /// Unique identifier for this WebSocket connection
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

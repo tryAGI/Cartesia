@@ -13,147 +13,147 @@ namespace Cartesia
         /// Sends an `Authorization` header using HTTP Basic authentication.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.WebhookAuthenticationResponseVariant1? WebhookAuthenticationResponseVariant1 { get; init; }
+        public global::Cartesia.WebhookAuthenticationResponseBasicAuth? BasicAuth { get; init; }
 #else
-        public global::Cartesia.WebhookAuthenticationResponseVariant1? WebhookAuthenticationResponseVariant1 { get; }
+        public global::Cartesia.WebhookAuthenticationResponseBasicAuth? BasicAuth { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(WebhookAuthenticationResponseVariant1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BasicAuth))]
 #endif
-        public bool IsWebhookAuthenticationResponseVariant1 => WebhookAuthenticationResponseVariant1 != null;
+        public bool IsBasicAuth => BasicAuth != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickWebhookAuthenticationResponseVariant1(
+        public bool TryPickBasicAuth(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Cartesia.WebhookAuthenticationResponseVariant1? value)
+            out global::Cartesia.WebhookAuthenticationResponseBasicAuth? value)
         {
-            value = WebhookAuthenticationResponseVariant1;
-            return IsWebhookAuthenticationResponseVariant1;
+            value = BasicAuth;
+            return IsBasicAuth;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.WebhookAuthenticationResponseVariant1 PickWebhookAuthenticationResponseVariant1() => WebhookAuthenticationResponseVariant1 is { } value
+        public global::Cartesia.WebhookAuthenticationResponseBasicAuth PickBasicAuth() => BasicAuth is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookAuthenticationResponseVariant1' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BasicAuth' but the value was {ToString()}.");
 
         /// <summary>
         /// Sends an `Authorization` header using a bearer token.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Cartesia.WebhookAuthenticationResponseVariant2? WebhookAuthenticationResponseVariant2 { get; init; }
+        public global::Cartesia.WebhookAuthenticationResponseBearerToken? BearerToken { get; init; }
 #else
-        public global::Cartesia.WebhookAuthenticationResponseVariant2? WebhookAuthenticationResponseVariant2 { get; }
+        public global::Cartesia.WebhookAuthenticationResponseBearerToken? BearerToken { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(WebhookAuthenticationResponseVariant2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BearerToken))]
 #endif
-        public bool IsWebhookAuthenticationResponseVariant2 => WebhookAuthenticationResponseVariant2 != null;
+        public bool IsBearerToken => BearerToken != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickWebhookAuthenticationResponseVariant2(
+        public bool TryPickBearerToken(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Cartesia.WebhookAuthenticationResponseVariant2? value)
+            out global::Cartesia.WebhookAuthenticationResponseBearerToken? value)
         {
-            value = WebhookAuthenticationResponseVariant2;
-            return IsWebhookAuthenticationResponseVariant2;
+            value = BearerToken;
+            return IsBearerToken;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Cartesia.WebhookAuthenticationResponseVariant2 PickWebhookAuthenticationResponseVariant2() => WebhookAuthenticationResponseVariant2 is { } value
+        public global::Cartesia.WebhookAuthenticationResponseBearerToken PickBearerToken() => BearerToken is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookAuthenticationResponseVariant2' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BearerToken' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseVariant1 value) => new WebhookAuthenticationResponse((global::Cartesia.WebhookAuthenticationResponseVariant1?)value);
+        public static implicit operator WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseBasicAuth value) => new WebhookAuthenticationResponse((global::Cartesia.WebhookAuthenticationResponseBasicAuth?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Cartesia.WebhookAuthenticationResponseVariant1?(WebhookAuthenticationResponse @this) => @this.WebhookAuthenticationResponseVariant1;
+        public static implicit operator global::Cartesia.WebhookAuthenticationResponseBasicAuth?(WebhookAuthenticationResponse @this) => @this.BasicAuth;
 
         /// <summary>
         ///
         /// </summary>
-        public WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseVariant1? value)
+        public WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseBasicAuth? value)
         {
-            WebhookAuthenticationResponseVariant1 = value;
+            BasicAuth = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static WebhookAuthenticationResponse FromWebhookAuthenticationResponseVariant1(global::Cartesia.WebhookAuthenticationResponseVariant1? value) => new WebhookAuthenticationResponse(value);
+        public static WebhookAuthenticationResponse FromBasicAuth(global::Cartesia.WebhookAuthenticationResponseBasicAuth? value) => new WebhookAuthenticationResponse(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseVariant2 value) => new WebhookAuthenticationResponse((global::Cartesia.WebhookAuthenticationResponseVariant2?)value);
+        public static implicit operator WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseBearerToken value) => new WebhookAuthenticationResponse((global::Cartesia.WebhookAuthenticationResponseBearerToken?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Cartesia.WebhookAuthenticationResponseVariant2?(WebhookAuthenticationResponse @this) => @this.WebhookAuthenticationResponseVariant2;
+        public static implicit operator global::Cartesia.WebhookAuthenticationResponseBearerToken?(WebhookAuthenticationResponse @this) => @this.BearerToken;
 
         /// <summary>
         ///
         /// </summary>
-        public WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseVariant2? value)
+        public WebhookAuthenticationResponse(global::Cartesia.WebhookAuthenticationResponseBearerToken? value)
         {
-            WebhookAuthenticationResponseVariant2 = value;
+            BearerToken = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static WebhookAuthenticationResponse FromWebhookAuthenticationResponseVariant2(global::Cartesia.WebhookAuthenticationResponseVariant2? value) => new WebhookAuthenticationResponse(value);
+        public static WebhookAuthenticationResponse FromBearerToken(global::Cartesia.WebhookAuthenticationResponseBearerToken? value) => new WebhookAuthenticationResponse(value);
 
         /// <summary>
         ///
         /// </summary>
         public WebhookAuthenticationResponse(
-            global::Cartesia.WebhookAuthenticationResponseVariant1? webhookAuthenticationResponseVariant1,
-            global::Cartesia.WebhookAuthenticationResponseVariant2? webhookAuthenticationResponseVariant2
+            global::Cartesia.WebhookAuthenticationResponseBasicAuth? basicAuth,
+            global::Cartesia.WebhookAuthenticationResponseBearerToken? bearerToken
             )
         {
-            WebhookAuthenticationResponseVariant1 = webhookAuthenticationResponseVariant1;
-            WebhookAuthenticationResponseVariant2 = webhookAuthenticationResponseVariant2;
+            BasicAuth = basicAuth;
+            BearerToken = bearerToken;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            WebhookAuthenticationResponseVariant2 as object ??
-            WebhookAuthenticationResponseVariant1 as object
+            BearerToken as object ??
+            BasicAuth as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            WebhookAuthenticationResponseVariant1?.ToString() ??
-            WebhookAuthenticationResponseVariant2?.ToString()
+            BasicAuth?.ToString() ??
+            BearerToken?.ToString()
             ;
 
         /// <summary>
@@ -161,15 +161,15 @@ namespace Cartesia
         /// </summary>
         public bool Validate()
         {
-            return IsWebhookAuthenticationResponseVariant1 && !IsWebhookAuthenticationResponseVariant2 || !IsWebhookAuthenticationResponseVariant1 && IsWebhookAuthenticationResponseVariant2;
+            return IsBasicAuth && !IsBearerToken || !IsBasicAuth && IsBearerToken;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Cartesia.WebhookAuthenticationResponseVariant1, TResult>? webhookAuthenticationResponseVariant1 = null,
-            global::System.Func<global::Cartesia.WebhookAuthenticationResponseVariant2, TResult>? webhookAuthenticationResponseVariant2 = null,
+            global::System.Func<global::Cartesia.WebhookAuthenticationResponseBasicAuth, TResult>? basicAuth = null,
+            global::System.Func<global::Cartesia.WebhookAuthenticationResponseBearerToken, TResult>? bearerToken = null,
             bool validate = true)
         {
             if (validate)
@@ -177,13 +177,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (WebhookAuthenticationResponseVariant1 is { } __value0 && webhookAuthenticationResponseVariant1 != null)
+            if (BasicAuth is { } __value0 && basicAuth != null)
             {
-                return webhookAuthenticationResponseVariant1(__value0);
+                return basicAuth(__value0);
             }
-            else if (WebhookAuthenticationResponseVariant2 is { } __value1 && webhookAuthenticationResponseVariant2 != null)
+            else if (BearerToken is { } __value1 && bearerToken != null)
             {
-                return webhookAuthenticationResponseVariant2(__value1);
+                return bearerToken(__value1);
             }
 
             return default(TResult);
@@ -193,9 +193,9 @@ namespace Cartesia
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Cartesia.WebhookAuthenticationResponseVariant1>? webhookAuthenticationResponseVariant1 = null,
+            global::System.Action<global::Cartesia.WebhookAuthenticationResponseBasicAuth>? basicAuth = null,
 
-            global::System.Action<global::Cartesia.WebhookAuthenticationResponseVariant2>? webhookAuthenticationResponseVariant2 = null,
+            global::System.Action<global::Cartesia.WebhookAuthenticationResponseBearerToken>? bearerToken = null,
             bool validate = true)
         {
             if (validate)
@@ -203,13 +203,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (WebhookAuthenticationResponseVariant1 is { } __value0)
+            if (BasicAuth is { } __value0)
             {
-                webhookAuthenticationResponseVariant1?.Invoke(__value0);
+                basicAuth?.Invoke(__value0);
             }
-            else if (WebhookAuthenticationResponseVariant2 is { } __value1)
+            else if (BearerToken is { } __value1)
             {
-                webhookAuthenticationResponseVariant2?.Invoke(__value1);
+                bearerToken?.Invoke(__value1);
             }
         }
 
@@ -217,8 +217,8 @@ namespace Cartesia
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Cartesia.WebhookAuthenticationResponseVariant1>? webhookAuthenticationResponseVariant1 = null,
-            global::System.Action<global::Cartesia.WebhookAuthenticationResponseVariant2>? webhookAuthenticationResponseVariant2 = null,
+            global::System.Action<global::Cartesia.WebhookAuthenticationResponseBasicAuth>? basicAuth = null,
+            global::System.Action<global::Cartesia.WebhookAuthenticationResponseBearerToken>? bearerToken = null,
             bool validate = true)
         {
             if (validate)
@@ -226,13 +226,13 @@ namespace Cartesia
                 Validate();
             }
 
-            if (WebhookAuthenticationResponseVariant1 is { } __value0)
+            if (BasicAuth is { } __value0)
             {
-                webhookAuthenticationResponseVariant1?.Invoke(__value0);
+                basicAuth?.Invoke(__value0);
             }
-            else if (WebhookAuthenticationResponseVariant2 is { } __value1)
+            else if (BearerToken is { } __value1)
             {
-                webhookAuthenticationResponseVariant2?.Invoke(__value1);
+                bearerToken?.Invoke(__value1);
             }
         }
 
@@ -243,10 +243,10 @@ namespace Cartesia
         {
             var fields = new object?[]
             {
-                WebhookAuthenticationResponseVariant1,
-                typeof(global::Cartesia.WebhookAuthenticationResponseVariant1),
-                WebhookAuthenticationResponseVariant2,
-                typeof(global::Cartesia.WebhookAuthenticationResponseVariant2),
+                BasicAuth,
+                typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth),
+                BearerToken,
+                typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -263,8 +263,8 @@ namespace Cartesia
         public bool Equals(WebhookAuthenticationResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.WebhookAuthenticationResponseVariant1?>.Default.Equals(WebhookAuthenticationResponseVariant1, other.WebhookAuthenticationResponseVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Cartesia.WebhookAuthenticationResponseVariant2?>.Default.Equals(WebhookAuthenticationResponseVariant2, other.WebhookAuthenticationResponseVariant2)
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.WebhookAuthenticationResponseBasicAuth?>.Default.Equals(BasicAuth, other.BasicAuth) &&
+                global::System.Collections.Generic.EqualityComparer<global::Cartesia.WebhookAuthenticationResponseBearerToken?>.Default.Equals(BearerToken, other.BearerToken)
                 ;
         }
 

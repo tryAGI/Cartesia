@@ -5,8 +5,7 @@ namespace Cartesia.Realtime.SpeechToText
 {
     /// <summary>
     /// Transcript chunks.<br/>
-    /// You should send the `finalize` command after the user is done speaking to make the API emit these transcript chunks;<br/>
-    /// although, the API may send transcript chunks even before you send the `finalize` command.
+    /// Send the `finalize` command when the user has finished speaking to get these chunks. The API can also send chunks before you send `finalize`.
     /// </summary>
     public sealed partial class STTTranscriptResponse
     {
@@ -18,23 +17,23 @@ namespace Cartesia.Realtime.SpeechToText
         public global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseType Type { get; set; }
 
         /// <summary>
-        /// Whether `text` is finalized.
+        /// Whether `text` is finalized
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_final")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool IsFinal { get; set; }
 
         /// <summary>
-        /// Unique identifier for this WebSocket connection.
+        /// Unique identifier for this WebSocket connection
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string RequestId { get; set; }
 
         /// <summary>
-        /// Transcribed text. This is a delta from the last transcript chunk with `"is_final": true`.<br/>
-        /// To assemble the full transcript, concatenate all transcript chunks where `"is_final": true`.<br/>
-        /// Do not strip whitespace from `text` or add whitespace between chunks as this will produce an incorrect transcript.
+        /// Text transcribed since the last chunk with `"is_final": true`.<br/>
+        /// To build the full transcript, concatenate the `text` of every chunk where `"is_final": true`.<br/>
+        /// Don't strip whitespace from `text` or add whitespace between chunks. Either one produces an incorrect transcript.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -47,7 +46,8 @@ namespace Cartesia.Realtime.SpeechToText
         public double? Duration { get; set; }
 
         /// <summary>
-        /// Word-level timestamps
+        /// Word-level timestamps, from `ink-preview` and `ink-whisper`. `ink-2` doesn't return them.<br/>
+        /// With `ink-preview`, each event lists only the words completed since the previous event. A word's timestamps can arrive in a later event than its text, sometimes in an event with empty `text`. Left out when there are none. See [Word timestamps](/use-the-api/stt/word-timestamps).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("words")]
         public global::System.Collections.Generic.IList<global::Cartesia.Realtime.SpeechToText.STTTranscriptResponseWord>? Words { get; set; }
@@ -62,15 +62,15 @@ namespace Cartesia.Realtime.SpeechToText
         /// Initializes a new instance of the <see cref="STTTranscriptResponse" /> class.
         /// </summary>
         /// <param name="isFinal">
-        /// Whether `text` is finalized.
+        /// Whether `text` is finalized
         /// </param>
         /// <param name="requestId">
-        /// Unique identifier for this WebSocket connection.
+        /// Unique identifier for this WebSocket connection
         /// </param>
         /// <param name="text">
-        /// Transcribed text. This is a delta from the last transcript chunk with `"is_final": true`.<br/>
-        /// To assemble the full transcript, concatenate all transcript chunks where `"is_final": true`.<br/>
-        /// Do not strip whitespace from `text` or add whitespace between chunks as this will produce an incorrect transcript.
+        /// Text transcribed since the last chunk with `"is_final": true`.<br/>
+        /// To build the full transcript, concatenate the `text` of every chunk where `"is_final": true`.<br/>
+        /// Don't strip whitespace from `text` or add whitespace between chunks. Either one produces an incorrect transcript.
         /// </param>
         /// <param name="type">
         /// Response type identifier
@@ -79,7 +79,8 @@ namespace Cartesia.Realtime.SpeechToText
         /// Duration of the audio in seconds
         /// </param>
         /// <param name="words">
-        /// Word-level timestamps
+        /// Word-level timestamps, from `ink-preview` and `ink-whisper`. `ink-2` doesn't return them.<br/>
+        /// With `ink-preview`, each event lists only the words completed since the previous event. A word's timestamps can arrive in a later event than its text, sometimes in an event with empty `text`. Left out when there are none. See [Word timestamps](/use-the-api/stt/word-timestamps).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

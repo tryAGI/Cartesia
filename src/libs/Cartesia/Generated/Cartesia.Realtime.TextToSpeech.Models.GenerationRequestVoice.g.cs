@@ -10,9 +10,9 @@ namespace Cartesia.Realtime.TextToSpeech
     {
         /// <summary>
         /// The ID of the voice.<br/>
-        /// Example: a0e99841-438c-4a64-b679-ae501e7d6091
+        /// Example: 228fca29-3a0a-435c-8728-5cb483251068
         /// </summary>
-        /// <example>a0e99841-438c-4a64-b679-ae501e7d6091</example>
+        /// <example>228fca29-3a0a-435c-8728-5cb483251068</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Id { get; set; }
@@ -28,7 +28,7 @@ namespace Cartesia.Realtime.TextToSpeech
         /// </summary>
         /// <param name="id">
         /// The ID of the voice.<br/>
-        /// Example: a0e99841-438c-4a64-b679-ae501e7d6091
+        /// Example: 228fca29-3a0a-435c-8728-5cb483251068
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -4,7 +4,7 @@
 namespace Cartesia.Realtime.SpeechToTextTurns
 {
     /// <summary>
-    /// Event type identifier.
+    /// Event type identifier
     /// </summary>
     public enum STTTurnsTurnStartType
     {

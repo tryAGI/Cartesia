@@ -112,17 +112,17 @@ paths:
         - name: encoding
           in: query
           description: >-
-            Required when uploading raw PCM data without a container header.
+            Required when you upload raw PCM data without a container header.
 
-            If not specified, the audio file will be decoded automatically from
-            its container (e.g. WAV, MP3, FLAC).
+            If you leave it out, the server decodes the audio automatically from
+            its container, such as WAV, MP3, or FLAC.
           required: false
           schema:
             $ref: '#/components/schemas/STTEncoding'
             nullable: true
         - name: sample_rate
           in: query
-          description: 'The sample rate of the audio in Hz. '
+          description: The sample rate of the audio in Hz, from 8000 to 48000
           required: false
           schema:
             type: integer
@@ -138,8 +138,8 @@ paths:
                   type: string
                   format: binary
                   description: >-
-                    There's no need to break up your audio file. Long files are
-                    intelligently chunked by our server.
+                    You don't need to split your audio file. The server splits
+                    long files into chunks for you.
 
 
                     Supported audio formats: `flac`, `m4a`, `mp3`, `mp4`,
@@ -154,7 +154,10 @@ paths:
                     ID of the model to use for transcription. Must be in the
                     `ink-whisper` family of models.
                 language:
-                  description: The language of the input audio in ISO-639-1 format
+                  description: >-
+                    The language code of the input audio. If you leave it out,
+                    it defaults to `en`, and speech in other languages can come
+                    back translated into English.
                   default: en
                   enum:
                     - en
@@ -275,6 +278,48 @@ paths:
       security:
         - APIKeyAuth: []
         - AccessTokenAuth: []
+  /v1/watermark/detect:
+    post:
+      tags:
+        - Watermarking
+      summary: Detect watermark
+      description: Check audio for a Cartesia watermark. Requires a paid plan.
+      operationId: detectWatermark
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    Audio file to check, between 5 seconds and 5 minutes long,
+                    up to 32 MiB. Supported formats are FLAC, M4A, MP3, MP4,
+                    MPEG, MPGA, OGA, OGG, WAV, and WebM.
+      responses:
+        '200':
+          description: Watermark detection result
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - detected
+                properties:
+                  detected:
+                    type: boolean
+                    description: Whether a Cartesia watermark was detected in the audio
+              example:
+                detected: true
+      security:
+        - APIKeyAuth: []
   /v1/agents:
     post:
       tags:
@@ -1464,6 +1509,30 @@ paths:
       security:
         - APIKeyAuth: []
   /agents/phone-numbers/provision:
+    get:
+      tags:
+        - Phone Numbers
+      summary: Get Phone Number Provisioning Usage
+      description: >-
+        Returns Cartesia-managed phone number provisioning usage for the current
+        month. Active numbers and numbers deleted during the current month count
+        toward usage.
+      operationId: phone_numbers_provisioning_usage
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      responses:
+        '200':
+          description: Current monthly phone number provisioning usage.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneNumberProvisioningUsageResponse'
+              example:
+                monthly_usage: 2
+                monthly_limit: 3
+                remaining: 1
+      security:
+        - APIKeyAuth: []
     post:
       tags:
         - Phone Numbers
@@ -1497,8 +1566,7 @@ paths:
         '402':
           description: >-
             Subscription phone number limit reached (`error_code:
-            quota_exceeded`). Upgrade your plan or delete existing Cartesia
-            numbers.
+            quota_exceeded`). Upgrade your plan or wait until the next month.
         '404':
           description: Agent not found.
       security:
@@ -1665,6 +1733,124 @@ paths:
           description: >-
             Provider has phone numbers. Remove all phone numbers using this
             provider before deleting it.
+      security:
+        - APIKeyAuth: []
+  /v1/agents/webrtc/{agent_id}/sessions:
+    post:
+      tags:
+        - Agents
+      summary: Create a WebRTC session
+      description: >-
+        Creates a WebRTC session on your trusted server and returns credentials
+        for the browser to join. Authenticate this request with an API key;
+        access tokens, including returned session tokens, cannot create
+        sessions.
+      operationId: createAgentWebrtcSession
+      parameters:
+        - name: agent_id
+          in: path
+          description: Unique identifier for the agent.
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentWebSessionRequest'
+      responses:
+        '200':
+          description: The pre-created call and its browser WebRTC credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAgentWebrtcSessionResponse'
+        '400':
+          description: Invalid session configuration or missing required dynamic variables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '404':
+          description: Agent not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '429':
+          description: Agent concurrency limit reached.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+      security:
+        - APIKeyAuth: []
+  /v1/agents/websocket/{agent_id}/sessions:
+    post:
+      tags:
+        - Agents
+      summary: Create a WebSocket session
+      description: >-
+        Creates a call-bound WebSocket session on your trusted server and
+        returns a session token for the browser to connect. Authenticate this
+        request with an API key; access tokens, including returned session
+        tokens, cannot create sessions.
+      operationId: createAgentWebsocketSession
+      parameters:
+        - name: agent_id
+          in: path
+          description: Unique identifier for the agent.
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentWebSessionRequest'
+      responses:
+        '200':
+          description: The pre-created call and its browser session token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAgentWebsocketSessionResponse'
+        '400':
+          description: Invalid session configuration or missing required dynamic variables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '404':
+          description: Agent not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
+        '429':
+          description: Agent concurrency limit reached.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicErrorResponse'
       security:
         - APIKeyAuth: []
   /agents/metrics:
@@ -2294,12 +2480,6 @@ paths:
                     Accents](/api-reference/voices/add-accents). See [GET
                     /accents](/api-reference/accents/list) for values valid for
                     each language.
-                base_voice_id:
-                  $ref: '#/components/schemas/VoiceId'
-                  description: >-
-                    Optional base voice ID that the cloned voice is derived
-                    from.
-                  nullable: true
                 access:
                   type: string
                   enum:
@@ -3405,6 +3585,81 @@ paths:
                 format: binary
       security:
         - APIKeyAuth: []
+  /balance:
+    get:
+      tags:
+        - Usage
+      summary: Get Balance
+      description: >-
+        Returns your remaining model credits and voice agent balance, the same
+        balances as the Subscription page in the playground. For credits used
+        over time, see Get Credit Usage.
+      operationId: balance_get
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+              example:
+                remaining_credits: 1250000
+                remaining_agent_cents: 4210
+                as_of: '2026-11-09T18:00:00.000Z'
+      security:
+        - AdminAPIKeyAuth: []
+  /concurrency:
+    get:
+      tags:
+        - Usage
+      summary: Get Concurrency
+      description: >-
+        Returns how many TTS, STT and agent sessions you have open right now,
+        each with the limit it counts against. Readings are shared for up to 10
+        seconds. For peaks over time, see Get Concurrency History.
+      operationId: concurrency_get
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConcurrencyResponse'
+              example:
+                tts_requests:
+                  active: 7
+                  limit: 10
+                tts_websockets:
+                  active: 5
+                  limit: 100
+                stt_requests:
+                  active: 0
+                  limit: 10
+                stt_websockets:
+                  active: 1
+                  limit: 100
+                agent_inbound_calls:
+                  active: 2
+                  limit: 20
+                agent_outbound_calls:
+                  active: 4
+                  limit: 20
+                agent_calls:
+                  active: 6
+                  limit: null
+                as_of: '2026-11-09T18:00:00.000Z'
+        '403':
+          description: Live concurrency isn't available on the free plan.
+        '404':
+          description: No subscription exists for this account.
+        '503':
+          description: Live concurrency couldn't be read. Try again in a few seconds.
+      security:
+        - AdminAPIKeyAuth: []
   /usage/credits:
     get:
       tags:
@@ -3550,6 +3805,70 @@ paths:
                     cents: 1093
                     minutes: 159.23
                     calls: 130
+      security:
+        - AdminAPIKeyAuth: []
+  /usage/concurrency:
+    get:
+      tags:
+        - Usage
+      summary: Get Concurrency History
+      description: Returns your peak concurrency in five-minute buckets.
+      operationId: usage_concurrency
+      parameters:
+        - $ref: '#/components/parameters/CartesiaVersionHeader'
+        - name: start_ts
+          in: query
+          description: >-
+            Start of the time window, as an RFC 3339 datetime (with timezone).
+            Buckets that start at or after this time are returned. History is
+            kept for 31 days, so buckets older than that aren't returned.
+          required: true
+          schema:
+            type: string
+            format: date-time
+            example: '2026-11-09T17:00:00Z'
+        - name: end_ts
+          in: query
+          description: >-
+            End of the time window, as an RFC 3339 datetime (with timezone).
+            Buckets that start before this time are returned. Must be after
+            `start_ts`, and `start_ts` to `end_ts` cannot span more than 31
+            days.
+          required: true
+          schema:
+            type: string
+            format: date-time
+            example: '2026-11-09T17:15:00Z'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageConcurrencyHistoryResponse'
+              example:
+                data:
+                  - start_ts: '2026-11-09T17:00:00.000Z'
+                    end_ts: '2026-11-09T17:05:00.000Z'
+                    tts_requests: 4
+                    tts_websockets: 6
+                    stt_requests: 2
+                    stt_websockets: 2
+                    agent_calls: 0
+                  - start_ts: '2026-11-09T17:05:00.000Z'
+                    end_ts: '2026-11-09T17:10:00.000Z'
+                    tts_requests: 7
+                    tts_websockets: 9
+                    stt_requests: 3
+                    stt_websockets: 3
+                    agent_calls: 1
+                  - start_ts: '2026-11-09T17:10:00.000Z'
+                    end_ts: '2026-11-09T17:15:00.000Z'
+                    tts_requests: 5
+                    tts_websockets: 9
+                    stt_requests: 1
+                    stt_websockets: 1
+                    agent_calls: 1
       security:
         - AdminAPIKeyAuth: []
   /api-keys:
@@ -4363,6 +4682,24 @@ components:
           description: STT transport paths. Omitted on TTS rows.
           items:
             $ref: '#/components/schemas/STTMode'
+        supported_languages:
+          type: array
+          description: >-
+            Sorted synthesis language codes supported by this TTS model. Omitted
+            on STT rows.
+          items:
+            type: string
+          example:
+            - de
+            - en
+            - es
+            - fr
+            - ja
+            - ko
+            - or
+            - pt
+            - ur
+            - zh
       required:
         - id
         - capability
@@ -5105,8 +5442,8 @@ components:
       description: >-
         The granularity of timestamps to include in the response.
 
-        Currently only `word` level timestamps are supported, providing start
-        and end times for each word.
+        Currently, only `word` is supported. It returns the start and end time
+        of each word.
     TranscriptionResponse:
       title: TranscriptionResponse
       type: object
@@ -5120,7 +5457,7 @@ components:
             response.
         request_id:
           type: string
-          description: Unique identifier for this transcription request.
+          description: Unique identifier for this transcription request
         text:
           type: string
           description: >-
@@ -5128,19 +5465,18 @@ components:
             transcription.
         language:
           type: string
-          description: The specified language of the input audio.
+          description: The specified language of the input audio
         duration:
           type: number
           format: double
-          description: The duration of the input audio in seconds.
+          description: The duration of the input audio in seconds
         words:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptionWord'
           description: >-
-            Word-level timestamps showing the start and end time of each word.
-            Only included when `[word]` is passed into
-            `timestamp_granularities[]`.
+            The start and end time of each word. Included only when you pass
+            `[word]` in `timestamp_granularities[]`.
       required:
         - type
         - text
@@ -5150,15 +5486,15 @@ components:
       properties:
         word:
           type: string
-          description: The transcribed word.
+          description: The transcribed word
         start:
           type: number
           format: double
-          description: Start time of the word in seconds.
+          description: Start time of the word in seconds
         end:
           type: number
           format: double
-          description: End time of the word in seconds.
+          description: End time of the word in seconds
       required:
         - word
         - start
@@ -5255,6 +5591,8 @@ components:
                 `null` to wait for the user to speak first.
               nullable: true
               type: string
+            initial_message_interruptions:
+              $ref: '#/components/schemas/ManagedAgentInitialMessageInterruptionsV1'
             instructions:
               description: >-
                 Instructions that define the agent's behavior. Supports dynamic
@@ -5264,16 +5602,58 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit or set to `null` to use `en`.
+                  allOf:
+                    - $ref: >-
+                        #/components/schemas/NullableManagedAgentLanguageOrLocale
+                additional:
+                  description: >-
+                    Other languages the caller can switch to, in order. Each is
+                    a language, such as `fr`, or a locale, such as `es-MX`. Omit
+                    or send `[]` for a single-language agent.
+
+
+                    Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    Speech recognition listens for all configured languages. The
+                    agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 5
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentLanguageOrLocale'
+                  example:
+                    - es-MX
+                    - fr
+                presets:
+                  description: >-
+                    Settings per language, keyed by a language or locale such as
+                    `es-MX`. A preset applies only when the agent speaks that
+                    exact language or locale, including the primary language. A
+                    language without a matching preset uses the agent's voice
+                    and reads numbers, dates, times, and currency by its
+                    conventions. Omit or send `{}` for none.
+                  type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+                  example:
+                    es-MX:
+                      voice_id: <spanish_voice_id>
             model:
               type: object
               properties:
                 id:
-                  description: Model ID from `GET /v1/agents/models`.
+                  description: Model ID from `GET /v1/agents/models`, or `custom_llm`
                   type: string
                   minLength: 1
-                fallback_strategy:
-                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
                 max_output_tokens:
                   description: >-
                     Maximum number of tokens the model can generate, from `1` to
@@ -5288,6 +5668,10 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+                fallback_strategy:
+                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
+                custom_llm:
+                  $ref: '#/components/schemas/ManagedAgentCustomLlmV1'
             prompt_optimization:
               description: >-
                 Optimizes the system prompt with guidelines for natural and
@@ -5621,64 +6005,172 @@ components:
         Variable names are case-sensitive, up to 64 characters, and use letters,
         digits, or underscores. Start with a letter or underscore; `system__`
         and `secret__` prefixes are reserved. Limited to 16 KiB of UTF-8 JSON.
-    ManagedAgentPrimaryLanguageV1:
+    ManagedAgentInitialMessageInterruptionsV1:
       description: >-
-        ISO 639-1 language code used for speech recognition, agent responses,
-        and speech synthesis.
+        Controls how the agent handles interruptions while `initial_message`
+        plays. `allow` lets the caller interrupt it, `ignore` plays it in full
+        and adds what the caller says meanwhile to the LLM context without
+        answering it, and `respond_after` plays it in full, then replies.
+        Defaults to `allow`.
       type: string
       enum:
-        - en
-        - de
-        - pt
-        - zh
-        - ja
-        - fr
-        - es
-        - hi
-        - it
-        - ko
-        - nl
-        - pl
-        - ru
-        - sv
-        - tr
-        - tl
-        - bg
-        - ro
+        - allow
+        - ignore
+        - respond_after
+    NullableManagedAgentLanguageOrLocale:
+      oneOf:
+        - $ref: '#/components/schemas/ManagedAgentLanguageOrLocale'
+        - title: 'Null'
+          type: string
+          nullable: true
+          enum:
+            - null
+    ManagedAgentLanguageOrLocale:
+      type: string
+      enum:
         - ar
-        - cs
-        - el
-        - fi
-        - hr
-        - ms
-        - sk
-        - da
-        - ta
-        - uk
-        - hu
-        - 'no'
-        - vi
+        - bg
         - bn
-        - th
-        - he
-        - ka
-        - id
-        - te
+        - cs
+        - da
+        - de
+        - el
+        - en
+        - es
+        - fi
+        - fr
         - gu
+        - he
+        - hi
+        - hu
+        - id
+        - it
+        - ja
+        - ka
         - kn
+        - ko
         - ml
         - mr
-        - pa
+        - ms
+        - nl
+        - 'no'
         - or
+        - pa
+        - pl
+        - pt
+        - ro
+        - ru
+        - sk
+        - sv
+        - ta
+        - te
+        - th
+        - tl
+        - tr
+        - uk
         - ur
-      title: ManagedAgentPrimaryLanguageV1
+        - vi
+        - zh
+        - ar-AE
+        - ar-EG
+        - ar-SA
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-AT
+        - de-CH
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-AR
+        - es-BO
+        - es-CL
+        - es-CO
+        - es-DO
+        - es-ES
+        - es-MX
+        - es-PA
+        - es-PE
+        - es-PR
+        - es-US
+        - fi-FI
+        - fr-BE
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - ml-IN
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - or-IN
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
+        - zh-TW
+    ManagedAgentLanguagePresetsV1:
+      description: Settings for this language. Set `voice_id`, `normalization`, or both.
+      type: object
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        voice_id:
+          description: >-
+            ID of the voice the agent speaks this language with, instead of
+            `audio.output.voice_id`.
+          type: string
+          minLength: 1
+        normalization:
+          description: >-
+            A locale, such as `en-IN`, whose [text
+            normalization](/build-with-cartesia/capability-guides/text-normalization)
+            conventions the agent uses to read numbers, dates, times, and
+            currency in this language. Omit to use this language's conventions.
+            Unlike the TTS API, it doesn't accept `auto`, `off`, or a bare
+            language code such as `en`.
+          allOf:
+            - $ref: '#/components/schemas/ManagedAgentNormalization'
+      title: ManagedAgentLanguagePresetsV1
     ManagedAgentFallbackStrategyV1:
       title: Fallback strategy
       description: >-
-        Models to fall back to when the primary model fails before it starts
-        responding. `auto` uses Cartesia-managed fallback models. `explicit`
-        uses up to three model IDs from `GET /v1/agents/models`, in order. Set
-        to `null` to disable fallback. Defaults to `auto`.
+        Models to try when the primary fails before responding. `auto` selects
+        Cartesia-managed fallbacks (the default for new managed-model agents);
+        `explicit` tries up to three managed model IDs in order; `null` disables
+        fallback.
       oneOf:
         - title: Auto
           type: object
@@ -5699,7 +6191,9 @@ components:
               enum:
                 - explicit
             ids:
-              description: Model IDs to fall back to, in order.
+              description: >-
+                Unique managed model IDs from `GET /v1/agents/models`, tried in
+                order and excluding the primary model
               type: array
               items:
                 type: string
@@ -5714,6 +6208,63 @@ components:
           nullable: true
           enum:
             - null
+    ManagedAgentCustomLlmV1:
+      description: >-
+        An OpenAI-compatible Chat Completions endpoint. Requires `model.id` to
+        be `custom_llm`.
+      type: object
+      additionalProperties: false
+      properties:
+        authentication:
+          description: >-
+            Bearer or Basic authentication. Omit for no authentication, or use a
+            secret in `request_headers`. Do not combine this field with an
+            `Authorization` request header. Credentials and usernames must use
+            printable ASCII; credentials are limited to 16 KiB each.
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/WebhookAuthentication'
+        model_id:
+          description: >-
+            Optional model ID sent as `model` in requests to your endpoint. If
+            unset, the `model` field is omitted.
+          type: string
+          nullable: true
+          example: acme-support-v1
+          minLength: 1
+          maxLength: 256
+        request_headers:
+          description: >-
+            Headers included in each request, at most 32. Names are
+            case-insensitively unique and use up to 128 letters, digits,
+            hyphens, or underscores. Values are printable ASCII, up to 16 KiB
+            each. `Accept`, `Accept-Encoding`, `Idempotency-Key`, `Host`,
+            `Content-Type`, `Content-Length`, and hop-by-hop headers are
+            reserved, and an `Authorization` header must be a secret. Secret
+            values are never returned.
+          type: object
+          maxProperties: 32
+          additionalProperties:
+            anyOf:
+              - type: string
+              - $ref: '#/components/schemas/WebhookSecret'
+        send_call_context:
+          description: >-
+            Include custom and available system dynamic variables in
+            `cartesia_extra_body.dynamic_variables`
+          type: boolean
+          default: false
+        url:
+          description: >-
+            Public HTTPS API base URL. Cartesia appends `/chat/completions`;
+            omit this suffix, query parameters, fragments, and embedded
+            credentials. Redirects are not followed.
+          type: string
+          example: https://llm.example.com/v1
+          maxLength: 2048
+      required:
+        - url
+      title: Custom LLM
     ManagedAgentToolReferenceV1:
       type: object
       properties:
@@ -5825,6 +6376,8 @@ components:
             to wait for the user to speak first.
           nullable: true
           type: string
+        initial_message_interruptions:
+          $ref: '#/components/schemas/ManagedAgentInitialMessageInterruptionsV1'
         instructions:
           description: >-
             Instructions that define the agent's behavior. Supports dynamic
@@ -5835,18 +6388,65 @@ components:
           properties:
             primary:
               $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+            additional:
+              description: >-
+                Other languages the caller can switch to, in order. Each is a
+                language, such as `fr`, or a locale, such as `es-MX`. Returns
+                `[]` when none are configured. Tags are returned as saved: a
+                locale such as `es-MX` is not reduced to `es`.
+              type: array
+              items:
+                type: string
+              example:
+                - es-MX
+                - fr
+            presets:
+              description: >-
+                Settings per language, keyed by a language or locale such as
+                `es-MX`. A preset applies only when the agent speaks that exact
+                language or locale, including the primary language. A language
+                without a matching preset uses the agent's voice and reads
+                numbers, dates, times, and currency by its conventions. Returns
+                `{}` when none are configured.
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  voice_id:
+                    description: >-
+                      ID of the voice the agent speaks this language with,
+                      instead of `audio.output.voice_id`.
+                    type: string
+                  normalization:
+                    description: >-
+                      The locale, such as `en-IN`, whose [text
+                      normalization](/build-with-cartesia/capability-guides/text-normalization)
+                      conventions the agent uses to read numbers, dates, times,
+                      and currency in this language, returned as saved. Absent
+                      when not set. The agent then uses this language's
+                      conventions.
+                    type: string
+              example:
+                es-MX:
+                  voice_id: <spanish_voice_id>
           required:
             - primary
+            - additional
+            - presets
         model:
           type: object
+          example:
+            id: gpt-5.4-mini
+            fallback_strategy:
+              type: auto
+            temperature: 0.5
+            max_output_tokens: 2048
           properties:
             id:
-              description: Model ID from `GET /v1/agents/models`.
+              description: Model ID from `GET /v1/agents/models`, or `custom_llm`
               type: string
               example: gpt-5.4-mini
               minLength: 1
-            fallback_strategy:
-              $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
             max_output_tokens:
               description: >-
                 Maximum number of tokens the model can generate, from `1` to
@@ -5861,6 +6461,12 @@ components:
               minimum: 0
               maximum: 1
               description: Controls the randomness of model responses, from `0` to `1`.
+            fallback_strategy:
+              $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
+            custom_llm:
+              description: The custom endpoint. Present only when `id` is `custom_llm`.
+              allOf:
+                - $ref: '#/components/schemas/ManagedAgentCustomLlmResponseV1'
           required:
             - id
             - fallback_strategy
@@ -5928,7 +6534,191 @@ components:
         - timezone
         - speculative_generation
         - prompt_optimization
+        - initial_message_interruptions
       title: ManagedAgentConfig
+    ManagedAgentNormalization:
+      type: string
+      enum:
+        - ar-AE
+        - ar-EG
+        - ar-SA
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-AT
+        - de-CH
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-AR
+        - es-BO
+        - es-CL
+        - es-CO
+        - es-DO
+        - es-ES
+        - es-MX
+        - es-PA
+        - es-PE
+        - es-PR
+        - es-US
+        - fi-FI
+        - fr-BE
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - ml-IN
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - or-IN
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
+        - zh-TW
+      example: en-IN
+    WebhookAuthentication:
+      description: Authentication sent in the `Authorization` header.
+      type: object
+      oneOf:
+        - type: object
+          title: Basic auth
+          properties:
+            mode:
+              type: string
+              enum:
+                - basic_auth
+            password:
+              $ref: '#/components/schemas/WebhookSecret'
+            username:
+              description: The username. It cannot contain a colon.
+              type: string
+              maxLength: 512
+              minLength: 1
+          required:
+            - mode
+            - username
+            - password
+          description: Sends an `Authorization` header using HTTP Basic authentication.
+        - type: object
+          title: Bearer token
+          properties:
+            mode:
+              type: string
+              enum:
+                - bearer
+            token:
+              $ref: '#/components/schemas/WebhookSecret'
+          required:
+            - mode
+            - token
+          description: Sends an `Authorization` header using a bearer token.
+      title: Authentication
+    WebhookSecret:
+      description: A secret credential. `secret_value` is write-only and is never returned.
+      type: object
+      properties:
+        secret_description:
+          description: >-
+            A label for this credential. Do not include the secret itself
+            because this field is stored as plain text.
+          type: string
+          maxLength: 200
+          minLength: 1
+        secret_value:
+          description: >-
+            The secret to store, such as an API key. This field is write-only.
+            Omit it on update to keep the existing secret.
+          type: string
+          minLength: 1
+          writeOnly: true
+        type:
+          type: string
+          enum:
+            - secret
+      required:
+        - type
+      title: Secret
+    ManagedAgentPrimaryLanguageV1:
+      description: >-
+        The language the agent starts each call in: a language, such as `en`, or
+        a locale, such as `en-US`. See [supported languages and
+        locales](/build-with-cartesia/capability-guides/advanced-capabilities#which-locales-are-supported).
+      allOf:
+        - $ref: '#/components/schemas/LanguageOrLocale'
+      title: ManagedAgentPrimaryLanguageV1
+    ManagedAgentCustomLlmResponseV1:
+      description: >-
+        An OpenAI-compatible Chat Completions endpoint. Secret values are never
+        returned.
+      type: object
+      properties:
+        authentication:
+          description: >-
+            The credential sent in the `Authorization` header, or `null` for
+            none.
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/WebhookAuthenticationResponse'
+        model_id:
+          description: >-
+            The model ID sent as `model` in each request, or `null` if the
+            endpoint chooses the model.
+          type: string
+          nullable: true
+        request_headers:
+          description: Headers included in each request. Secret values are never returned.
+          type: object
+          additionalProperties:
+            anyOf:
+              - type: string
+              - $ref: '#/components/schemas/WebhookSecretResponse'
+        send_call_context:
+          description: >-
+            Whether each request includes the call's dynamic variables in
+            `cartesia_extra_body.dynamic_variables`.
+          type: boolean
+        url:
+          description: The HTTPS base URL of the Chat Completions compatible API.
+          type: string
+      required:
+        - model_id
+        - url
+        - send_call_context
+      title: Custom LLM
     ManagedAgentSystemToolsV1:
       type: object
       properties:
@@ -6135,6 +6925,164 @@ components:
         - voicemail_detection
         - transfer_to_number
       title: ManagedAgentSystemTools
+    LanguageOrLocale:
+      type: string
+      enum:
+        - en
+        - fr
+        - de
+        - es
+        - pt
+        - zh
+        - ja
+        - hi
+        - it
+        - ko
+        - nl
+        - pl
+        - ru
+        - sv
+        - tr
+        - tl
+        - bg
+        - ro
+        - ar
+        - cs
+        - el
+        - fi
+        - hr
+        - ms
+        - sk
+        - da
+        - ta
+        - uk
+        - hu
+        - 'no'
+        - vi
+        - bn
+        - th
+        - he
+        - ka
+        - id
+        - te
+        - gu
+        - kn
+        - ml
+        - mr
+        - pa
+        - or
+        - ur
+        - bg-BG
+        - bn-IN
+        - cs-CZ
+        - da-DK
+        - de-DE
+        - el-GR
+        - en-AU
+        - en-CA
+        - en-GB
+        - en-IE
+        - en-IN
+        - en-NZ
+        - en-SG
+        - en-US
+        - en-ZA
+        - es-ES
+        - es-MX
+        - es-US
+        - fi-FI
+        - fr-CA
+        - fr-FR
+        - gu-IN
+        - he-IL
+        - hi-IN
+        - hr-HR
+        - hu-HU
+        - id-ID
+        - it-IT
+        - ja-JP
+        - ka-GE
+        - kn-IN
+        - ko-KR
+        - ml-IN
+        - mr-IN
+        - ms-MY
+        - nl-BE
+        - nl-NL
+        - no-NO
+        - or-IN
+        - pa-IN
+        - pl-PL
+        - pt-BR
+        - pt-PT
+        - ro-RO
+        - ru-RU
+        - sk-SK
+        - sv-SE
+        - ta-IN
+        - te-IN
+        - th-TH
+        - tl-PH
+        - tr-TR
+        - uk-UA
+        - ur-IN
+        - vi-VN
+        - zh-CN
+    WebhookAuthenticationResponse:
+      description: Authentication sent in the `Authorization` header.
+      type: object
+      oneOf:
+        - type: object
+          title: Basic auth
+          properties:
+            mode:
+              type: string
+              enum:
+                - basic_auth
+            password:
+              $ref: '#/components/schemas/WebhookSecretResponse'
+            username:
+              description: The username. It cannot contain a colon.
+              type: string
+              maxLength: 512
+              minLength: 1
+          required:
+            - mode
+            - username
+            - password
+          description: Sends an `Authorization` header using HTTP Basic authentication.
+        - type: object
+          title: Bearer token
+          properties:
+            mode:
+              type: string
+              enum:
+                - bearer
+            token:
+              $ref: '#/components/schemas/WebhookSecretResponse'
+          required:
+            - mode
+            - token
+          description: Sends an `Authorization` header using a bearer token.
+      title: Authentication
+    WebhookSecretResponse:
+      description: A stored credential. `secret_value` is not returned.
+      type: object
+      properties:
+        secret_description:
+          description: >-
+            A label for this credential. Do not include the secret itself
+            because this field is stored as plain text.
+          type: string
+          maxLength: 200
+          minLength: 1
+        type:
+          type: string
+          enum:
+            - secret
+      required:
+        - type
+      title: Secret
     ListManagedAgentsV1Response:
       type: object
       properties:
@@ -6311,6 +7259,8 @@ components:
                 `null` to wait for the user to speak first.
               nullable: true
               type: string
+            initial_message_interruptions:
+              $ref: '#/components/schemas/ManagedAgentInitialMessageInterruptionsV1'
             instructions:
               description: >-
                 Instructions that define the agent's behavior. Supports dynamic
@@ -6320,16 +7270,65 @@ components:
               type: object
               properties:
                 primary:
-                  $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+                  description: >-
+                    The language the agent starts each call in. Use a language
+                    code such as `en`, or a locale such as `en-US` for a
+                    regional accent. Write `initial_message` in this language.
+                    Omit to keep the current primary language; set to `null` to
+                    use `en`.
+                  allOf:
+                    - $ref: >-
+                        #/components/schemas/NullableManagedAgentLanguageOrLocale
+                additional:
+                  description: >-
+                    Other languages the caller can switch to, in order. Each is
+                    a language, such as `fr`, or a locale, such as `es-MX`. Omit
+                    to preserve the current list; `[]` clears it. A list you
+                    send replaces the current one; entries are not appended or
+                    merged.
+
+
+                    Each base language may appear only once, including the
+                    primary. For example, `en-US` and `en-GB` cannot be
+                    configured together.
+
+
+                    Changes apply to new calls; calls in progress keep their
+                    starting configuration.
+
+
+                    The agent switches when the caller asks and keeps using that
+                    language until another requested switch. A short phrase in
+                    another language does not trigger a switch.
+                  type: array
+                  maxItems: 5
+                  items:
+                    $ref: '#/components/schemas/ManagedAgentLanguageOrLocale'
+                  example:
+                    - es-MX
+                    - fr
+                presets:
+                  description: >-
+                    Settings per language, keyed by a language or locale such as
+                    `es-MX`. A preset applies only when the agent speaks that
+                    exact language or locale, including the primary language. A
+                    language without a matching preset uses the agent's voice
+                    and reads numbers, dates, times, and currency by its
+                    conventions. Omit to keep the current presets. A map you
+                    send replaces them, and `{}` clears them.
+                  type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/ManagedAgentLanguagePresetsV1'
+                  example:
+                    es-MX:
+                      voice_id: <spanish_voice_id>
             model:
               type: object
               properties:
                 id:
-                  description: Model ID from `GET /v1/agents/models`.
+                  description: Model ID from `GET /v1/agents/models`, or `custom_llm`
                   type: string
                   minLength: 1
-                fallback_strategy:
-                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
                 max_output_tokens:
                   description: >-
                     Maximum number of tokens the model can generate, from `1` to
@@ -6344,6 +7343,16 @@ components:
                   minimum: 0
                   maximum: 1
                   description: Controls the randomness of model responses, from `0` to `1`.
+                fallback_strategy:
+                  $ref: '#/components/schemas/ManagedAgentFallbackStrategyV1'
+                custom_llm:
+                  description: >-
+                    Replaces the entire custom LLM configuration; omit to
+                    preserve it. A secret placeholder (`{"type": "secret"}`)
+                    keeps the credential at that field. Send `secret_value` to
+                    replace it or supply a credential where none is stored.
+                  allOf:
+                    - $ref: '#/components/schemas/ManagedAgentCustomLlmV1'
             prompt_optimization:
               description: >-
                 Optimizes the system prompt with guidelines for natural and
@@ -7220,41 +8229,6 @@ components:
         - url
         - method
       title: ManagedWebhookApiSchema
-    WebhookAuthenticationResponse:
-      description: Authentication sent in the `Authorization` header.
-      type: object
-      oneOf:
-        - type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - basic_auth
-            password:
-              $ref: '#/components/schemas/WebhookSecretResponse'
-            username:
-              description: The username. It cannot contain a colon.
-              type: string
-              maxLength: 512
-              minLength: 1
-          required:
-            - mode
-            - username
-            - password
-          description: Sends an `Authorization` header using HTTP Basic authentication.
-        - type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - bearer
-            token:
-              $ref: '#/components/schemas/WebhookSecretResponse'
-          required:
-            - mode
-            - token
-          description: Sends an `Authorization` header using a bearer token.
-      title: WebhookAuthenticationResponse
     WebhookPathParam:
       description: >-
         A value sent in the URL path. The model supplies it unless you set
@@ -7406,24 +8380,6 @@ components:
       required:
         - type
       title: WebhookBodyParam
-    WebhookSecretResponse:
-      description: A stored credential. `secret_value` is not returned.
-      type: object
-      properties:
-        secret_description:
-          description: >-
-            A label for this credential. Do not include the secret itself
-            because this field is stored as plain text.
-          type: string
-          maxLength: 200
-          minLength: 1
-        type:
-          type: string
-          enum:
-            - secret
-      required:
-        - type
-      title: WebhookSecretResponse
     WebhookDynamicVariableHeader:
       description: >-
         Fill this header with the variable's current value. Numbers and
@@ -7487,66 +8443,6 @@ components:
       required:
         - type
       title: ClientToolParam
-    WebhookAuthentication:
-      description: Authentication sent in the `Authorization` header.
-      type: object
-      oneOf:
-        - type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - basic_auth
-            password:
-              $ref: '#/components/schemas/WebhookSecret'
-            username:
-              description: The username. It cannot contain a colon.
-              type: string
-              maxLength: 512
-              minLength: 1
-          required:
-            - mode
-            - username
-            - password
-          description: Sends an `Authorization` header using HTTP Basic authentication.
-        - type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - bearer
-            token:
-              $ref: '#/components/schemas/WebhookSecret'
-          required:
-            - mode
-            - token
-          description: Sends an `Authorization` header using a bearer token.
-      title: WebhookAuthentication
-    WebhookSecret:
-      description: A secret credential. `secret_value` is write-only and is never returned.
-      type: object
-      properties:
-        secret_description:
-          description: >-
-            A label for this credential. Do not include the secret itself
-            because this field is stored as plain text.
-          type: string
-          maxLength: 200
-          minLength: 1
-        secret_value:
-          description: >-
-            The secret to store, such as an API key. This field is write-only.
-            Omit it on update to keep the existing secret.
-          type: string
-          minLength: 1
-          writeOnly: true
-        type:
-          type: string
-          enum:
-            - secret
-      required:
-        - type
-      title: WebhookSecret
     WebhookQueryParam:
       description: >-
         A value sent in the query string. The model supplies it unless you set
@@ -7933,6 +8829,13 @@ components:
           description: >-
             The text content of the transcript. This is the text that was spoken
             by the user or the agent.
+        ignored:
+          type: boolean
+          description: >-
+            Present and `true` on a `user` turn that ended while the agent's
+            `initial_message` was playing with `initial_message_interruptions`
+            set to `ignore`. The turn is in the LLM context, but the agent
+            didn't answer it.
         start_timestamp:
           type: number
           format: float
@@ -8192,7 +9095,7 @@ components:
           - type: boolean
       description: >-
         Custom values for this call. Supply values for variables used in the
-        welcome message.
+        initial message.
 
 
         Names are case-sensitive, up to 64 characters, and use letters, digits,
@@ -8671,6 +9574,35 @@ components:
         - label
         - number
         - provider
+    PhoneNumberProvisioningUsageResponse:
+      title: PhoneNumberProvisioningUsageResponse
+      type: object
+      description: Cartesia-managed phone number provisioning usage for the current month.
+      properties:
+        monthly_usage:
+          type: integer
+          minimum: 0
+          description: >-
+            Number of phone numbers provisioned during the current month. This
+            includes active numbers and numbers deleted during the month.
+        monthly_limit:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: >-
+            Maximum phone numbers that can be provisioned during the current
+            month. `null` means the plan has no monthly limit.
+        remaining:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: >-
+            Phone numbers that can still be provisioned during the current
+            month. `null` means the plan has no monthly limit.
+      required:
+        - monthly_usage
+        - monthly_limit
+        - remaining
     ProvisionPhoneNumberBody:
       title: ProvisionPhoneNumberBody
       type: object
@@ -9138,6 +10070,138 @@ components:
           format: password
       required:
         - username
+    CreateAgentWebSessionRequest:
+      type: object
+      properties:
+        dynamic_variables:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: number
+              - type: boolean
+          description: >-
+            Trusted values that Cartesia stores on the call and supplies to the
+            agent.
+        config_overrides:
+          $ref: '#/components/schemas/AgentSessionConfig'
+    CreateAgentWebrtcSessionResponse:
+      type: object
+      required:
+        - call_id
+        - url
+        - token
+        - room
+        - expires_at
+      properties:
+        call_id:
+          type: string
+          description: ID of the pre-created call.
+        url:
+          type: string
+          format: uri
+          description: LiveKit server URL the browser connects to.
+        token:
+          type: string
+          description: >-
+            Short-lived LiveKit participant token for the browser connection. Do
+            not log it.
+        room:
+          type: string
+          description: LiveKit room the browser joins.
+        expires_at:
+          type: string
+          format: date-time
+          description: >-
+            Connection deadline. Create a new session if the browser does not
+            join before this time.
+    AgentSessionConfig:
+      type: object
+      additionalProperties: false
+      description: >-
+        Per-call overrides using the same field structure as agent
+        configuration. Omitted fields use the agent's published configuration.
+      properties:
+        instructions:
+          type: string
+          minLength: 1
+          maxLength: 200000
+          description: Instructions that define the agent's behavior for this call.
+        initial_message:
+          nullable: true
+          type: string
+          maxLength: 1000
+          description: >-
+            Message spoken when the call begins. Set to `null` to wait for the
+            caller to speak first.
+        language:
+          type: object
+          additionalProperties: false
+          properties:
+            primary:
+              allOf:
+                - $ref: '#/components/schemas/ManagedAgentPrimaryLanguageV1'
+              nullable: true
+              description: >-
+                Primary language used for this call. Omit to inherit the
+                published language or set to `null` to use English (`en`).
+        audio:
+          type: object
+          additionalProperties: false
+          properties:
+            output:
+              type: object
+              additionalProperties: false
+              properties:
+                voice_id:
+                  type: string
+                  minLength: 1
+                  description: ID of the voice used for agent speech during this call.
+                speed:
+                  nullable: true
+                  type: number
+                  minimum: 0.6
+                  maximum: 1.5
+                  description: >-
+                    Speech speed multiplier from `0.6` to `1.5`. Set to `null`
+                    to use the default speed.
+                emotion:
+                  allOf:
+                    - $ref: '#/components/schemas/Emotion'
+                  nullable: true
+                  description: >-
+                    Text-to-speech emotion. Set to `null` to let the model infer
+                    the emotion from the transcript.
+    CreateAgentWebsocketSessionResponse:
+      type: object
+      required:
+        - call_id
+        - url
+        - token
+        - expires_at
+      properties:
+        call_id:
+          type: string
+          description: >-
+            ID of the pre-created call. The `session_ready` event returns the
+            same value.
+        url:
+          type: string
+          format: uri
+          description: >-
+            WebSocket URL for this agent. Append the returned session token as
+            the `access_token` query parameter.
+        token:
+          type: string
+          description: >-
+            Opaque, short-lived, single-use session token. Do not inspect or log
+            it.
+        expires_at:
+          type: string
+          format: date-time
+          description: >-
+            Connection deadline, currently four minutes after creation. Use this
+            timestamp rather than calculating the deadline.
     ListMetricsResponse:
       title: ListMetricsResponse
       type: object
@@ -9592,13 +10656,18 @@ components:
       type: string
       description: Accent id from GET /accents, valid for the selected language.
       enum:
+        - egyptian-arabic
         - emirati-arabic
         - khaleeji
         - middle-eastern-arabic
         - modern-standard-arabic
+        - standard-basque
         - indian-bengali
         - jessore
         - bulgarian
+        - hong-kong-cantonese
+        - central-catalan
+        - valencian
         - mandarin
         - taiwanese-mandarin
         - zagreb
@@ -9628,6 +10697,7 @@ components:
         - belgian-french
         - canadian-french
         - parisian
+        - standard-galician
         - tbilisi
         - austrian-german
         - standard-german
@@ -9680,6 +10750,7 @@ components:
         - urdu
         - central-vietnamese
         - southern-vietnamese
+        - welsh
     ListAccentsResponse:
       title: ListAccentsResponse
       type: object
@@ -10658,6 +11729,104 @@ components:
         - raw
         - wav
         - mp3
+    BalanceResponse:
+      title: BalanceResponse
+      type: object
+      properties:
+        remaining_credits:
+          type: integer
+          description: Model credits remaining.
+        remaining_agent_cents:
+          type: integer
+          description: >-
+            Voice agent balance remaining, in US cents. `4210` is $42.10. Can be
+            negative when calls run past the balance.
+        as_of:
+          type: string
+          format: date-time
+          description: When the balance was read.
+      required:
+        - remaining_credits
+        - remaining_agent_cents
+        - as_of
+    ConcurrencyResponse:
+      title: ConcurrencyResponse
+      type: object
+      description: >-
+        Your concurrency now, with the limit each counter counts against.
+
+        The requests and WebSockets counters overlap, because work over a
+        WebSocket counts in both. Don't add them together.
+      properties:
+        tts_requests:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          description: Concurrent TTS generations, against your TTS concurrency limit.
+        tts_websockets:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          description: Open TTS WebSocket connections, against your TTS WebSocket limit.
+        stt_requests:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          description: >-
+            Concurrent transcription streams, against your STT concurrency
+            limit.
+        stt_websockets:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          description: Open STT WebSocket connections.
+        agent_inbound_calls:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          nullable: true
+          description: >-
+            Inbound and web agent calls, including calls still connecting,
+            against your inbound call limit. Null when these calls can't be
+            counted, such as when your account has no inbound call limit.
+        agent_outbound_calls:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          nullable: true
+          description: >-
+            Outbound agent calls, including calls still connecting, against your
+            outbound call limit. Null when these calls can't be counted, such as
+            when your account has no outbound call limit.
+        agent_calls:
+          allOf:
+            - $ref: '#/components/schemas/LiveConcurrencyCount'
+          nullable: true
+          description: >-
+            Inbound, web and outbound agent calls together, as in Get
+            Concurrency History. `limit` is always null, because each direction
+            has its own limit. Null when either direction is null.
+        as_of:
+          type: string
+          format: date-time
+          description: When the reading was taken.
+      required:
+        - tts_requests
+        - tts_websockets
+        - stt_requests
+        - stt_websockets
+        - agent_inbound_calls
+        - agent_outbound_calls
+        - agent_calls
+        - as_of
+    LiveConcurrencyCount:
+      title: LiveConcurrencyCount
+      type: object
+      properties:
+        active:
+          type: integer
+          description: How many are open now.
+        limit:
+          type: integer
+          nullable: true
+          description: The limit `active` counts against. Null when no limit applies.
+      required:
+        - active
+        - limit
     UsageInterval:
       title: UsageInterval
       type: string
@@ -10782,6 +11951,65 @@ components:
         - cents
         - minutes
         - calls
+    UsageConcurrencyHistoryResponse:
+      title: UsageConcurrencyHistoryResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageConcurrencyHistoryPoint'
+          description: >-
+            Buckets in chronological order. Buckets with no recorded concurrency
+            are left out, not returned as zeros.
+      required:
+        - data
+    UsageConcurrencyHistoryPoint:
+      title: UsageConcurrencyHistoryPoint
+      type: object
+      description: >-
+        The highest concurrency seen in one five-minute bucket.
+
+        The requests and WebSockets counters overlap, because work over a
+        WebSocket counts in both. Don't add them together.
+      properties:
+        start_ts:
+          type: string
+          format: date-time
+          description: Start of the five-minute bucket.
+        end_ts:
+          type: string
+          format: date-time
+          description: End of the five-minute bucket.
+        tts_requests:
+          type: integer
+          description: >-
+            Concurrent TTS generations. Counts toward your TTS concurrency
+            limit.
+        tts_websockets:
+          type: integer
+          description: >-
+            Open TTS WebSocket connections. Counts toward your TTS WebSocket
+            limit.
+        stt_requests:
+          type: integer
+          description: >-
+            Concurrent transcription streams. Counts toward your STT concurrency
+            limit.
+        stt_websockets:
+          type: integer
+          description: Open STT WebSocket connections.
+        agent_calls:
+          type: integer
+          description: Concurrent agent calls, inbound, web and outbound together.
+      required:
+        - start_ts
+        - end_ts
+        - tts_requests
+        - tts_websockets
+        - stt_requests
+        - stt_websockets
+        - agent_calls
     ListApiKeysResponse:
       title: ListApiKeysResponse
       type: object

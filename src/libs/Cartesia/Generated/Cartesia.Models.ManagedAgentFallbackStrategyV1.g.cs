@@ -5,7 +5,7 @@
 namespace Cartesia
 {
     /// <summary>
-    /// Models to fall back to when the primary model fails before it starts responding. `auto` uses Cartesia-managed fallback models. `explicit` uses up to three model IDs from `GET /v1/agents/models`, in order. Set to `null` to disable fallback. Defaults to `auto`.
+    /// Models to try when the primary fails before responding. `auto` selects Cartesia-managed fallbacks (the default for new managed-model agents); `explicit` tries up to three managed model IDs in order; `null` disables fallback.
     /// </summary>
     public readonly partial struct ManagedAgentFallbackStrategyV1 : global::System.IEquatable<ManagedAgentFallbackStrategyV1>
     {

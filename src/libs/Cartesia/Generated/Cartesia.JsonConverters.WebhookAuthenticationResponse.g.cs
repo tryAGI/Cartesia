@@ -50,17 +50,17 @@ namespace Cartesia.JsonConverters
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
-            global::Cartesia.WebhookAuthenticationResponseVariant1? webhookAuthenticationResponseVariant1 = default;
-            global::Cartesia.WebhookAuthenticationResponseVariant2? webhookAuthenticationResponseVariant2 = default;
+            global::Cartesia.WebhookAuthenticationResponseBasicAuth? basicAuth = default;
+            global::Cartesia.WebhookAuthenticationResponseBearerToken? bearerToken = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant1> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant1).Name}");
-                        webhookAuthenticationResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBasicAuth> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth).Name}");
+                        basicAuth = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -77,9 +77,9 @@ namespace Cartesia.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant2> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant2).Name}");
-                        webhookAuthenticationResponseVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBearerToken> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken).Name}");
+                        bearerToken = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -94,14 +94,14 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            if (webhookAuthenticationResponseVariant1 == null && webhookAuthenticationResponseVariant2 == null)
+            if (basicAuth == null && bearerToken == null)
             {
                 try
                 {
 
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant1> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant1).Name}");
-                    webhookAuthenticationResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBasicAuth> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth).Name}");
+                    basicAuth = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -115,14 +115,14 @@ namespace Cartesia.JsonConverters
                 }
             }
 
-            if (webhookAuthenticationResponseVariant1 == null && webhookAuthenticationResponseVariant2 == null)
+            if (basicAuth == null && bearerToken == null)
             {
                 try
                 {
 
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant2> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant2).Name}");
-                    webhookAuthenticationResponseVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBearerToken> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken).Name}");
+                    bearerToken = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -137,9 +137,9 @@ namespace Cartesia.JsonConverters
             }
 
             var __value = new global::Cartesia.WebhookAuthenticationResponse(
-                webhookAuthenticationResponseVariant1,
+                basicAuth,
 
-                webhookAuthenticationResponseVariant2
+                bearerToken
                 );
 
             return __value;
@@ -154,17 +154,17 @@ namespace Cartesia.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsWebhookAuthenticationResponseVariant1)
+            if (value.IsBasicAuth)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookAuthenticationResponseVariant1(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBasicAuth?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBasicAuth).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasicAuth(), typeInfo);
             }
-            else if (value.IsWebhookAuthenticationResponseVariant2)
+            else if (value.IsBearerToken)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseVariant2?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookAuthenticationResponseVariant2(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Cartesia.WebhookAuthenticationResponseBearerToken?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Cartesia.WebhookAuthenticationResponseBearerToken).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBearerToken(), typeInfo);
             }
         }
     }

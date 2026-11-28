@@ -6,8 +6,8 @@ namespace Cartesia.Realtime.SpeechToTextTurns
     /// <summary>
     /// Realtime speech transcription with built-in turn detection<br/>
     /// &lt;Note&gt;<br/>
-    /// `ink-2` and `ink-preview` support English, French, Hindi, Japanese, and Spanish,<br/>
-    /// and detect the language automatically.<br/>
+    /// `ink-2` supports English, French, Hindi, Japanese, and Spanish. `ink-preview` supports [44 languages](/use-the-api/stt/languages).<br/>
+    /// Both detect the language automatically.<br/>
     /// &lt;/Note&gt;
     /// </summary>
     public sealed partial class CartesiaSpeechToTextTurnsRealtimeClient : global::System.IDisposable, global::System.IAsyncDisposable
@@ -629,15 +629,16 @@ namespace Cartesia.Realtime.SpeechToTextTurns
         /// <summary>
         /// Connects to the WebSocket server with typed connection parameters.
         /// </summary>
-        /// <param name="cartesiaVersion">API version.</param>
-        /// <param name="encoding">The encoding format of the audio data. This determines how the server interprets the raw binary audio data you send.  For guidance on choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).</param>
-        /// <param name="model">ID of the model to use for transcription: `ink-2`, `ink-preview`.  See [Models](/build-with-cartesia/stt/latest) for details.</param>
-        /// <param name="sampleRate">The sample rate of the audio in Hz.</param>
-        /// <param name="keyterm">Key terms to improve the recall of specific words and phrases.  Repeat the `keyterm` query parameter to pass multiple values, up to 100 keyterms totaling 1200 characters. To boost one multi-word phrase, join the words with `%20`.  Example: `?keyterm=Ink%202&amp;keyterm=Cartesia`  See [Keyterm prompting](/use-the-api/stt/keyterms) for details.</param>
-        /// <param name="turnEagerEndThreshold">Threshold below which to eager end the turn. Default: 0.6. Range: 0.3–0.8. Must stay between the end and start thresholds.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
-        /// <param name="turnEndThreshold">Threshold below which to end the turn. Default: 0.3. Range: 0.05–0.5. Must stay below the eager end threshold.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
-        /// <param name="turnEndTimeoutMs">Maximum amount of time in milliseconds that the model will wait after the user stops speaking before ending the turn. Default: 5600. Range: 640–11200.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
-        /// <param name="turnStartThreshold">Threshold above which to start the turn. Default: 0.8. Range: 0.5–0.9. Must stay above the eager end threshold.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="cartesiaVersion">API version</param>
+        /// <param name="encoding">The encoding of the raw audio you send. The server uses it to read your audio.  For help choosing an encoding, see [Audio Input](/build-with-cartesia/stt/audio-input).</param>
+        /// <param name="model">ID of the model to use for transcription: `ink-2` or `ink-preview`.  See [Models](/build-with-cartesia/stt/latest) for details.</param>
+        /// <param name="sampleRate">The sample rate of the audio in Hz, from 8000 to 48000</param>
+        /// <param name="keyterm">Key terms that help the model recognize specific words and phrases.  To pass several, repeat the `keyterm` query parameter. `ink-preview` accepts up to 500 keyterms totaling 5,000 characters. `ink-2` accepts up to 100 totaling 1,200. To boost one multi-word phrase, join the words with `%20`. `keyterms` is accepted as an alias.  URLs longer than about 8 KB are rejected with HTTP 414. With `ink-preview`, send long lists in a `config` message after you connect.  Example: `?keyterm=Ink%202&amp;keyterm=Cartesia`  See [Keyterm prompting](/use-the-api/stt/keyterms) for details.</param>
+        /// <param name="languageHint">Used by `ink-preview` only. `ink-2` returns an error.  A language to steer transcription toward. Hints don't stop the model from transcribing other languages.  To pass several, repeat the `language_hint` query parameter. You can pass up to 6. Use base codes from [Languages](/use-the-api/stt/languages), such as `pt`, not `pt-BR`. `language_hints` is also accepted as an alias.  Example: `?language_hint=hi&amp;language_hint=en`  See [Languages](/use-the-api/stt/languages#language-hints) for details.</param>
+        /// <param name="turnEagerEndThreshold">Threshold below which `turn.eager_end` fires. Default: 0.6. Range: 0.3–0.8. Must stay between `turn_end_threshold` and `turn_start_threshold`.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="turnEndThreshold">Threshold below which the turn ends. Default: 0.3. Range: 0.05–0.5. Must stay below `turn_eager_end_threshold`.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="turnEndTimeoutMs">The longest the model waits after the user stops speaking before it ends the turn, in milliseconds. Default: 5600. Range: 640–11200.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
+        /// <param name="turnStartThreshold">Threshold above which the turn starts. Default: 0.8. Range: 0.5–0.9. Must stay above `turn_eager_end_threshold`.  See [Configuring turn detection](/use-the-api/stt/turns#configuring-turn-detection) for details.</param>
         /// <param name="uri">Optional WebSocket endpoint override.</param>
         /// <param name="additionalHeaders">Additional headers applied before connecting.</param>
         /// <param name="additionalSubProtocols">Additional WebSocket subprotocols applied before connecting.</param>
@@ -650,6 +651,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
             string model,
             int sampleRate,
             global::System.Collections.Generic.IList<string>? keyterm = default,
+            string? languageHint = default,
             double? turnEagerEndThreshold = default,
             double? turnEndThreshold = default,
             double? turnEndTimeoutMs = default,
@@ -677,6 +679,7 @@ namespace Cartesia.Realtime.SpeechToTextTurns
                 .AddRequiredParameter("model", model)
                 .AddRequiredParameter("sample_rate", sampleRate.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                 .AddOptionalParameter("keyterm", keyterm, delimiter: ",", explode: true)
+                .AddOptionalParameter("language_hint", languageHint)
                 .AddOptionalParameter("turn_eager_end_threshold", turnEagerEndThreshold?.ToString())
                 .AddOptionalParameter("turn_end_threshold", turnEndThreshold?.ToString())
                 .AddOptionalParameter("turn_end_timeout_ms", turnEndTimeoutMs?.ToString())

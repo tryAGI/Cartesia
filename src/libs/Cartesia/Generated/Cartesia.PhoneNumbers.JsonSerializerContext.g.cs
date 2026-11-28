@@ -37,6 +37,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ImportPhoneNumberBodyProviderById))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ImportPhoneNumberBodyProviderByTwilioAccount))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ImportPhoneNumberBodyProviderByTwilioAccountType), TypeInfoPropertyName = "ImportPhoneNumberBodyProviderByTwilioAccountType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumberProvisioningUsageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ProvisionPhoneNumberBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.ProvisionPhoneNumberResponse), TypeInfoPropertyName = "ProvisionPhoneNumberResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.UpdatePhoneNumberBody))]
@@ -52,6 +53,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersGetCartesiaVersion), TypeInfoPropertyName = "PhoneNumbersGetCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersUpdateCartesiaVersion), TypeInfoPropertyName = "PhoneNumbersUpdateCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersDeleteCartesiaVersion), TypeInfoPropertyName = "PhoneNumbersDeleteCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion), TypeInfoPropertyName = "PhoneNumbersProvisioningUsageCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersProvisionCartesiaVersion), TypeInfoPropertyName = "PhoneNumbersProvisionCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Cartesia.PhoneNumberResponse>))]
@@ -77,6 +79,7 @@ namespace Cartesia
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersGetCartesiaVersion?), TypeInfoPropertyName = "NullablePhoneNumbersGetCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersUpdateCartesiaVersion?), TypeInfoPropertyName = "NullablePhoneNumbersUpdateCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersDeleteCartesiaVersion?), TypeInfoPropertyName = "NullablePhoneNumbersDeleteCartesiaVersion2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion?), TypeInfoPropertyName = "NullablePhoneNumbersProvisioningUsageCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Cartesia.PhoneNumbersProvisionCartesiaVersion?), TypeInfoPropertyName = "NullablePhoneNumbersProvisionCartesiaVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Cartesia.PhoneNumberResponse>))]
     internal sealed partial class PhoneNumbersSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -143,6 +146,7 @@ namespace Cartesia
             options.Converters.Add(new global::Cartesia.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.ImportPhoneNumberBodyProviderById, global::Cartesia.ImportPhoneNumberBodyProviderByTwilioAccount>());
             options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<global::Cartesia.UpdatePhoneNumberBodyProviderById, global::Cartesia.UpdatePhoneNumberBodyProviderByTwilioAccount>());
+            options.Converters.Add(new global::Cartesia.JsonConverters.OneOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Cartesia.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -216,6 +220,10 @@ namespace Cartesia
                     || typeToConvert == typeof(global::Cartesia.PhoneNumbersDeleteCartesiaVersion)
 
                     || typeToConvert == typeof(global::Cartesia.PhoneNumbersDeleteCartesiaVersion?)
+
+                    || typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion)
+
+                    || typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion?)
 
                     || typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisionCartesiaVersion)
 
@@ -354,6 +362,16 @@ namespace Cartesia
                 if (typeToConvert == typeof(global::Cartesia.PhoneNumbersDeleteCartesiaVersion?))
                 {
                     return new global::Cartesia.JsonConverters.PhoneNumbersDeleteCartesiaVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion))
+                {
+                    return new global::Cartesia.JsonConverters.PhoneNumbersProvisioningUsageCartesiaVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisioningUsageCartesiaVersion?))
+                {
+                    return new global::Cartesia.JsonConverters.PhoneNumbersProvisioningUsageCartesiaVersionNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Cartesia.PhoneNumbersProvisionCartesiaVersion))

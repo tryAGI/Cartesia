@@ -30,6 +30,14 @@ namespace Cartesia
         public global::System.Collections.Generic.IList<global::Cartesia.STTMode>? Modes { get; set; }
 
         /// <summary>
+        /// Sorted synthesis language codes supported by this TTS model. Omitted on STT rows.<br/>
+        /// Example: [de, en, es, fr, ja, ko, or, pt, ur, zh]
+        /// </summary>
+        /// <example>[de, en, es, fr, ja, ko, or, pt, ur, zh]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supported_languages")]
+        public global::System.Collections.Generic.IList<string>? SupportedLanguages { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,17 +55,23 @@ namespace Cartesia
         /// <param name="modes">
         /// STT transport paths. Omitted on TTS rows.
         /// </param>
+        /// <param name="supportedLanguages">
+        /// Sorted synthesis language codes supported by this TTS model. Omitted on STT rows.<br/>
+        /// Example: [de, en, es, fr, ja, ko, or, pt, ur, zh]
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelCatalogEntry(
             string id,
             global::Cartesia.ModelCapability capability,
-            global::System.Collections.Generic.IList<global::Cartesia.STTMode>? modes)
+            global::System.Collections.Generic.IList<global::Cartesia.STTMode>? modes,
+            global::System.Collections.Generic.IList<string>? supportedLanguages)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Capability = capability;
             this.Modes = modes;
+            this.SupportedLanguages = supportedLanguages;
         }
 
         /// <summary>
